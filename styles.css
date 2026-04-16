@@ -11105,6 +11105,48 @@ body.accessibility-widget-visible ._access-menu {
     transform: none;
   }
 }
+
+.site-footer .footer-grid {
+  text-align: center !important;
+}
+
+.site-footer .footer-col {
+  align-items: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: center !important;
+}
+
+.site-footer .footer-links,
+.site-footer .footer-contact,
+.site-footer .footer-hours {
+  text-align: center !important;
+  padding: 0 !important;
+}
+
+.site-footer .footer-links li,
+.site-footer .footer-contact li,
+.site-footer .footer-hours li {
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.site-footer .footer-social {
+  justify-content: center !important;
+}
+
+.site-footer .footer-tagline {
+  text-align: center !important;
+}
+
+.site-footer .footer-heading {
+  text-align: center !important;
+}
+
+.site-footer .footer-logo-wrap {
+  display: flex !important;
+  justify-content: center !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
