@@ -11194,6 +11194,20 @@ body.accessibility-widget-visible ._access-menu {
 .site-footer .footer-col .footer-contact li:nth-child(1) .contact-text a {
   color: var(--background-color) !important;
 }
+
+.site-footer .footer-contact li .contact-text,
+.site-footer .footer-contact li .contact-text a {
+  color: var(--background-color) !important;
+  text-transform: lowercase !important;
+}
+
+.site-footer .footer-col .footer-contact li:nth-child(1) .contact-text a {
+  color: var(--background-color) !important;
+}
+
+.site-footer .footer-contact li:nth-child(3) .contact-text {
+  color: var(--background-color) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
