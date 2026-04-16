@@ -866,67 +866,216 @@
 
 
 
-<section class="about-team-section" data-layout-spec="אודות-team" dir="rtl">
-  <div class="about-team-container">
-    <div class="about-team-header">
-      <span class="about-team-label">הצוות שלנו</span>
-      <h2 class="about-team-title">המומחים מאחורי רוקוסן</h2>
-      <p class="about-team-subtitle">צוות מקצועי של אגרונומים, כימאים ומומחי קרקע המחויבים לפיתוח פתרונות דשן טבעי מתקדמים לחקלאות ישראלית</p>
+<style>
+.rokosan-roster-section {
+  background: #F8F6F1;
+  padding: 100px 24px;
+  direction: rtl;
+  position: relative;
+}
+
+.rokosan-roster-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.rokosan-roster-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.rokosan-roster-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(79, 138, 60, 0.09);
+  border: 1px solid rgba(79, 138, 60, 0.22);
+  border-radius: 4px;
+  padding: 4px 14px;
+  margin-bottom: 20px;
+}
+
+.rokosan-roster-title {
+  font-family: Rubik, sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #1F2A22;
+  margin: 0 0 14px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.rokosan-roster-subtitle {
+  font-size: 0.95rem;
+  color: #888b82;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0;
+}
+
+.rokosan-roster-divider {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+  border-radius: 2px;
+  margin: 20px auto 0;
+}
+
+.rokosan-roster-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid rgba(79, 138, 60, 0.15);
+}
+
+.rokosan-roster-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(79, 138, 60, 0.12);
+  gap: 24px;
+  transition: background 0.18s ease;
+}
+
+.rokosan-roster-row:hover {
+  background: rgba(79, 138, 60, 0.03);
+  margin: 0 -20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 4px;
+  border-bottom-color: transparent;
+}
+
+.rokosan-roster-index {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(196, 122, 44, 0.55);
+  letter-spacing: 0.1em;
+  min-width: 28px;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.rokosan-roster-name {
+  font-family: Rubik, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1F2A22;
+  flex: 1;
+  text-align: right;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+
+.rokosan-roster-connector {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 1px;
+  background: rgba(79, 138, 60, 0.25);
+  margin: 0 8px;
+}
+
+.rokosan-roster-role {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4F8A3C;
+  text-align: left;
+  min-width: 220px;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .rokosan-roster-section {
+    padding: 64px 16px;
+  }
+  .rokosan-roster-title {
+    font-size: 1.75rem;
+  }
+  .rokosan-roster-header {
+    margin-bottom: 44px;
+  }
+  .rokosan-roster-row {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 22px 0;
+  }
+  .rokosan-roster-row:hover {
+    margin: 0 -12px;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+  .rokosan-roster-name {
+    font-size: 1.1rem;
+    width: 100%;
+    order: 1;
+  }
+  .rokosan-roster-role {
+    font-size: 0.82rem;
+    min-width: unset;
+    order: 2;
+    color: #4F8A3C;
+    text-align: right;
+    width: 100%;
+  }
+  .rokosan-roster-connector {
+    display: none;
+  }
+  .rokosan-roster-index {
+    order: 0;
+    margin-bottom: 2px;
+  }
+}
+</style>
+
+<section class="rokosan-roster-section" data-layout-spec="אודות-team" dir="rtl" id="zappy-section-2">
+  <div class="rokosan-roster-inner">
+
+    <div class="rokosan-roster-header">
+      <span class="rokosan-roster-eyebrow">הצוות שלנו</span>
+      <h2 class="rokosan-roster-title">המומחים מאחורי רוקוסן</h2>
+      <p class="rokosan-roster-subtitle">הנהלת ROKOSAN ISRAEL</p>
+      <div class="rokosan-roster-divider"></div>
     </div>
-    <div class="about-team-grid">
-      <article class="team-card">
-        <div class="team-card-image-wrap">
-          <img data-placeholder="about-team-image-1" data-context="Professional headshot of a senior agronomist or agricultural scientist, middle-aged Israeli man in field clothing or business casual, standing in a green agricultural field or greenhouse, warm natural lighting, professional portrait style for a natural fertilizer company" width="300" height="300" src="/assets/site-about-team-image-1.webp" alt="ד&quot;ר אבי כהן – מנהל מחקר ופיתוח" class="team-card-photo">
-          <div class="team-card-accent-bar"></div>
-        </div>
-        <div class="team-card-body">
-          <h3 class="team-card-name">ד"ר אבי כהן</h3>
-          <span class="team-card-role">מנהל מחקר ופיתוח</span>
-          <p class="team-card-bio">בעל תואר שלישי בחקלאות ומדעי הקרקע מהטכניון. מוביל את פיתוח נוסחאות ה-NPK + mE + BioS ברוקוסן, עם מעל 18 שנות ניסיון בדשן נוזלי ממקורות טבעיים.</p>
-          <div class="team-card-tags">
-            <span class="team-tag">NPK</span>
-            <span class="team-tag">מדעי קרקע</span>
-            <span class="team-tag">BioS</span>
-          </div>
-        </div>
-      </article>
-      <article class="team-card">
-        <div class="team-card-image-wrap">
-          <img data-placeholder="about-team-image-2" data-context="Professional headshot of a female agricultural expert or soil scientist, Israeli woman in her 40s, wearing professional attire, photographed in a modern agricultural lab or field environment, confident and approachable expression, natural lighting for a sustainable fertilizer brand" width="300" height="300" src="/assets/site-about-team-image-2.webp" alt="מירה לוי – אגרונומית ראשית" class="team-card-photo">
-          <div class="team-card-accent-bar"></div>
-        </div>
-        <div class="team-card-body">
-          <h3 class="team-card-name">מירה לוי</h3>
-          <span class="team-card-role">אגרונומית ראשית</span>
-          <p class="team-card-bio">מומחית ביישום דשן לחקלאות בעלי חיים וגידולים שדה. מלווה חקלאים בתכנון תוכניות תזונת צמחים מותאמות אישית תוך שימוש בפתרונות ממקורות טבעיים.</p>
-          <div class="team-card-tags">
-            <span class="team-tag">אגרונומיה</span>
-            <span class="team-tag">תזונת צמחים</span>
-            <span class="team-tag">mE</span>
-          </div>
-        </div>
-      </article>
-      <article class="team-card">
-        <div class="team-card-image-wrap">
-          <img data-placeholder="about-team-image-3" data-context="Professional headshot of a young male agricultural sales or technical advisor, Israeli man in his 30s, wearing casual professional clothing, outdoors in a cultivated farm field with crops in background, friendly and knowledgeable expression, natural daylight for a natural fertilizer agricultural company" width="300" height="300" src="/assets/site-about-team-image-3.webp" alt="יונתן ברק – יועץ טכני בכיר" class="team-card-photo">
-          <div class="team-card-accent-bar"></div>
-        </div>
-        <div class="team-card-body">
-          <h3 class="team-card-name">יונתן ברק</h3>
-          <span class="team-card-role">יועץ טכני בכיר</span>
-          <p class="team-card-bio">מתמחה בהדרכת חקלאים ומגדלים על שימוש מיטבי בדשן NPK ממקורות טבעיים. מביא ניסיון שטח עשיר בגידולי ירקות, פרחים ועצי פרי בכל רחבי הארץ.</p>
-          <div class="team-card-tags">
-            <span class="team-tag">ייעוץ שטח</span>
-            <span class="team-tag">גידולי ירקות</span>
-            <span class="team-tag">דשן NPK</span>
-          </div>
-        </div>
-      </article>
-    </div>
-    <div class="about-team-cta">
-      <p class="about-team-cta-text">רוצים לדבר עם המומחים שלנו ישירות?</p>
-      <a href="/contact" class="about-team-btn">צרו קשר עם הצוות</a>
-    </div>
+
+    <ul class="rokosan-roster-list">
+      <li class="rokosan-roster-row">
+        <span class="rokosan-roster-index">01</span>
+        <span class="rokosan-roster-name">אמיר עמיר</span>
+        <span class="rokosan-roster-connector"></span>
+        <span class="rokosan-roster-role">CEO</span>
+      </li>
+      <li class="rokosan-roster-row">
+        <span class="rokosan-roster-index">02</span>
+        <span class="rokosan-roster-name">אליסף פרשטנד</span>
+        <span class="rokosan-roster-connector"></span>
+        <span class="rokosan-roster-role">COO</span>
+      </li>
+      <li class="rokosan-roster-row">
+        <span class="rokosan-roster-index">03</span>
+        <span class="rokosan-roster-name">איל גרייפנר</span>
+        <span class="rokosan-roster-connector"></span>
+        <span class="rokosan-roster-role">CFO</span>
+      </li>
+      <li class="rokosan-roster-row">
+        <span class="rokosan-roster-index">04</span>
+        <span class="rokosan-roster-name">רז טורגמן</span>
+        <span class="rokosan-roster-connector"></span>
+        <span class="rokosan-roster-role">אחראי פיתוח לקוחות ושטח & R&D</span>
+      </li>
+      <li class="rokosan-roster-row">
+        <span class="rokosan-roster-index">05</span>
+        <span class="rokosan-roster-name">אלעד טנא</span>
+        <span class="rokosan-roster-connector"></span>
+        <span class="rokosan-roster-role">אגרונום ראשי</span>
+      </li>
+    </ul>
+
   </div>
 </section>
   </main>
