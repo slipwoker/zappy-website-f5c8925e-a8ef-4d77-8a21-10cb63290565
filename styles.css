@@ -11153,6 +11153,10 @@ body.accessibility-widget-visible ._access-menu {
   display: inline-block;
   padding: 12px 40px;
 }
+
+.cart-section .cart-summary {
+  text-align: center;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
