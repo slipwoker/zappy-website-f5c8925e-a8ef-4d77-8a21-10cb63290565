@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 /* Self-hosted fonts (Inter + Rubik for multi-language support) */
 
@@ -184,7 +184,9 @@
   --surface-color: #f8f9fa;
   --text-color: #4a4a4a;
   --text-secondary-color: #707070;
-}
+
+  --heading-font: 'Poppins', sans-serif;
+  --font-heading: 'Poppins', sans-serif;}
 
 *,
 *::before,
@@ -220,7 +222,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--text-dark);
   font-weight: 700;
 }
@@ -11178,7 +11180,6 @@ body.accessibility-widget-visible ._access-menu {
 .navbar .nav-cta-btn,
 .nav-cta-btn { color: #FFFFFF !important; }
 /* === BUTTON TEXT OVERRIDES END === */
-
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
