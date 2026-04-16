@@ -11147,6 +11147,12 @@ body.accessibility-widget-visible ._access-menu {
   display: flex !important;
   justify-content: center !important;
 }
+
+.cart-section .checkout-btn {
+  width: auto;
+  display: inline-block;
+  padding: 12px 40px;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
