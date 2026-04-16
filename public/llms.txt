@@ -1,0 +1,79 @@
+# Business — Generative Engine Optimization Map
+
+---
+
+## Pages
+
+### בית
+https://example.com
+רוקוסן מציעה דשן טבעי מתקדם המשלב NPK, מיקרו-אלמנטים וממריצים ביולוגיים לצמיחה מקסימלית. פתרונות דישון חכמים לחקלאות בת-קיימא. גלו את ההבדל עוד היום!
+
+### שירותים
+https://example.com/services
+גלו את מגוון פתרונות הדשן הנוזלי של רוקוסן: דשן לחקלאות עשיר בחנקן, זרחן ואשלגן לצד ממריצים ביולוגיים. תוצאות מוכחות בשטח לכל סוגי הגידולים. בדקו את השירותים שלנו!
+
+### אודות
+https://example.com/about
+רוקוסן נולדה מתוך חזון לחבר בין חקלאות אורגנית למדע קרקע מתקדם. אנו מאמינים שדשן טבעי איכותי הוא המפתח לעתיד חקלאי בריא ורווחי. הכירו את הצוות והערכים שלנו!
+
+### צור קשר
+https://example.com/contact
+רוצים לשדרג את תוצאות הגידול עם דשן לחקלאות מהמובילים בתחום? צוות המומחים של רוקוסן זמין לייעוץ מקצועי מותאם אישית. השאירו פרטים ונחזור אליכם בהקדם!
+
+### Products
+https://example.com/products
+המוצרים שלנו - רוקוסן
+
+### Cart
+https://example.com/cart
+עגלת הקניות שלך
+
+### Checkout
+https://example.com/checkout
+תשלום
+
+### Login
+https://example.com/login
+התחברות לקוחות
+
+### Account
+https://example.com/account
+החשבון שלי
+
+### Order Success
+https://example.com/order-success
+תודה על ההזמנה
+
+### Product Detail
+https://example.com/product/:slug
+פרטי המוצר - רוקוסן
+
+### Category
+https://example.com/category/:slug
+מוצרים - רוקוסן
+
+## Legal & Policy
+
+### Privacy Policy
+https://example.com/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://example.com/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://example.com/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+# Business Context (for LLM understanding)
+
+## About Business
+---
+
+# Additional Resources
+
+- **Sitemap**: https://example.com/sitemap.xml
+- **Robots.txt**: https://example.com/robots.txt
