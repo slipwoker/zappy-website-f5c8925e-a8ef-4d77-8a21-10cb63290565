@@ -11180,6 +11180,11 @@ body.accessibility-widget-visible ._access-menu {
 .navbar .nav-cta-btn,
 .nav-cta-btn { color: #FFFFFF !important; }
 /* === BUTTON TEXT OVERRIDES END === */
+
+.site-footer .footer-col .footer-contact li:nth-child(1) .contact-text a {
+  text-transform: lowercase !important;
+  color: var(--background-color) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
