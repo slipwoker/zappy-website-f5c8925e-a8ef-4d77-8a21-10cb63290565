@@ -10586,6 +10586,241 @@ body.accessibility-widget-visible ._access-menu {
     display: none !important;
   }
 }
+
+/* AI-generated section */
+/* ============================================================
+   ROKOSAN BENEFITS SECTION
+   ============================================================ */
+
+.rokosan-benefits {
+  background-color: #f7f5f0;
+  padding: 88px 24px;
+  font-family: system-ui, sans-serif;
+  direction: rtl;
+  text-align: center;
+}
+
+/* Container */
+.rokosan-benefits__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---- Header ---- */
+.rokosan-benefits__header {
+  margin-bottom: 56px;
+}
+
+.rokosan-benefits__title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #1a2e14;
+  margin: 0 0 18px 0;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.rokosan-benefits__title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: var(--gradient-primary, linear-gradient(180deg, #3E8B2D 0%, #2E6E1F 100%));
+  border-radius: 2px;
+  margin: 14px auto 0 auto;
+}
+
+.rokosan-benefits__subtitle {
+  font-size: 1rem;
+  color: #5a6a52;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+/* ---- Grid ---- */
+.rokosan-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  align-items: stretch;
+}
+
+/* ---- Card ---- */
+.rokosan-benefits__card {
+  background: #ffffff;
+  border: 1px solid rgba(79, 138, 60, 0.22);
+  border-radius: 12px;
+  box-shadow: 0 2px 14px rgba(46, 110, 31, 0.07), 0 1px 4px rgba(0,0,0,0.05);
+  padding: 38px 28px 34px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: default;
+}
+
+.rokosan-benefits__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(46, 110, 31, 0.14), 0 2px 8px rgba(0,0,0,0.07);
+  border-color: rgba(79, 138, 60, 0.45);
+}
+
+/* ---- Icon Wrapper ---- */
+.rokosan-benefits__icon-wrap {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(145deg, #eef6ea 0%, #dff0d6 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26px;
+  flex-shrink: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.rokosan-benefits__card:hover .rokosan-benefits__icon-wrap {
+  background: linear-gradient(145deg, #d6edcc 0%, #c2e4b5 100%);
+  transform: scale(1.06);
+}
+
+/* Iconify icon */
+.rokosan-benefits__icon {
+  color: var(--primary, #4F8A3C);
+  font-size: 52px;
+  display: block;
+}
+
+/* Fallback SVG icon */
+.rokosan-benefits__icon-svg {
+  width: 48px;
+  height: 48px;
+  fill: var(--primary, #4F8A3C);
+  display: block;
+  flex-shrink: 0;
+}
+
+/* If Iconify loads, hide SVG fallback — handled via JS below */
+
+/* ---- Card Body ---- */
+.rokosan-benefits__card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+/* ---- Card Heading ---- */
+.rokosan-benefits__card-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a2e14;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* ---- Card Subheading ---- */
+.rokosan-benefits__card-subheading {
+  font-size: 0.88rem;
+  color: #6b8060;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+/* ---- Badge / Detail Text ---- */
+.rokosan-benefits__card-badge {
+  display: inline-block;
+  margin-top: 12px;
+  background: linear-gradient(135deg, #eef6ea 0%, #dff0d6 100%);
+  color: #2e6e1f;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(79, 138, 60, 0.25);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
+@media (max-width: 900px) {
+  .rokosan-benefits {
+    padding: 72px 20px;
+  }
+
+  .rokosan-benefits__grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .rokosan-benefits__title {
+    font-size: 1.75rem;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+@media (max-width: 600px) {
+  .rokosan-benefits {
+    padding: 56px 16px;
+  }
+
+  .rokosan-benefits__header {
+    margin-bottom: 40px;
+  }
+
+  .rokosan-benefits__title {
+    font-size: 1.5rem;
+  }
+
+  .rokosan-benefits__subtitle {
+    font-size: 0.95rem;
+  }
+
+  .rokosan-benefits__card {
+    padding: 30px 22px 26px 22px;
+  }
+
+  .rokosan-benefits__icon-wrap {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+  }
+
+  .rokosan-benefits__icon-svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .rokosan-benefits__card-heading {
+    font-size: 1.05rem;
+  }
+
+  .rokosan-benefits__card-badge {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+  }
+}
+
+/* ============================================================
+   FOCUS / ACCESSIBILITY
+   ============================================================ */
+.rokosan-benefits__card:focus-within {
+  outline: 2px solid var(--primary, #4F8A3C);
+  outline-offset: 3px;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
