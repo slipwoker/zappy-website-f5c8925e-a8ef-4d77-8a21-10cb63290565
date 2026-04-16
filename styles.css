@@ -11157,6 +11157,12 @@ body.accessibility-widget-visible ._access-menu {
 .cart-section .cart-summary {
   text-align: center;
 }
+
+@media (max-width: 768px) {
+.index-hero-section {
+  background-position: 80% center !important;
+}
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
