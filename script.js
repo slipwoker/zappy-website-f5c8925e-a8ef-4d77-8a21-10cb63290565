@@ -8828,7 +8828,14 @@ window.onload = function() {
     var _vProduct = null;
     var _vT = {};
     var _initOvr = false;
-    function _oivs(){if(_initOvr)return;if(typeof window.initVariantSelection==='function')_initOvr=true;window.initVariantSelection=function(p,t){if(p&&p.variants&&p.variants.length>0){_vProduct=p;var tr=t||{};if(!tr.pleaseSelect){var rtl=document.documentElement.getAttribute('dir')==='rtl'||document.body.getAttribute('dir')==='rtl';tr.pleaseSelect=rtl?'נא לבחור':'Please select'}_vT=tr}}}
+    // Late-product safety: the page may call initVariantSelection AFTER our
+    // setTimeout(fixVariantSelection, 2000) has already fired (e.g. when the
+    // product API is slow on cold starts or large catalogs). In that case both
+    // scheduled calls bailed at the !product guard and never ran _repBtns or
+    // _autoSelectSingles. Re-trigger fixVariantSelection from inside the wrapper
+    // so the runtime fix runs once data finally arrives. Deferred via setTimeout
+    // so the page's own renderProductDetail finishes mutating the DOM first.
+    function _oivs(){if(_initOvr)return;if(typeof window.initVariantSelection==='function')_initOvr=true;window.initVariantSelection=function(p,t){if(p&&p.variants&&p.variants.length>0){_vProduct=p;var tr=t||{};if(!tr.pleaseSelect){var rtl=document.documentElement.getAttribute('dir')==='rtl'||document.body.getAttribute('dir')==='rtl';tr.pleaseSelect=rtl?'נא לבחור':'Please select'}_vT=tr;setTimeout(function(){try{fixVariantSelection()}catch(e){}},0)}}}
     _oivs();
 
     function _gv() { return _vProduct ? (_vProduct.variants||[]).filter(function(v){return v.is_active!==false}) : []; }
@@ -8903,6 +8910,55 @@ window.onload = function() {
       var m=_fm(selectedAttributes);if(m.length>0&&m.every(function(v){return _oos(v)})){e.preventDefault();e.stopImmediatePropagation();return}
     },true);
 
+    // Repair variant button attributes that were truncated by the browser
+    // when the (pre-fix) renderProductDetail serialized values containing "
+    // (e.g. Hebrew "12  מ\"מ", US sizes 5'10") into data-value/data-display-value
+    // without HTML escaping. We rebuild data-value, data-display-value, and the
+    // visible text from _vProduct.variants[*].attributes (which is the unbroken
+    // source of truth from the API). Pairs buttons to values by index after
+    // applying the same sort renderProductDetail uses. Honors per-variant
+    // attributes_display (translated/aliased labels) the same way
+    // renderProductDetail's attributeDisplayMap does, so we don't replace a
+    // localized "12 inches" label with the raw value 12".
+    function _repBtns() {
+      if(!_vProduct||!_vProduct.variants)return;
+      var vs=_gv();if(vs.length===0)return;
+      var _so={'xxxs':0,'xxs':1,'xs':2,'s':3,'m':4,'l':5,'xl':6,'xxl':7,'2xl':7,'xxxl':8,'3xl':8,'4xl':9,'5xl':10};
+      function _cmp(a,b){var sa=_so[String(a).toLowerCase()],sb=_so[String(b).toLowerCase()];var na=sa===undefined?parseFloat(a):NaN,nb=sb===undefined?parseFloat(b):NaN;if(!isNaN(na)&&!isNaN(nb))return na-nb;if(sa!==undefined&&sb!==undefined)return sa-sb;var ca=!isNaN(na)?0:sa!==undefined?1:2,cb=!isNaN(nb)?0:sb!==undefined?1:2;if(ca!==cb)return ca-cb;return String(a).localeCompare(String(b));}
+      var dispMap={};
+      vs.forEach(function(v){
+        if(!v.attributes)return;
+        Object.keys(v.attributes).forEach(function(k){
+          var raw=v.attributes[k];
+          if(raw==null)return;
+          if(!dispMap[k])dispMap[k]={};
+          if(dispMap[k][raw]==null){
+            dispMap[k][raw]=(v.attributes_display&&Object.prototype.hasOwnProperty.call(v.attributes_display,k))?v.attributes_display[k]:raw;
+          }
+        });
+      });
+      document.querySelectorAll('.variant-group').forEach(function(grp){
+        var ak=grp.getAttribute('data-group');
+        if(!ak||ak==='variant')return;
+        var btns=Array.prototype.slice.call(grp.querySelectorAll('.variant-option'));
+        if(btns.length===0)return;
+        var seen={},vals=[];
+        vs.forEach(function(v){if(v.attributes&&Object.prototype.hasOwnProperty.call(v.attributes,ak)){var val=v.attributes[ak];if(val!=null&&!seen[val]){seen[val]=true;vals.push(val);}}});
+        if(vals.length===0||vals.length!==btns.length)return;
+        vals.sort(_cmp);
+        btns.forEach(function(btn,i){
+          var correct=String(vals[i]);
+          var current=btn.getAttribute('data-value')||'';
+          if(current===correct)return;
+          var disp=(dispMap[ak]&&dispMap[ak][vals[i]]!=null)?String(dispMap[ak][vals[i]]):correct;
+          btn.setAttribute('data-value',correct);
+          btn.setAttribute('data-display-value',disp);
+          if(!btn.classList.contains('color-swatch')){btn.textContent=disp;}
+          if(btn.title){btn.title=disp;}
+        });
+      });
+    }
+
     function fixVariantSelection() {
       _oivs();
       var product=_vProduct||window.currentProduct,t=_vT||window.productTranslations||{};
@@ -8912,6 +8968,7 @@ window.onload = function() {
       _vProduct=product;if(!t.pleaseSelect){var isRTL=document.documentElement.getAttribute('dir')==='rtl'||document.body.getAttribute('dir')==='rtl';t.pleaseSelect=isRTL?'נא לבחור':'Please select'}_vT=t;
       var old=document.getElementById('zappy-variant-state-css');if(old)old.remove();
       document.querySelectorAll('.variant-option').forEach(function(b){b.style.display='';b.disabled=false});
+      _repBtns();
       var _so={'xxxs':0,'xxs':1,'xs':2,'s':3,'m':4,'l':5,'xl':6,'xxl':7,'2xl':7,'xxxl':8,'3xl':8,'4xl':9,'5xl':10};
       document.querySelectorAll('.variant-options').forEach(function(c){var b=Array.from(c.querySelectorAll('.variant-option'));if(b.length<2)return;b.sort(function(a,b){var va=a.getAttribute('data-value')||'',vb=b.getAttribute('data-value')||'';var sa=_so[va.toLowerCase()],sb=_so[vb.toLowerCase()];var na=sa===undefined?parseFloat(va):NaN,nb=sb===undefined?parseFloat(vb):NaN;if(!isNaN(na)&&!isNaN(nb))return na-nb;if(sa!==undefined&&sb!==undefined)return sa-sb;var ca=!isNaN(na)?0:sa!==undefined?1:2,cb=!isNaN(nb)?0:sb!==undefined?1:2;if(ca!==cb)return ca-cb;return va.localeCompare(vb)});b.forEach(function(x){c.appendChild(x)})});
       var origATC=window.addProductToCart;
@@ -8924,7 +8981,33 @@ window.onload = function() {
         if(origATC)origATC.apply(this,arguments);
       };
       selectedAttributes={};document.querySelectorAll('.variant-option').forEach(function(b){b.classList.remove('selected','disabled','out-of-stock');b.disabled=false});
-      _uv();_upd();
+      // Auto-select any variant group that only has one possible value, so a
+      // shopper choosing the remaining options gets a fully-matched variant
+      // (image/SKU/price update) instead of being silently blocked because a
+      // single-option dimension was left implicitly unselected.
+      function _autoSelectSingles(){
+        document.querySelectorAll('.variant-group').forEach(function(grp){
+          var ak=grp.getAttribute('data-group');
+          if(!ak||ak==='variant')return;
+          if(grp.querySelector('.variant-option.selected'))return;
+          var btns=Array.prototype.slice.call(grp.querySelectorAll('.variant-option')).filter(function(b){
+            return b.getAttribute('data-attr')&&b.getAttribute('data-value')&&!b.classList.contains('disabled')&&!b.classList.contains('out-of-stock');
+          });
+          if(btns.length!==1)return;
+          var btn=btns[0],av=btn.getAttribute('data-value');
+          btn.classList.add('selected');
+          selectedAttributes[ak]=av;
+          var sp=grp.querySelector('.variant-selected-value');
+          if(sp)sp.textContent=btn.getAttribute('data-display-value')||av;
+        });
+      }
+      _autoSelectSingles();
+      _uv();
+      // Re-run after availability has been recomputed: a multi-option group may
+      // have collapsed to a single non-disabled choice once cross-group stock
+      // constraints were applied.
+      _autoSelectSingles();
+      _upd();
     }
 
     if(document.readyState==='complete'){setTimeout(fixVariantSelection,100)}else{window.addEventListener('load',function(){setTimeout(fixVariantSelection,100)})}
@@ -9037,4 +9120,48 @@ window.onload = function() {
     if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fixLinks)}
     else{fixLinks()}
   }catch(e){}
+})();
+
+
+/* ZAPPY_IOS_VIEWPORT_GAP_FIX */
+(function(){
+  try {
+    if (window.__zappyIosViewportGapInit) return;
+    window.__zappyIosViewportGapInit = true;
+
+    function update() {
+      try {
+        var visual = window.innerWidth;
+        var layout = document.documentElement.clientWidth;
+        var gap = Math.max(0, (visual || 0) - (layout || 0));
+        document.documentElement.style.setProperty('--ios-viewport-gap', gap + 'px');
+
+        // Also publish the navbar height so the mobile dropdown menu CSS can
+        // anchor `top` to the navbar's bottom edge. This is needed because
+        // older v2 patches set `top: 100% !important` on .nav-menu, which
+        // with position:fixed resolves against the viewport (=height of
+        // screen) instead of the navbar. --zappy-navbar-bottom gives the
+        // v3 CSS something concrete to override that with.
+        var nav = document.querySelector('nav.navbar, .navbar, header nav, header.navbar');
+        if (nav) {
+          var h = Math.round(nav.getBoundingClientRect().height);
+          if (h > 0) {
+            document.documentElement.style.setProperty('--zappy-navbar-bottom', h + 'px');
+          }
+        }
+      } catch (e) {}
+    }
+
+    update();
+    window.addEventListener('resize', update, { passive: true });
+    window.addEventListener('orientationchange', update, { passive: true });
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', update);
+    }
+    document.addEventListener('DOMContentLoaded', update);
+    window.addEventListener('load', update);
+    // Re-measure after the navbar layout settles (fonts, images, logo load).
+    setTimeout(update, 250);
+    setTimeout(update, 1000);
+  } catch (e) {}
 })();
