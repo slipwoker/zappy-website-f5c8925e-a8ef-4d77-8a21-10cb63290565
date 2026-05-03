@@ -298,6 +298,21 @@
 </head>
 <body>
 
+
+    <div class="mobile-search-panel" id="mobile-search-panel">
+      <div class="search-wrapper">
+        <input type="text" id="mobile-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
+        <button class="search-submit" id="mobile-search-submit" title="חיפוש">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+        </button>
+        <button class="close-search" id="close-mobile-search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="search-results" id="mobile-search-results"></div>
+    </div>
+  
+<script>window.ZAPPY_WEBSITE_ID = "f5c8925e-a8ef-4d77-8a21-10cb63290565";window.ZAPPY_API_BASE = (window.location.pathname.includes('/preview') ? "https://api.zappy5.com" : "https://api.zappy5.com");</script>
     <nav class="navbar" dir="rtl">
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
     <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -346,6 +361,16 @@
     
   </div>
 </nav>
+
+    <nav class="zappy-catalog-menu rtl" id="zappy-catalog-menu" dir="rtl" style="display:none">
+      <div class="catalog-menu-container">
+        <a href="/products" class="catalog-menu-item catalog-menu-all">כל המוצרים</a>
+        <div class="catalog-menu-categories" id="zappy-category-links">
+          <!-- Categories will be loaded dynamically -->
+        </div>
+      </div>
+    </nav>
+  
     <main>
     <section class="legal-page-content privacy-policy">
   <div class="container">
@@ -444,7 +469,7 @@
           <p class="footer-tagline">תשומות חקלאיות מקצועיות לחקלאות מודרנית. אנו מספקים פתרונות איכותיים לחקלאי ישראל.</p>
           <div class="footer-social">
             <a href="#" aria-label="Facebook" class="social-link" style="display:none !important;"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/rokosan.israel/" aria-label="Instagram" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://instagram.com/rokosan.israel" aria-label="Instagram" class="social-link"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/972546499087" aria-label="WhatsApp" class="social-link"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
@@ -464,7 +489,7 @@
           <h4 class="footer-heading"><span class="heading-accent"></span>פרטי התקשרות</h4>
           <ul class="footer-contact" ><li>
               
-              <span class="contact-text"><a href="mailto:[business_email]">info@rokosan.co.il</a></span>
+              <span class="contact-text"><a href="mailto:info@rokosan.co.il">info@rokosan.co.il</a></span>
             </li><li>
               <span class="contact-icon"><i class="fas fa-phone" style="cursor: pointer;" data-element-type="icon" data-element-id="icon-1776374238072-kfrfqdkos" data-icon-type="fontawesome"></i></span>
               <span class="contact-text"><a href="tel:0546499087" >054-6499087</a></span>

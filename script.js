@@ -266,6 +266,1076 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 ;
+
+
+/* Cookie Consent */
+
+// Helper function to check cookie consent
+function hasConsentFor(category) {
+  if (typeof window.CookieConsent === 'undefined') {
+    return false; // Default to no consent if cookie consent not loaded
+  }
+  
+  return window.CookieConsent.validConsent(category);
+}
+
+// Helper function to execute code only with consent
+function withConsent(category, callback) {
+  if (hasConsentFor(category)) {
+    callback();
+  } else {
+    console.log(`[WARNING] Skipping ${category} code - no user consent`);
+  }
+}
+
+// Cookie Consent Initialization (multi-language)
+
+(function() {
+  'use strict';
+  
+  var initAttempts = 0;
+  var maxAttempts = 50;
+  
+  function initCookieConsent() {
+    initAttempts++;
+    
+    if (typeof window.CookieConsent === 'undefined') {
+      if (initAttempts < maxAttempts) {
+        setTimeout(initCookieConsent, 100);
+      }
+      return;
+    }
+
+    var cc = window.CookieConsent;
+    
+    try {
+      var __ccConfig = {
+  "autoShow": true,
+  "mode": "opt-in",
+  "revision": 0,
+  "categories": {
+    "necessary": {
+      "enabled": true,
+      "readOnly": true
+    },
+    "analytics": {
+      "enabled": false,
+      "readOnly": false,
+      "autoClear": {
+        "cookies": [
+          {
+            "name": "_ga"
+          },
+          {
+            "name": "_ga_*"
+          },
+          {
+            "name": "_gid"
+          },
+          {
+            "name": "_gat"
+          }
+        ]
+      }
+    },
+    "marketing": {
+      "enabled": false,
+      "readOnly": false,
+      "autoClear": {
+        "cookies": [
+          {
+            "name": "_fbp"
+          },
+          {
+            "name": "_fbc"
+          },
+          {
+            "name": "fr"
+          }
+        ]
+      }
+    }
+  },
+  "language": {
+    "default": "he",
+    "translations": {
+      "en": {
+        "consentModal": {
+          "title": "We use cookies 🍪",
+          "description": "רוקוסן uses cookies to enhance your experience, analyze site usage, and assist in our marketing efforts. You can manage your preferences anytime.",
+          "acceptAllBtn": "Accept All",
+          "acceptNecessaryBtn": "Accept Necessary",
+          "showPreferencesBtn": "Manage Preferences",
+          "footer": "<a href=\"#privacy-policy\">Privacy Policy</a> | <a href=\"#terms-conditions\">Terms & Conditions</a>"
+        },
+        "preferencesModal": {
+          "title": "Cookie Preferences",
+          "acceptAllBtn": "Accept All",
+          "acceptNecessaryBtn": "Accept Necessary",
+          "savePreferencesBtn": "Save Preferences",
+          "closeIconLabel": "Close",
+          "sections": [
+            {
+              "title": "Essential Cookies",
+              "description": "These cookies are necessary for the website to function and cannot be disabled.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Analytics Cookies",
+              "description": "These cookies help us understand how visitors interact with our website.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Marketing Cookies",
+              "description": "These cookies are used to deliver personalized advertisements.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "es": {
+        "consentModal": {
+          "title": "Usamos cookies 🍪",
+          "description": "רוקוסן utiliza cookies para mejorar tu experiencia, analizar el uso del sitio y ayudar en nuestros esfuerzos de marketing.",
+          "acceptAllBtn": "Aceptar Todo",
+          "acceptNecessaryBtn": "Solo Necesarias",
+          "showPreferencesBtn": "Gestionar Preferencias",
+          "footer": "<a href=\"#privacy-policy\">Política de Privacidad</a> | <a href=\"#terms-conditions\">Términos y Condiciones</a>"
+        },
+        "preferencesModal": {
+          "title": "Preferencias de Cookies",
+          "acceptAllBtn": "Aceptar Todo",
+          "acceptNecessaryBtn": "Solo Necesarias",
+          "savePreferencesBtn": "Guardar Preferencias",
+          "closeIconLabel": "Cerrar",
+          "sections": [
+            {
+              "title": "Cookies Esenciales",
+              "description": "Estas cookies son necesarias para que el sitio web funcione y no se pueden desactivar.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Cookies de Análisis",
+              "description": "Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Cookies de Marketing",
+              "description": "Estas cookies se utilizan para entregar anuncios personalizados.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "fr": {
+        "consentModal": {
+          "title": "Nous utilisons des cookies 🍪",
+          "description": "רוקוסן utilise des cookies pour améliorer votre expérience, analyser l'utilisation du site et nous aider dans nos efforts marketing.",
+          "acceptAllBtn": "Tout Accepter",
+          "acceptNecessaryBtn": "Accepter les Nécessaires",
+          "showPreferencesBtn": "Gérer les Préférences",
+          "footer": "<a href=\"#privacy-policy\">Politique de Confidentialité</a> | <a href=\"#terms-conditions\">Conditions Générales</a>"
+        },
+        "preferencesModal": {
+          "title": "Préférences des Cookies",
+          "acceptAllBtn": "Tout Accepter",
+          "acceptNecessaryBtn": "Accepter les Nécessaires",
+          "savePreferencesBtn": "Enregistrer les Préférences",
+          "closeIconLabel": "Fermer",
+          "sections": [
+            {
+              "title": "Cookies Essentiels",
+              "description": "Ces cookies sont nécessaires au fonctionnement du site web et ne peuvent pas être désactivés.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Cookies Analytiques",
+              "description": "Ces cookies nous aident à comprendre comment les visiteurs interagissent avec notre site web.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Cookies Marketing",
+              "description": "Ces cookies sont utilisés pour diffuser des publicités personnalisées.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "de": {
+        "consentModal": {
+          "title": "Wir verwenden Cookies 🍪",
+          "description": "רוקוסן verwendet Cookies, um Ihr Erlebnis zu verbessern, die Nutzung der Website zu analysieren und unsere Marketingbemühungen zu unterstützen.",
+          "acceptAllBtn": "Alle akzeptieren",
+          "acceptNecessaryBtn": "Nur Notwendige",
+          "showPreferencesBtn": "Einstellungen verwalten",
+          "footer": "<a href=\"#privacy-policy\">Datenschutzrichtlinie</a> | <a href=\"#terms-conditions\">Nutzungsbedingungen</a>"
+        },
+        "preferencesModal": {
+          "title": "Cookie-Einstellungen",
+          "acceptAllBtn": "Alle akzeptieren",
+          "acceptNecessaryBtn": "Nur Notwendige",
+          "savePreferencesBtn": "Einstellungen speichern",
+          "closeIconLabel": "Schließen",
+          "sections": [
+            {
+              "title": "Notwendige Cookies",
+              "description": "Diese Cookies sind für die Funktion der Website erforderlich und können nicht deaktiviert werden.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Analyse-Cookies",
+              "description": "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Marketing-Cookies",
+              "description": "Diese Cookies werden verwendet, um personalisierte Werbung zu liefern.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "it": {
+        "consentModal": {
+          "title": "Utilizziamo i cookie 🍪",
+          "description": "רוקוסן utilizza i cookie per migliorare la tua esperienza, analizzare l'utilizzo del sito e supportare le nostre attività di marketing.",
+          "acceptAllBtn": "Accetta Tutti",
+          "acceptNecessaryBtn": "Solo Necessari",
+          "showPreferencesBtn": "Gestisci Preferenze",
+          "footer": "<a href=\"#privacy-policy\">Informativa sulla Privacy</a> | <a href=\"#terms-conditions\">Termini e Condizioni</a>"
+        },
+        "preferencesModal": {
+          "title": "Preferenze Cookie",
+          "acceptAllBtn": "Accetta Tutti",
+          "acceptNecessaryBtn": "Solo Necessari",
+          "savePreferencesBtn": "Salva Preferenze",
+          "closeIconLabel": "Chiudi",
+          "sections": [
+            {
+              "title": "Cookie Essenziali",
+              "description": "Questi cookie sono necessari per il funzionamento del sito web e non possono essere disattivati.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Cookie Analitici",
+              "description": "Questi cookie ci aiutano a capire come i visitatori interagiscono con il nostro sito web.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Cookie di Marketing",
+              "description": "Questi cookie vengono utilizzati per fornire pubblicità personalizzate.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "pt": {
+        "consentModal": {
+          "title": "Usamos cookies 🍪",
+          "description": "רוקוסן usa cookies para melhorar sua experiência, analisar o uso do site e auxiliar em nossos esforços de marketing.",
+          "acceptAllBtn": "Aceitar Todos",
+          "acceptNecessaryBtn": "Apenas Necessários",
+          "showPreferencesBtn": "Gerenciar Preferências",
+          "footer": "<a href=\"#privacy-policy\">Política de Privacidade</a> | <a href=\"#terms-conditions\">Termos e Condições</a>"
+        },
+        "preferencesModal": {
+          "title": "Preferências de Cookies",
+          "acceptAllBtn": "Aceitar Todos",
+          "acceptNecessaryBtn": "Apenas Necessários",
+          "savePreferencesBtn": "Salvar Preferências",
+          "closeIconLabel": "Fechar",
+          "sections": [
+            {
+              "title": "Cookies Essenciais",
+              "description": "Estes cookies são necessários para o funcionamento do site e não podem ser desativados.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Cookies Analíticos",
+              "description": "Estes cookies nos ajudam a entender como os visitantes interagem com nosso site.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Cookies de Marketing",
+              "description": "Estes cookies são usados para exibir anúncios personalizados.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "nl": {
+        "consentModal": {
+          "title": "Wij gebruiken cookies 🍪",
+          "description": "רוקוסן gebruikt cookies om uw ervaring te verbeteren, het sitegebruik te analyseren en onze marketinginspanningen te ondersteunen.",
+          "acceptAllBtn": "Alles accepteren",
+          "acceptNecessaryBtn": "Alleen noodzakelijke",
+          "showPreferencesBtn": "Voorkeuren beheren",
+          "footer": "<a href=\"#privacy-policy\">Privacybeleid</a> | <a href=\"#terms-conditions\">Algemene Voorwaarden</a>"
+        },
+        "preferencesModal": {
+          "title": "Cookie-voorkeuren",
+          "acceptAllBtn": "Alles accepteren",
+          "acceptNecessaryBtn": "Alleen noodzakelijke",
+          "savePreferencesBtn": "Voorkeuren opslaan",
+          "closeIconLabel": "Sluiten",
+          "sections": [
+            {
+              "title": "Noodzakelijke Cookies",
+              "description": "Deze cookies zijn nodig voor het functioneren van de website en kunnen niet worden uitgeschakeld.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Analytische Cookies",
+              "description": "Deze cookies helpen ons te begrijpen hoe bezoekers onze website gebruiken.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Marketing Cookies",
+              "description": "Deze cookies worden gebruikt om gepersonaliseerde advertenties te tonen.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "he": {
+        "consentModal": {
+          "title": "אנחנו משתמשים בעוגיות 🍪",
+          "description": "רוקוסן משתמש בעוגיות כדי לשפר את החוויה שלך, לנתח שימוש באתר ולסייע במאמצי השיווק שלנו.",
+          "acceptAllBtn": "אשר הכל",
+          "acceptNecessaryBtn": "רק הכרחי",
+          "showPreferencesBtn": "נהל העדפות",
+          "footer": "<a href=\"#privacy-policy\">מדיניות פרטיות</a> | <a href=\"#terms-conditions\">תנאי שימוש</a>"
+        },
+        "preferencesModal": {
+          "title": "העדפות עוגיות",
+          "acceptAllBtn": "אשר הכל",
+          "acceptNecessaryBtn": "רק הכרחי",
+          "savePreferencesBtn": "שמור העדפות",
+          "closeIconLabel": "סגור",
+          "sections": [
+            {
+              "title": "עוגיות חיוניות",
+              "description": "עוגיות אלה הכרחיות לתפקוד האתר ולא ניתן להשבית אותן.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "עוגיות ניתוח",
+              "description": "עוגיות אלה עוזרות לנו להבין איך המבקרים מתקשרים עם האתר שלנו.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "עוגיות שיווקיות",
+              "description": "עוגיות אלה משמשות להצגת פרסומות מותאמות אישית.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "ar": {
+        "consentModal": {
+          "title": "نحن نستخدم ملفات تعريف الارتباط 🍪",
+          "description": "يستخدم רוקוסן ملفات تعريف الارتباط لتحسين تجربتك وتحليل استخدام الموقع والمساعدة في جهودنا التسويقية.",
+          "acceptAllBtn": "قبول الكل",
+          "acceptNecessaryBtn": "الضرورية فقط",
+          "showPreferencesBtn": "إدارة التفضيلات",
+          "footer": "<a href=\"#privacy-policy\">سياسة الخصوصية</a> | <a href=\"#terms-conditions\">الشروط والأحكام</a>"
+        },
+        "preferencesModal": {
+          "title": "تفضيلات ملفات تعريف الارتباط",
+          "acceptAllBtn": "قبول الكل",
+          "acceptNecessaryBtn": "الضرورية فقط",
+          "savePreferencesBtn": "حفظ التفضيلات",
+          "closeIconLabel": "إغلاق",
+          "sections": [
+            {
+              "title": "ملفات تعريف الارتباط الأساسية",
+              "description": "هذه الملفات ضرورية لعمل الموقع ولا يمكن تعطيلها.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "ملفات تعريف الارتباط التحليلية",
+              "description": "تساعدنا هذه الملفات في فهم كيفية تفاعل الزوار مع موقعنا.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "ملفات تعريف الارتباط التسويقية",
+              "description": "تُستخدم هذه الملفات لعرض إعلانات مخصصة.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "tr": {
+        "consentModal": {
+          "title": "Çerez kullanıyoruz 🍪",
+          "description": "רוקוסן, deneyiminizi geliştirmek, site kullanımını analiz etmek ve pazarlama çalışmalarımıza yardımcı olmak için çerezler kullanır.",
+          "acceptAllBtn": "Tümünü Kabul Et",
+          "acceptNecessaryBtn": "Sadece Gerekli",
+          "showPreferencesBtn": "Tercihleri Yönet",
+          "footer": "<a href=\"#privacy-policy\">Gizlilik Politikası</a> | <a href=\"#terms-conditions\">Kullanım Koşulları</a>"
+        },
+        "preferencesModal": {
+          "title": "Çerez Tercihleri",
+          "acceptAllBtn": "Tümünü Kabul Et",
+          "acceptNecessaryBtn": "Sadece Gerekli",
+          "savePreferencesBtn": "Tercihleri Kaydet",
+          "closeIconLabel": "Kapat",
+          "sections": [
+            {
+              "title": "Zorunlu Çerezler",
+              "description": "Bu çerezler web sitesinin çalışması için gereklidir ve devre dışı bırakılamaz.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Analiz Çerezleri",
+              "description": "Bu çerezler, ziyaretçilerin web sitemizle nasıl etkileşime girdiğini anlamamıza yardımcı olur.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Pazarlama Çerezleri",
+              "description": "Bu çerezler kişiselleştirilmiş reklamlar sunmak için kullanılır.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "ru": {
+        "consentModal": {
+          "title": "Мы используем файлы cookie 🍪",
+          "description": "רוקוסן использует файлы cookie для улучшения вашего опыта, анализа использования сайта и поддержки наших маркетинговых усилий.",
+          "acceptAllBtn": "Принять все",
+          "acceptNecessaryBtn": "Только необходимые",
+          "showPreferencesBtn": "Управление настройками",
+          "footer": "<a href=\"#privacy-policy\">Политика конфиденциальности</a> | <a href=\"#terms-conditions\">Условия использования</a>"
+        },
+        "preferencesModal": {
+          "title": "Настройки cookie",
+          "acceptAllBtn": "Принять все",
+          "acceptNecessaryBtn": "Только необходимые",
+          "savePreferencesBtn": "Сохранить настройки",
+          "closeIconLabel": "Закрыть",
+          "sections": [
+            {
+              "title": "Необходимые cookie",
+              "description": "Эти файлы cookie необходимы для работы сайта и не могут быть отключены.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Аналитические cookie",
+              "description": "Эти файлы cookie помогают нам понять, как посетители взаимодействуют с нашим сайтом.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Маркетинговые cookie",
+              "description": "Эти файлы cookie используются для показа персонализированной рекламы.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "zh": {
+        "consentModal": {
+          "title": "我们使用 Cookie 🍪",
+          "description": "רוקוסן 使用 Cookie 来改善您的体验、分析网站使用情况并协助我们的营销工作。",
+          "acceptAllBtn": "全部接受",
+          "acceptNecessaryBtn": "仅接受必要",
+          "showPreferencesBtn": "管理偏好",
+          "footer": "<a href=\"#privacy-policy\">隐私政策</a> | <a href=\"#terms-conditions\">条款与条件</a>"
+        },
+        "preferencesModal": {
+          "title": "Cookie 偏好设置",
+          "acceptAllBtn": "全部接受",
+          "acceptNecessaryBtn": "仅接受必要",
+          "savePreferencesBtn": "保存偏好",
+          "closeIconLabel": "关闭",
+          "sections": [
+            {
+              "title": "必要 Cookie",
+              "description": "这些 Cookie 是网站正常运行所必需的，无法禁用。",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "分析 Cookie",
+              "description": "这些 Cookie 帮助我们了解访问者如何与我们的网站互动。",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "营销 Cookie",
+              "description": "这些 Cookie 用于投放个性化广告。",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "ja": {
+        "consentModal": {
+          "title": "Cookieを使用しています 🍪",
+          "description": "רוקוסןは、お客様の体験向上、サイト利用状況の分析、マーケティング活動の支援のためにCookieを使用しています。",
+          "acceptAllBtn": "すべて許可",
+          "acceptNecessaryBtn": "必要なもののみ",
+          "showPreferencesBtn": "設定を管理",
+          "footer": "<a href=\"#privacy-policy\">プライバシーポリシー</a> | <a href=\"#terms-conditions\">利用規約</a>"
+        },
+        "preferencesModal": {
+          "title": "Cookie設定",
+          "acceptAllBtn": "すべて許可",
+          "acceptNecessaryBtn": "必要なもののみ",
+          "savePreferencesBtn": "設定を保存",
+          "closeIconLabel": "閉じる",
+          "sections": [
+            {
+              "title": "必要なCookie",
+              "description": "これらのCookieはウェブサイトの機能に必要であり、無効にすることはできません。",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "分析Cookie",
+              "description": "これらのCookieは、訪問者がウェブサイトとどのように対話するかを理解するのに役立ちます。",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "マーケティングCookie",
+              "description": "これらのCookieはパーソナライズされた広告を配信するために使用されます。",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "ko": {
+        "consentModal": {
+          "title": "쿠키를 사용합니다 🍪",
+          "description": "רוקוסן은(는) 경험 향상, 사이트 사용 분석 및 마케팅 활동 지원을 위해 쿠키를 사용합니다.",
+          "acceptAllBtn": "모두 수락",
+          "acceptNecessaryBtn": "필수만 수락",
+          "showPreferencesBtn": "환경 설정 관리",
+          "footer": "<a href=\"#privacy-policy\">개인정보 처리방침</a> | <a href=\"#terms-conditions\">이용약관</a>"
+        },
+        "preferencesModal": {
+          "title": "쿠키 설정",
+          "acceptAllBtn": "모두 수락",
+          "acceptNecessaryBtn": "필수만 수락",
+          "savePreferencesBtn": "설정 저장",
+          "closeIconLabel": "닫기",
+          "sections": [
+            {
+              "title": "필수 쿠키",
+              "description": "이 쿠키는 웹사이트 작동에 필요하며 비활성화할 수 없습니다.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "분석 쿠키",
+              "description": "이 쿠키는 방문자가 웹사이트와 어떻게 상호작용하는지 이해하는 데 도움이 됩니다.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "마케팅 쿠키",
+              "description": "이 쿠키는 맞춤형 광고를 제공하는 데 사용됩니다.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "pl": {
+        "consentModal": {
+          "title": "Używamy plików cookie 🍪",
+          "description": "רוקוסן używa plików cookie, aby poprawić Twoje wrażenia, analizować korzystanie z witryny i wspierać nasze działania marketingowe.",
+          "acceptAllBtn": "Zaakceptuj wszystkie",
+          "acceptNecessaryBtn": "Tylko niezbędne",
+          "showPreferencesBtn": "Zarządzaj preferencjami",
+          "footer": "<a href=\"#privacy-policy\">Polityka prywatności</a> | <a href=\"#terms-conditions\">Regulamin</a>"
+        },
+        "preferencesModal": {
+          "title": "Preferencje cookie",
+          "acceptAllBtn": "Zaakceptuj wszystkie",
+          "acceptNecessaryBtn": "Tylko niezbędne",
+          "savePreferencesBtn": "Zapisz preferencje",
+          "closeIconLabel": "Zamknij",
+          "sections": [
+            {
+              "title": "Niezbędne pliki cookie",
+              "description": "Te pliki cookie są niezbędne do działania strony i nie można ich wyłączyć.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Analityczne pliki cookie",
+              "description": "Te pliki cookie pomagają nam zrozumieć, w jaki sposób odwiedzający korzystają z naszej strony.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Marketingowe pliki cookie",
+              "description": "Te pliki cookie służą do wyświetlania spersonalizowanych reklam.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "uk": {
+        "consentModal": {
+          "title": "Ми використовуємо файли cookie 🍪",
+          "description": "רוקוסן використовує файли cookie для покращення вашого досвіду, аналізу використання сайту та підтримки наших маркетингових зусиль.",
+          "acceptAllBtn": "Прийняти всі",
+          "acceptNecessaryBtn": "Лише необхідні",
+          "showPreferencesBtn": "Керувати налаштуваннями",
+          "footer": "<a href=\"#privacy-policy\">Політика конфіденційності</a> | <a href=\"#terms-conditions\">Умови використання</a>"
+        },
+        "preferencesModal": {
+          "title": "Налаштування cookie",
+          "acceptAllBtn": "Прийняти всі",
+          "acceptNecessaryBtn": "Лише необхідні",
+          "savePreferencesBtn": "Зберегти налаштування",
+          "closeIconLabel": "Закрити",
+          "sections": [
+            {
+              "title": "Необхідні cookie",
+              "description": "Ці файли cookie необхідні для роботи сайту і не можуть бути вимкнені.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Аналітичні cookie",
+              "description": "Ці файли cookie допомагають нам зрозуміти, як відвідувачі взаємодіють з нашим сайтом.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Маркетингові cookie",
+              "description": "Ці файли cookie використовуються для показу персоналізованої реклами.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "ro": {
+        "consentModal": {
+          "title": "Folosim cookie-uri 🍪",
+          "description": "רוקוסן folosește cookie-uri pentru a vă îmbunătăți experiența, a analiza utilizarea site-ului și a sprijini eforturile noastre de marketing.",
+          "acceptAllBtn": "Acceptă toate",
+          "acceptNecessaryBtn": "Doar necesare",
+          "showPreferencesBtn": "Gestionare preferințe",
+          "footer": "<a href=\"#privacy-policy\">Politica de confidențialitate</a> | <a href=\"#terms-conditions\">Termeni și condiții</a>"
+        },
+        "preferencesModal": {
+          "title": "Preferințe cookie",
+          "acceptAllBtn": "Acceptă toate",
+          "acceptNecessaryBtn": "Doar necesare",
+          "savePreferencesBtn": "Salvează preferințele",
+          "closeIconLabel": "Închide",
+          "sections": [
+            {
+              "title": "Cookie-uri esențiale",
+              "description": "Aceste cookie-uri sunt necesare pentru funcționarea site-ului și nu pot fi dezactivate.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Cookie-uri analitice",
+              "description": "Aceste cookie-uri ne ajută să înțelegem cum interacționează vizitatorii cu site-ul nostru.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Cookie-uri de marketing",
+              "description": "Aceste cookie-uri sunt folosite pentru a afișa reclame personalizate.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "bg": {
+        "consentModal": {
+          "title": "Ние използваме бисквитки 🍪",
+          "description": "רוקוסן използва бисквитки, за да подобри вашето изживяване, да анализира използването на сайта и да подпомогне маркетинговите ни усилия.",
+          "acceptAllBtn": "Приемам всички",
+          "acceptNecessaryBtn": "Само необходимите",
+          "showPreferencesBtn": "Управление на предпочитанията",
+          "footer": "<a href=\"#privacy-policy\">Политика за поверителност</a> | <a href=\"#terms-conditions\">Общи условия</a>"
+        },
+        "preferencesModal": {
+          "title": "Настройки за бисквитки",
+          "acceptAllBtn": "Приемам всички",
+          "acceptNecessaryBtn": "Само необходимите",
+          "savePreferencesBtn": "Запазване на предпочитанията",
+          "closeIconLabel": "Затвори",
+          "sections": [
+            {
+              "title": "Необходими бисквитки",
+              "description": "Тези бисквитки са необходими за функционирането на уебсайта и не могат да бъдат деактивирани.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Аналитични бисквитки",
+              "description": "Тези бисквитки ни помагат да разберем как посетителите взаимодействат с нашия уебсайт.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Маркетингови бисквитки",
+              "description": "Тези бисквитки се използват за показване на персонализирани реклами.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "guiOptions": {
+    "consentModal": {
+      "layout": "box",
+      "position": "bottom right",
+      "equalWeightButtons": true,
+      "flipButtons": false
+    },
+    "preferencesModal": {
+      "layout": "box",
+      "equalWeightButtons": true,
+      "flipButtons": false
+    }
+  }
+};
+
+      // Detect the current page language and override the build-time default.
+      // Published multi-language sites set <html lang="…"> per URL prefix;
+      // preview pages may store the active language on zappyI18n.
+      var pageLang = (document.documentElement.getAttribute('lang') || '').split('-')[0].toLowerCase();
+      if (!pageLang && typeof zappyI18n !== 'undefined' && zappyI18n.language) {
+        pageLang = String(zappyI18n.language).split('-')[0].toLowerCase();
+      }
+      if (pageLang && __ccConfig.language.translations[pageLang]) {
+        __ccConfig.language.default = pageLang;
+      }
+
+      cc.run(__ccConfig);
+
+      // Keep cookie consent in sync when the user switches language without
+      // a full navigation (preview / embedded-resources path).
+      if (typeof zappyI18n !== 'undefined' && typeof zappyI18n.onLanguageChange === 'function') {
+        zappyI18n.onLanguageChange(function(newLang) {
+          try {
+            if (__ccConfig.language.translations[newLang]) {
+              cc.setLanguage(newLang);
+            }
+          } catch (_) {}
+        });
+      }
+      
+      // Google Consent Mode v2 integration
+      function updateGoogleConsentMode() {
+        if (typeof gtag !== 'function') {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function(){dataLayer.push(arguments);};
+        }
+        
+        var analyticsAccepted = cc.acceptedCategory('analytics');
+        var marketingAccepted = cc.acceptedCategory('marketing');
+        
+        gtag('consent', 'update', {
+          'analytics_storage': analyticsAccepted ? 'granted' : 'denied',
+          'ad_storage': marketingAccepted ? 'granted' : 'denied',
+          'ad_user_data': marketingAccepted ? 'granted' : 'denied',
+          'ad_personalization': marketingAccepted ? 'granted' : 'denied'
+        });
+      }
+      
+      updateGoogleConsentMode();
+      
+      if (typeof cc.onChange === 'function') {
+        cc.onChange(function(cookie, changed_preferences) {
+          updateGoogleConsentMode();
+        });
+      }
+    } catch (error) {
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCookieConsent);
+    setTimeout(initCookieConsent, 1000);
+  } else if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initCookieConsent();
+  } else {
+    setTimeout(initCookieConsent, 500);
+  }
+  
+  if (typeof window !== 'undefined') {
+    if (window.addEventListener) {
+      window.addEventListener('load', initCookieConsent, { once: true });
+    }
+  }
+})();
+/* Accessibility Features */
+
+/* Mickidum Accessibility Toolbar Initialization - Zappy Style */
+
+window.onload = function() {
+    
+    try {
+        window.micAccessTool = new MicAccessTool({
+            buttonPosition: 'left', // Position on left side
+            forceLang: 'he-IL', // Force language
+            icon: {
+                position: {
+                    bottom: { size: 50, units: 'px' },
+                    left: { size: 20, units: 'px' },
+                    type: 'fixed'
+                },
+                backgroundColor: 'transparent', // Transparent to allow CSS styling
+                color: 'transparent', // Let CSS handle coloring
+                img: 'accessible',
+                circular: false // Square button for consistent styling
+            },
+            menu: {
+                dimensions: {
+                    width: { size: 300, units: 'px' },
+                    height: { size: 'auto', units: 'px' }
+                }
+            }
+        });
+        
+    } catch (error) {
+    }
+    
+    // Keyboard shortcut handler: ALT+A (Option+A on Mac) to toggle accessibility widget visibility (desktop only)
+    document.addEventListener('keydown', function(event) {
+        // Check if ALT+A is pressed (ALT on Windows/Linux, Option on Mac)
+        var isAltOrOption = event.altKey;
+        // Use event.code for reliable physical key detection (works regardless of Option key character output)
+        var isAKey = event.code === 'KeyA' || event.keyCode === 65 || event.which === 65 || 
+                      (event.key && (event.key.toLowerCase() === 'a' || event.key === 'å' || event.key === 'Å'));
+        
+        if (isAltOrOption && isAKey) {
+            // Only work on desktop (screen width > 768px)
+            if (window.innerWidth > 768) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                // Toggle visibility class on body
+                var isVisible = document.body.classList.contains('accessibility-widget-visible');
+                
+                if (isVisible) {
+                    // Hide the widget
+                    document.body.classList.remove('accessibility-widget-visible');
+                } else {
+                    // Show the widget
+                    document.body.classList.add('accessibility-widget-visible');
+                    
+                    // After a short delay, click the button to open the menu
+                    setTimeout(function() {
+                        var accessButton = document.getElementById('mic-access-tool-general-button');
+                        if (accessButton) {
+                            accessButton.click();
+                        }
+                    }, 200);
+                }
+            }
+        }
+    }, true);
+};
+
+
+// Zappy Contact Form API Integration (Fallback)
+(function() {
+    if (window.zappyContactFormLoaded) {
+        console.log('📧 Zappy contact form already loaded');
+        return;
+    }
+    window.zappyContactFormLoaded = true;
+
+    function zappyNotify(message, type) {
+        var existing = document.querySelectorAll('.zappy-notification');
+        existing.forEach(function(el) { el.remove(); });
+        var el = document.createElement('div');
+        el.className = 'zappy-notification';
+        var bg = type === 'success' ? '#d4edda' : type === 'error' ? '#f8d7da' : '#d1ecf1';
+        var fg = type === 'success' ? '#155724' : type === 'error' ? '#721c24' : '#0c5460';
+        var border = type === 'success' ? '#c3e6cb' : type === 'error' ? '#f5c6cb' : '#bee5eb';
+        var icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+        el.style.cssText = 'position:fixed;top:20px;right:20px;max-width:400px;padding:16px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);z-index:10000;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:14px;line-height:1.4;animation:slideInRight .3s ease-out;background:' + bg + ';color:' + fg + ';border:1px solid ' + border;
+        el.innerHTML = '<span style="margin-right:8px">' + icon + '</span>' + message + '<button onclick="this.parentElement.remove()" style="background:none;border:none;font-size:18px;cursor:pointer;float:right;opacity:.7;padding:0 0 0 12px">&times;</button>';
+        if (!document.getElementById('zappy-notify-anim')) {
+            var s = document.createElement('style');
+            s.id = 'zappy-notify-anim';
+            s.textContent = '@keyframes slideInRight{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}';
+            document.head.appendChild(s);
+        }
+        document.body.appendChild(el);
+        setTimeout(function() { if (el.parentElement) el.remove(); }, type === 'error' ? 8000 : 5000);
+    }
+
+    function initContactFormIntegration() {
+        console.log('📧 Zappy: Initializing contact form API integration...');
+
+        var contactForm = document.querySelector('.contact-form') || 
+                           document.querySelector('form[action*="contact"]') ||
+                           document.querySelector('form#contact') ||
+                           document.querySelector('form#contactForm') ||
+                           document.getElementById('contactForm') ||
+                           document.querySelector('section.contact form') ||
+                           document.querySelector('section#contact form') ||
+                           document.querySelector('form');
+        
+        if (!contactForm) {
+            console.log('⚠️ Zappy: No contact form found on page');
+            return;
+        }
+        
+        console.log('✅ Zappy: Contact form found:', contactForm.className || contactForm.id || 'unnamed form');
+
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Validate privacy consent checkbox if present (required for GDPR)
+        var privacyCheckbox = this.querySelector('.privacy-consent-checkbox');
+        if (privacyCheckbox && !privacyCheckbox.checked) {
+            zappyNotify('Please accept the Terms & Conditions and Privacy Policy to continue', 'error');
+            privacyCheckbox.focus();
+            return;
+        }
+
+        // Collect form data with multi-value support (checkboxes, multi-selects)
+        var formData = new FormData(this);
+        var data = {};
+        for (var pair of formData.entries()) {
+            if (data[pair[0]] !== undefined) {
+                if (Array.isArray(data[pair[0]])) data[pair[0]].push(pair[1]);
+                else data[pair[0]] = [data[pair[0]], pair[1]];
+            } else {
+                data[pair[0]] = pair[1];
+            }
+        }
+
+        // Smart field mapping
+        var _coreNameFields = ['name','firstName','first_name','fname','lastName','last_name','lname'];
+        var _coreEmailFields = ['email','emailAddress','mail','e-mail'];
+        var _corePhoneFields = ['phone','tel','telephone','mobile','cellphone'];
+        var _coreMsgFields = ['message','msg','comments','comment','description','details','notes','body','text','inquiry'];
+        var _coreSubjectFields = ['subject','topic','regarding','re'];
+        var _allCoreFields = [].concat(_coreNameFields, _coreEmailFields, _corePhoneFields, _coreMsgFields, _coreSubjectFields);
+
+        var resolvedName = (data.name || '').trim()
+            || [data.firstName || data.first_name || data.fname || '', data.lastName || data.last_name || data.lname || ''].filter(Boolean).join(' ').trim()
+            || (data.email || data.emailAddress || data.mail || '').trim()
+            || 'Anonymous';
+        var resolvedEmail = (data.email || data.emailAddress || data.mail || data['e-mail'] || '').trim();
+        var resolvedPhone = data.phone || data.tel || data.telephone || data.mobile || data.cellphone || null;
+        var resolvedSubject = data.subject || data.topic || data.regarding || data.re || 'Contact Form Submission';
+        var resolvedMessage = (data.message || data.msg || data.comments || data.comment || data.description || data.details || data.body || data.text || data.inquiry || '').trim();
+        if (!resolvedMessage) {
+            var extraEntries = Object.entries(data).filter(function(e) { return _allCoreFields.indexOf(e[0]) === -1; });
+            if (extraEntries.length > 0) {
+                resolvedMessage = extraEntries.map(function(e) {
+                    var label = e[0].replace(/([A-Z])/g, ' $1').replace(/[_-]/g, ' ').trim();
+                    var val = Array.isArray(e[1]) ? e[1].join(', ') : e[1];
+                    return label + ': ' + val;
+                }).join('\n');
+            } else {
+                resolvedMessage = 'Form submission from ' + window.location.pathname;
+            }
+        }
+
+        var extraFields = {};
+        for (var k of Object.keys(data)) {
+            if (_allCoreFields.indexOf(k) === -1 && data[k] !== '' && data[k] !== null && data[k] !== undefined) {
+                extraFields[k] = data[k];
+            }
+        }
+
+        // Loading state
+        var submitBtn = this.querySelector('button[type="submit"], input[type="submit"]');
+        var originalText = submitBtn ? (submitBtn.value || submitBtn.textContent) : '';
+        if (submitBtn) {
+            if (submitBtn.tagName === 'INPUT') submitBtn.value = 'Sending...';
+            else submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+        }
+
+        var currentPagePath = window.location.pathname;
+        if (window.ZAPPY_CONFIG && window.ZAPPY_CONFIG.currentPagePath) {
+            currentPagePath = window.ZAPPY_CONFIG.currentPagePath;
+        } else {
+            try {
+                var p = new URLSearchParams(window.location.search).get('page');
+                if (p) currentPagePath = p;
+            } catch (ignored) {}
+        }
+
+        var theForm = this;
+        try {
+            console.log('📧 Zappy: Sending contact form to backend API...');
+            var apiBase = (window.ZAPPY_API_BASE || 'https://api.zappy5.com').replace(/\/$/, '');
+            var payload = {
+                websiteId: 'f5c8925e-a8ef-4d77-8a21-10cb63290565',
+                name: resolvedName,
+                email: resolvedEmail,
+                subject: resolvedSubject,
+                message: resolvedMessage,
+                phone: resolvedPhone,
+                currentPagePath: currentPagePath
+            };
+            if (Object.keys(extraFields).length > 0) {
+                payload.extraFields = extraFields;
+            }
+            var response = await fetch(apiBase + '/api/email/contact-form', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            var result = await response.json();
+            
+            if (result.success) {
+                console.log('✅ Zappy: Contact form data sent successfully to backend');
+
+                // Thank-you page redirect
+                if (result.thankYouPagePath && result.ticketNumber) {
+                    var ticketParam = 'ticket=' + encodeURIComponent(result.ticketNumber);
+                    var isPreview = window.location.pathname.indexOf('/preview') !== -1;
+                    var thankYouUrl;
+                    if (isPreview && window.ZAPPY_CONFIG) {
+                        var wid = window.ZAPPY_CONFIG.websiteId || 'f5c8925e-a8ef-4d77-8a21-10cb63290565';
+                        var pt = window.location.pathname.indexOf('fullscreen') !== -1 ? 'preview-fullscreen' : 'preview';
+                        thankYouUrl = window.location.origin + '/api/website/' + pt + '/' + wid + '?page=' + encodeURIComponent(result.thankYouPagePath) + '&' + ticketParam;
+                        if (window.ZAPPY_CONFIG.authToken) thankYouUrl += '&auth_token=' + encodeURIComponent(window.ZAPPY_CONFIG.authToken);
+                    } else {
+                        thankYouUrl = result.thankYouPagePath + '?' + ticketParam;
+                    }
+                    window.location.href = thankYouUrl;
+                    return;
+                }
+
+                var _siteLang = document.documentElement.lang || '';
+                var _isHeSite = _siteLang === 'he' || (_siteLang !== 'ar' && document.documentElement.dir === 'rtl');
+                var _isArSite = _siteLang === 'ar';
+                var _successFallback = _isHeSite ? 'ההודעה שלך נשלחה בהצלחה! נחזור אליך בהקדם.' : _isArSite ? 'تم إرسال رسالتك بنجاح! سنرد عليك قريبًا.' : 'Thank you for your message! We\'ll get back to you soon.';
+                zappyNotify(result.message || _successFallback, 'success');
+                theForm.reset();
+            } else {
+                console.log('⚠️ Zappy: Backend returned error:', result.error);
+                var _isHeSiteErr = _siteLang === 'he' || (_siteLang !== 'ar' && document.documentElement.dir === 'rtl');
+                var _isArSiteErr = _siteLang === 'ar';
+                var _errFallback = _isHeSiteErr ? 'שליחת ההודעה נכשלה. אנא נסו שוב.' : _isArSiteErr ? 'فشل في إرسال الرسالة. يرجى المحاولة مرة أخرى.' : 'Failed to send message. Please try again.';
+                zappyNotify(result.error || _errFallback, 'error');
+            }
+        } catch (error) {
+            console.error('❌ Zappy: Failed to send to backend API:', error);
+            var _isHeSiteNet = _siteLang === 'he' || (_siteLang !== 'ar' && document.documentElement.dir === 'rtl');
+            var _isArSiteNet = _siteLang === 'ar';
+            var _netFallback = _isHeSiteNet ? 'לא ניתן לשלוח הודעה כרגע. אנא נסו שוב מאוחר יותר.' : _isArSiteNet ? 'لا يمكن إرسال الرسالة الآن. يرجى المحاولة مرة أخرى لاحقًا.' : 'Unable to send message right now. Please try again later.';
+            zappyNotify(_netFallback, 'error');
+        } finally {
+            if (submitBtn) {
+                if (submitBtn.tagName === 'INPUT') submitBtn.value = originalText;
+                else submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+        }, true);
+
+        console.log('✅ Zappy: Contact form API integration initialized');
+    } // End of initContactFormIntegration
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initContactFormIntegration);
+    } else {
+        initContactFormIntegration();
+    }
+})();
+
+;
 /* ==ZAPPY E-COMMERCE JS START== */
 // E-commerce functionality
 (function() {
@@ -392,7 +1462,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!websiteId) return;
   
   // Translations
-  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","featuredCategories":"קנו לפי קטגוריה","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","streetAndNumber":"רחוב ומספר","apartment":"דירה, קומה, כניסה","apartmentExt":"דירה, קומה, קוד בניין, הערות וכו'","city":"עיר","zip":"מיקוד","zipPostal":"מיקוד","countryRegion":"מדינה / אזור","stateProvince":"מדינה / מחוז","stateRequired":"נא לבחור מדינה / מחוז","saveAddressForNextTime":"שמור את הכתובת לפעם הבאה","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","vat":"מע\"מ","vatIncluded":"כולל מע\"מ","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","startingAt":"החל מ","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","pleaseSelect":"נא לבחור","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","home":"בית","quantity":"כמות","unitLabels":{"piece":"יח'","kg":"ק\"ג","gram":"גרם","liter":"ליטר","ml":"מ\"ל"},"perUnit":"/","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי","alreadyHaveAccount":"כבר יש לך חשבון?","loginHere":"התחבר כאן","signInHere":"התחבר כאן","mobileNumber":"מספר טלפון","loggedInAs":"מחובר כ:","logout":"התנתק","haveCouponCode":"יש לי קוד קופון","agreeToTerms":"אני מסכים/ה ל","termsAndConditions":"תנאי השימוש","pleaseAcceptTerms":"נא לאשר את תנאי השימוש","nameRequired":"נא להזין שם מלא","emailRequired":"נא להזין כתובת אימייל","emailInvalid":"כתובת אימייל לא תקינה","phoneRequired":"נא להזין מספר טלפון","shippingRequired":"נא לבחור שיטת משלוח","streetRequired":"נא להזין רחוב ומספר","cityRequired":"נא להזין עיר","cartEmpty":"העגלה ריקה","paymentNotConfigured":"תשלום מקוון לא מוגדר","orderSuccess":"ההזמנה התקבלה!","thankYouOrder":"תודה על ההזמנה","orderNumber":"מספר הזמנה","orderConfirmation":"אישור הזמנה נשלח לאימייל שלך","orderProcessing":"ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.","continueShopping":"להמשך קניות","next":"הבא","contactInformation":"פרטי התקשרות","items":"פריטים","continueToHomePage":"המשך לדף הבית","transactionDate":"תאריך עסקה","paymentMethod":"אמצעי תשלום","orderDetails":"פרטי ההזמנה","loadingOrder":"טוען פרטי הזמנה...","orderNotFound":"לא נמצאה הזמנה","orderItems":"פריטים בהזמנה","paidAmount":"סכום ששולם","myAccount":"החשבון שלי","accountWelcome":"ברוך הבא","yourOrders":"ההזמנות שלך","noOrders":"אין עדיין הזמנות","orderDate":"תאריך","orderStatus":"סטטוס","orderTotal":"סה\"כ","viewOrder":"צפה בהזמנה","statusPending":"ממתין לתשלום","statusPaid":"שולם","statusProcessing":"בטיפול","statusShipped":"נשלח","statusDelivered":"נמסר","statusCancelled":"בוטל","notLoggedIn":"לא מחובר","pleaseLogin":"יש להתחבר כדי לצפות בחשבון","personalDetails":"פרטים אישיים","editProfile":"עריכת פרופיל","name":"שם","saveChanges":"שמור שינויים","cancel":"ביטול","addresses":"כתובות","addAddress":"הוסף כתובת","editAddress":"ערוך כתובת","deleteAddress":"מחק כתובת","setAsDefault":"הגדר כברירת מחדל","defaultAddress":"כתובת ברירת מחדל","addressLabel":"שם הכתובת","work":"עבודה","other":"אחר","noAddresses":"אין כתובות שמורות","confirmDelete":"האם אתה בטוח שברצונך למחוק?","profileUpdated":"הפרופיל עודכן בהצלחה","addressSaved":"הכתובת נשמרה בהצלחה","addressDeleted":"הכתובת נמחקה","saving":"שומר...","saveToFavorites":"שמור למועדפים","removeFromFavorites":"הסר ממועדפים","shareProduct":"שתף מוצר","linkCopied":"הקישור הועתק!","myFavorites":"המועדפים שלי","noFavorites":"אין עדיין מוצרים מועדפים","addedToFavorites":"נוסף למועדפים","removedFromFavorites":"הוסר מהמועדפים","loginToFavorite":"יש להתחבר כדי לשמור מועדפים","browseFavorites":"גלו את כל המוצרים שלנו","selectVariant":"בחר אפשרות","variantUnavailable":"לא זמין","color":"צבע","size":"מידה","material":"חומר","style":"סגנון","weight":"משקל","capacity":"קיבולת","length":"אורך","inquiryAbout":"פנייה בנושא","sendInquiry":"שלח פנייה","callNow":"התקשר עכשיו","specifications":"מפרט טכני","storeNote":"מידע נוסף","businessPhone":"0546499087","businessEmail":"[business_email]"};
+  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","featuredCategories":"קנו לפי קטגוריה","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","streetAndNumber":"רחוב ומספר","apartment":"דירה, קומה, כניסה","apartmentExt":"דירה, קומה, קוד בניין, הערות וכו'","city":"עיר","zip":"מיקוד","zipPostal":"מיקוד","countryRegion":"מדינה / אזור","stateProvince":"מדינה / מחוז","stateRequired":"נא לבחור מדינה / מחוז","saveAddressForNextTime":"שמור את הכתובת לפעם הבאה","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","vat":"מע\"מ","vatIncluded":"כולל מע\"מ","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","startingAt":"החל מ","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","pleaseSelect":"נא לבחור","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","frequentlyBoughtTogether":"לרכוש יחד","frequentlyBoughtTogetherSubtitle":"הוספת מוצרים נלווים לעגלה","bundleTotal":"סה\"כ לעגלה","addBundleToCart":"הוספת {count} מוצרים לעגלה","upsellFree":"חינם","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","home":"בית","quantity":"כמות","unitLabels":{"piece":"יח'","kg":"ק\"ג","gram":"גרם","liter":"ליטר","ml":"מ\"ל"},"perUnit":"/","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי","alreadyHaveAccount":"כבר יש לך חשבון?","loginHere":"התחבר כאן","signInHere":"התחבר כאן","mobileNumber":"מספר טלפון","loggedInAs":"מחובר כ:","logout":"התנתק","haveCouponCode":"יש לי קוד קופון","agreeToTerms":"אני מסכים/ה ל","termsAndConditions":"תנאי השימוש","pleaseAcceptTerms":"נא לאשר את תנאי השימוש","nameRequired":"נא להזין שם מלא","emailRequired":"נא להזין כתובת אימייל","emailInvalid":"כתובת אימייל לא תקינה","phoneRequired":"נא להזין מספר טלפון","shippingRequired":"נא לבחור שיטת משלוח","streetRequired":"נא להזין רחוב ומספר","cityRequired":"נא להזין עיר","cartEmpty":"העגלה ריקה","paymentNotConfigured":"תשלום מקוון לא מוגדר","orderSuccess":"ההזמנה התקבלה!","thankYouOrder":"תודה על ההזמנה","orderNumber":"מספר הזמנה","orderConfirmation":"אישור הזמנה נשלח לאימייל שלך","orderProcessing":"ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.","continueShopping":"להמשך קניות","next":"הבא","contactInformation":"פרטי התקשרות","items":"פריטים","continueToHomePage":"המשך לדף הבית","transactionDate":"תאריך עסקה","paymentMethod":"אמצעי תשלום","orderDetails":"פרטי ההזמנה","loadingOrder":"טוען פרטי הזמנה...","orderNotFound":"לא נמצאה הזמנה","orderItems":"פריטים בהזמנה","paidAmount":"סכום ששולם","myAccount":"החשבון שלי","accountWelcome":"ברוך הבא","yourOrders":"ההזמנות שלך","noOrders":"אין עדיין הזמנות","orderDate":"תאריך","orderStatus":"סטטוס","orderTotal":"סה\"כ","viewOrder":"צפה בהזמנה","statusPending":"ממתין לתשלום","statusPaid":"שולם","statusProcessing":"בטיפול","statusShipped":"נשלח","statusDelivered":"נמסר","statusCancelled":"בוטל","notLoggedIn":"לא מחובר","pleaseLogin":"יש להתחבר כדי לצפות בחשבון","personalDetails":"פרטים אישיים","editProfile":"עריכת פרופיל","name":"שם","saveChanges":"שמור שינויים","cancel":"ביטול","addresses":"כתובות","addAddress":"הוסף כתובת","editAddress":"ערוך כתובת","deleteAddress":"מחק כתובת","setAsDefault":"הגדר כברירת מחדל","defaultAddress":"כתובת ברירת מחדל","addressLabel":"שם הכתובת","work":"עבודה","other":"אחר","noAddresses":"אין כתובות שמורות","confirmDelete":"האם אתה בטוח שברצונך למחוק?","profileUpdated":"הפרופיל עודכן בהצלחה","addressSaved":"הכתובת נשמרה בהצלחה","addressDeleted":"הכתובת נמחקה","saving":"שומר...","saveToFavorites":"שמור למועדפים","removeFromFavorites":"הסר ממועדפים","shareProduct":"שתף מוצר","linkCopied":"הקישור הועתק!","myFavorites":"המועדפים שלי","noFavorites":"אין עדיין מוצרים מועדפים","addedToFavorites":"נוסף למועדפים","removedFromFavorites":"הוסר מהמועדפים","loginToFavorite":"יש להתחבר כדי לשמור מועדפים","browseFavorites":"גלו את כל המוצרים שלנו","selectVariant":"בחר אפשרות","variantUnavailable":"לא זמין","color":"צבע","size":"מידה","material":"חומר","style":"סגנון","weight":"משקל","capacity":"קיבולת","length":"אורך","inquiryAbout":"פנייה בנושא","sendInquiry":"שלח פנייה","callNow":"התקשר עכשיו","specifications":"מפרט טכני","storeNote":"מידע נוסף","businessPhone":"054-6499087","businessEmail":"[business_email]"};
   
   // Helper to get localized e-commerce UI text
   // Tries zappyI18n first for multilingual support, falls back to static t object
@@ -559,6 +1629,7 @@ function stripHtmlToText(html) {
   
   
   function saveCart() {
+    cart = getCartPayload();
     localStorage.setItem('zappy_cart_' + websiteId, JSON.stringify(cart));
     updateCartCount();
     renderCartDrawer(); // Keep drawer in sync
@@ -640,10 +1711,21 @@ function stripHtmlToText(html) {
   
   // Get effective price (sale_price if available and less than price, otherwise price)
   function getItemPrice(item) {
-    if (item.sale_price && parseFloat(item.sale_price) < parseFloat(item.price)) {
-      return parseFloat(item.sale_price);
+    var variantPrice = item && item.selectedVariant && item.selectedVariant.price;
+    if (variantPrice !== null && variantPrice !== undefined && variantPrice !== '') {
+      var parsedVariantPrice = parseFloat(variantPrice);
+      if (Number.isFinite(parsedVariantPrice)) return parsedVariantPrice;
     }
-    return parseFloat(item.price);
+    if (item.displayPrice !== null && item.displayPrice !== undefined && item.displayPrice !== '') {
+      var parsedDisplayPrice = parseFloat(item.displayPrice);
+      if (Number.isFinite(parsedDisplayPrice)) return parsedDisplayPrice;
+    }
+    var regularPrice = parseFloat(item.price);
+    var salePrice = parseFloat(item.sale_price);
+    if (Number.isFinite(salePrice) && Number.isFinite(regularPrice) && salePrice < regularPrice) {
+      return salePrice;
+    }
+    return Number.isFinite(regularPrice) ? regularPrice : 0;
   }
   
   // Get cart line total: price is per step, so total = price * (quantity / step)
@@ -653,6 +1735,60 @@ function stripHtmlToText(html) {
     var unit = item.quantityUnit || item.quantity_unit || 'piece';
     if (unit === 'piece') return price * item.quantity;
     return price * (item.quantity / step);
+  }
+
+  function buildCartItemVariantMetadata(item) {
+    var selectedVariant = item && item.selectedVariant;
+    if (!selectedVariant || !selectedVariant.attributes || typeof selectedVariant.attributes !== 'object') {
+      return { labels: {}, colorSwatches: {} };
+    }
+
+    var attrLabels = getVariantAttributeLabels(item, t);
+    var labels = {};
+    var colorSwatches = {};
+
+    Object.entries(selectedVariant.attributes).forEach(function(entry) {
+      var key = entry[0], value = entry[1];
+      if (!key || value == null || String(value).trim() === '') return;
+
+      labels[key] = attrLabels[key] || attrLabels[String(key).toLowerCase()] || key;
+
+      var isColor = String(key).toLowerCase() === 'color' || String(key).toLowerCase().includes('color');
+      if (isColor && typeof window.getConfiguredColorSwatchHex === 'function') {
+        if (!colorSwatches[key]) colorSwatches[key] = {};
+        colorSwatches[key][String(value)] = window.getConfiguredColorSwatchHex(item, key, value);
+      }
+    });
+
+    return { labels: labels, colorSwatches: colorSwatches };
+  }
+
+  function stripCartItemVariantConfig(item) {
+    if (!item || typeof item !== 'object') return item;
+
+    var compact = { ...item };
+    var metadata = buildCartItemVariantMetadata(compact);
+    if (Object.keys(metadata.labels).length > 0) {
+      compact.variantAttributeLabels = {
+        ...(compact.variantAttributeLabels || {}),
+        ...metadata.labels
+      };
+    }
+    if (Object.keys(metadata.colorSwatches).length > 0) {
+      compact.variantColorSwatches = {
+        ...(compact.variantColorSwatches || {}),
+        ...metadata.colorSwatches
+      };
+    }
+
+    delete compact.variant_config;
+    delete compact.variantConfig;
+    delete compact.variants;
+    return compact;
+  }
+
+  function getCartPayload() {
+    return cart.map(stripCartItemVariantConfig);
   }
   
   function addToCart(product) {
@@ -676,7 +1812,7 @@ function stripHtmlToText(html) {
       var decimals = (step.toString().split('.')[1] || '').length;
       existing.quantity = parseFloat(existing.quantity.toFixed(decimals));
     } else {
-      cart.push({ ...product, quantity: qty, quantityUnit: product.quantityUnit || product.quantity_unit || 'piece', quantityStep: step, customUnitLabel: product.customUnitLabel || product.custom_unit_label || null });
+      cart.push(stripCartItemVariantConfig({ ...product, quantity: qty, quantityUnit: product.quantityUnit || product.quantity_unit || 'piece', quantityStep: step, customUnitLabel: product.customUnitLabel || product.custom_unit_label || null }));
     }
     saveCart();
     openCartDrawer(); // Open cart drawer instead of alert
@@ -1311,6 +2447,21 @@ function stripHtmlToText(html) {
     if (!colorValue) return '';
     if (/^#[0-9A-Fa-f]{3,8}$/.test(String(colorValue).trim())) return String(colorValue).trim();
 
+    var compactSwatches = source && source.variantColorSwatches;
+    if (compactSwatches && typeof compactSwatches === 'object') {
+      var swatchKey = Object.keys(compactSwatches).find(function(key) {
+        return String(key).toLowerCase() === String(attrKey || '').toLowerCase();
+      });
+      var swatchesForKey = swatchKey && compactSwatches[swatchKey];
+      var normalizedCompactValue = String(colorValue).trim().replace(/s+/g, ' ').toLowerCase();
+      if (swatchesForKey && typeof swatchesForKey === 'object') {
+        var valueKey = Object.keys(swatchesForKey).find(function(key) {
+          return String(key).trim().replace(/s+/g, ' ').toLowerCase() === normalizedCompactValue;
+        });
+        if (valueKey && swatchesForKey[valueKey]) return swatchesForKey[valueKey];
+      }
+    }
+
     var variantConfig = source && (source.variant_config || source.variantConfig);
     if (typeof variantConfig === 'string') {
       try { variantConfig = JSON.parse(variantConfig); } catch (e) { variantConfig = null; }
@@ -1336,6 +2487,46 @@ function stripHtmlToText(html) {
     return window.getLegacyColorSwatchHex(colorValue);
   };
 
+  function getVariantConfig(source) {
+    var variantConfig = source && (source.variant_config || source.variantConfig);
+    if (typeof variantConfig === 'string') {
+      try { variantConfig = JSON.parse(variantConfig); } catch (e) { variantConfig = null; }
+    }
+    return variantConfig && typeof variantConfig === 'object' ? variantConfig : null;
+  }
+
+  function getVariantAttributeLabels(source, t) {
+    var labels = {
+      color: (t && t.color) || 'Color',
+      size: (t && t.size) || 'Size',
+      material: (t && t.material) || 'Material',
+      style: (t && t.style) || 'Style',
+      weight: (t && t.weight) || 'Weight',
+      capacity: (t && t.capacity) || 'Capacity',
+      length: (t && t.length) || 'Length'
+    };
+    var compactLabels = source && source.variantAttributeLabels;
+    if (compactLabels && typeof compactLabels === 'object') {
+      Object.entries(compactLabels).forEach(function(entry) {
+        var key = entry[0], label = entry[1];
+        if (!key || !label) return;
+        labels[String(key)] = String(label);
+        labels[String(key).toLowerCase()] = String(label);
+      });
+    }
+    var variantConfig = getVariantConfig(source);
+    var customOptions = Array.isArray(variantConfig && variantConfig.customOptions)
+      ? variantConfig.customOptions
+      : [];
+    customOptions.forEach(function(option) {
+      if (!option || !option.key || !option.label) return;
+      labels[String(option.key)] = String(option.label);
+      labels[String(option.key).toLowerCase()] = String(option.label);
+    });
+    return labels;
+  }
+  window.getVariantAttributeLabels = getVariantAttributeLabels;
+
   // Render cart drawer (slide-out panel)
   function renderCartDrawer() {
     const drawerItems = document.getElementById('cart-drawer-items');
@@ -1355,7 +2546,7 @@ function stripHtmlToText(html) {
       // Build human-readable variant info from attributes (e.g., "Size: 45 • Color: Green")
       var variantInfo = '';
       if (item.selectedVariant && item.selectedVariant.attributes && typeof item.selectedVariant.attributes === 'object') {
-        var attrLabels = { color: t.color || 'Color', size: t.size || 'Size', material: t.material || 'Material', style: t.style || 'Style', weight: t.weight || 'Weight', capacity: t.capacity || 'Capacity', length: t.length || 'Length' };
+        var attrLabels = getVariantAttributeLabels(item, t);
         var parts = [];
         Object.entries(item.selectedVariant.attributes).forEach(function(entry) {
           var key = entry[0], value = entry[1];
@@ -1365,7 +2556,7 @@ function stripHtmlToText(html) {
               ? item.selectedVariant.attributes_display[key]
               : value;
           if (value) {
-            var label = attrLabels[key.toLowerCase()] || key;
+            var label = attrLabels[key] || attrLabels[key.toLowerCase()] || key;
             var isColor = key.toLowerCase() === 'color' || key.toLowerCase().includes('color');
             if (isColor) {
               var bgColor = window.getConfiguredColorSwatchHex(item, key, value);
@@ -1607,8 +2798,9 @@ function stripHtmlToText(html) {
       }
       
       var paymentIcons = {
-        'credit-card': '<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="10" width="44" height="30" rx="4" fill="#1A1F71"/><rect x="3" y="10" width="44" height="10" fill="#E4A935"/><rect x="7" y="25" width="18" height="3" rx="1.5" fill="rgba(255,255,255,0.5)"/><rect x="7" y="31" width="12" height="3" rx="1.5" fill="rgba(255,255,255,0.5)"/><circle cx="35" cy="30" r="7" fill="#EB001B" opacity="0.9"/><circle cx="41" cy="30" r="7" fill="#F79E1B" opacity="0.9"/></svg>',
+        'credit-card': '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none"><g clip-path="url(#clip0_1335_1776)"><path d="M46.7578 41.9921H3.24216C1.45505 41.9921 0 40.5371 0 38.7402V11.2597C0 9.47262 1.45505 8.01758 3.24216 8.01758H46.748C48.5449 8.01758 49.9999 9.47262 49.9999 11.2597V38.7402C50 40.5371 48.545 41.9921 46.7578 41.9921Z" fill="#505278"/><path d="M46.7579 8.01758H25V41.9921H46.7578C48.5547 41.9921 50 40.5371 50 38.75V11.2597C50 9.47262 48.545 8.01758 46.7579 8.01758Z" fill="#424566"/><path d="M26.084 8.01757C25.7519 18.0469 17.4902 26.0937 7.3828 26.0937C4.76559 26.0937 2.26563 25.5566 0 24.5703V20.2051C2.17773 21.4648 4.69729 22.1777 7.3828 22.1777C15.332 22.1777 21.8359 15.8789 22.1679 8.00781H26.0839V8.01757H26.084Z" fill="#575982"/><path d="M25 8.01758V13.6914C25.6348 11.9043 26.0156 10 26.0839 8.01758H25Z" fill="#505278"/><path d="M50.0001 27.8806V31.8454C47.6563 31.3962 45.3712 31.2009 43.1056 31.4256C39.0138 31.8357 35.2149 33.7498 31.1427 37.451C30.4883 38.0467 29.8243 38.6619 29.1895 39.2576C28.213 40.1658 27.2363 41.0838 26.2109 41.9822H19.8828C22.2266 40.4197 24.3262 38.4569 26.5234 36.4061C27.1777 35.8006 27.8418 35.1658 28.5156 34.5603C33.2422 30.2732 37.7539 28.0369 42.7148 27.5389C45.1661 27.2947 47.6466 27.49 50.0001 27.8806Z" fill="#505278"/><path d="M19.8828 41.9917H25V37.8218C23.3301 39.355 21.6797 40.7906 19.8828 41.9917Z" fill="#575982"/><path d="M10.4688 24.5508H5.67382C4.94138 24.5508 4.3457 23.9551 4.3457 23.2227V20.0391C4.3457 19.3066 4.94138 18.7109 5.67382 18.7109H10.4688C11.2012 18.7109 11.7969 19.3066 11.7969 20.0391V23.2227C11.7871 23.9649 11.2011 24.5508 10.4688 24.5508Z" fill="#424566"/><path d="M10.4688 24.4727H5.66405C4.98048 24.4727 4.42383 23.916 4.42383 23.2324V20.0391C4.42383 19.3555 4.98048 18.7988 5.66405 18.7988H10.4688C11.1523 18.7988 11.709 19.3555 11.709 20.0391V23.2324C11.709 23.916 11.1523 24.4727 10.4688 24.4727Z" fill="#FEBD55"/><path d="M11.709 21.7383V21.543H9.1699V20.6836L9.82421 20.0293H11.709C11.709 19.9609 11.6992 19.8926 11.6895 19.834H9.77542C9.74615 19.834 9.72655 19.8438 9.70704 19.8633L9.02347 20.5468H8.16402V18.8086H7.96871V20.5468H7.1191L6.43552 19.8633C6.41601 19.8438 6.38666 19.834 6.36714 19.834H4.44334C4.43359 19.8926 4.42383 19.9609 4.42383 20.0293H6.32811L6.97266 20.6738V21.543H4.42383V21.7383H6.97266V22.6074L6.32811 23.252H4.42383C4.42383 23.3203 4.43359 23.3886 4.44334 23.4473H6.36714C6.39641 23.4473 6.41601 23.4375 6.43552 23.418L7.1191 22.7344H7.96871V24.4727H8.16402V22.7344H9.02338L9.70696 23.418C9.72647 23.4375 9.74599 23.4473 9.77534 23.4473H11.6894C11.6991 23.3886 11.7089 23.3203 11.7089 23.252H9.82413L9.16982 22.5976V21.7383H11.709ZM8.9746 22.539H7.16797V20.7324H8.9746V22.539Z" fill="#B5613C"/><path d="M44.7658 24.4139C44.7169 24.4139 44.6779 24.4041 44.6388 24.3846C44.4923 24.3162 44.4338 24.1404 44.5119 23.994C45.2639 22.4998 45.2639 20.7909 44.5119 19.2967C44.4435 19.1502 44.5022 18.9745 44.6388 18.9061C44.7854 18.8377 44.9611 18.8963 45.0294 19.033C45.8693 20.6932 45.8693 22.5975 45.0294 24.2576C44.9708 24.3553 44.8732 24.4139 44.7658 24.4139ZM43.7599 23.8572C44.5509 22.451 44.5509 20.8299 43.7599 19.4236C43.6817 19.2869 43.5059 19.2283 43.3595 19.3162C43.2228 19.3944 43.1642 19.5702 43.2521 19.7166C43.9454 20.9471 43.9454 22.3533 43.2521 23.574C43.1739 23.7107 43.2228 23.8963 43.3595 23.9744C43.4084 24.0037 43.4572 24.0134 43.506 24.0134C43.6036 24.0038 43.7012 23.9451 43.7599 23.8572ZM42.5099 23.4569C43.2814 22.3338 43.2814 20.9373 42.5099 19.8045C42.422 19.6678 42.2364 19.6385 42.0998 19.7263C41.9631 19.8142 41.9337 19.9998 42.0216 20.1365C42.6467 21.0545 42.6467 22.2068 42.0216 23.1248C41.9337 23.2615 41.963 23.4373 42.0998 23.5349C42.1486 23.5739 42.2072 23.5837 42.2658 23.5837C42.3634 23.5936 42.4513 23.5448 42.5099 23.4569ZM41.1915 23.0858C41.6212 22.6951 41.8556 22.1775 41.8556 21.6405C41.8556 21.1034 41.6212 20.5858 41.1915 20.1952C41.0744 20.0878 40.8888 20.0878 40.7814 20.2147C40.674 20.3319 40.674 20.5174 40.8009 20.6248C41.1036 20.908 41.2697 21.2694 41.2697 21.6405C41.2697 22.0116 41.1036 22.3729 40.8009 22.6561C40.6837 22.7635 40.674 22.9491 40.7814 23.0662C40.84 23.1249 40.9181 23.1639 40.9962 23.1639C41.0645 23.1639 41.1329 23.1346 41.1915 23.0858Z" fill="#CAD4FF"/><path d="M24.5996 37.0703H4.71679C4.55075 37.0703 4.42383 36.9434 4.42383 36.7773C4.42383 36.6113 4.55075 36.4844 4.71679 36.4844H24.5996C24.7656 36.4844 24.8925 36.6113 24.8925 36.7773C24.8925 36.9434 24.7558 37.0703 24.5996 37.0703Z" fill="#E6EAFF"/><path d="M45.3613 37.0703H41.5918C41.4258 37.0703 41.2988 36.9434 41.2988 36.7773C41.2988 36.6113 41.4258 36.4844 41.5918 36.4844H45.3613C45.5274 36.4844 45.6543 36.6113 45.6543 36.7773C45.6543 36.9434 45.5176 37.0703 45.3613 37.0703ZM39.9902 36.7773C39.9902 36.6113 39.8633 36.4844 39.6973 36.4844H35.9277C35.7617 36.4844 35.6348 36.6113 35.6348 36.7773C35.6348 36.9434 35.7617 37.0703 35.9277 37.0703H39.6973C39.8633 37.0703 39.9902 36.9336 39.9902 36.7773Z" fill="#CAD4FF"/><path d="M4.71679 14.6777C4.55075 14.6777 4.42383 14.5508 4.42383 14.3847V13.2324C4.42383 13.0664 4.55075 12.9395 4.71679 12.9395C4.88282 12.9395 5.00975 13.0664 5.00975 13.2324V14.375C5.00975 14.541 4.88282 14.6777 4.71679 14.6777ZM6.60156 14.3847V13.2324C6.60156 13.0664 6.47463 12.9395 6.3086 12.9395C6.14256 12.9395 6.01564 13.0664 6.01564 13.2324V14.375C6.01564 14.541 6.14256 14.6679 6.3086 14.6679C6.47455 14.6777 6.60156 14.541 6.60156 14.3847ZM8.20313 14.3847V13.2324C8.20313 13.0664 8.0762 12.9395 7.91017 12.9395C7.74413 12.9395 7.6172 13.0664 7.6172 13.2324V14.375C7.6172 14.541 7.74413 14.6679 7.91017 14.6679C8.06636 14.6777 8.20313 14.541 8.20313 14.3847ZM9.79494 14.3847V13.2324C9.79494 13.0664 9.66801 12.9395 9.50198 12.9395C9.33594 12.9395 9.20901 13.0664 9.20901 13.2324V14.375C9.20901 14.541 9.33594 14.6679 9.50198 14.6679C9.66793 14.6777 9.79494 14.541 9.79494 14.3847Z" fill="#E6EAFF"/><path d="M5.32227 32.0996H5.2734C4.78514 32.0996 4.38477 31.6992 4.38477 31.2109V29.8242C4.38477 29.3359 4.78514 28.9355 5.2734 28.9355H5.32227C5.81054 28.9355 6.21091 29.3359 6.21091 29.8242V31.2109C6.21099 31.6991 5.82038 32.0996 5.32227 32.0996ZM5.27349 29.5214C5.10745 29.5214 4.97077 29.6581 4.97077 29.8241V31.2108C4.97077 31.3769 5.10745 31.5136 5.27349 31.5136H5.32235C5.48839 31.5136 5.62507 31.3769 5.62507 31.2108V29.8241C5.62507 29.6581 5.48839 29.5214 5.32235 29.5214H5.27349Z" fill="#E6EAFF"/><path d="M7.69532 32.0996H7.64645C7.15818 32.0996 6.75781 31.6992 6.75781 31.2109V29.8242C6.75781 29.3359 7.15818 28.9355 7.64645 28.9355H7.69532C8.18359 28.9355 8.58396 29.3359 8.58396 29.8242V31.2109C8.58404 31.6991 8.19343 32.0996 7.69532 32.0996ZM7.64653 29.5214C7.4805 29.5214 7.34382 29.6581 7.34382 29.8241V31.2108C7.34382 31.3769 7.4805 31.5136 7.64653 31.5136H7.6954C7.86144 31.5136 7.99812 31.3769 7.99812 31.2108V29.8241C7.99812 29.6581 7.86144 29.5214 7.6954 29.5214H7.64653Z" fill="#E6EAFF"/><path d="M10.0684 32.0996H10.0195C9.53123 32.0996 9.13086 31.6992 9.13086 31.2109V29.8242C9.13086 29.3359 9.53123 28.9355 10.0195 28.9355H10.0684C10.5566 28.9355 10.957 29.3359 10.957 29.8242V31.2109C10.957 31.6991 10.5566 32.0996 10.0684 32.0996ZM10.0195 29.5214C9.85346 29.5214 9.71678 29.6581 9.71678 29.8241V31.2108C9.71678 31.3769 9.85346 31.5136 10.0195 31.5136H10.0684C10.2344 31.5136 10.3711 31.3769 10.3711 31.2108V29.8241C10.3711 29.6581 10.2344 29.5214 10.0684 29.5214H10.0195Z" fill="#E6EAFF"/><path d="M12.4414 32.0996H12.3925C11.9043 32.0996 11.5039 31.6992 11.5039 31.2109V29.8242C11.5039 29.3359 11.9043 28.9355 12.3925 28.9355H12.4414C12.9297 28.9355 13.3301 29.3359 13.3301 29.8242V31.2109C13.3301 31.6991 12.9297 32.0996 12.4414 32.0996ZM12.3925 29.5214C12.2265 29.5214 12.0898 29.6581 12.0898 29.8241V31.2108C12.0898 31.3769 12.2265 31.5136 12.3925 31.5136H12.4414C12.6074 31.5136 12.7441 31.3769 12.7441 31.2108V29.8241C12.7441 29.6581 12.6074 29.5214 12.4414 29.5214H12.3925Z" fill="#E6EAFF"/><path d="M16.084 32.0996H16.0351C15.5469 32.0996 15.1465 31.6992 15.1465 31.2109V29.8242C15.1465 29.3359 15.5469 28.9355 16.0351 28.9355H16.084C16.5723 28.9355 16.9726 29.3359 16.9726 29.8242V31.2109C16.9727 31.6991 16.5723 32.0996 16.084 32.0996ZM16.0352 29.5214C15.8692 29.5214 15.7325 29.6581 15.7325 29.8241V31.2108C15.7325 31.3769 15.8692 31.5136 16.0352 31.5136H16.0841C16.2501 31.5136 16.3868 31.3769 16.3868 31.2108V29.8241C16.3868 29.6581 16.2501 29.5214 16.0841 29.5214H16.0352Z" fill="#E6EAFF"/><path d="M18.457 32.0996H18.4082C17.9199 32.0996 17.5195 31.6992 17.5195 31.2109V29.8242C17.5195 29.3359 17.9199 28.9355 18.4082 28.9355H18.457C18.9453 28.9355 19.3457 29.3359 19.3457 29.8242V31.2109C19.3458 31.6991 18.9453 32.0996 18.457 32.0996ZM18.4083 29.5214C18.2422 29.5214 18.1055 29.6581 18.1055 29.8241V31.2108C18.1055 31.3769 18.2422 31.5136 18.4083 31.5136H18.4571C18.6232 31.5136 18.7598 31.3769 18.7598 31.2108V29.8241C18.7598 29.6581 18.6232 29.5214 18.4571 29.5214H18.4083Z" fill="#E6EAFF"/><path d="M20.8301 32.0996H20.7812C20.2929 32.0996 19.8926 31.6992 19.8926 31.2109V29.8242C19.8926 29.3359 20.2929 28.9355 20.7812 28.9355H20.8301C21.3184 28.9355 21.7187 29.3359 21.7187 29.8242V31.2109C21.7188 31.6991 21.3184 32.0996 20.8301 32.0996ZM20.7813 29.5214C20.6153 29.5214 20.4786 29.6581 20.4786 29.8241V31.2108C20.4786 31.3769 20.6153 31.5136 20.7813 31.5136H20.8302C20.9962 31.5136 21.1329 31.3769 21.1329 31.2108V29.8241C21.1329 29.6581 20.9962 29.5214 20.8302 29.5214H20.7813Z" fill="#E6EAFF"/><path d="M23.2031 32.0996H23.1543C22.666 32.0996 22.2656 31.6992 22.2656 31.2109V29.8242C22.2656 29.3359 22.666 28.9355 23.1543 28.9355H23.2031C23.6914 28.9355 24.0918 29.3359 24.0918 29.8242V31.2109C24.0919 31.6991 23.6915 32.0996 23.2031 32.0996ZM23.1543 29.5214C22.9883 29.5214 22.8516 29.6581 22.8516 29.8241V31.2108C22.8516 31.3769 22.9883 31.5136 23.1543 31.5136H23.2032C23.3692 31.5136 23.5059 31.3769 23.5059 31.2108V29.8241C23.5059 29.6581 23.3692 29.5214 23.2032 29.5214H23.1543Z" fill="#E6EAFF"/><path d="M26.8457 32.0996H26.7968C26.3086 32.0996 25.9082 31.6992 25.9082 31.2109V29.8242C25.9082 29.3359 26.3086 28.9355 26.7968 28.9355H26.8457C27.334 28.9355 27.7343 29.3359 27.7343 29.8242V31.2109C27.7343 31.6991 27.334 32.0996 26.8457 32.0996ZM26.7968 29.5214C26.6308 29.5214 26.4941 29.6581 26.4941 29.8241V31.2108C26.4941 31.3769 26.6308 31.5136 26.7968 31.5136H26.8457C27.0117 31.5136 27.1484 31.3769 27.1484 31.2108V29.8241C27.1484 29.6581 27.0117 29.5214 26.8457 29.5214H26.7968Z" fill="#CAD4FF"/><path d="M29.2187 32.0996H29.1699C28.6816 32.0996 28.2812 31.6992 28.2812 31.2109V29.8242C28.2812 29.3359 28.6816 28.9355 29.1699 28.9355H29.2187C29.7069 28.9355 30.1073 29.3359 30.1073 29.8242V31.2109C30.1073 31.6991 29.7069 32.0996 29.2187 32.0996ZM29.1699 29.5214C29.0039 29.5214 28.8672 29.6581 28.8672 29.8241V31.2108C28.8672 31.3769 29.0039 31.5136 29.1699 31.5136H29.2187C29.3847 31.5136 29.5214 31.3769 29.5214 31.2108V29.8241C29.5214 29.6581 29.3847 29.5214 29.2187 29.5214H29.1699Z" fill="#CAD4FF"/><path d="M31.5918 32.0996H31.5429C31.0547 32.0996 30.6543 31.6992 30.6543 31.2109V29.8242C30.6543 29.3359 31.0547 28.9355 31.5429 28.9355H31.5918C32.0801 28.9355 32.4804 29.3359 32.4804 29.8242V31.2109C32.4805 31.6991 32.0801 32.0996 31.5918 32.0996ZM31.543 29.5214C31.377 29.5214 31.2403 29.6581 31.2403 29.8241V31.2108C31.2403 31.3769 31.377 31.5136 31.543 31.5136H31.5919C31.7579 31.5136 31.8946 31.3769 31.8946 31.2108V29.8241C31.8946 29.6581 31.7579 29.5214 31.5919 29.5214H31.543Z" fill="#CAD4FF"/><path d="M33.9648 32.0996H33.916C33.4277 32.0996 33.0273 31.6992 33.0273 31.2109V29.8242C33.0273 29.3359 33.4277 28.9355 33.916 28.9355H33.9648C34.4531 28.9355 34.8535 29.3359 34.8535 29.8242V31.2109C34.8536 31.6991 34.4531 32.0996 33.9648 32.0996ZM33.9161 29.5214C33.75 29.5214 33.6133 29.6581 33.6133 29.8241V31.2108C33.6133 31.3769 33.75 31.5136 33.9161 31.5136H33.9649C34.131 31.5136 34.2676 31.3769 34.2676 31.2108V29.8241C34.2676 29.6581 34.131 29.5214 33.9649 29.5214H33.9161Z" fill="#CAD4FF"/><path d="M37.6074 32.0996H37.5586C37.0703 32.0996 36.6699 31.6992 36.6699 31.2109V29.8242C36.6699 29.3359 37.0703 28.9355 37.5586 28.9355H37.6074C38.0957 28.9355 38.4961 29.3359 38.4961 29.8242V31.2109C38.4961 31.6991 38.0957 32.0996 37.6074 32.0996ZM37.5586 29.5214C37.3925 29.5214 37.2558 29.6581 37.2558 29.8241V31.2108C37.2558 31.3769 37.3925 31.5136 37.5586 31.5136H37.6074C37.7735 31.5136 37.9101 31.3769 37.9101 31.2108V29.8241C37.9101 29.6581 37.7735 29.5214 37.6074 29.5214H37.5586Z" fill="#CAD4FF"/><path d="M39.9804 32.0996H39.9316C39.4433 32.0996 39.043 31.6992 39.043 31.2109V29.8242C39.043 29.3359 39.4433 28.9355 39.9316 28.9355H39.9804C40.4687 28.9355 40.869 29.3359 40.869 29.8242V31.2109C40.869 31.6991 40.4687 32.0996 39.9804 32.0996ZM39.9315 29.5214C39.7655 29.5214 39.6288 29.6581 39.6288 29.8241V31.2108C39.6288 31.3769 39.7655 31.5136 39.9315 31.5136H39.9803C40.1463 31.5136 40.283 31.3769 40.283 31.2108V29.8241C40.283 29.6581 40.1463 29.5214 39.9803 29.5214H39.9315Z" fill="#CAD4FF"/><path d="M42.3535 32.0996H42.3047C41.8164 32.0996 41.416 31.6992 41.416 31.2109V29.8242C41.416 29.3359 41.8164 28.9355 42.3047 28.9355H42.3535C42.8418 28.9355 43.2422 29.3359 43.2422 29.8242V31.2109C43.2422 31.6991 42.8418 32.0996 42.3535 32.0996ZM42.3047 29.5214C42.1387 29.5214 42.002 29.6581 42.002 29.8241V31.2108C42.002 31.3769 42.1387 31.5136 42.3047 31.5136H42.3536C42.5196 31.5136 42.6563 31.3769 42.6563 31.2108V29.8241C42.6563 29.6581 42.5196 29.5214 42.3536 29.5214H42.3047Z" fill="#CAD4FF"/><path d="M44.7266 32.0996H44.6777C44.1894 32.0996 43.7891 31.6992 43.7891 31.2109V29.8242C43.7891 29.3359 44.1894 28.9355 44.6777 28.9355H44.7266C45.2148 28.9355 45.6152 29.3359 45.6152 29.8242V31.2109C45.6153 31.6991 45.2148 32.0996 44.7266 32.0996ZM44.6778 29.5214C44.5117 29.5214 44.3751 29.6581 44.3751 29.8241V31.2108C44.3751 31.3769 44.5117 31.5136 44.6778 31.5136H44.7267C44.8927 31.5136 45.0294 31.3769 45.0294 31.2108V29.8241C45.0294 29.6581 44.8927 29.5214 44.7267 29.5214H44.6778Z" fill="#CAD4FF"/></g><defs><clipPath id="clip0_1335_1776"><rect width="50" height="50" fill="white"/></clipPath></defs></svg>',
         'paypal': '<svg width="36" height="36" viewBox="0 0 30.55 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27.5 9.15s-.85.45-.89.68c-1.44 7.57-5.73 9.65-12.17 9.65h-3.29c-.81 0-1.92 1.13-2.05 1.9l-1.7 9.9.47.78-.45 3.06c-.09.45.22.9.72.95h5.81c.68 0 1.26-.5 1.4-1.17l.04-.32s1.08-6.93 1.08-6.94c.13-.81.58-1.53 1.49-1.53h.86c5.63 0 10.05-2.3 11.35-8.92.54-2.75.27-5.09-1.17-6.71a6.5 6.5 0 0 0-1.45-1.29Z" fill="#009BD9"/><path d="M26.08 7.68a15.8 15.8 0 0 0-4.44-.52h-8.79c-.68 0-1.86.89-1.99 1.57L8.87 20.95l.7.36c.13-.77.81-1.35 1.58-1.35h3.29c6.44 0 11.46-2.6 12.95-10.17.04-.23.07-.39.12-.64 0 0-.47-1.06-.86-1.26-.18-.08-.37-.15-.56-.2Z" fill="#192A67"/><path d="M11.5 9.19c.09-.68.68-1.17 1.4-1.17h8.74c1.04 0 2.03.09 2.88.23.59.09 1.17.23 1.76.41.45.14.86.32 1.22.5.45-2.79 0-4.69-1.53-6.44C24.34.81 21.33 0 17.45 0H6.28c-.77 0-1.44.59-1.58 1.35L.01 30.91c-.09.54.28 1.04.82 1.08h6.84l1.76-11.01L11.5 9.2Z" fill="#0A3B82"/></svg>',
+        'phone': '<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none"><path d="M49.1957 26.8205C49.273 28.6665 48.6149 30.4678 47.3657 31.8291C46.1166 33.1905 44.3785 34.0008 42.5326 34.0822C42.4247 34.0872 42.317 34.0897 42.2094 34.0897C41.719 34.0894 41.23 34.0363 40.7509 33.9314C39.3294 36.1262 37.4654 38.0002 35.2783 39.4334C33.0911 40.8666 30.6288 41.8275 28.049 42.2547C27.7439 43.1511 27.1352 43.9128 26.328 44.408C25.5209 44.9032 24.5661 45.1008 23.6287 44.9667C22.6913 44.8326 21.8303 44.3752 21.1943 43.6736C20.5584 42.972 20.1876 42.0702 20.146 41.1242C20.1044 40.1782 20.3947 39.2474 20.9666 38.4926C21.5385 37.7379 22.3561 37.2067 23.2781 36.9909C24.2001 36.7751 25.1686 36.8882 26.016 37.3106C26.8635 37.7331 27.5367 38.4384 27.9194 39.3046C31.5514 38.6329 34.8325 36.708 37.1909 33.8653C39.5493 31.0227 40.8354 27.4426 40.8251 23.749C40.8251 15.0229 33.726 7.92383 24.9999 7.92383C16.2739 7.92383 9.17473 15.0229 9.17473 23.749C9.17426 26.4473 9.86384 29.1008 11.178 31.4574C11.2225 31.5352 11.2559 31.6188 11.2773 31.7059C11.4042 32.0587 11.3906 32.4467 11.2394 32.7898C11.0881 33.1329 10.8107 33.4047 10.4647 33.5489C9.61726 33.9056 8.70711 34.0892 7.78772 34.0891C7.67951 34.0891 7.57108 34.0866 7.46242 34.0815C5.61739 33.9991 3.88035 33.1883 2.6322 31.827C1.38404 30.4658 0.726632 28.6651 0.804124 26.8198C0.835277 26.084 0.817894 25.4274 0.800902 24.7926C0.785081 24.1948 0.768577 23.5767 0.795726 22.9316C0.876749 21.1299 1.65177 19.4295 2.95847 18.1864C4.26517 16.9433 6.00218 16.2541 7.80569 16.263C10.7018 9.63682 17.3183 4.99414 24.9999 4.99414C32.6816 4.99414 39.2982 9.63682 42.1943 16.2631C43.9979 16.2528 45.7355 16.9415 47.0424 18.1846C48.3494 19.4277 49.1241 21.1286 49.204 22.9306C49.2313 23.5766 49.2149 24.1946 49.1989 24.7924C49.1821 25.4273 49.1646 26.0842 49.1957 26.8205ZM37.2856 23.749C37.2849 25.6312 36.8519 27.4881 36.02 29.1764C35.1881 30.8648 33.9796 32.3395 32.4876 33.4869C30.9956 34.6343 29.26 35.4237 27.4147 35.7943C25.5693 36.1648 23.6635 36.1066 21.8443 35.624L16.8715 38.4958C16.6206 38.6407 16.3324 38.7079 16.0432 38.689C15.7541 38.6701 15.4771 38.5658 15.2472 38.3894C15.0174 38.2131 14.845 37.9725 14.7518 37.6981C14.6587 37.4237 14.649 37.1279 14.724 36.848L15.9949 32.107C13.8903 29.8321 12.7192 26.8482 12.7148 23.749C12.7148 16.9729 18.2256 11.4605 24.9999 11.4605C31.7742 11.4605 37.2856 16.9729 37.2856 23.749ZM21.5844 23.749C21.5844 23.3605 21.4301 22.9879 21.1554 22.7132C20.8806 22.4385 20.5081 22.2842 20.1196 22.2842H20.1171C19.8275 22.2847 19.5446 22.3711 19.304 22.5324C19.0635 22.6937 18.8762 22.9226 18.7657 23.1903C18.6553 23.4581 18.6267 23.7525 18.6835 24.0365C18.7403 24.3204 18.88 24.5812 19.085 24.7858C19.29 24.9904 19.551 25.1296 19.8351 25.1859C20.1192 25.2422 20.4135 25.213 20.681 25.1021C20.9486 24.9911 21.1772 24.8034 21.338 24.5626C21.4988 24.3217 21.5847 24.0386 21.5847 23.749H21.5844ZM26.4651 23.749C26.4649 23.7011 26.4623 23.6532 26.4573 23.6055C26.4526 23.5576 26.4455 23.51 26.4359 23.4629C26.4271 23.416 26.4153 23.3696 26.4006 23.3242C26.387 23.2783 26.3704 23.2334 26.3529 23.1885C26.3353 23.1436 26.3138 23.1016 26.2913 23.0596C26.269 23.0173 26.2446 22.9763 26.2181 22.9365C26.1914 22.8964 26.1627 22.8576 26.1321 22.8203C26.102 22.783 26.0697 22.7474 26.0355 22.7139C26.0023 22.6797 25.9661 22.6475 25.929 22.6162C25.8918 22.5869 25.8528 22.5576 25.8127 22.5312C25.773 22.5048 25.732 22.4803 25.6898 22.458C25.6477 22.4355 25.6038 22.415 25.5598 22.3965C25.5158 22.3781 25.4709 22.3621 25.4251 22.3486C25.3338 22.3193 25.2394 22.3003 25.1439 22.292C25.0004 22.2782 24.8557 22.2851 24.7142 22.3125C24.6671 22.3221 24.6205 22.3342 24.5746 22.3486C24.5289 22.3621 24.4839 22.378 24.4399 22.3965C24.3959 22.415 24.352 22.4355 24.31 22.458C24.268 22.4805 24.227 22.5049 24.1868 22.5312C24.1467 22.5576 24.1077 22.5869 24.0717 22.6162C24.0336 22.6475 23.9985 22.6797 23.9643 22.7139C23.93 22.7475 23.8977 22.783 23.8675 22.8203C23.8373 22.8576 23.8089 22.8964 23.7826 22.9365C23.7558 22.9762 23.731 23.0173 23.7084 23.0596C23.6859 23.1014 23.6656 23.1444 23.6478 23.1885C23.6292 23.2329 23.6129 23.2782 23.5989 23.3242C23.5854 23.3691 23.5737 23.416 23.5639 23.4629C23.5542 23.51 23.547 23.5576 23.5423 23.6055C23.5375 23.6533 23.5355 23.7012 23.5355 23.749C23.5355 23.7969 23.5375 23.8457 23.5423 23.8936C23.5471 23.9411 23.5543 23.9883 23.5639 24.0352C23.5737 24.082 23.5854 24.1289 23.5989 24.1748C23.6129 24.2205 23.6292 24.2655 23.6478 24.3096C23.6656 24.3539 23.6859 24.3973 23.7084 24.4395C23.7308 24.4814 23.7563 24.5225 23.7826 24.5625C23.8089 24.6023 23.8373 24.6408 23.8675 24.6777C23.8979 24.7151 23.9302 24.751 23.9643 24.7852C23.9985 24.8184 24.0336 24.8516 24.0717 24.8818C24.1084 24.9123 24.1469 24.9407 24.1868 24.9668C24.227 24.9932 24.2679 25.0186 24.31 25.041C24.3948 25.0852 24.4834 25.1218 24.5746 25.1504C24.6204 25.1641 24.6673 25.1758 24.7142 25.1855C24.8083 25.2048 24.9042 25.2143 25.0003 25.2139C25.3884 25.2128 25.7603 25.0588 26.0355 24.7852C26.103 24.7166 26.1641 24.6421 26.2181 24.5625C26.2445 24.5225 26.2689 24.4814 26.2913 24.4395C26.3138 24.3975 26.3343 24.3535 26.3529 24.3096C26.3714 24.2656 26.387 24.2197 26.4006 24.1748C26.4152 24.129 26.427 24.0824 26.4359 24.0352C26.4454 23.9884 26.4526 23.9411 26.4573 23.8936C26.4622 23.8455 26.4648 23.7972 26.4648 23.7488L26.4651 23.749ZM31.3479 23.749C31.3479 23.3605 31.1935 22.9879 30.9188 22.7132C30.6441 22.4385 30.2715 22.2842 29.883 22.2842H29.8802C29.5906 22.2847 29.3077 22.3711 29.0672 22.5324C28.8266 22.6937 28.6393 22.9227 28.5289 23.1904C28.4184 23.4581 28.3898 23.7526 28.4467 24.0365C28.5035 24.3205 28.6433 24.5812 28.8482 24.7858C29.0532 24.9904 29.3142 25.1296 29.5983 25.1859C29.8824 25.2422 30.1768 25.213 30.4443 25.1021C30.7118 24.9911 30.9404 24.8034 31.1012 24.5626C31.262 24.3217 31.3479 24.0386 31.3479 23.749Z" fill="#4A4A4A"/></svg>',
         'apple-pay': '<svg width="50" height="21" viewBox="0 0 50 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.37 2.78A3.14 3.14 0 0 0 10.1.65 3.2 3.2 0 0 0 7.97 1.75a3 3 0 0 0-.76 2.06c.81.06 1.56-.37 2.16-1.03Zm.72 1.08c-1.2-.07-2.22.68-2.78.68-.57 0-1.43-.64-2.37-.62A3.5 3.5 0 0 0 2 5.55c-1.27 2.2-.33 5.46.9 7.25.61.88 1.33 1.87 2.28 1.83.9-.04 1.26-.58 2.35-.58s1.42.58 2.37.56c.99-.02 1.6-.88 2.2-1.77a7.8 7.8 0 0 0 1-2.05 3.2 3.2 0 0 1-1.92-2.93 3.24 3.24 0 0 1 1.54-2.72 3.33 3.33 0 0 0-2.63-1.28Zm8.15-1.5v12.2h1.89V10h2.61c2.38 0 4.05-1.64 4.05-4.07s-1.64-4.03-3.98-4.03h-4.57v2.46Zm1.89 1.56h2.17c1.64 0 2.57.87 2.57 2.4s-.93 2.41-2.58 2.41h-2.16V3.92Zm10.92 10.9c1.19 0 2.29-.6 2.79-1.56h.04v1.46h1.75V9.01c0-1.75-1.4-2.88-3.56-2.88-2 0-3.46 1.15-3.52 2.72h1.7c.14-.75.83-1.24 1.75-1.24 1.13 0 1.76.52 1.76 1.49v.65l-2.3.14c-2.14.13-3.3 1.01-3.3 2.53 0 1.54 1.19 2.57 2.89 2.57Zm.5-1.42c-.98 0-1.61-.47-1.61-1.2 0-.75.6-1.18 1.75-1.25l2.05-.13v.67c0 1.12-.95 1.91-2.19 1.91Zm5.37 4.56c1.84 0 2.71-.7 3.47-2.84l3.32-9.33h-1.93l-2.23 7.17h-.04l-2.23-7.17h-1.98l3.2 8.85-.17.54c-.29.92-.76 1.27-1.6 1.27-.15 0-.44-.02-.56-.03v1.48c.11.04.48.06.75.06Z" fill="#000"/></svg>',
         'google-pay': '<svg width="50" height="20" viewBox="0 0 50 19.62" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23.34 9.54V15.32H21.5V1.04h4.87c1.23 0 2.28.41 3.14 1.23.88.82 1.32 1.83 1.32 3.01 0 1.21-.44 2.22-1.32 3.03-.85.81-1.9 1.21-3.14 1.21h-3.03v.02Zm0-6.74v4.98h3.07c.73 0 1.34-.25 1.82-.74.49-.49.74-1.08.74-1.74 0-.66-.25-1.24-.74-1.73-.48-.5-1.08-.75-1.82-.75h-3.07v-.02Z" fill="#383E41"/><path d="M35.63 5.23c1.36 0 2.43.36 3.21 1.09.78.73 1.18 1.72 1.18 2.98v6.02h-1.75v-1.36h-.08c-.76 1.12-1.77 1.67-3.03 1.67-1.08 0-1.98-.32-2.7-.96-.73-.64-1.1-1.43-1.1-2.39 0-1.01.38-1.82 1.15-2.41.76-.6 1.79-.9 3.06-.9 1.09 0 1.99.2 2.69.6v-.42c0-.64-.25-1.18-.76-1.63-.5-.45-1.1-.67-1.77-.67-1.02 0-1.84.43-2.43 1.3l-1.62-1.01c.89-1.29 2.21-1.93 3.95-1.93Zm-2.37 7.09c0 .48.2.88.61 1.2.4.31.88.48 1.43.48.77 0 1.46-.29 2.06-.86.6-.57.91-1.24.91-2.02-.57-.45-1.36-.68-2.39-.68-.75 0-1.37.18-1.87.54-.49.37-.75.82-.75 1.34Z" fill="#383E41"/><path d="M50 5.54l-6.12 14.07h-1.99l2.28-4.92-4.03-9.15h2l2.91 7.02h.04l2.83-7.02H50Z" fill="#383E41"/><path d="M15.88 6.65H8.19v3.16h4.43c-.18 1.05-.76 1.95-1.64 2.54l2.64.16c1.54-1.43 2.42-3.53 2.42-6.02 0-.6-.05-1.17-.16-1.72Z" fill="#0085F7"/><path d="M10.98 12.35c-.74.5-1.68.78-2.79.78-2.14 0-3.95-1.44-4.6-3.38l2.27-.36.45 2.47c1.35 2.68 4.12 4.51 7.32 4.51 2.21 0 4.07-.73 5.42-1.98l-2.65-2.04h-.04Z" fill="#00A94B"/><path d="M3.34 8.19c0-.55.09-1.07.26-1.57L.87 4.51A8.19 8.19 0 0 0 0 8.19c0 1.32.31 2.57.87 3.68l2.72-2.11c-.17-.5-.25-1.02-.25-1.57Z" fill="#FFBB00"/><path d="M8.19 0C4.99 0 2.22 1.84.87 4.51l2.72 2.11C4.24 4.68 6.05 3.24 8.19 3.24c1.21 0 2.29.42 3.14 1.23l2.34-2.34C12.25.81 10.4 0 8.19 0Z" fill="#FF4031"/></svg>'
       };
@@ -1941,6 +3133,7 @@ function stripHtmlToText(html) {
           sessionId = 'sess_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
           localStorage.setItem('zappy_session_id', sessionId);
         }
+        const checkoutCart = getCartPayload();
         
         // Initialize checkout
         const res = await fetch(buildApiUrl('/api/ecommerce/checkout/init'), {
@@ -1963,7 +3156,7 @@ function stripHtmlToText(html) {
             shippingMethodId: selectedShipping.id,
             shippingCost: selectedShipping.price || 0,
             shippingMethodName: selectedShipping.name || 'משלוח',
-            cart: cart,
+            cart: checkoutCart,
             couponCode: appliedCoupon ? appliedCoupon.code : null,
             couponDiscount: couponDiscount + seasonalDiscount + firstOrderDiscount,
             paymentMethodId: selectedPaymentMethod ? selectedPaymentMethod.id : null
@@ -1984,7 +3177,7 @@ function stripHtmlToText(html) {
           const shippingCostNum = parseFloat(selectedShipping.price) || 0;
           const discountNum = parseFloat(couponDiscount + seasonalDiscount + firstOrderDiscount) || 0;
           const pendingOrderData = {
-            cartItems: cart,
+            cartItems: checkoutCart,
             subtotal: subtotalNum,
             shippingCost: shippingCostNum,
             discount: discountNum,
@@ -1992,6 +3185,7 @@ function stripHtmlToText(html) {
             shippingMethodName: selectedShipping.name || '',
             shippingIsPickup: selectedShipping.is_pickup || false,
             paymentMethodName: selectedPaymentMethod ? (isRTL ? selectedPaymentMethod.name : selectedPaymentMethod.nameEn) : '',
+            paymentStatus: data.data.paymentStatus || (data.data.provider === 'phone_payment' ? 'pending' : 'processing'),
             customerName: customerName,
             customerEmail: customerEmail,
             orderDate: new Date().toISOString()
@@ -2406,6 +3600,7 @@ function stripHtmlToText(html) {
       const data = await res.json();
       if (data.success && Array.isArray(data.data)) {
         seasonalDiscounts = data.data;
+        updateOrderTotals();
       }
     } catch (e) {
       console.warn('[E-COMMERCE] Failed to load seasonal discounts', e);
@@ -2437,8 +3632,7 @@ function stripHtmlToText(html) {
       for (var j = 0; j < cart.length; j++) {
         var item = cart[j];
         if (appliesToAll || ids.indexOf(item.id) !== -1) {
-          var price = parseFloat(item.sale_price && parseFloat(item.sale_price) < parseFloat(item.price) ? item.sale_price : item.price) || 0;
-          eligibleSubtotal += price * (parseInt(item.quantity) || 1);
+          eligibleSubtotal += getCartLineTotal(item);
         }
       }
 
@@ -3596,7 +4790,10 @@ function stripHtmlToText(html) {
             if (orderData.discount > 0) {
               totalsHtml += '<div><span>' + (t.discount || 'Discount') + ':</span><span>-' + t.currency + parseFloat(orderData.discount).toFixed(2) + '</span></div>';
             }
-            totalsHtml += '<div class="order-total-final"><span>' + (t.paidAmount || 'Amount Paid') + ':</span><span>' + t.currency + parseFloat(orderData.total || 0).toFixed(2) + '</span></div>';
+            var totalLabel = orderData.paymentStatus === 'pending'
+              ? (t.totalToPay || 'Total to pay')
+              : (t.paidAmount || 'Amount Paid');
+            totalsHtml += '<div class="order-total-final"><span>' + totalLabel + ':</span><span>' + t.currency + parseFloat(orderData.total || 0).toFixed(2) + '</span></div>';
             orderTotalsSummary.innerHTML = totalsHtml;
           }
           
@@ -4869,7 +6066,7 @@ async function loadFeaturedProducts() {
   // Ensure store settings are loaded first (for productLayout)
   await fetchAdditionalJsSettings();
   
-  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","featuredCategories":"קנו לפי קטגוריה","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","streetAndNumber":"רחוב ומספר","apartment":"דירה, קומה, כניסה","apartmentExt":"דירה, קומה, קוד בניין, הערות וכו'","city":"עיר","zip":"מיקוד","zipPostal":"מיקוד","countryRegion":"מדינה / אזור","stateProvince":"מדינה / מחוז","stateRequired":"נא לבחור מדינה / מחוז","saveAddressForNextTime":"שמור את הכתובת לפעם הבאה","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","vat":"מע\"מ","vatIncluded":"כולל מע\"מ","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","startingAt":"החל מ","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","pleaseSelect":"נא לבחור","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","home":"בית","quantity":"כמות","unitLabels":{"piece":"יח'","kg":"ק\"ג","gram":"גרם","liter":"ליטר","ml":"מ\"ל"},"perUnit":"/","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי","alreadyHaveAccount":"כבר יש לך חשבון?","loginHere":"התחבר כאן","signInHere":"התחבר כאן","mobileNumber":"מספר טלפון","loggedInAs":"מחובר כ:","logout":"התנתק","haveCouponCode":"יש לי קוד קופון","agreeToTerms":"אני מסכים/ה ל","termsAndConditions":"תנאי השימוש","pleaseAcceptTerms":"נא לאשר את תנאי השימוש","nameRequired":"נא להזין שם מלא","emailRequired":"נא להזין כתובת אימייל","emailInvalid":"כתובת אימייל לא תקינה","phoneRequired":"נא להזין מספר טלפון","shippingRequired":"נא לבחור שיטת משלוח","streetRequired":"נא להזין רחוב ומספר","cityRequired":"נא להזין עיר","cartEmpty":"העגלה ריקה","paymentNotConfigured":"תשלום מקוון לא מוגדר","orderSuccess":"ההזמנה התקבלה!","thankYouOrder":"תודה על ההזמנה","orderNumber":"מספר הזמנה","orderConfirmation":"אישור הזמנה נשלח לאימייל שלך","orderProcessing":"ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.","continueShopping":"להמשך קניות","next":"הבא","contactInformation":"פרטי התקשרות","items":"פריטים","continueToHomePage":"המשך לדף הבית","transactionDate":"תאריך עסקה","paymentMethod":"אמצעי תשלום","orderDetails":"פרטי ההזמנה","loadingOrder":"טוען פרטי הזמנה...","orderNotFound":"לא נמצאה הזמנה","orderItems":"פריטים בהזמנה","paidAmount":"סכום ששולם","myAccount":"החשבון שלי","accountWelcome":"ברוך הבא","yourOrders":"ההזמנות שלך","noOrders":"אין עדיין הזמנות","orderDate":"תאריך","orderStatus":"סטטוס","orderTotal":"סה\"כ","viewOrder":"צפה בהזמנה","statusPending":"ממתין לתשלום","statusPaid":"שולם","statusProcessing":"בטיפול","statusShipped":"נשלח","statusDelivered":"נמסר","statusCancelled":"בוטל","notLoggedIn":"לא מחובר","pleaseLogin":"יש להתחבר כדי לצפות בחשבון","personalDetails":"פרטים אישיים","editProfile":"עריכת פרופיל","name":"שם","saveChanges":"שמור שינויים","cancel":"ביטול","addresses":"כתובות","addAddress":"הוסף כתובת","editAddress":"ערוך כתובת","deleteAddress":"מחק כתובת","setAsDefault":"הגדר כברירת מחדל","defaultAddress":"כתובת ברירת מחדל","addressLabel":"שם הכתובת","work":"עבודה","other":"אחר","noAddresses":"אין כתובות שמורות","confirmDelete":"האם אתה בטוח שברצונך למחוק?","profileUpdated":"הפרופיל עודכן בהצלחה","addressSaved":"הכתובת נשמרה בהצלחה","addressDeleted":"הכתובת נמחקה","saving":"שומר...","saveToFavorites":"שמור למועדפים","removeFromFavorites":"הסר ממועדפים","shareProduct":"שתף מוצר","linkCopied":"הקישור הועתק!","myFavorites":"המועדפים שלי","noFavorites":"אין עדיין מוצרים מועדפים","addedToFavorites":"נוסף למועדפים","removedFromFavorites":"הוסר מהמועדפים","loginToFavorite":"יש להתחבר כדי לשמור מועדפים","browseFavorites":"גלו את כל המוצרים שלנו","selectVariant":"בחר אפשרות","variantUnavailable":"לא זמין","color":"צבע","size":"מידה","material":"חומר","style":"סגנון","weight":"משקל","capacity":"קיבולת","length":"אורך","inquiryAbout":"פנייה בנושא","sendInquiry":"שלח פנייה","callNow":"התקשר עכשיו","specifications":"מפרט טכני","storeNote":"מידע נוסף","businessPhone":"0546499087","businessEmail":"[business_email]"};
+  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","featuredCategories":"קנו לפי קטגוריה","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","streetAndNumber":"רחוב ומספר","apartment":"דירה, קומה, כניסה","apartmentExt":"דירה, קומה, קוד בניין, הערות וכו'","city":"עיר","zip":"מיקוד","zipPostal":"מיקוד","countryRegion":"מדינה / אזור","stateProvince":"מדינה / מחוז","stateRequired":"נא לבחור מדינה / מחוז","saveAddressForNextTime":"שמור את הכתובת לפעם הבאה","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","vat":"מע\"מ","vatIncluded":"כולל מע\"מ","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","startingAt":"החל מ","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","pleaseSelect":"נא לבחור","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","frequentlyBoughtTogether":"לרכוש יחד","frequentlyBoughtTogetherSubtitle":"הוספת מוצרים נלווים לעגלה","bundleTotal":"סה\"כ לעגלה","addBundleToCart":"הוספת {count} מוצרים לעגלה","upsellFree":"חינם","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","home":"בית","quantity":"כמות","unitLabels":{"piece":"יח'","kg":"ק\"ג","gram":"גרם","liter":"ליטר","ml":"מ\"ל"},"perUnit":"/","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי","alreadyHaveAccount":"כבר יש לך חשבון?","loginHere":"התחבר כאן","signInHere":"התחבר כאן","mobileNumber":"מספר טלפון","loggedInAs":"מחובר כ:","logout":"התנתק","haveCouponCode":"יש לי קוד קופון","agreeToTerms":"אני מסכים/ה ל","termsAndConditions":"תנאי השימוש","pleaseAcceptTerms":"נא לאשר את תנאי השימוש","nameRequired":"נא להזין שם מלא","emailRequired":"נא להזין כתובת אימייל","emailInvalid":"כתובת אימייל לא תקינה","phoneRequired":"נא להזין מספר טלפון","shippingRequired":"נא לבחור שיטת משלוח","streetRequired":"נא להזין רחוב ומספר","cityRequired":"נא להזין עיר","cartEmpty":"העגלה ריקה","paymentNotConfigured":"תשלום מקוון לא מוגדר","orderSuccess":"ההזמנה התקבלה!","thankYouOrder":"תודה על ההזמנה","orderNumber":"מספר הזמנה","orderConfirmation":"אישור הזמנה נשלח לאימייל שלך","orderProcessing":"ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.","continueShopping":"להמשך קניות","next":"הבא","contactInformation":"פרטי התקשרות","items":"פריטים","continueToHomePage":"המשך לדף הבית","transactionDate":"תאריך עסקה","paymentMethod":"אמצעי תשלום","orderDetails":"פרטי ההזמנה","loadingOrder":"טוען פרטי הזמנה...","orderNotFound":"לא נמצאה הזמנה","orderItems":"פריטים בהזמנה","paidAmount":"סכום ששולם","myAccount":"החשבון שלי","accountWelcome":"ברוך הבא","yourOrders":"ההזמנות שלך","noOrders":"אין עדיין הזמנות","orderDate":"תאריך","orderStatus":"סטטוס","orderTotal":"סה\"כ","viewOrder":"צפה בהזמנה","statusPending":"ממתין לתשלום","statusPaid":"שולם","statusProcessing":"בטיפול","statusShipped":"נשלח","statusDelivered":"נמסר","statusCancelled":"בוטל","notLoggedIn":"לא מחובר","pleaseLogin":"יש להתחבר כדי לצפות בחשבון","personalDetails":"פרטים אישיים","editProfile":"עריכת פרופיל","name":"שם","saveChanges":"שמור שינויים","cancel":"ביטול","addresses":"כתובות","addAddress":"הוסף כתובת","editAddress":"ערוך כתובת","deleteAddress":"מחק כתובת","setAsDefault":"הגדר כברירת מחדל","defaultAddress":"כתובת ברירת מחדל","addressLabel":"שם הכתובת","work":"עבודה","other":"אחר","noAddresses":"אין כתובות שמורות","confirmDelete":"האם אתה בטוח שברצונך למחוק?","profileUpdated":"הפרופיל עודכן בהצלחה","addressSaved":"הכתובת נשמרה בהצלחה","addressDeleted":"הכתובת נמחקה","saving":"שומר...","saveToFavorites":"שמור למועדפים","removeFromFavorites":"הסר ממועדפים","shareProduct":"שתף מוצר","linkCopied":"הקישור הועתק!","myFavorites":"המועדפים שלי","noFavorites":"אין עדיין מוצרים מועדפים","addedToFavorites":"נוסף למועדפים","removedFromFavorites":"הוסר מהמועדפים","loginToFavorite":"יש להתחבר כדי לשמור מועדפים","browseFavorites":"גלו את כל המוצרים שלנו","selectVariant":"בחר אפשרות","variantUnavailable":"לא זמין","color":"צבע","size":"מידה","material":"חומר","style":"סגנון","weight":"משקל","capacity":"קיבולת","length":"אורך","inquiryAbout":"פנייה בנושא","sendInquiry":"שלח פנייה","callNow":"התקשר עכשיו","specifications":"מפרט טכני","storeNote":"מידע נוסף","businessPhone":"054-6499087","businessEmail":"[business_email]"};
   
   try {
     // Only fetch featured products - no fallback, with language support
@@ -5544,7 +6741,7 @@ async function loadProductDetailPage() {
   const websiteId = window.ZAPPY_WEBSITE_ID;
   if (!websiteId) return;
   
-  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","featuredCategories":"קנו לפי קטגוריה","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","streetAndNumber":"רחוב ומספר","apartment":"דירה, קומה, כניסה","apartmentExt":"דירה, קומה, קוד בניין, הערות וכו'","city":"עיר","zip":"מיקוד","zipPostal":"מיקוד","countryRegion":"מדינה / אזור","stateProvince":"מדינה / מחוז","stateRequired":"נא לבחור מדינה / מחוז","saveAddressForNextTime":"שמור את הכתובת לפעם הבאה","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","vat":"מע\"מ","vatIncluded":"כולל מע\"מ","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","startingAt":"החל מ","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","pleaseSelect":"נא לבחור","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","home":"בית","quantity":"כמות","unitLabels":{"piece":"יח'","kg":"ק\"ג","gram":"גרם","liter":"ליטר","ml":"מ\"ל"},"perUnit":"/","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי","alreadyHaveAccount":"כבר יש לך חשבון?","loginHere":"התחבר כאן","signInHere":"התחבר כאן","mobileNumber":"מספר טלפון","loggedInAs":"מחובר כ:","logout":"התנתק","haveCouponCode":"יש לי קוד קופון","agreeToTerms":"אני מסכים/ה ל","termsAndConditions":"תנאי השימוש","pleaseAcceptTerms":"נא לאשר את תנאי השימוש","nameRequired":"נא להזין שם מלא","emailRequired":"נא להזין כתובת אימייל","emailInvalid":"כתובת אימייל לא תקינה","phoneRequired":"נא להזין מספר טלפון","shippingRequired":"נא לבחור שיטת משלוח","streetRequired":"נא להזין רחוב ומספר","cityRequired":"נא להזין עיר","cartEmpty":"העגלה ריקה","paymentNotConfigured":"תשלום מקוון לא מוגדר","orderSuccess":"ההזמנה התקבלה!","thankYouOrder":"תודה על ההזמנה","orderNumber":"מספר הזמנה","orderConfirmation":"אישור הזמנה נשלח לאימייל שלך","orderProcessing":"ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.","continueShopping":"להמשך קניות","next":"הבא","contactInformation":"פרטי התקשרות","items":"פריטים","continueToHomePage":"המשך לדף הבית","transactionDate":"תאריך עסקה","paymentMethod":"אמצעי תשלום","orderDetails":"פרטי ההזמנה","loadingOrder":"טוען פרטי הזמנה...","orderNotFound":"לא נמצאה הזמנה","orderItems":"פריטים בהזמנה","paidAmount":"סכום ששולם","myAccount":"החשבון שלי","accountWelcome":"ברוך הבא","yourOrders":"ההזמנות שלך","noOrders":"אין עדיין הזמנות","orderDate":"תאריך","orderStatus":"סטטוס","orderTotal":"סה\"כ","viewOrder":"צפה בהזמנה","statusPending":"ממתין לתשלום","statusPaid":"שולם","statusProcessing":"בטיפול","statusShipped":"נשלח","statusDelivered":"נמסר","statusCancelled":"בוטל","notLoggedIn":"לא מחובר","pleaseLogin":"יש להתחבר כדי לצפות בחשבון","personalDetails":"פרטים אישיים","editProfile":"עריכת פרופיל","name":"שם","saveChanges":"שמור שינויים","cancel":"ביטול","addresses":"כתובות","addAddress":"הוסף כתובת","editAddress":"ערוך כתובת","deleteAddress":"מחק כתובת","setAsDefault":"הגדר כברירת מחדל","defaultAddress":"כתובת ברירת מחדל","addressLabel":"שם הכתובת","work":"עבודה","other":"אחר","noAddresses":"אין כתובות שמורות","confirmDelete":"האם אתה בטוח שברצונך למחוק?","profileUpdated":"הפרופיל עודכן בהצלחה","addressSaved":"הכתובת נשמרה בהצלחה","addressDeleted":"הכתובת נמחקה","saving":"שומר...","saveToFavorites":"שמור למועדפים","removeFromFavorites":"הסר ממועדפים","shareProduct":"שתף מוצר","linkCopied":"הקישור הועתק!","myFavorites":"המועדפים שלי","noFavorites":"אין עדיין מוצרים מועדפים","addedToFavorites":"נוסף למועדפים","removedFromFavorites":"הוסר מהמועדפים","loginToFavorite":"יש להתחבר כדי לשמור מועדפים","browseFavorites":"גלו את כל המוצרים שלנו","selectVariant":"בחר אפשרות","variantUnavailable":"לא זמין","color":"צבע","size":"מידה","material":"חומר","style":"סגנון","weight":"משקל","capacity":"קיבולת","length":"אורך","inquiryAbout":"פנייה בנושא","sendInquiry":"שלח פנייה","callNow":"התקשר עכשיו","specifications":"מפרט טכני","storeNote":"מידע נוסף","businessPhone":"0546499087","businessEmail":"[business_email]"};
+  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","featuredCategories":"קנו לפי קטגוריה","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","streetAndNumber":"רחוב ומספר","apartment":"דירה, קומה, כניסה","apartmentExt":"דירה, קומה, קוד בניין, הערות וכו'","city":"עיר","zip":"מיקוד","zipPostal":"מיקוד","countryRegion":"מדינה / אזור","stateProvince":"מדינה / מחוז","stateRequired":"נא לבחור מדינה / מחוז","saveAddressForNextTime":"שמור את הכתובת לפעם הבאה","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","vat":"מע\"מ","vatIncluded":"כולל מע\"מ","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","startingAt":"החל מ","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","pleaseSelect":"נא לבחור","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","frequentlyBoughtTogether":"לרכוש יחד","frequentlyBoughtTogetherSubtitle":"הוספת מוצרים נלווים לעגלה","bundleTotal":"סה\"כ לעגלה","addBundleToCart":"הוספת {count} מוצרים לעגלה","upsellFree":"חינם","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","home":"בית","quantity":"כמות","unitLabels":{"piece":"יח'","kg":"ק\"ג","gram":"גרם","liter":"ליטר","ml":"מ\"ל"},"perUnit":"/","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי","alreadyHaveAccount":"כבר יש לך חשבון?","loginHere":"התחבר כאן","signInHere":"התחבר כאן","mobileNumber":"מספר טלפון","loggedInAs":"מחובר כ:","logout":"התנתק","haveCouponCode":"יש לי קוד קופון","agreeToTerms":"אני מסכים/ה ל","termsAndConditions":"תנאי השימוש","pleaseAcceptTerms":"נא לאשר את תנאי השימוש","nameRequired":"נא להזין שם מלא","emailRequired":"נא להזין כתובת אימייל","emailInvalid":"כתובת אימייל לא תקינה","phoneRequired":"נא להזין מספר טלפון","shippingRequired":"נא לבחור שיטת משלוח","streetRequired":"נא להזין רחוב ומספר","cityRequired":"נא להזין עיר","cartEmpty":"העגלה ריקה","paymentNotConfigured":"תשלום מקוון לא מוגדר","orderSuccess":"ההזמנה התקבלה!","thankYouOrder":"תודה על ההזמנה","orderNumber":"מספר הזמנה","orderConfirmation":"אישור הזמנה נשלח לאימייל שלך","orderProcessing":"ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.","continueShopping":"להמשך קניות","next":"הבא","contactInformation":"פרטי התקשרות","items":"פריטים","continueToHomePage":"המשך לדף הבית","transactionDate":"תאריך עסקה","paymentMethod":"אמצעי תשלום","orderDetails":"פרטי ההזמנה","loadingOrder":"טוען פרטי הזמנה...","orderNotFound":"לא נמצאה הזמנה","orderItems":"פריטים בהזמנה","paidAmount":"סכום ששולם","myAccount":"החשבון שלי","accountWelcome":"ברוך הבא","yourOrders":"ההזמנות שלך","noOrders":"אין עדיין הזמנות","orderDate":"תאריך","orderStatus":"סטטוס","orderTotal":"סה\"כ","viewOrder":"צפה בהזמנה","statusPending":"ממתין לתשלום","statusPaid":"שולם","statusProcessing":"בטיפול","statusShipped":"נשלח","statusDelivered":"נמסר","statusCancelled":"בוטל","notLoggedIn":"לא מחובר","pleaseLogin":"יש להתחבר כדי לצפות בחשבון","personalDetails":"פרטים אישיים","editProfile":"עריכת פרופיל","name":"שם","saveChanges":"שמור שינויים","cancel":"ביטול","addresses":"כתובות","addAddress":"הוסף כתובת","editAddress":"ערוך כתובת","deleteAddress":"מחק כתובת","setAsDefault":"הגדר כברירת מחדל","defaultAddress":"כתובת ברירת מחדל","addressLabel":"שם הכתובת","work":"עבודה","other":"אחר","noAddresses":"אין כתובות שמורות","confirmDelete":"האם אתה בטוח שברצונך למחוק?","profileUpdated":"הפרופיל עודכן בהצלחה","addressSaved":"הכתובת נשמרה בהצלחה","addressDeleted":"הכתובת נמחקה","saving":"שומר...","saveToFavorites":"שמור למועדפים","removeFromFavorites":"הסר ממועדפים","shareProduct":"שתף מוצר","linkCopied":"הקישור הועתק!","myFavorites":"המועדפים שלי","noFavorites":"אין עדיין מוצרים מועדפים","addedToFavorites":"נוסף למועדפים","removedFromFavorites":"הוסר מהמועדפים","loginToFavorite":"יש להתחבר כדי לשמור מועדפים","browseFavorites":"גלו את כל המוצרים שלנו","selectVariant":"בחר אפשרות","variantUnavailable":"לא זמין","color":"צבע","size":"מידה","material":"חומר","style":"סגנון","weight":"משקל","capacity":"קיבולת","length":"אורך","inquiryAbout":"פנייה בנושא","sendInquiry":"שלח פנייה","callNow":"התקשר עכשיו","specifications":"מפרט טכני","storeNote":"מידע נוסף","businessPhone":"054-6499087","businessEmail":"[business_email]"};
   
   // Get slug from URL - check both pathname and query parameter (preview mode)
   let pagePath = window.location.pathname;
@@ -5597,7 +6794,7 @@ async function loadCategoryPage() {
   const websiteId = window.ZAPPY_WEBSITE_ID;
   if (!websiteId) return;
   
-  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","featuredCategories":"קנו לפי קטגוריה","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","streetAndNumber":"רחוב ומספר","apartment":"דירה, קומה, כניסה","apartmentExt":"דירה, קומה, קוד בניין, הערות וכו'","city":"עיר","zip":"מיקוד","zipPostal":"מיקוד","countryRegion":"מדינה / אזור","stateProvince":"מדינה / מחוז","stateRequired":"נא לבחור מדינה / מחוז","saveAddressForNextTime":"שמור את הכתובת לפעם הבאה","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","vat":"מע\"מ","vatIncluded":"כולל מע\"מ","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","startingAt":"החל מ","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","pleaseSelect":"נא לבחור","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","home":"בית","quantity":"כמות","unitLabels":{"piece":"יח'","kg":"ק\"ג","gram":"גרם","liter":"ליטר","ml":"מ\"ל"},"perUnit":"/","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי","alreadyHaveAccount":"כבר יש לך חשבון?","loginHere":"התחבר כאן","signInHere":"התחבר כאן","mobileNumber":"מספר טלפון","loggedInAs":"מחובר כ:","logout":"התנתק","haveCouponCode":"יש לי קוד קופון","agreeToTerms":"אני מסכים/ה ל","termsAndConditions":"תנאי השימוש","pleaseAcceptTerms":"נא לאשר את תנאי השימוש","nameRequired":"נא להזין שם מלא","emailRequired":"נא להזין כתובת אימייל","emailInvalid":"כתובת אימייל לא תקינה","phoneRequired":"נא להזין מספר טלפון","shippingRequired":"נא לבחור שיטת משלוח","streetRequired":"נא להזין רחוב ומספר","cityRequired":"נא להזין עיר","cartEmpty":"העגלה ריקה","paymentNotConfigured":"תשלום מקוון לא מוגדר","orderSuccess":"ההזמנה התקבלה!","thankYouOrder":"תודה על ההזמנה","orderNumber":"מספר הזמנה","orderConfirmation":"אישור הזמנה נשלח לאימייל שלך","orderProcessing":"ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.","continueShopping":"להמשך קניות","next":"הבא","contactInformation":"פרטי התקשרות","items":"פריטים","continueToHomePage":"המשך לדף הבית","transactionDate":"תאריך עסקה","paymentMethod":"אמצעי תשלום","orderDetails":"פרטי ההזמנה","loadingOrder":"טוען פרטי הזמנה...","orderNotFound":"לא נמצאה הזמנה","orderItems":"פריטים בהזמנה","paidAmount":"סכום ששולם","myAccount":"החשבון שלי","accountWelcome":"ברוך הבא","yourOrders":"ההזמנות שלך","noOrders":"אין עדיין הזמנות","orderDate":"תאריך","orderStatus":"סטטוס","orderTotal":"סה\"כ","viewOrder":"צפה בהזמנה","statusPending":"ממתין לתשלום","statusPaid":"שולם","statusProcessing":"בטיפול","statusShipped":"נשלח","statusDelivered":"נמסר","statusCancelled":"בוטל","notLoggedIn":"לא מחובר","pleaseLogin":"יש להתחבר כדי לצפות בחשבון","personalDetails":"פרטים אישיים","editProfile":"עריכת פרופיל","name":"שם","saveChanges":"שמור שינויים","cancel":"ביטול","addresses":"כתובות","addAddress":"הוסף כתובת","editAddress":"ערוך כתובת","deleteAddress":"מחק כתובת","setAsDefault":"הגדר כברירת מחדל","defaultAddress":"כתובת ברירת מחדל","addressLabel":"שם הכתובת","work":"עבודה","other":"אחר","noAddresses":"אין כתובות שמורות","confirmDelete":"האם אתה בטוח שברצונך למחוק?","profileUpdated":"הפרופיל עודכן בהצלחה","addressSaved":"הכתובת נשמרה בהצלחה","addressDeleted":"הכתובת נמחקה","saving":"שומר...","saveToFavorites":"שמור למועדפים","removeFromFavorites":"הסר ממועדפים","shareProduct":"שתף מוצר","linkCopied":"הקישור הועתק!","myFavorites":"המועדפים שלי","noFavorites":"אין עדיין מוצרים מועדפים","addedToFavorites":"נוסף למועדפים","removedFromFavorites":"הוסר מהמועדפים","loginToFavorite":"יש להתחבר כדי לשמור מועדפים","browseFavorites":"גלו את כל המוצרים שלנו","selectVariant":"בחר אפשרות","variantUnavailable":"לא זמין","color":"צבע","size":"מידה","material":"חומר","style":"סגנון","weight":"משקל","capacity":"קיבולת","length":"אורך","inquiryAbout":"פנייה בנושא","sendInquiry":"שלח פנייה","callNow":"התקשר עכשיו","specifications":"מפרט טכני","storeNote":"מידע נוסף","businessPhone":"0546499087","businessEmail":"[business_email]"};
+  const t = {"products":"מוצרים","ourProducts":"המוצרים שלנו","featuredProducts":"מוצרים מומלצים","noFeaturedProducts":"עוד לא נבחרו מוצרים מומלצים. צפו בכל המוצרים שלנו!","featuredCategories":"קנו לפי קטגוריה","all":"הכל","featured":"מומלצים","new":"חדשים","sale":"מבצעים","loadingProducts":"טוען מוצרים...","cart":"עגלת קניות","yourCart":"עגלת הקניות שלך","emptyCart":"העגלה ריקה","total":"סה\"כ","proceedToCheckout":"המשך לתשלום","checkout":"תשלום","customerInfo":"פרטי לקוח","fullName":"שם מלא","email":"אימייל","phone":"טלפון","shippingAddress":"כתובת למשלוח","street":"רחוב ומספר","streetAndNumber":"רחוב ומספר","apartment":"דירה, קומה, כניסה","apartmentExt":"דירה, קומה, קוד בניין, הערות וכו'","city":"עיר","zip":"מיקוד","zipPostal":"מיקוד","countryRegion":"מדינה / אזור","stateProvince":"מדינה / מחוז","stateRequired":"נא לבחור מדינה / מחוז","saveAddressForNextTime":"שמור את הכתובת לפעם הבאה","shippingMethod":"שיטת משלוח","loadingShipping":"טוען שיטות משלוח...","payment":"תשלום","loadingPayment":"טוען אפשרויות תשלום...","orderSummary":"סיכום הזמנה","subtotal":"סכום ביניים","vat":"מע\"מ","vatIncluded":"כולל מע\"מ","shipping":"משלוח","discount":"הנחה","totalToPay":"סה\"כ לתשלום","placeOrder":"בצע הזמנה","login":"התחברות","customerLogin":"התחברות לקוחות","enterEmail":"הזן את כתובת האימייל שלך ונשלח לך קוד התחברות","emailAddress":"כתובת אימייל","sendCode":"שלח קוד","enterCode":"הזן את הקוד שנשלח לאימייל שלך","verificationCode":"קוד אימות","verify":"אמת","returnPolicy":"מדיניות החזרות","addToCart":"הוסף לעגלה","startingAt":"החל מ","addedToCart":"המוצר נוסף לעגלה!","remove":"הסר","noProducts":"אין מוצרים להצגה כרגע","errorLoading":"שגיאה בטעינה","days":"ימים","currency":"₪","free":"חינם","freeAbove":"משלוח חינם מעל","noShippingMethods":"אין אפשרויות משלוח זמינות","viewAllResults":"הצג את כל התוצאות","searchProducts":"חיפוש מוצרים","productDetails":"פרטי המוצר","viewDetails":"לפרטים נוספים","inStock":"במלאי","outOfStock":"אזל מהמלאי","pleaseSelect":"נא לבחור","sku":"מק\"ט","category":"קטגוריה","relatedProducts":"מוצרים דומים","frequentlyBoughtTogether":"לרכוש יחד","frequentlyBoughtTogetherSubtitle":"הוספת מוצרים נלווים לעגלה","bundleTotal":"סה\"כ לעגלה","addBundleToCart":"הוספת {count} מוצרים לעגלה","upsellFree":"חינם","productNotFound":"המוצר לא נמצא","backToProducts":"חזרה למוצרים","home":"בית","quantity":"כמות","unitLabels":{"piece":"יח'","kg":"ק\"ג","gram":"גרם","liter":"ליטר","ml":"מ\"ל"},"perUnit":"/","couponCode":"קוד קופון","enterCouponCode":"הזן קוד קופון","applyCoupon":"החל","removeCoupon":"הסר","couponApplied":"הקופון הוחל בהצלחה!","invalidCoupon":"קוד קופון לא תקין","couponExpired":"הקופון פג תוקף","couponMinOrder":"סכום הזמנה מינימלי","alreadyHaveAccount":"כבר יש לך חשבון?","loginHere":"התחבר כאן","signInHere":"התחבר כאן","mobileNumber":"מספר טלפון","loggedInAs":"מחובר כ:","logout":"התנתק","haveCouponCode":"יש לי קוד קופון","agreeToTerms":"אני מסכים/ה ל","termsAndConditions":"תנאי השימוש","pleaseAcceptTerms":"נא לאשר את תנאי השימוש","nameRequired":"נא להזין שם מלא","emailRequired":"נא להזין כתובת אימייל","emailInvalid":"כתובת אימייל לא תקינה","phoneRequired":"נא להזין מספר טלפון","shippingRequired":"נא לבחור שיטת משלוח","streetRequired":"נא להזין רחוב ומספר","cityRequired":"נא להזין עיר","cartEmpty":"העגלה ריקה","paymentNotConfigured":"תשלום מקוון לא מוגדר","orderSuccess":"ההזמנה התקבלה!","thankYouOrder":"תודה על ההזמנה","orderNumber":"מספר הזמנה","orderConfirmation":"אישור הזמנה נשלח לאימייל שלך","orderProcessing":"ההזמנה שלך בטיפול. נעדכן אותך כשהמשלוח יצא לדרך.","continueShopping":"להמשך קניות","next":"הבא","contactInformation":"פרטי התקשרות","items":"פריטים","continueToHomePage":"המשך לדף הבית","transactionDate":"תאריך עסקה","paymentMethod":"אמצעי תשלום","orderDetails":"פרטי ההזמנה","loadingOrder":"טוען פרטי הזמנה...","orderNotFound":"לא נמצאה הזמנה","orderItems":"פריטים בהזמנה","paidAmount":"סכום ששולם","myAccount":"החשבון שלי","accountWelcome":"ברוך הבא","yourOrders":"ההזמנות שלך","noOrders":"אין עדיין הזמנות","orderDate":"תאריך","orderStatus":"סטטוס","orderTotal":"סה\"כ","viewOrder":"צפה בהזמנה","statusPending":"ממתין לתשלום","statusPaid":"שולם","statusProcessing":"בטיפול","statusShipped":"נשלח","statusDelivered":"נמסר","statusCancelled":"בוטל","notLoggedIn":"לא מחובר","pleaseLogin":"יש להתחבר כדי לצפות בחשבון","personalDetails":"פרטים אישיים","editProfile":"עריכת פרופיל","name":"שם","saveChanges":"שמור שינויים","cancel":"ביטול","addresses":"כתובות","addAddress":"הוסף כתובת","editAddress":"ערוך כתובת","deleteAddress":"מחק כתובת","setAsDefault":"הגדר כברירת מחדל","defaultAddress":"כתובת ברירת מחדל","addressLabel":"שם הכתובת","work":"עבודה","other":"אחר","noAddresses":"אין כתובות שמורות","confirmDelete":"האם אתה בטוח שברצונך למחוק?","profileUpdated":"הפרופיל עודכן בהצלחה","addressSaved":"הכתובת נשמרה בהצלחה","addressDeleted":"הכתובת נמחקה","saving":"שומר...","saveToFavorites":"שמור למועדפים","removeFromFavorites":"הסר ממועדפים","shareProduct":"שתף מוצר","linkCopied":"הקישור הועתק!","myFavorites":"המועדפים שלי","noFavorites":"אין עדיין מוצרים מועדפים","addedToFavorites":"נוסף למועדפים","removedFromFavorites":"הוסר מהמועדפים","loginToFavorite":"יש להתחבר כדי לשמור מועדפים","browseFavorites":"גלו את כל המוצרים שלנו","selectVariant":"בחר אפשרות","variantUnavailable":"לא זמין","color":"צבע","size":"מידה","material":"חומר","style":"סגנון","weight":"משקל","capacity":"קיבולת","length":"אורך","inquiryAbout":"פנייה בנושא","sendInquiry":"שלח פנייה","callNow":"התקשר עכשיו","specifications":"מפרט טכני","storeNote":"מידע נוסף","businessPhone":"054-6499087","businessEmail":"[business_email]"};
   
   // Get slug from URL - check both pathname and query parameter (preview mode)
   let pagePath = window.location.pathname;
@@ -6060,6 +7257,22 @@ function showProductNotFound(container, t) {
 }
 
 function renderProductDetail(container, product, t) {
+  // Variant attribute values may legitimately contain characters that are
+  // unsafe inside HTML attributes or text (e.g. Hebrew size "מ\"מ" with a
+  // double quote, sizes like 5'10", names with & < >). Without escaping,
+  // data-attr/data-value get truncated by the browser parser, the runtime
+  // selection matcher fails to find the variant, and every option appears
+  // disabled / images stop swapping.
+  function _eA(text) {
+    if (text === null || text === undefined) return '';
+    return String(text)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
   // Ensure image paths work in preview + live
   const images = (product.images || []).map(function(img) {
     if (window.resolveProductImageUrl) {
@@ -6132,23 +7345,21 @@ function renderProductDetail(container, product, t) {
       }
     });
     
-    // Attribute label translations
-    const attrLabels = {
-      color: t.color || 'Color',
-      size: t.size || 'Size',
-      material: t.material || 'Material',
-      style: t.style || 'Style',
-      weight: t.weight || 'Weight',
-      capacity: t.capacity || 'Capacity',
-      length: t.length || 'Length'
-    };
+    // Attribute label translations, including saved labels for custom options.
+    const attrLabels = window.getVariantAttributeLabels
+      ? window.getVariantAttributeLabels(product, t)
+      : {};
+    const getAttrLabel = (attrKey) =>
+      attrLabels[attrKey] ||
+      attrLabels[String(attrKey).toLowerCase()] ||
+      String(attrKey).charAt(0).toUpperCase() + String(attrKey).slice(1);
     
     const hasAttributeGroups = Object.keys(attributeGroups).length > 0;
     
     // Build variant groups HTML
     const groupsHtml = hasAttributeGroups
       ? Object.entries(attributeGroups).map(([attrKey, values]) => {
-        const label = attrLabels[attrKey.toLowerCase()] || attrKey.charAt(0).toUpperCase() + attrKey.slice(1);
+        const label = getAttrLabel(attrKey);
         const sizeOrder = {'xxxs':0,'xxs':1,'xs':2,'s':3,'m':4,'l':5,'xl':6,'xxl':7,'2xl':7,'xxxl':8,'3xl':8,'4xl':9,'5xl':10};
         const valuesArray = Array.from(values).sort((a, b) => {
           const sa = sizeOrder[String(a).toLowerCase()], sb = sizeOrder[String(b).toLowerCase()];
@@ -6169,20 +7380,20 @@ function renderProductDetail(container, product, t) {
           // For color attribute, prefer configured hex and fall back for older sites.
           if (isColorAttr) {
             var bgColor = window.getConfiguredColorSwatchHex(product, attrKey, value);
-            return '<button type="button" class="variant-option color-swatch" data-attr="' + attrKey + '" data-value="' + value + '" data-display-value="' + displayValue + '" data-color-hex="' + bgColor + '" style="background-color: ' + bgColor + ';" title="' + displayValue + '"></button>';
+            return '<button type="button" class="variant-option color-swatch" data-attr="' + _eA(attrKey) + '" data-value="' + _eA(value) + '" data-display-value="' + _eA(displayValue) + '" data-color-hex="' + _eA(bgColor) + '" style="background-color: ' + _eA(bgColor) + ';" title="' + _eA(displayValue) + '"></button>';
           }
-          return '<button type="button" class="variant-option" data-attr="' + attrKey + '" data-value="' + value + '" data-display-value="' + displayValue + '">' + displayValue + '</button>';
+          return '<button type="button" class="variant-option" data-attr="' + _eA(attrKey) + '" data-value="' + _eA(value) + '" data-display-value="' + _eA(displayValue) + '">' + _eA(displayValue) + '</button>';
         }).join('');
         
-        return '<div class="variant-group" data-group="' + attrKey + '"><label class="variant-group-label">' + label + ': <span class="variant-selected-value"></span></label><div class="variant-options">' + optionsHtml + '</div></div>';
+        return '<div class="variant-group" data-group="' + _eA(attrKey) + '"><label class="variant-group-label">' + _eA(label) + ': <span class="variant-selected-value"></span></label><div class="variant-options">' + optionsHtml + '</div></div>';
       }).join('')
       : (() => {
         const label = t.selectVariant || 'Select option';
         const optionsHtml = activeVariants.map(variant => {
           const variantLabel = variant.name || variant.sku || label;
-          return '<button type="button" class="variant-option" data-attr="variant" data-value="' + variant.id + '" data-variant-id="' + variant.id + '">' + variantLabel + '</button>';
+          return '<button type="button" class="variant-option" data-attr="variant" data-value="' + _eA(variant.id) + '" data-variant-id="' + _eA(variant.id) + '">' + _eA(variantLabel) + '</button>';
         }).join('');
-        return '<div class="variant-group" data-group="variant"><label class="variant-group-label">' + label + ': <span class="variant-selected-value"></span></label><div class="variant-options">' + optionsHtml + '</div></div>';
+        return '<div class="variant-group" data-group="variant"><label class="variant-group-label">' + _eA(label) + ': <span class="variant-selected-value"></span></label><div class="variant-options">' + optionsHtml + '</div></div>';
       })();
     
     variantSelectorHtml = '<div class="product-variants" id="product-variants">' + groupsHtml + '</div>';
@@ -6324,7 +7535,7 @@ function renderProductDetail(container, product, t) {
         })()}
         ` : ''}
         ${product.short_description ? '<div class="product-short-description">' + product.short_description + '</div>' : ''}
-        ${product.sku ? '<div class="product-sku" id="product-sku-display">' + t.sku + ': ' + product.sku + '</div>' : ''}
+        ${product.sku ? '<div class="product-sku" id="product-sku-display">' + (typeof getEcomText === 'function' ? getEcomText('sku', t.sku || 'SKU') : (t.sku || 'SKU')) + ': ' + product.sku + '</div>' : ''}
         ${variantSelectorHtml}
         <div class="product-stock ${baseInStock ? 'in-stock' : 'out-of-stock'}" id="product-stock-display">
           ${baseInStock 
@@ -6332,6 +7543,81 @@ function renderProductDetail(container, product, t) {
             : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>' + t.outOfStock
           }
         </div>
+        ${(() => {
+          const upsellsArr = (product.upsells || []).filter(u => u && u.is_active !== false);
+          if (upsellsArr.length === 0 || isCatalogMode) return '';
+          const tFreqTitle = getEcomText('frequentlyBoughtTogether', t.frequentlyBoughtTogether || 'Frequently bought together');
+          const tFreqSub = getEcomText('frequentlyBoughtTogetherSubtitle', t.frequentlyBoughtTogetherSubtitle || 'Save time and get everything you need');
+          const tBundleTotalLabel = getEcomText('bundleTotal', t.bundleTotal || 'Bundle total');
+          const tOutOfStockLabel = getEcomText('outOfStock', t.outOfStock || 'Out of stock');
+          // Resolve the additive price for an upsell row. Merchants can set a
+          // per-link price_override that wins over the product/variant price:
+          //   price_override === 0           → free add-on
+          //   price_override > 0             → custom add-on price
+          //   price_override null/undefined  → fall back to default variant
+          //                                    price → sale price → base price
+          const tFreeLabel = getEcomText('upsellFree', t.upsellFree || 'Free');
+          function _upsellPrice(u) {
+            if (u.price_override !== null && u.price_override !== undefined && u.price_override !== '') {
+              const op = parseFloat(u.price_override);
+              if (Number.isFinite(op) && op >= 0) return op;
+            }
+            const v = u.default_variant;
+            if (v && v.price !== null && v.price !== undefined && v.price !== '') {
+              const vp = parseFloat(v.price);
+              if (!isNaN(vp)) return vp;
+            }
+            const sale = parseFloat(u.sale_price);
+            const reg = parseFloat(u.price);
+            if (Number.isFinite(sale) && Number.isFinite(reg) && sale < reg) return sale;
+            return Number.isFinite(reg) ? reg : 0;
+          }
+          const rowsHtml = upsellsArr.map(u => {
+            const p = _upsellPrice(u);
+            const inStock = u.stock_status !== 'out_of_stock';
+            const preChecked = inStock && (u.pre_checked !== false);
+            const slug = u.slug || u.id;
+            const priceLabel = p === 0
+              ? '<span class="upsell-price upsell-price-free">' + tFreeLabel + '</span>'
+              : '<span class="upsell-price">+' + t.currency + p.toFixed(2) + '</span>';
+            // The whole <li> is a click target via toggleUpsellRow — clicking
+            // anywhere on the row (incl. padding / empty space) toggles the
+            // checkbox. The .upsell-name <a> stops propagation so it can
+            // navigate to the product page without also flipping the
+            // selection. The <input>'s native change handler still works
+            // when users click the checkbox directly or use the keyboard.
+            // Keyboard activation (Space / Enter) is handled by
+            // handleUpsellRowKey to keep the inline attribute free of
+            // nested quotes (which break when this script body is itself
+            // emitted from a JS template literal).
+            return '<li class="upsell-row ' + (inStock ? '' : 'is-out-of-stock') + '" data-upsell-id="' + _eA(u.id) + '" data-upsell-price="' + p + '"' +
+              (inStock ? ' onclick="toggleUpsellRow(event, this)"' : '') +
+              ' role="button" tabindex="' + (inStock ? '0' : '-1') + '"' +
+              ' onkeydown="handleUpsellRowKey(event, this)">' +
+              '<input type="checkbox" class="upsell-checkbox"' +
+                (preChecked ? ' checked' : '') +
+                (!inStock ? ' disabled' : '') +
+                ' onclick="event.stopPropagation()"' +
+                ' onchange="recomputeBundleTotal()" />' +
+              '<span class="upsell-row-text">' +
+                '<a class="upsell-name" href="/product/' + _eA(slug) + '" onclick="event.stopPropagation()">' + _eA(u.name || '') + '</a>' +
+                (!inStock ? '<span class="upsell-stock-badge">' + tOutOfStockLabel + '</span>' : '') +
+              '</span>' +
+              priceLabel +
+            '</li>';
+          }).join('');
+          return '<div class="product-upsells" id="product-upsells">' +
+            '<div class="upsells-header">' +
+              '<h3 class="upsells-title">' + tFreqTitle + '</h3>' +
+              '<p class="upsells-subtitle">' + tFreqSub + '</p>' +
+            '</div>' +
+            '<ul class="upsells-list">' + rowsHtml + '</ul>' +
+            '<div class="upsells-total" id="upsells-total">' +
+              '<span class="upsells-total-label">' + tBundleTotalLabel + ':</span>' +
+              ' <strong class="upsells-total-amount" id="upsells-total-amount">' + t.currency + '0.00</strong>' +
+            '</div>' +
+          '</div>';
+        })()}
         <div class="product-add-row">
           ${(() => {
           if (isCatalogMode) return '';
@@ -6434,6 +7720,18 @@ function renderProductDetail(container, product, t) {
   if (hasVariants) {
     initVariantSelection(product, t);
   }
+
+  // Wire up quantity input changes so the bundle total stays in sync when
+  // the customer types directly into the quantity field.
+  var _qtyInputEl = document.getElementById('product-quantity');
+  if (_qtyInputEl) {
+    _qtyInputEl.addEventListener('input', function () {
+      if (typeof recomputeBundleTotal === 'function') recomputeBundleTotal();
+    });
+  }
+
+  // Compute the initial bundle total (no-op if there are no upsells).
+  if (typeof recomputeBundleTotal === 'function') recomputeBundleTotal();
 
   // Check if product is already favorited
   checkFavoriteStatus(product.id);
@@ -6687,6 +7985,7 @@ function adjustQuantity(delta) {
   // Round to avoid floating point issues
   const decimals = (step.toString().split('.')[1] || '').length;
   input.value = parseFloat(newVal.toFixed(decimals));
+  if (typeof recomputeBundleTotal === 'function') recomputeBundleTotal();
 }
 
 function toggleProductDetails(header) {
@@ -6974,12 +8273,29 @@ function updateVariantUI(variant, product, t, selectedAttributes) {
     // Use variant's own price if set, otherwise fall back to base price
     const variantPrice = variant.price ? parseFloat(variant.price) : null;
     const finalPrice = variantPrice !== null ? variantPrice : basePrice;
+    let displayedFinalPrice = finalPrice;
+    let displayOriginalPrice = variantPrice !== null ? finalPrice : originalPrice;
+
+    const seasonalD = typeof getSeasonalDiscountForProduct === 'function'
+      ? getSeasonalDiscountForProduct(product.id)
+      : null;
+    if (seasonalD && finalPrice > 0) {
+      if (seasonalD.type === 'percentage') {
+        displayedFinalPrice = finalPrice - (finalPrice * parseFloat(seasonalD.value) / 100);
+      } else if (seasonalD.type === 'fixed') {
+        displayedFinalPrice = Math.max(0, finalPrice - parseFloat(seasonalD.value));
+      }
+      if (!Number.isFinite(displayedFinalPrice) || displayedFinalPrice >= finalPrice) {
+        displayedFinalPrice = finalPrice;
+      } else {
+        displayOriginalPrice = finalPrice;
+      }
+    }
     
     if (priceDisplay) {
-      // If variant has its own price, don't show original/sale price comparison
-      if (variantPrice !== null) {
-        priceDisplay.textContent = t.currency + finalPrice.toFixed(2);
-      } else if (hasSalePrice) {
+      if (displayedFinalPrice < finalPrice) {
+        priceDisplay.innerHTML = t.currency + displayedFinalPrice.toFixed(2) + ' <span class="original-price">' + t.currency + displayOriginalPrice.toFixed(2) + '</span>';
+      } else if (variantPrice === null && hasSalePrice) {
         priceDisplay.innerHTML = t.currency + finalPrice.toFixed(2) + ' <span class="original-price">' + t.currency + originalPrice.toFixed(2) + '</span>';
       } else {
         priceDisplay.textContent = t.currency + finalPrice.toFixed(2);
@@ -6987,7 +8303,7 @@ function updateVariantUI(variant, product, t, selectedAttributes) {
     }
     
     // Update price-per-unit info to match the variant's effective price
-    updatePricePerUnitDisplay(finalPrice, product, t);
+    updatePricePerUnitDisplay(displayedFinalPrice, product, t);
     
     // Update stock status
     const variantInStock = variant.stock_status !== 'out_of_stock';
@@ -7031,6 +8347,7 @@ function updateVariantUI(variant, product, t, selectedAttributes) {
     
     // Store selected variant
     window.selectedVariant = variant;
+    if (typeof recomputeBundleTotal === 'function') recomputeBundleTotal();
   } else {
     // No matching variant found
     // Reset SKU to base product SKU
@@ -7103,6 +8420,7 @@ function updateVariantUI(variant, product, t, selectedAttributes) {
     updatePricePerUnitDisplay(resetPrice, product, t);
     
     window.selectedVariant = null;
+    if (typeof recomputeBundleTotal === 'function') recomputeBundleTotal();
   }
 }
 
@@ -7173,7 +8491,177 @@ function addProductToCart() {
   
   // Add to cart (addToCart handles merging with existing items)
   window.zappyAddToCart(cartItem);
+
+  // Also add any checked upsell items (frequently bought together).
+  // Each upsell uses its default variant (selected server-side) and is added as
+  // its own cart line so prices, taxes and stock work like any normal product.
+  addCheckedUpsellsToCart();
 }
+
+// Add every checked upsell on the product detail page as its own cart line,
+// using the upsell's default variant (already resolved by the storefront API).
+function addCheckedUpsellsToCart() {
+  const product = window.currentProduct;
+  if (!product || !Array.isArray(product.upsells) || product.upsells.length === 0) return;
+
+  const checkedBoxes = document.querySelectorAll('.upsell-checkbox:checked');
+  if (!checkedBoxes || checkedBoxes.length === 0) return;
+
+  const byId = {};
+  product.upsells.forEach(function (u) { if (u && u.id) byId[u.id] = u; });
+
+  checkedBoxes.forEach(function (cb) {
+    const row = cb.closest('.upsell-row');
+    if (!row) return;
+    const upsellId = row.getAttribute('data-upsell-id');
+    const upsell = byId[upsellId];
+    if (!upsell) return;
+    if (upsell.stock_status === 'out_of_stock') return;
+
+    // Per-link price override (set by the merchant on the parent product).
+    // null / undefined → fall back to variant/sale/base price.
+    // 0 → free upsell line.
+    const overrideRaw = upsell.price_override;
+    const overridePrice = overrideRaw !== null && overrideRaw !== undefined && overrideRaw !== ''
+      ? parseFloat(overrideRaw)
+      : null;
+    const hasOverride = overridePrice !== null && Number.isFinite(overridePrice) && overridePrice >= 0;
+
+    const v = upsell.default_variant;
+    const variantPrice = v && v.price !== null && v.price !== undefined && v.price !== ''
+      ? parseFloat(v.price)
+      : null;
+
+    const upsellCartItem = {
+      ...upsell,
+      quantity: 1,
+      quantityUnit: upsell.quantity_unit || 'piece',
+      quantityStep: parseFloat(upsell.quantity_step) || 1,
+      customUnitLabel: upsell.custom_unit_label || null
+    };
+    // Don't keep the upsells array on the cart line itself (it was joined for the PDP).
+    delete upsellCartItem.upsells;
+    delete upsellCartItem.default_variant;
+    delete upsellCartItem.price_override;
+
+    const fallbackPrice = variantPrice !== null
+      ? variantPrice
+      : (upsell.sale_price && parseFloat(upsell.sale_price) < parseFloat(upsell.price)
+        ? parseFloat(upsell.sale_price)
+        : parseFloat(upsell.price));
+    const finalPrice = hasOverride ? overridePrice : fallbackPrice;
+
+    if (v) {
+      upsellCartItem.selectedVariant = {
+        id: v.id,
+        name: v.name,
+        sku: v.sku,
+        attributes: v.attributes || {},
+        attributes_display: v.attributes_display || v.attributes || {},
+        // Pin the variant's effective price so the cart/checkout line uses it
+        // verbatim (matches the 'getCartItemUnitPrice' lookup order).
+        price: hasOverride ? overridePrice : variantPrice
+      };
+      upsellCartItem.variantName = v.name;
+      if (v.sku) upsellCartItem.variantSku = v.sku;
+    }
+
+    if (Number.isFinite(finalPrice)) {
+      upsellCartItem.displayPrice = finalPrice;
+      // Pin price/sale on the cart line when we have a definitive value (variant
+      // or override) so subsequent reads from cart pricing helpers and order
+      // creation see the same number the customer saw on the PDP.
+      if (hasOverride || variantPrice !== null) {
+        upsellCartItem.price = finalPrice.toString();
+        upsellCartItem.sale_price = null;
+      }
+    }
+
+    window.zappyAddToCart(upsellCartItem);
+  });
+}
+
+// Recompute the bundle total label and the Add-to-Cart button text whenever
+// upsell checkboxes, the main quantity, or the selected variant change.
+function recomputeBundleTotal() {
+  const amountEl = document.getElementById('upsells-total-amount');
+  if (!amountEl) return;
+
+  const product = window.currentProduct;
+  if (!product) return;
+  const t = window.productTranslations || {};
+  const currency = t.currency || '$';
+
+  let mainPrice = window.productBasePrice || 0;
+  const sv = window.selectedVariant;
+  if (sv && sv.price !== null && sv.price !== undefined && sv.price !== '') {
+    const vp = parseFloat(sv.price);
+    if (Number.isFinite(vp)) mainPrice = vp;
+  }
+
+  const qtyInput = document.getElementById('product-quantity');
+  const qty = qtyInput ? (parseFloat(qtyInput.value) || 1) : 1;
+
+  let total = mainPrice * qty;
+  let checkedCount = 0;
+  const checkedBoxes = document.querySelectorAll('.upsell-checkbox:checked');
+  checkedBoxes.forEach(function (cb) {
+    const row = cb.closest('.upsell-row');
+    if (!row) return;
+    const p = parseFloat(row.getAttribute('data-upsell-price')) || 0;
+    total += p;
+    checkedCount += 1;
+  });
+
+  amountEl.textContent = currency + total.toFixed(2);
+
+  const btn = document.getElementById('add-to-cart-btn');
+  if (btn) {
+    const baseLabel = (typeof getEcomText === 'function')
+      ? getEcomText('addToCart', t.addToCart || 'Add to Cart')
+      : (t.addToCart || 'Add to Cart');
+    if (checkedCount > 0) {
+      const totalCount = checkedCount + 1;
+      let bundleLabel = (typeof getEcomText === 'function')
+        ? getEcomText('addBundleToCart', t.addBundleToCart || ('Add ' + totalCount + ' items to cart'))
+        : (t.addBundleToCart || ('Add ' + totalCount + ' items to cart'));
+      bundleLabel = String(bundleLabel).replace(/\{count\}/g, String(totalCount));
+      btn.textContent = bundleLabel;
+    } else {
+      btn.textContent = baseLabel;
+    }
+  }
+}
+window.recomputeBundleTotal = recomputeBundleTotal;
+
+// Toggle the upsell row's checkbox when the user clicks anywhere on the row
+// EXCEPT the embedded product link (which stops propagation so it can
+// navigate). The native <input> click also stops propagation so we don't
+// double-toggle. Out-of-stock rows have no onclick wired up at all.
+function toggleUpsellRow(event, row) {
+  if (!row || row.classList.contains('is-out-of-stock')) return;
+  const cb = row.querySelector('.upsell-checkbox');
+  if (!cb || cb.disabled) return;
+  cb.checked = !cb.checked;
+  if (typeof window.recomputeBundleTotal === 'function') {
+    window.recomputeBundleTotal();
+  }
+}
+window.toggleUpsellRow = toggleUpsellRow;
+
+// Keyboard activation for the upsell row (role="button"). Space/Enter
+// toggle the selection just like a click. Lives in a named function so
+// the inline onkeydown attribute can stay quote-free — this whole script
+// body is emitted from a JS template literal, so nested single quotes in
+// inline handlers would otherwise break the surrounding JS string.
+function handleUpsellRowKey(event, row) {
+  if (!event) return;
+  if (event.key === ' ' || event.key === 'Spacebar' || event.key === 'Enter') {
+    event.preventDefault();
+    toggleUpsellRow(event, row);
+  }
+}
+window.handleUpsellRowKey = handleUpsellRowKey;
 
 async function loadRelatedProducts(currentProduct, t) {
   const section = document.getElementById('related-products-section');
@@ -7204,487 +8692,6 @@ async function loadRelatedProducts(currentProduct, t) {
   }
 }
 /* ==ZAPPY E-COMMERCE JS END== */
-
-/* Cookie Consent */
-
-// Helper function to check cookie consent
-function hasConsentFor(category) {
-  if (typeof window.CookieConsent === 'undefined') {
-    return false; // Default to no consent if cookie consent not loaded
-  }
-  
-  return window.CookieConsent.validConsent(category);
-}
-
-// Helper function to execute code only with consent
-function withConsent(category, callback) {
-  if (hasConsentFor(category)) {
-    callback();
-  } else {
-    console.log(`[WARNING] Skipping ${category} code - no user consent`);
-  }
-}
-
-// Cookie Consent Initialization
-
-(function() {
-  'use strict';
-  
-  let initAttempts = 0;
-  const maxAttempts = 50; // 5 seconds max wait
-  
-  // Wait for DOM and vanilla-cookieconsent to be ready
-  function initCookieConsent() {
-    initAttempts++;
-    
-    
-    if (typeof window.CookieConsent === 'undefined') {
-      if (initAttempts < maxAttempts) {
-        setTimeout(initCookieConsent, 100);
-      } else {
-      }
-      return;
-    }
-
-    const cc = window.CookieConsent;
-    
-    
-    // Initialize cookie consent
-    try {
-      cc.run({
-  "autoShow": true,
-  "mode": "opt-in",
-  "revision": 0,
-  "categories": {
-    "necessary": {
-      "enabled": true,
-      "readOnly": true
-    },
-    "analytics": {
-      "enabled": false,
-      "readOnly": false,
-      "autoClear": {
-        "cookies": [
-          {
-            "name": "_ga"
-          },
-          {
-            "name": "_ga_*"
-          },
-          {
-            "name": "_gid"
-          },
-          {
-            "name": "_gat"
-          }
-        ]
-      }
-    },
-    "marketing": {
-      "enabled": false,
-      "readOnly": false,
-      "autoClear": {
-        "cookies": [
-          {
-            "name": "_fbp"
-          },
-          {
-            "name": "_fbc"
-          },
-          {
-            "name": "fr"
-          }
-        ]
-      }
-    }
-  },
-  "language": {
-    "default": "he",
-    "translations": {
-      "he": {
-        "consentModal": {
-          "title": "אנחנו משתמשים בעוגיות 🍪",
-          "description": "רוקוסן משתמש בעוגיות כדי לשפר את החוויה שלך, לנתח שימוש באתר ולסייע במאמצי השיווק שלנו.",
-          "acceptAllBtn": "אשר הכל",
-          "acceptNecessaryBtn": "רק הכרחי",
-          "showPreferencesBtn": "נהל העדפות",
-          "footer": "<a href=\"#privacy-policy\">מדיניות פרטיות</a> | <a href=\"#terms-conditions\">תנאי שימוש</a>"
-        },
-        "preferencesModal": {
-          "title": "העדפות עוגיות",
-          "acceptAllBtn": "אשר הכל",
-          "acceptNecessaryBtn": "רק הכרחי",
-          "savePreferencesBtn": "שמור העדפות",
-          "closeIconLabel": "סגור",
-          "sections": [
-            {
-              "title": "עוגיות חיוניות",
-              "description": "עוגיות אלה הכרחיות לתפקוד האתר ולא ניתן להשבית אותן.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "עוגיות ניתוח",
-              "description": "עוגיות אלה עוזרות לנו להבין איך המבקרים מתקשרים עם האתר שלנו.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "עוגיות שיווקיות",
-              "description": "עוגיות אלה משמשות להצגת פרסומות מותאמות אישית.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "guiOptions": {
-    "consentModal": {
-      "layout": "box",
-      "position": "bottom right",
-      "equalWeightButtons": true,
-      "flipButtons": false
-    },
-    "preferencesModal": {
-      "layout": "box",
-      "equalWeightButtons": true,
-      "flipButtons": false
-    }
-  }
-});
-      
-      // Google Consent Mode v2 integration
-      // Update consent state based on accepted cookie categories
-      function updateGoogleConsentMode() {
-        if (typeof gtag !== 'function') {
-          // Define gtag if not already defined (needed for consent updates)
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = function(){dataLayer.push(arguments);};
-        }
-        
-        var analyticsAccepted = cc.acceptedCategory('analytics');
-        var marketingAccepted = cc.acceptedCategory('marketing');
-        
-        gtag('consent', 'update', {
-          'analytics_storage': analyticsAccepted ? 'granted' : 'denied',
-          'ad_storage': marketingAccepted ? 'granted' : 'denied',
-          'ad_user_data': marketingAccepted ? 'granted' : 'denied',
-          'ad_personalization': marketingAccepted ? 'granted' : 'denied'
-        });
-      }
-      
-      // Update consent on initial load (if user previously accepted)
-      updateGoogleConsentMode();
-      
-      // Handle consent changes via onChange callback
-      if (typeof cc.onChange === 'function') {
-        cc.onChange(function(cookie, changed_preferences) {
-          updateGoogleConsentMode();
-        });
-      }
-
-      // Note: Cookie Preferences button removed per marketing guidelines
-      // Footer should be clean and minimal - users can manage cookies via banner
-    } catch (error) {
-    }
-  }
-
-  // Initialize when DOM is ready - multiple approaches for reliability
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCookieConsent);
-    // Backup timeout in case DOMContentLoaded doesn't fire
-    setTimeout(initCookieConsent, 1000);
-  } else if (document.readyState === 'interactive' || document.readyState === 'complete') {
-    initCookieConsent();
-  } else {
-    // Fallback - try after a short delay
-    setTimeout(initCookieConsent, 500);
-  }
-  
-  // Additional fallback - try after page load
-  if (typeof window !== 'undefined') {
-    if (window.addEventListener) {
-      window.addEventListener('load', initCookieConsent, { once: true });
-    }
-  }
-})();
-
-/* Accessibility Features */
-
-/* Mickidum Accessibility Toolbar Initialization - Zappy Style */
-
-window.onload = function() {
-    
-    try {
-        window.micAccessTool = new MicAccessTool({
-            buttonPosition: 'left', // Position on left side
-            forceLang: 'he-IL', // Force language
-            icon: {
-                position: {
-                    bottom: { size: 50, units: 'px' },
-                    left: { size: 20, units: 'px' },
-                    type: 'fixed'
-                },
-                backgroundColor: 'transparent', // Transparent to allow CSS styling
-                color: 'transparent', // Let CSS handle coloring
-                img: 'accessible',
-                circular: false // Square button for consistent styling
-            },
-            menu: {
-                dimensions: {
-                    width: { size: 300, units: 'px' },
-                    height: { size: 'auto', units: 'px' }
-                }
-            }
-        });
-        
-    } catch (error) {
-    }
-    
-    // Keyboard shortcut handler: ALT+A (Option+A on Mac) to toggle accessibility widget visibility (desktop only)
-    document.addEventListener('keydown', function(event) {
-        // Check if ALT+A is pressed (ALT on Windows/Linux, Option on Mac)
-        var isAltOrOption = event.altKey;
-        // Use event.code for reliable physical key detection (works regardless of Option key character output)
-        var isAKey = event.code === 'KeyA' || event.keyCode === 65 || event.which === 65 || 
-                      (event.key && (event.key.toLowerCase() === 'a' || event.key === 'å' || event.key === 'Å'));
-        
-        if (isAltOrOption && isAKey) {
-            // Only work on desktop (screen width > 768px)
-            if (window.innerWidth > 768) {
-                event.preventDefault();
-                event.stopPropagation();
-                
-                // Toggle visibility class on body
-                var isVisible = document.body.classList.contains('accessibility-widget-visible');
-                
-                if (isVisible) {
-                    // Hide the widget
-                    document.body.classList.remove('accessibility-widget-visible');
-                } else {
-                    // Show the widget
-                    document.body.classList.add('accessibility-widget-visible');
-                    
-                    // After a short delay, click the button to open the menu
-                    setTimeout(function() {
-                        var accessButton = document.getElementById('mic-access-tool-general-button');
-                        if (accessButton) {
-                            accessButton.click();
-                        }
-                    }, 200);
-                }
-            }
-        }
-    }, true);
-};
-
-
-// Zappy Contact Form API Integration (Fallback)
-(function() {
-    if (window.zappyContactFormLoaded) {
-        console.log('📧 Zappy contact form already loaded');
-        return;
-    }
-    window.zappyContactFormLoaded = true;
-
-    function zappyNotify(message, type) {
-        var existing = document.querySelectorAll('.zappy-notification');
-        existing.forEach(function(el) { el.remove(); });
-        var el = document.createElement('div');
-        el.className = 'zappy-notification';
-        var bg = type === 'success' ? '#d4edda' : type === 'error' ? '#f8d7da' : '#d1ecf1';
-        var fg = type === 'success' ? '#155724' : type === 'error' ? '#721c24' : '#0c5460';
-        var border = type === 'success' ? '#c3e6cb' : type === 'error' ? '#f5c6cb' : '#bee5eb';
-        var icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
-        el.style.cssText = 'position:fixed;top:20px;right:20px;max-width:400px;padding:16px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);z-index:10000;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:14px;line-height:1.4;animation:slideInRight .3s ease-out;background:' + bg + ';color:' + fg + ';border:1px solid ' + border;
-        el.innerHTML = '<span style="margin-right:8px">' + icon + '</span>' + message + '<button onclick="this.parentElement.remove()" style="background:none;border:none;font-size:18px;cursor:pointer;float:right;opacity:.7;padding:0 0 0 12px">&times;</button>';
-        if (!document.getElementById('zappy-notify-anim')) {
-            var s = document.createElement('style');
-            s.id = 'zappy-notify-anim';
-            s.textContent = '@keyframes slideInRight{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}';
-            document.head.appendChild(s);
-        }
-        document.body.appendChild(el);
-        setTimeout(function() { if (el.parentElement) el.remove(); }, type === 'error' ? 8000 : 5000);
-    }
-
-    function initContactFormIntegration() {
-        console.log('📧 Zappy: Initializing contact form API integration...');
-
-        var contactForm = document.querySelector('.contact-form') || 
-                           document.querySelector('form[action*="contact"]') ||
-                           document.querySelector('form#contact') ||
-                           document.querySelector('form#contactForm') ||
-                           document.getElementById('contactForm') ||
-                           document.querySelector('section.contact form') ||
-                           document.querySelector('section#contact form') ||
-                           document.querySelector('form');
-        
-        if (!contactForm) {
-            console.log('⚠️ Zappy: No contact form found on page');
-            return;
-        }
-        
-        console.log('✅ Zappy: Contact form found:', contactForm.className || contactForm.id || 'unnamed form');
-
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        // Validate privacy consent checkbox if present (required for GDPR)
-        var privacyCheckbox = this.querySelector('.privacy-consent-checkbox');
-        if (privacyCheckbox && !privacyCheckbox.checked) {
-            zappyNotify('Please accept the Terms & Conditions and Privacy Policy to continue', 'error');
-            privacyCheckbox.focus();
-            return;
-        }
-
-        // Collect form data with multi-value support (checkboxes, multi-selects)
-        var formData = new FormData(this);
-        var data = {};
-        for (var pair of formData.entries()) {
-            if (data[pair[0]] !== undefined) {
-                if (Array.isArray(data[pair[0]])) data[pair[0]].push(pair[1]);
-                else data[pair[0]] = [data[pair[0]], pair[1]];
-            } else {
-                data[pair[0]] = pair[1];
-            }
-        }
-
-        // Smart field mapping
-        var _coreNameFields = ['name','firstName','first_name','fname','lastName','last_name','lname'];
-        var _coreEmailFields = ['email','emailAddress','mail','e-mail'];
-        var _corePhoneFields = ['phone','tel','telephone','mobile','cellphone'];
-        var _coreMsgFields = ['message','msg','comments','comment','description','details','notes','body','text','inquiry'];
-        var _coreSubjectFields = ['subject','topic','regarding','re'];
-        var _allCoreFields = [].concat(_coreNameFields, _coreEmailFields, _corePhoneFields, _coreMsgFields, _coreSubjectFields);
-
-        var resolvedName = (data.name || '').trim()
-            || [data.firstName || data.first_name || data.fname || '', data.lastName || data.last_name || data.lname || ''].filter(Boolean).join(' ').trim()
-            || (data.email || data.emailAddress || data.mail || '').trim()
-            || 'Anonymous';
-        var resolvedEmail = (data.email || data.emailAddress || data.mail || data['e-mail'] || '').trim();
-        var resolvedPhone = data.phone || data.tel || data.telephone || data.mobile || data.cellphone || null;
-        var resolvedSubject = data.subject || data.topic || data.regarding || data.re || 'Contact Form Submission';
-        var resolvedMessage = (data.message || data.msg || data.comments || data.comment || data.description || data.details || data.body || data.text || data.inquiry || '').trim();
-        if (!resolvedMessage) {
-            var extraEntries = Object.entries(data).filter(function(e) { return _allCoreFields.indexOf(e[0]) === -1; });
-            if (extraEntries.length > 0) {
-                resolvedMessage = extraEntries.map(function(e) {
-                    var label = e[0].replace(/([A-Z])/g, ' $1').replace(/[_-]/g, ' ').trim();
-                    var val = Array.isArray(e[1]) ? e[1].join(', ') : e[1];
-                    return label + ': ' + val;
-                }).join('\n');
-            } else {
-                resolvedMessage = 'Form submission from ' + window.location.pathname;
-            }
-        }
-
-        var extraFields = {};
-        for (var k of Object.keys(data)) {
-            if (_allCoreFields.indexOf(k) === -1 && data[k] !== '' && data[k] !== null && data[k] !== undefined) {
-                extraFields[k] = data[k];
-            }
-        }
-
-        // Loading state
-        var submitBtn = this.querySelector('button[type="submit"], input[type="submit"]');
-        var originalText = submitBtn ? (submitBtn.value || submitBtn.textContent) : '';
-        if (submitBtn) {
-            if (submitBtn.tagName === 'INPUT') submitBtn.value = 'Sending...';
-            else submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-        }
-
-        var currentPagePath = window.location.pathname;
-        if (window.ZAPPY_CONFIG && window.ZAPPY_CONFIG.currentPagePath) {
-            currentPagePath = window.ZAPPY_CONFIG.currentPagePath;
-        } else {
-            try {
-                var p = new URLSearchParams(window.location.search).get('page');
-                if (p) currentPagePath = p;
-            } catch (ignored) {}
-        }
-
-        var theForm = this;
-        try {
-            console.log('📧 Zappy: Sending contact form to backend API...');
-            var apiBase = (window.ZAPPY_API_BASE || 'https://api.zappy5.com').replace(/\/$/, '');
-            var payload = {
-                websiteId: 'f5c8925e-a8ef-4d77-8a21-10cb63290565',
-                name: resolvedName,
-                email: resolvedEmail,
-                subject: resolvedSubject,
-                message: resolvedMessage,
-                phone: resolvedPhone,
-                currentPagePath: currentPagePath
-            };
-            if (Object.keys(extraFields).length > 0) {
-                payload.extraFields = extraFields;
-            }
-            var response = await fetch(apiBase + '/api/email/contact-form', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            var result = await response.json();
-            
-            if (result.success) {
-                console.log('✅ Zappy: Contact form data sent successfully to backend');
-
-                // Thank-you page redirect
-                if (result.thankYouPagePath && result.ticketNumber) {
-                    var ticketParam = 'ticket=' + encodeURIComponent(result.ticketNumber);
-                    var isPreview = window.location.pathname.indexOf('/preview') !== -1;
-                    var thankYouUrl;
-                    if (isPreview && window.ZAPPY_CONFIG) {
-                        var wid = window.ZAPPY_CONFIG.websiteId || 'f5c8925e-a8ef-4d77-8a21-10cb63290565';
-                        var pt = window.location.pathname.indexOf('fullscreen') !== -1 ? 'preview-fullscreen' : 'preview';
-                        thankYouUrl = window.location.origin + '/api/website/' + pt + '/' + wid + '?page=' + encodeURIComponent(result.thankYouPagePath) + '&' + ticketParam;
-                        if (window.ZAPPY_CONFIG.authToken) thankYouUrl += '&auth_token=' + encodeURIComponent(window.ZAPPY_CONFIG.authToken);
-                    } else {
-                        thankYouUrl = result.thankYouPagePath + '?' + ticketParam;
-                    }
-                    window.location.href = thankYouUrl;
-                    return;
-                }
-
-                var _siteLang = document.documentElement.lang || '';
-                var _isHeSite = _siteLang === 'he' || (_siteLang !== 'ar' && document.documentElement.dir === 'rtl');
-                var _isArSite = _siteLang === 'ar';
-                var _successFallback = _isHeSite ? 'ההודעה שלך נשלחה בהצלחה! נחזור אליך בהקדם.' : _isArSite ? 'تم إرسال رسالتك بنجاح! سنرد عليك قريبًا.' : 'Thank you for your message! We\'ll get back to you soon.';
-                zappyNotify(result.message || _successFallback, 'success');
-                theForm.reset();
-            } else {
-                console.log('⚠️ Zappy: Backend returned error:', result.error);
-                var _isHeSiteErr = _siteLang === 'he' || (_siteLang !== 'ar' && document.documentElement.dir === 'rtl');
-                var _isArSiteErr = _siteLang === 'ar';
-                var _errFallback = _isHeSiteErr ? 'שליחת ההודעה נכשלה. אנא נסו שוב.' : _isArSiteErr ? 'فشل في إرسال الرسالة. يرجى المحاولة مرة أخرى.' : 'Failed to send message. Please try again.';
-                zappyNotify(result.error || _errFallback, 'error');
-            }
-        } catch (error) {
-            console.error('❌ Zappy: Failed to send to backend API:', error);
-            var _isHeSiteNet = _siteLang === 'he' || (_siteLang !== 'ar' && document.documentElement.dir === 'rtl');
-            var _isArSiteNet = _siteLang === 'ar';
-            var _netFallback = _isHeSiteNet ? 'לא ניתן לשלוח הודעה כרגע. אנא נסו שוב מאוחר יותר.' : _isArSiteNet ? 'لا يمكن إرسال الرسالة الآن. يرجى المحاولة مرة أخرى لاحقًا.' : 'Unable to send message right now. Please try again later.';
-            zappyNotify(_netFallback, 'error');
-        } finally {
-            if (submitBtn) {
-                if (submitBtn.tagName === 'INPUT') submitBtn.value = originalText;
-                else submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        }
-        }, true);
-
-        console.log('✅ Zappy: Contact form API integration initialized');
-    } // End of initContactFormIntegration
-    
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initContactFormIntegration);
-    } else {
-        initContactFormIntegration();
-    }
-})();
 
 
 /* ZAPPY_PUBLISHED_LIGHTBOX_RUNTIME */
@@ -7920,73 +8927,68 @@ window.onload = function() {
         var mPos = img.getAttribute('data-zappy-mobile-object-position');
         var mZoomStr = img.getAttribute('data-zappy-mobile-zoom');
         var mZoom = parseFloat(mZoomStr);
-        var hasMobileOverrides = mPos || mZoomStr;
         if (mSrc) img.src = mSrc;
 
-        if (hasMobileOverrides) {
-          // User configured mobile zoom/position — apply zoom/crop math
-          // to match what the editor mobile preview shows.
-          wrapper.style.setProperty('width', '100%', 'important');
-          wrapper.style.setProperty('max-width', '100%', 'important');
-          wrapper.style.setProperty('overflow', 'hidden', 'important');
-          wrapper.style.setProperty('position', 'relative', 'important');
-          var _sW = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-width')) || 0;
-          var _sH = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-height')) || 0;
-          if (_sW > 0 && _sH > 0) {
-            wrapper.style.setProperty('aspect-ratio', _sW + '/' + _sH, 'important');
-            wrapper.style.setProperty('height', 'auto', 'important');
-          }
-          var effZoom = (isFinite(mZoom) && mZoom > 0) ? mZoom : zoom;
-          var effPos = mPos || '50% 50%';
+        wrapper.style.setProperty('width', '100%', 'important');
+        wrapper.style.setProperty('max-width', '100%', 'important');
+        wrapper.style.setProperty('overflow', 'hidden', 'important');
+        wrapper.style.setProperty('position', 'relative', 'important');
 
-          function applyMobileZoomCrop(_img, _wrapper, _effPos, _effZoom) {
-            var rect = _wrapper.getBoundingClientRect();
-            if (!rect || !rect.width || !rect.height) return;
-            var nW = _img.naturalWidth || 0, nH = _img.naturalHeight || 0;
-            if (!(nW > 0 && nH > 0)) return;
-            var imgA = nW / nH;
-            var contA = rect.width / rect.height;
-            var cover = coverPercents(imgA, contA);
-            var wP = 100, hP = 100;
-            if (_effZoom >= 1) { wP = cover.w * _effZoom; hP = cover.h * _effZoom; }
-            else { var t2 = (_effZoom - 0.5) / 0.5; if (!isFinite(t2)) t2 = 0; t2 = Math.max(0, Math.min(1, t2)); wP = 100 + t2 * (cover.w - 100); hP = 100 + t2 * (cover.h - 100); }
-            var p2 = parseObjPos(_effPos);
-            var lP = (100 - wP) * (p2.x / 100);
-            var tP = (100 - hP) * (p2.y / 100);
-            _img.style.setProperty('position', 'absolute', 'important');
-            _img.style.setProperty('left', lP + '%', 'important');
-            _img.style.setProperty('top', tP + '%', 'important');
-            _img.style.setProperty('width', wP + '%', 'important');
-            _img.style.setProperty('height', hP + '%', 'important');
-            _img.style.setProperty('max-width', 'none', 'important');
-            _img.style.setProperty('max-height', 'none', 'important');
-            _img.style.setProperty('display', 'block', 'important');
-            _img.style.setProperty('object-fit', _effZoom < 1 ? 'fill' : 'cover', 'important');
-            _img.style.setProperty('margin', '0', 'important');
-          }
+        var _sW = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-width')) || 0;
+        var _sH = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-height')) || 0;
+        if (_sW > 0 && _sH > 0) {
+          wrapper.style.setProperty('padding-bottom', '0', 'important');
+          wrapper.style.setProperty('aspect-ratio', _sW + '/' + _sH, 'important');
+          wrapper.style.setProperty('height', 'auto', 'important');
+        }
 
+        function applyMobileZoomCrop(_img, _wrapper, _effPos, _effZoom) {
+          var rect = _wrapper.getBoundingClientRect();
+          if (!rect || !rect.width || !rect.height) return;
+          var nW = _img.naturalWidth || 0, nH = _img.naturalHeight || 0;
+          if (!(nW > 0 && nH > 0)) return;
+          var imgA = nW / nH;
+          var contA = rect.width / rect.height;
+          var cover = coverPercents(imgA, contA);
+          var wP = 100, hP = 100;
+          if (_effZoom >= 1) { wP = cover.w * _effZoom; hP = cover.h * _effZoom; }
+          else { var t2 = (_effZoom - 0.5) / 0.5; if (!isFinite(t2)) t2 = 0; t2 = Math.max(0, Math.min(1, t2)); wP = 100 + t2 * (cover.w - 100); hP = 100 + t2 * (cover.h - 100); }
+          var p2 = parseObjPos(_effPos);
+          var lP = (100 - wP) * (p2.x / 100);
+          var tP = (100 - hP) * (p2.y / 100);
+          _img.style.setProperty('position', 'absolute', 'important');
+          _img.style.setProperty('left', lP + '%', 'important');
+          _img.style.setProperty('top', tP + '%', 'important');
+          _img.style.setProperty('width', wP + '%', 'important');
+          _img.style.setProperty('height', hP + '%', 'important');
+          _img.style.setProperty('max-width', 'none', 'important');
+          _img.style.setProperty('max-height', 'none', 'important');
+          _img.style.setProperty('display', 'block', 'important');
+          _img.style.setProperty('object-fit', _effZoom < 1 ? 'fill' : 'cover', 'important');
+          _img.style.setProperty('margin', '0', 'important');
+        }
+
+        var effZoom = (isFinite(mZoom) && mZoom > 0) ? mZoom : zoom;
+        var effPos = mPos || img.getAttribute('data-zappy-object-position') || img.style.objectPosition || '50% 50%';
+        if (_sW > 0 && _sH > 0) {
           applyMobileZoomCrop(img, wrapper, effPos, effZoom);
-
-          // If src changed, the image may not be loaded yet (naturalWidth=0).
-          // Re-apply after it loads so the zoom math uses correct dimensions.
-          if (mSrc && !(img.complete && img.naturalWidth > 0)) {
+          if (!(img.complete && img.naturalWidth > 0)) {
             img.addEventListener('load', function _onLoad() {
               img.removeEventListener('load', _onLoad);
               try { applyMobileZoomCrop(img, wrapper, effPos, effZoom); } catch(e) {}
             });
           }
-          return;
+        } else {
+          img.style.setProperty('position', 'relative', 'important');
+          img.style.setProperty('width', '100%', 'important');
+          img.style.setProperty('height', 'auto', 'important');
+          img.style.setProperty('max-width', '100%', 'important');
+          img.style.setProperty('display', 'block', 'important');
+          img.style.setProperty('object-fit', 'cover', 'important');
+          img.style.removeProperty('left');
+          img.style.removeProperty('top');
+          img.style.setProperty('margin', '0', 'important');
         }
-
-        img.style.setProperty('position', 'relative', 'important');
-        img.style.setProperty('width', '100%', 'important');
-        img.style.setProperty('height', 'auto', 'important');
-        img.style.setProperty('max-width', '100%', 'important');
-        img.style.setProperty('display', 'block', 'important');
-        img.style.setProperty('object-fit', 'cover', 'important');
-        img.style.removeProperty('left');
-        img.style.removeProperty('top');
-        img.style.setProperty('margin', '0', 'important');
         return;
       }
 
@@ -8870,7 +9872,7 @@ window.onload = function() {
         var m=_fm(selectedAttributes);if(m.length>0){var v=m[0];window.selectedVariant=v;
           if(_oos(v)){if(sd){sd.className='product-stock out-of-stock';sd.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>'+(t.outOfStock||'Out of Stock')}if(ab){ab.disabled=true;ab.style.opacity='0.5';ab.style.cursor='not-allowed'}}
           else{if(sd){sd.className='product-stock in-stock';sd.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>'+(t.inStock||'In Stock')}if(ab){ab.disabled=false;ab.style.opacity='';ab.style.cursor=''}}
-          var skd=document.getElementById('product-sku-display');if(skd&&v.sku){skd.textContent=(t.sku||'SKU')+': '+v.sku}else if(skd&&product.sku){skd.textContent=(t.sku||'SKU')+': '+product.sku}
+          var skd=document.getElementById('product-sku-display');if(skd){var skL=(typeof getEcomText==='function')?getEcomText('sku',t.sku||'SKU'):(t.sku||'SKU');if(v.sku){skd.textContent=skL+': '+v.sku}else if(product.sku){skd.textContent=skL+': '+product.sku}}
           var pd=document.getElementById('product-price-display');if(pd){var c=product.currency||t.currency||String.fromCharCode(8362),bP=window.productBasePrice||parseFloat(product.price)||0,oP=window.productOriginalPrice||parseFloat(product.compare_at_price||product.original_price||0),hS=window.productHasSalePrice,fP=(v.price!=null)?parseFloat(v.price):bP,h=c+fP.toFixed(2);if(v.price!=null){if(oP&&oP>fP)h+=' <span class="original-price">'+c+oP.toFixed(2)+'</span>'}else if(hS&&oP>fP){h+=' <span class="original-price">'+c+oP.toFixed(2)+'</span>'}pd.innerHTML=h}if(typeof updatePricePerUnitDisplay==='function'){var eP=(v.price!=null)?parseFloat(v.price):(window.productBasePrice||parseFloat(product.price)||0);updatePricePerUnitDisplay(eP,product,t)}
           _updImg(v);
         }
@@ -8878,7 +9880,7 @@ window.onload = function() {
         window.selectedVariant=null;
         if(sd){sd.className='product-stock in-stock';sd.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>'+(t.inStock||'In Stock')}
         if(ab){ab.disabled=false;ab.style.opacity='';ab.style.cursor=''}
-        var skd2=document.getElementById('product-sku-display');if(skd2&&product.sku){skd2.textContent=(t.sku||'SKU')+': '+product.sku}
+        var skd2=document.getElementById('product-sku-display');if(skd2&&product.sku){var skL2=(typeof getEcomText==='function')?getEcomText('sku',t.sku||'SKU'):(t.sku||'SKU');skd2.textContent=skL2+': '+product.sku}
         var pd=document.getElementById('product-price-display');if(pd){var c=product.currency||t.currency||String.fromCharCode(8362),bP=window.productBasePrice||parseFloat(product.price)||0,oP=window.productOriginalPrice||parseFloat(product.compare_at_price||product.original_price||0),hS=window.productHasSalePrice,hR=window.productHasVariantPriceRange,mP=window.productVariantMinPrice;if(hR&&mP!=null&&isFinite(mP)){var sL=(typeof getEcomText==='function')?getEcomText('startingAt',t.startingAt||'Starting at'):(t.startingAt||'Starting at');pd.textContent=sL+' '+c+mP.toFixed(2)}else if(hS&&oP>bP){pd.innerHTML=c+bP.toFixed(2)+' <span class="original-price">'+c+oP.toFixed(2)+'</span>'}else{pd.textContent=c+bP.toFixed(2)}}
         if(typeof updatePricePerUnitDisplay==='function'){var hR2=window.productHasVariantPriceRange,mP2=window.productVariantMinPrice,bP2=window.productBasePrice||parseFloat(product.price)||0,rP=(hR2&&mP2!=null&&isFinite(mP2))?mP2:bP2;updatePricePerUnitDisplay(rP,product,t)}
         _updImg(null);
@@ -9136,17 +10138,18 @@ window.onload = function() {
         var gap = Math.max(0, (visual || 0) - (layout || 0));
         document.documentElement.style.setProperty('--ios-viewport-gap', gap + 'px');
 
-        // Also publish the navbar height so the mobile dropdown menu CSS can
-        // anchor `top` to the navbar's bottom edge. This is needed because
+        // Also publish the navbar bottom so the mobile dropdown menu CSS can
+        // anchor `top` below announcement bars + fixed navbar. This is needed because
         // older v2 patches set `top: 100% !important` on .nav-menu, which
         // with position:fixed resolves against the viewport (=height of
         // screen) instead of the navbar. --zappy-navbar-bottom gives the
         // v3 CSS something concrete to override that with.
         var nav = document.querySelector('nav.navbar, .navbar, header nav, header.navbar');
         if (nav) {
-          var h = Math.round(nav.getBoundingClientRect().height);
-          if (h > 0) {
-            document.documentElement.style.setProperty('--zappy-navbar-bottom', h + 'px');
+          var rect = nav.getBoundingClientRect();
+          var bottom = Math.round(rect.bottom);
+          if (bottom > 0) {
+            document.documentElement.style.setProperty('--zappy-navbar-bottom', bottom + 'px');
           }
         }
       } catch (e) {}
@@ -9164,4 +10167,1479 @@ window.onload = function() {
     setTimeout(update, 250);
     setTimeout(update, 1000);
   } catch (e) {}
+})();
+
+
+/* ZAPPY_STOREFRONT_RUNTIME_V1 — appended from preview-scripts/00-config.js for preview/live parity */
+;(function() {
+  'use strict';
+  // ===== DESKTOP NAVBAR FIX =====
+  // Clear mobile-only positioning inline styles on desktop viewport
+  // This fixes sites generated with old code that applied these styles unconditionally
+  function clearMobileNavbarStyles() {
+    if (window.innerWidth > 768) {
+      var mobileToggle = document.querySelector('.mobile-toggle');
+      var phoneBtn = document.querySelector('.phone-header-btn');
+      
+      if (mobileToggle) {
+        mobileToggle.style.removeProperty('position');
+        mobileToggle.style.removeProperty('top');
+        mobileToggle.style.removeProperty('transform');
+        mobileToggle.style.removeProperty('z-index');
+        mobileToggle.style.removeProperty('left');
+        mobileToggle.style.removeProperty('right');
+      }
+      
+      if (phoneBtn) {
+        phoneBtn.style.removeProperty('position');
+        phoneBtn.style.removeProperty('top');
+        phoneBtn.style.removeProperty('transform');
+        phoneBtn.style.removeProperty('z-index');
+        phoneBtn.style.removeProperty('left');
+        phoneBtn.style.removeProperty('right');
+      }
+      
+      console.log('📦 [00-config] Cleared mobile navbar inline styles on desktop');
+    }
+  }
+  
+  // Run on load and resize
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', clearMobileNavbarStyles);
+  } else {
+    clearMobileNavbarStyles();
+  }
+  window.addEventListener('load', clearMobileNavbarStyles);
+  window.addEventListener('resize', clearMobileNavbarStyles);
+
+  // ===== LAYOUT SECTION NORMALIZATION =====
+  // Ensure layout sections create a block formatting context so that child
+  // element margins (e.g. <h2> default margin-top) don't collapse outside
+  // the section. Without this, sections render differently in edit mode
+  // (where .zappy-removable adds position:relative) vs view mode.
+  (function() {
+    var layoutNormStyle = document.createElement('style');
+    layoutNormStyle.id = 'zappy-layout-norm';
+    layoutNormStyle.textContent = 'section.layout-section { overflow: hidden; }';
+    document.head.appendChild(layoutNormStyle);
+  })();
+
+  // ===== GRID CELL MULTI-CHILD FIX =====
+  // Grid cells (inserted elements inside horizontal grids) that contain multiple
+  // child inserted elements must use flex-direction: column so children stack
+  // vertically. This can be lost if inline styles are overwritten during editing.
+  (function() {
+    function fixGridCellFlexDirection() {
+      try {
+        var cells = document.querySelectorAll('.zappy-inserted-element');
+        for (var i = 0; i < cells.length; i++) {
+          var cell = cells[i];
+          var style = cell.getAttribute('style') || '';
+          if (style.indexOf('display: flex') === -1 && style.indexOf('display:flex') === -1) continue;
+          if (style.indexOf('flex-direction') !== -1) continue;
+          var childInserted = cell.querySelector('.zappy-inserted-element');
+          if (!childInserted) continue;
+          cell.style.flexDirection = 'column';
+          cell.style.alignItems = 'center';
+        }
+      } catch (e) {}
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fixGridCellFlexDirection);
+    } else {
+      fixGridCellFlexDirection();
+    }
+  })();
+
+  // ===== E-COMMERCE VARIANT SELECTION FIX =====
+  // Inject CSS for variant option states:
+  //   .disabled        = non-existent combination OR out-of-stock → gray + text strikethrough, always clickable
+  //   .out-of-stock    = same visual as disabled, used for stock-specific logic
+  // This ensures existing sites get the correct styling without regeneration.
+  (function() {
+    // 1) Inject CSS immediately (uses separate ID so fixVariantSelection doesn't remove it)
+    if (!document.getElementById('zappy-variant-visual-css')) {
+      var s = document.createElement('style');
+      s.id = 'zappy-variant-visual-css';
+      s.textContent =
+        /* Text variant options: gray + text strikethrough */
+        '.variant-option.disabled { opacity: 0.4 !important; cursor: pointer !important; text-decoration: line-through !important; }' +
+        '.variant-option.disabled::after, .variant-option.disabled::before { content: none !important; }' +
+        /* Color swatches: only opacity, no strikethrough */
+        '.variant-option.color-swatch.disabled { text-decoration: none !important; }' +
+        /* Out-of-stock: same treatment */
+        '.variant-option.out-of-stock { opacity: 0.4 !important; cursor: pointer !important; text-decoration: line-through !important; }' +
+        '.variant-option.out-of-stock::after, .variant-option.out-of-stock::before { content: none !important; }' +
+        '.variant-option.color-swatch.out-of-stock { text-decoration: none !important; }';
+      document.head.appendChild(s);
+    }
+
+    // 2) Override initVariantSelection early to prevent the page's default selection behavior.
+    // The page's initVariantSelection calls .click() on first options, auto-selecting defaults.
+    // We replace it with a version that only does setup (CSS, sorting, handlers) but skips auto-select.
+    var _initOverridden = false;
+    function _overrideInitVariantSelection() {
+      if (_initOverridden) return;
+      if (typeof window.initVariantSelection === 'function') {
+        _initOverridden = true;
+      }
+      window.initVariantSelection = function(product, t) {
+        // Store product data for our fix
+        if (product && product.variants && product.variants.length > 0) {
+          _variantProduct = product;
+          var trans = t || {};
+          // Ensure pleaseSelect is available (for sites generated before this key was added)
+          if (!trans.pleaseSelect) {
+            var isRTL = document.documentElement.getAttribute('dir') === 'rtl' || document.body.getAttribute('dir') === 'rtl';
+            trans.pleaseSelect = isRTL ? 'נא לבחור' : 'Please select';
+          }
+          _variantTranslations = trans;
+          // Re-trigger fixVariantSelection here. Our scheduled setTimeout(..., 100) and
+          // setTimeout(..., 2000) may have already fired before the product API resolved
+          // (slow DB / large payloads), in which case both calls bailed at the
+          // `if (!product || !product.variants...) return;` guard and never repaired
+          // truncated data-value attributes nor auto-selected single-option groups.
+          // Running it again now (deferred so DOM mutations from the page's own init
+          // settle first) ensures the fix executes exactly once for late-arriving data.
+          setTimeout(function() { try { fixVariantSelection(); } catch (e) {} }, 0);
+        }
+        // Do NOT call the original (which would auto-select defaults and inject conflicting CSS).
+        // Our fixVariantSelection handles all setup.
+      };
+    }
+    _overrideInitVariantSelection();
+    
+    // 3) Document-level click delegation for variant options.
+    // Uses capture phase on document so it fires before any element-level handlers
+    // and works regardless of when variant buttons are created/recreated.
+    var selectedAttributes = {};
+    var _variantProduct = null;
+    var _variantTranslations = {};
+    
+    function _getVariants() {
+      if (!_variantProduct) return [];
+      return (_variantProduct.variants || []).filter(function(v) { return v.is_active !== false; });
+    }
+    
+    function _getAttributeKeys() {
+      var keys = [], seen = {};
+      document.querySelectorAll('.variant-option').forEach(function(btn) {
+        var k = btn.getAttribute('data-attr');
+        if (k && !seen[k]) { seen[k] = true; keys.push(k); }
+      });
+      return keys;
+    }
+    
+    function _comboExists(selections) {
+      return _getVariants().some(function(v) {
+        if (!v.attributes) return false;
+        for (var k in selections) {
+          if (!selections.hasOwnProperty(k)) continue;
+          if (v.attributes[k] !== selections[k]) return false;
+        }
+        return true;
+      });
+    }
+    
+    function _findMatching(selections) {
+      return _getVariants().filter(function(v) {
+        if (!v.attributes) return false;
+        for (var k in selections) {
+          if (!selections.hasOwnProperty(k)) continue;
+          if (v.attributes[k] !== selections[k]) return false;
+        }
+        return true;
+      });
+    }
+    
+    function _isOOS(v) {
+      return v.stock_status === 'out_of_stock' ||
+        (v.stock_quantity !== null && v.stock_quantity !== undefined && v.stock_quantity <= 0);
+    }
+    
+    function _updateVisuals() {
+      var variants = _getVariants();
+      if (variants.length === 0) return;
+      document.querySelectorAll('.variant-option').forEach(function(btn) {
+        var ak = btn.getAttribute('data-attr');
+        var av = btn.getAttribute('data-value');
+        var test = {};
+        for (var k in selectedAttributes) {
+          if (selectedAttributes.hasOwnProperty(k) && k !== ak) test[k] = selectedAttributes[k];
+        }
+        test[ak] = av;
+        var matching = _findMatching(test);
+        btn.classList.remove('disabled', 'out-of-stock');
+        btn.disabled = false;
+        if (matching.length === 0) {
+          btn.classList.add('disabled');
+        } else if (matching.every(function(v) { return _isOOS(v); })) {
+          btn.classList.add('disabled');
+          btn.classList.add('out-of-stock');
+        }
+      });
+    }
+    
+    function _updateProductDisplay() {
+      var t = _variantTranslations;
+      var product = _variantProduct;
+      if (!product) return;
+      var keys = _getAttributeKeys();
+      var allSelected = keys.every(function(k) { return selectedAttributes.hasOwnProperty(k); });
+      var stockDisplay = document.getElementById('product-stock-display');
+      var priceDisplay = document.getElementById('product-price-display');
+      var addBtn = document.getElementById('add-to-cart-btn');
+      keys.forEach(function(k) {
+        var sp = document.querySelector('.variant-group[data-group="' + k + '"] .variant-selected-value');
+        if (sp) {
+          var selBtn = document.querySelector('.variant-option[data-attr="' + k + '"].selected');
+          sp.textContent = (selBtn && selBtn.getAttribute('data-display-value')) || selectedAttributes[k] || '';
+        }
+      });
+      var mainImage = document.getElementById('product-main-image');
+      if (mainImage && !window._originalMainImageSrc) {
+        window._originalMainImageSrc = mainImage.src;
+      }
+      if (allSelected) {
+        var matching = _findMatching(selectedAttributes);
+        if (matching.length > 0) {
+          var v = matching[0];
+          // Set window.selectedVariant so the page's addProductToCart can use it
+          window.selectedVariant = v;
+          if (_isOOS(v)) {
+            if (stockDisplay) {
+              stockDisplay.className = 'product-stock out-of-stock';
+              stockDisplay.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>' + (t.outOfStock || 'Out of Stock');
+            }
+            if (addBtn) { addBtn.disabled = true; addBtn.style.opacity = '0.5'; addBtn.style.cursor = 'not-allowed'; }
+          } else {
+            if (stockDisplay) {
+              stockDisplay.className = 'product-stock in-stock';
+              stockDisplay.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>' + (t.inStock || 'In Stock');
+            }
+            if (addBtn) { addBtn.disabled = false; addBtn.style.opacity = ''; addBtn.style.cursor = ''; }
+          }
+          // Always update price when a variant is matched
+          if (priceDisplay) {
+            var currency = product.currency || t.currency || '₪';
+            var baseP = window.productBasePrice || parseFloat(product.price) || 0;
+            var origP = window.productOriginalPrice || parseFloat(product.compare_at_price || product.original_price || 0);
+            var hasSale = window.productHasSalePrice;
+            var finalPrice = (v.price != null) ? parseFloat(v.price) : baseP;
+            var html = currency + finalPrice.toFixed(2);
+            if (v.price != null) {
+              if (origP && origP > finalPrice) {
+                html += ' <span class="original-price">' + currency + origP.toFixed(2) + '</span>';
+              }
+            } else if (hasSale && origP > finalPrice) {
+              html += ' <span class="original-price">' + currency + origP.toFixed(2) + '</span>';
+            }
+            priceDisplay.innerHTML = html;
+          }
+          // Update price-per-unit if the function exists
+          if (typeof updatePricePerUnitDisplay === 'function') {
+            var effPrice = (v.price != null) ? parseFloat(v.price) : (window.productBasePrice || parseFloat(product.price) || 0);
+            updatePricePerUnitDisplay(effPrice, product, t);
+          }
+          // Update SKU: prefer variant SKU, fall back to base product SKU.
+          // Resolve the label through getEcomText so it follows the active
+          // storefront language — `t.sku || 'SKU'` alone returns Hebrew
+          // ("מק״ט") on every English page because the static `t` dictionary
+          // baked at server-render time is the merchant's source language
+          // (Hebrew, in the artori-design case) and a Hebrew string is
+          // truthy, so the English fallback is never reached.
+          var skuDisplay = document.getElementById('product-sku-display');
+          if (skuDisplay) {
+            var skuLabel = (typeof getEcomText === 'function') ? getEcomText('sku', t.sku || 'SKU') : (t.sku || 'SKU');
+            if (v.sku) {
+              skuDisplay.textContent = skuLabel + ': ' + v.sku;
+            } else if (product.sku) {
+              skuDisplay.textContent = skuLabel + ': ' + product.sku;
+            }
+          }
+          // Update main image if variant has a specific image
+          if (mainImage && v.image) {
+            var variantImgSrc = v.image;
+            if (window.resolveProductImageUrl) {
+              variantImgSrc = window.resolveProductImageUrl(v.image);
+            }
+            mainImage.src = variantImgSrc;
+          } else if (mainImage && window._originalMainImageSrc) {
+            mainImage.src = window._originalMainImageSrc;
+          }
+        }
+      } else {
+        window.selectedVariant = null;
+        // Reset SKU to base product SKU
+        var skuDisplay2 = document.getElementById('product-sku-display');
+        if (skuDisplay2 && product.sku) {
+          var skuLabel2 = (typeof getEcomText === 'function') ? getEcomText('sku', t.sku || 'SKU') : (t.sku || 'SKU');
+          skuDisplay2.textContent = skuLabel2 + ': ' + product.sku;
+        }
+        if (stockDisplay) {
+          stockDisplay.className = 'product-stock in-stock';
+          stockDisplay.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>' + (t.inStock || 'In Stock');
+        }
+        if (addBtn) { addBtn.disabled = false; addBtn.style.opacity = ''; addBtn.style.cursor = ''; }
+        // Reset price to initial state (Starting at / base price)
+        if (priceDisplay) {
+          var currency = product.currency || t.currency || '₪';
+          var baseP = window.productBasePrice || parseFloat(product.price) || 0;
+          var origP = window.productOriginalPrice || parseFloat(product.compare_at_price || product.original_price || 0);
+          var hasSale = window.productHasSalePrice;
+          var hasRange = window.productHasVariantPriceRange;
+          var minP = window.productVariantMinPrice;
+          if (hasRange && minP != null && isFinite(minP)) {
+            var startLabel = (typeof getEcomText === 'function') ? getEcomText('startingAt', t.startingAt || 'Starting at') : (t.startingAt || 'Starting at');
+            priceDisplay.textContent = startLabel + ' ' + currency + minP.toFixed(2);
+          } else if (hasSale && origP > baseP) {
+            priceDisplay.innerHTML = currency + baseP.toFixed(2) + ' <span class="original-price">' + currency + origP.toFixed(2) + '</span>';
+          } else {
+            priceDisplay.textContent = currency + baseP.toFixed(2);
+          }
+        }
+        // Reset price-per-unit
+        if (typeof updatePricePerUnitDisplay === 'function') {
+          var hasRange = window.productHasVariantPriceRange;
+          var minP = window.productVariantMinPrice;
+          var baseP = window.productBasePrice || parseFloat(product.price) || 0;
+          var resetPrice = (hasRange && minP != null && isFinite(minP)) ? minP : baseP;
+          updatePricePerUnitDisplay(resetPrice, product, t);
+        }
+        // Restore original image when no variant is fully selected
+        if (mainImage && window._originalMainImageSrc) {
+          mainImage.src = window._originalMainImageSrc;
+        }
+      }
+    }
+    
+    // Document-level capture handler - fires BEFORE any element-level handlers
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest ? e.target.closest('.variant-option') : null;
+      if (!btn) return;
+      if (!_variantProduct || _getVariants().length === 0) return;
+      
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      
+      var ak = btn.getAttribute('data-attr');
+      var av = btn.getAttribute('data-value');
+      if (!ak || !av) return;
+      
+      // If already selected, do nothing (no manual deselect)
+      if (selectedAttributes[ak] === av) {
+        return;
+      }
+      // Select new option in this group
+      document.querySelectorAll('.variant-option[data-attr="' + ak + '"]').forEach(function(b) { b.classList.remove('selected'); });
+      selectedAttributes[ak] = av;
+      btn.classList.add('selected');
+      // Non-existent combo check: if the new selection creates an impossible combo, clear all others
+      if (Object.keys(selectedAttributes).length > 1) {
+        if (!_comboExists(selectedAttributes)) {
+          document.querySelectorAll('.variant-option').forEach(function(b) { b.classList.remove('selected'); });
+          selectedAttributes = {};
+          selectedAttributes[ak] = av;
+          btn.classList.add('selected');
+        }
+      }
+      
+      _updateVisuals();
+      _updateProductDisplay();
+    }, true); // capture phase
+    
+    // Document-level add-to-cart interceptor (capture phase)
+    // This fires before any element-level onclick or inline onclick handlers,
+    // preventing the page's original alert()-based validation.
+    document.addEventListener('click', function(e) {
+      var addBtn = e.target.closest ? e.target.closest('.add-to-cart-btn, .add-to-cart, #add-to-cart-btn, [onclick*="addProductToCart"]') : null;
+      if (!addBtn) return;
+      if (!_variantProduct || _getVariants().length === 0) return;
+      
+      var t = _variantTranslations || {};
+      var keys = _getAttributeKeys();
+      
+      // Sequential validation: check each variant group in order
+      for (var i = 0; i < keys.length; i++) {
+        if (!selectedAttributes.hasOwnProperty(keys[i])) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          var grp = document.querySelector('.variant-group[data-group="' + keys[i] + '"]');
+          var lbl = grp ? grp.querySelector('.variant-group-label') : null;
+          var name = lbl ? lbl.textContent.replace(/[:\s]+$/, '').trim() : keys[i];
+          var sd = document.getElementById('product-stock-display');
+          if (sd) {
+            sd.className = 'product-stock out-of-stock';
+            sd.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+              (t.pleaseSelect || 'Please select') + ' ' + name;
+          }
+          if (grp) {
+            grp.style.transition = 'background 0.3s';
+            grp.style.background = 'rgba(255,0,0,0.05)';
+            grp.style.borderRadius = '8px';
+            setTimeout(function() { grp.style.background = ''; }, 2000);
+          }
+          return;
+        }
+      }
+      
+      // All selected: check if combo is out of stock
+      var matching = _findMatching(selectedAttributes);
+      if (matching.length > 0 && matching.every(function(v) { return _isOOS(v); })) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        return;
+      }
+      // Valid selection - let the click through to the original handler
+    }, true); // capture phase
+    
+    // Post-load init: sort options, clear selections, override addProductToCart
+    function fixVariantSelection() {
+      // Re-assert initVariantSelection override in case it was redefined
+      _overrideInitVariantSelection();
+      
+      var product = _variantProduct || window.currentProduct;
+      var t = _variantTranslations || window.productTranslations || {};
+      if (!product || !product.variants || product.variants.length === 0) return;
+      if (document.querySelectorAll('.variant-option').length === 0) return;
+      if (window._zappyVariantFixed) return;
+      window._zappyVariantFixed = true;
+      
+      _variantProduct = product;
+      // Ensure pleaseSelect translation exists (for sites generated before this key was added)
+      if (!t.pleaseSelect) {
+        var isRTL = document.documentElement.getAttribute('dir') === 'rtl' || document.body.getAttribute('dir') === 'rtl';
+        t.pleaseSelect = isRTL ? 'נא לבחור' : 'Please select';
+      }
+      _variantTranslations = t;
+      
+      // Remove old dynamic CSS injected by the original initVariantSelection
+      var oldStyle = document.getElementById('zappy-variant-state-css');
+      if (oldStyle) oldStyle.remove();
+      document.querySelectorAll('.variant-option').forEach(function(btn) {
+        btn.style.display = '';
+        btn.disabled = false;
+      });
+
+      // Repair variant button attributes that were truncated by the browser
+      // when the (pre-fix) renderProductDetail in older website.content.js
+      // serialized values containing " (e.g. Hebrew sizes like '19  מ"מ',
+      // US sizes 5'10") into data-value/data-display-value without HTML
+      // escaping. We rebuild data-value, data-display-value, and the visible
+      // text from _variantProduct.variants[*].attributes — the unbroken
+      // source of truth from the API. Pairs buttons to values by index after
+      // applying the same sort that fixVariantSelection uses below, so the
+      // mapping survives even when buttons render in a different order than
+      // the variants array.
+      function _repairVariantButtons() {
+        if (!_variantProduct || !_variantProduct.variants) return;
+        var vs = _getVariants();
+        if (vs.length === 0) return;
+        var _so = {'xxxs':0,'xxs':1,'xs':2,'s':3,'m':4,'l':5,'xl':6,'xxl':7,'2xl':7,'xxxl':8,'3xl':8,'4xl':9,'5xl':10};
+        function _cmp(a, b) {
+          var sa = _so[String(a).toLowerCase()], sb = _so[String(b).toLowerCase()];
+          var na = sa === undefined ? parseFloat(a) : NaN;
+          var nb = sb === undefined ? parseFloat(b) : NaN;
+          if (!isNaN(na) && !isNaN(nb)) return na - nb;
+          if (sa !== undefined && sb !== undefined) return sa - sb;
+          var ca = !isNaN(na) ? 0 : sa !== undefined ? 1 : 2;
+          var cb = !isNaN(nb) ? 0 : sb !== undefined ? 1 : 2;
+          if (ca !== cb) return ca - cb;
+          return String(a).localeCompare(String(b));
+        }
+        document.querySelectorAll('.variant-group').forEach(function(grp) {
+          var ak = grp.getAttribute('data-group');
+          if (!ak || ak === 'variant') return;
+          var btns = Array.prototype.slice.call(grp.querySelectorAll('.variant-option'));
+          if (btns.length === 0) return;
+          var seen = {}, vals = [];
+          vs.forEach(function(v) {
+            if (v.attributes && Object.prototype.hasOwnProperty.call(v.attributes, ak)) {
+              var val = v.attributes[ak];
+              if (val != null && !seen[val]) { seen[val] = true; vals.push(val); }
+            }
+          });
+          if (vals.length === 0 || vals.length !== btns.length) return;
+          vals.sort(_cmp);
+          btns.forEach(function(btn, i) {
+            var correct = String(vals[i]);
+            var current = btn.getAttribute('data-value') || '';
+            if (current === correct) return;
+            btn.setAttribute('data-value', correct);
+            btn.setAttribute('data-display-value', correct);
+            if (!btn.classList.contains('color-swatch')) { btn.textContent = correct; }
+            if (btn.title) { btn.title = correct; }
+          });
+        });
+      }
+      _repairVariantButtons();
+
+      // Sort variant options (numeric, then known sizes, then alphabetical)
+      var _sizeOrder = {'xxxs':0,'xxs':1,'xs':2,'s':3,'m':4,'l':5,'xl':6,'xxl':7,'2xl':7,'xxxl':8,'3xl':8,'4xl':9,'5xl':10};
+      document.querySelectorAll('.variant-options').forEach(function(container) {
+        var btns = Array.from(container.querySelectorAll('.variant-option'));
+        if (btns.length < 2) return;
+        btns.sort(function(a, b) {
+          var va = a.getAttribute('data-value') || '', vb = b.getAttribute('data-value') || '';
+          var sa = _sizeOrder[va.toLowerCase()], sb = _sizeOrder[vb.toLowerCase()];
+          var na = sa === undefined ? parseFloat(va) : NaN;
+          var nb = sb === undefined ? parseFloat(vb) : NaN;
+          if (!isNaN(na) && !isNaN(nb)) return na - nb;
+          if (sa !== undefined && sb !== undefined) return sa - sb;
+          var ca = !isNaN(na) ? 0 : sa !== undefined ? 1 : 2;
+          var cb = !isNaN(nb) ? 0 : sb !== undefined ? 1 : 2;
+          if (ca !== cb) return ca - cb;
+          return va.localeCompare(vb);
+        });
+        btns.forEach(function(b) { container.appendChild(b); });
+      });
+      
+      // Also override addProductToCart as a safety net
+      var origAddToCart = window.addProductToCart;
+      window.addProductToCart = function() {
+        var keys = _getAttributeKeys();
+        for (var i = 0; i < keys.length; i++) {
+          if (!selectedAttributes.hasOwnProperty(keys[i])) {
+            var grp = document.querySelector('.variant-group[data-group="' + keys[i] + '"]');
+            var lbl = grp ? grp.querySelector('.variant-group-label') : null;
+            var name = lbl ? lbl.textContent.replace(/[:\s]+$/, '').trim() : keys[i];
+            var sd = document.getElementById('product-stock-display');
+            if (sd) {
+              sd.className = 'product-stock out-of-stock';
+              sd.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>' +
+                (t.pleaseSelect || 'Please select') + ' ' + name;
+            }
+            if (grp) {
+              grp.style.transition = 'background 0.3s';
+              grp.style.background = 'rgba(255,0,0,0.05)';
+              grp.style.borderRadius = '8px';
+              setTimeout(function() { grp.style.background = ''; }, 2000);
+            }
+            return;
+          }
+        }
+        var matching = _findMatching(selectedAttributes);
+        if (matching.length > 0 && matching.every(function(v) { return _isOOS(v); })) return;
+        if (origAddToCart) origAddToCart.apply(this, arguments);
+      };
+      
+      // Clear all, update visuals
+      selectedAttributes = {};
+      document.querySelectorAll('.variant-option').forEach(function(b) {
+        b.classList.remove('selected', 'disabled', 'out-of-stock');
+        b.disabled = false;
+      });
+
+      // Auto-select any variant group that only has one possible value, so a
+      // shopper choosing the remaining options gets a fully-matched variant
+      // (image/SKU/price update) instead of being silently blocked because a
+      // single-option dimension was left implicitly unselected.
+      function _autoSelectSingles() {
+        document.querySelectorAll('.variant-group').forEach(function(grp) {
+          var ak = grp.getAttribute('data-group');
+          if (!ak || ak === 'variant') return;
+          if (grp.querySelector('.variant-option.selected')) return;
+          var btns = Array.prototype.slice.call(grp.querySelectorAll('.variant-option')).filter(function(b) {
+            return b.getAttribute('data-attr')
+              && b.getAttribute('data-value')
+              && !b.classList.contains('disabled')
+              && !b.classList.contains('out-of-stock');
+          });
+          if (btns.length !== 1) return;
+          var btn = btns[0];
+          var av = btn.getAttribute('data-value');
+          btn.classList.add('selected');
+          selectedAttributes[ak] = av;
+          var sp = grp.querySelector('.variant-selected-value');
+          if (sp) sp.textContent = btn.getAttribute('data-display-value') || av;
+        });
+      }
+
+      _autoSelectSingles();
+      _updateVisuals();
+      // Re-run after availability has been recomputed: a multi-option group may
+      // have collapsed to a single non-disabled choice once cross-group stock
+      // constraints were applied.
+      _autoSelectSingles();
+      _updateProductDisplay();
+    }
+    
+    function tryFix() { setTimeout(fixVariantSelection, 100); }
+    if (document.readyState === 'complete') {
+      tryFix();
+    } else {
+      window.addEventListener('load', tryFix);
+    }
+    setTimeout(fixVariantSelection, 2000);
+  })();
+
+  // ===== CHECKOUT TERMS CHECKBOX FIX =====
+  // Ensure the terms checkbox label is properly styled on all sites (including those generated
+  // before these styles were added). Injects missing CSS for proper flex layout and spacing.
+  (function() {
+    if (document.getElementById('zappy-terms-checkbox-css')) return;
+    var s = document.createElement('style');
+    s.id = 'zappy-terms-checkbox-css';
+    s.textContent =
+      '.terms-checkbox-wrapper { margin: 16px 0; padding: 12px; background: var(--surface-color, var(--surface, #f9fafb)); border-radius: 8px; }' +
+      '.terms-checkbox-label { display: flex !important; align-items: center !important; gap: 10px !important; cursor: pointer; font-size: 14px; color: var(--text-color, var(--text, #374151)); }' +
+      '.terms-checkbox { width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary-color, var(--primary, #ff0083)); flex-shrink: 0; }' +
+      '.terms-link { color: var(--primary-color, var(--primary, #ff0083)); text-decoration: underline; font-weight: 500; }';
+    document.head.appendChild(s);
+  })();
+
+  // ===== CART COLOR SWATCH PATCH =====
+  // Replace color text in cart items with a color circle swatch.
+  // Observes the cart drawer for changes and converts color attribute text to circles.
+  (function() {
+    function patchCartColorSwatches(container) {
+      if (!container) return;
+      var attrs = container.querySelectorAll('.cart-item-attr');
+      attrs.forEach(function(span) {
+        if (span.querySelector('.cart-item-color-swatch')) return; // already patched
+        var labelEl = span.querySelector('.cart-item-attr-label');
+        if (!labelEl) return;
+        var labelText = (labelEl.textContent || '').replace(/[:\s]+$/, '').toLowerCase();
+        // Match color-related labels in multiple languages
+        var colorLabels = ['color', 'colour', 'צבע', 'لون', 'farbe', 'couleur', 'color', 'colore'];
+        if (colorLabels.indexOf(labelText) === -1) return;
+        // The color value is the text after the label
+        var fullText = span.textContent || '';
+        var labelFull = labelEl.textContent || '';
+        var colorValue = fullText.replace(labelFull, '').trim();
+        if (!colorValue) return;
+        var bgColor = colorValue;
+        if (!/^#[0-9A-Fa-f]{3,6}$/.test(colorValue)) {
+          var lc = colorValue.toLowerCase();
+          var _clr = {'dark grey':'#555','dark gray':'#555','light grey':'#d3d3d3','light gray':'#d3d3d3','light blue':'lightblue','dark blue':'darkblue','light green':'lightgreen','dark green':'darkgreen','dark red':'darkred','light pink':'lightpink','dark orange':'darkorange','sky blue':'skyblue','royal blue':'royalblue','navy blue':'navy','forest green':'forestgreen','olive green':'olivedrab','hot pink':'hotpink','deep pink':'deeppink','dark violet':'darkviolet','slate grey':'slategrey','slate gray':'slategray','dim grey':'dimgrey','dim gray':'dimgray','off white':'#f5f5f0','burgundy':'#800020','charcoal':'#36454f','champagne':'#f7e7ce','sand':'#c2b280','taupe':'#483c32','wine':'#722f37','rust':'#b7410e','sage':'#bcb88a','mint':'#98ff98','peach':'#ffcba4','cream':'#fffdd0','mauve':'#e0b0ff'};
+          bgColor = _clr[lc] || lc;
+        }
+        var swatch = document.createElement('span');
+        swatch.className = 'cart-item-color-swatch';
+        swatch.title = colorValue;
+        swatch.style.cssText = 'display:inline-block;width:14px;height:14px;border-radius:50%;background-color:' + bgColor + ';border:1px solid rgba(0,0,0,0.15);vertical-align:middle;margin-inline-start:4px;';
+        // Remove the text value, keep only label + swatch
+        span.textContent = '';
+        span.appendChild(labelEl.cloneNode(true));
+        span.appendChild(document.createTextNode(' '));
+        span.appendChild(swatch);
+      });
+    }
+
+    // Observe the cart drawer for content changes
+    function observeCartDrawer() {
+      var drawer = document.getElementById('cart-drawer') || document.getElementById('cart-drawer-items');
+      if (!drawer) return;
+      patchCartColorSwatches(drawer);
+      var observer = new MutationObserver(function() { patchCartColorSwatches(drawer); });
+      observer.observe(drawer, { childList: true, subtree: true });
+    }
+
+    // Try on load and also watch for the drawer being added to DOM
+    if (document.readyState === 'complete') {
+      setTimeout(observeCartDrawer, 200);
+    } else {
+      window.addEventListener('load', function() { setTimeout(observeCartDrawer, 200); });
+    }
+    // Safety net: also observe body for the drawer being dynamically added
+    var bodyObserver = new MutationObserver(function() {
+      var d = document.getElementById('cart-drawer');
+      if (d) { observeCartDrawer(); bodyObserver.disconnect(); }
+    });
+    if (document.body) {
+      bodyObserver.observe(document.body, { childList: true, subtree: true });
+    } else {
+      document.addEventListener('DOMContentLoaded', function() {
+        bodyObserver.observe(document.body, { childList: true, subtree: true });
+      });
+    }
+  })();
+
+  // ===== CART FORMATTED PRICE TOTAL PATCH =====
+  // Older generated storefront scripts used parseFloat directly, which returns NaN for
+  // persisted cart prices such as "₪55.00". Keep existing preview carts accurate until
+  // the site is refreshed with the generated-code fix.
+  (function() {
+    function parseCartPrice(value) {
+      if (value === null || value === undefined || value === '') return NaN;
+      if (typeof value === 'number') return isFinite(value) ? value : NaN;
+      var normalized = String(value).replace(/[^\d.,-]/g, '').replace(/,/g, '');
+      var parsed = parseFloat(normalized);
+      return isFinite(parsed) ? parsed : NaN;
+    }
+
+    function getItemPrice(item) {
+      if (!item) return 0;
+      if (item.selectedVariant && item.selectedVariant.price !== null && item.selectedVariant.price !== undefined && item.selectedVariant.price !== '') {
+        var variantPrice = parseCartPrice(item.selectedVariant.price);
+        if (isFinite(variantPrice)) return variantPrice;
+      }
+      var displayPrice = parseCartPrice(item.displayPrice);
+      if (isFinite(displayPrice)) return displayPrice;
+      var regularPrice = parseCartPrice(item.price);
+      var salePrice = parseCartPrice(item.sale_price);
+      if (isFinite(salePrice) && isFinite(regularPrice) && salePrice < regularPrice) return salePrice;
+      return isFinite(regularPrice) ? regularPrice : 0;
+    }
+
+    function getLineTotal(item) {
+      var price = getItemPrice(item);
+      var quantity = parseFloat(item && item.quantity) || 1;
+      var step = parseFloat((item && (item.quantityStep || item.quantity_step))) || 1;
+      var unit = (item && (item.quantityUnit || item.quantity_unit)) || 'piece';
+      return unit === 'piece' ? price * quantity : price * (quantity / step);
+    }
+
+    function getCartItems() {
+      var websiteId = window.ZAPPY_WEBSITE_ID || (window.CONFIG && window.CONFIG.websiteId);
+      if (!websiteId) return [];
+      try {
+        return JSON.parse(localStorage.getItem('zappy_cart_' + websiteId) || '[]');
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function getCartTotalTarget(drawer, currency) {
+      if (!drawer) return null;
+      var totalEl = document.getElementById('cart-drawer-total');
+      if (totalEl) return totalEl;
+      var legacyTotal = drawer.querySelector('.cart-drawer-total');
+      if (!legacyTotal) return null;
+      var existingText = legacyTotal.textContent || '';
+      var labelMatch = existingText.match(/^([^:]+):/);
+      var label = labelMatch ? labelMatch[1].trim() : (window.zappyI18n && window.zappyI18n.t ? window.zappyI18n.t('ecom_total') : 'Total');
+      if (!label || label === 'ecom_total') label = existingText.indexOf('סה') !== -1 ? 'סה"כ' : 'Total';
+      legacyTotal.innerHTML = '<span>' + label + ':</span><span id="cart-drawer-total">' + (currency || '₪') + '0</span>';
+      return document.getElementById('cart-drawer-total');
+    }
+
+    function patchCartTotals() {
+      var drawer = document.getElementById('cart-drawer');
+      if (!drawer) return;
+      var items = getCartItems();
+      if (!items.length) return;
+      var currency = (window.ZAPPY_CURRENCY_SYMBOL || '').trim();
+      var totalEl = getCartTotalTarget(drawer, currency);
+      if (!currency && totalEl) {
+        var match = (totalEl.textContent || '').match(/^[^\d\s-]+/);
+        currency = match ? match[0] : '₪';
+      }
+      var total = 0;
+      var priceEls = drawer.querySelectorAll('.cart-item-price, .cart-drawer-item-price');
+      items.forEach(function(item, index) {
+        var lineTotal = getLineTotal(item);
+        total += lineTotal;
+        if (priceEls[index]) {
+          var nextText = currency + lineTotal.toFixed(2);
+          if (priceEls[index].textContent !== nextText) {
+            priceEls[index].textContent = nextText;
+          }
+        }
+      });
+      if (totalEl) {
+        var nextTotal = currency + total.toFixed(2);
+        if (totalEl.textContent !== nextTotal) totalEl.textContent = nextTotal;
+      }
+    }
+
+    function observeCartTotals() {
+      patchCartTotals();
+      var drawer = document.getElementById('cart-drawer') || document.body;
+      if (!drawer) return;
+      var scheduled = false;
+      var observer = new MutationObserver(function() {
+        if (scheduled) return;
+        scheduled = true;
+        setTimeout(function() {
+          scheduled = false;
+          patchCartTotals();
+        }, 0);
+      });
+      observer.observe(drawer, { childList: true, subtree: true, characterData: true });
+    }
+
+    if (document.readyState === 'complete') {
+      setTimeout(observeCartTotals, 250);
+    } else {
+      window.addEventListener('load', function() { setTimeout(observeCartTotals, 250); });
+    }
+  })();
+
+  // ===== PRODUCT DETAIL RUNTIME I18N PATCH =====
+  // Existing preview product pages can keep source-language labels for stock and
+  // variant groups after switching languages. Keep those labels tied to runtime lang.
+  (function() {
+    var TEXT = {
+      en: {
+        inStock: 'In Stock',
+        outOfStock: 'Out of Stock',
+        color: 'Color',
+        size: 'Size',
+        material: 'Material',
+        style: 'Style',
+        weight: 'Weight',
+        capacity: 'Capacity',
+        length: 'Length'
+      },
+      he: {
+        inStock: 'במלאי',
+        outOfStock: 'אזל מהמלאי',
+        color: 'צבע',
+        size: 'מידה',
+        material: 'חומר',
+        style: 'סגנון',
+        weight: 'משקל',
+        capacity: 'קיבולת',
+        length: 'אורך'
+      }
+    };
+
+    function getLang() {
+      if (window.zappyI18n && typeof window.zappyI18n.getCurrentLanguage === 'function') {
+        var runtimeLang = String(window.zappyI18n.getCurrentLanguage() || '').split('-')[0].toLowerCase();
+        if (runtimeLang) return runtimeLang;
+      }
+      try {
+        var storedLang = String(localStorage.getItem('zappy_lang') || localStorage.getItem('zappy-language') || localStorage.getItem('selectedLanguage') || '').split('-')[0].toLowerCase();
+        if (storedLang) return storedLang;
+      } catch (e) {}
+      return String(document.documentElement.lang || 'en').split('-')[0].toLowerCase();
+    }
+
+    function getText(key) {
+      var lang = getLang();
+      if (TEXT[lang] && TEXT[lang][key]) return TEXT[lang][key];
+      if (window.zappyI18n && typeof window.zappyI18n.t === 'function') {
+        var translated = window.zappyI18n.t('ecom_' + key);
+        if (translated && translated !== 'ecom_' + key) return translated;
+      }
+      return (TEXT.en && TEXT.en[key]) || key;
+    }
+
+    function getVariantValueTranslation(attr, sourceValue) {
+      var product = window.currentProduct;
+      var variants = product && Array.isArray(product.variants) ? product.variants : [];
+      var lang = getLang();
+      for (var i = 0; i < variants.length; i++) {
+        var variant = variants[i];
+        var attrs = variant && (variant.attributes_source || variant.attributes || {});
+        if (String(attrs[attr]) !== String(sourceValue)) continue;
+        var translatedAttrs = variant.attributes_translations && variant.attributes_translations[lang];
+        if (translatedAttrs && translatedAttrs[attr]) return translatedAttrs[attr];
+        var displayAttrs = variant.attributes_display || {};
+        if (displayAttrs[attr]) return displayAttrs[attr];
+      }
+      return sourceValue;
+    }
+
+    function patchProductDetailI18n() {
+      if (typeof window.getVariantAttributeLabels === 'function' && !window.getVariantAttributeLabels.__zappyRuntimeI18nWrapped) {
+        var originalGetVariantAttributeLabels = window.getVariantAttributeLabels;
+        window.getVariantAttributeLabels = function(source, t) {
+          var labels = originalGetVariantAttributeLabels(source, t) || {};
+          ['color', 'size', 'material', 'style', 'weight', 'capacity', 'length'].forEach(function(key) {
+            labels[key] = getText(key);
+          });
+          return labels;
+        };
+        window.getVariantAttributeLabels.__zappyRuntimeI18nWrapped = true;
+      }
+
+      document.querySelectorAll('.variant-group').forEach(function(group) {
+        var attr = group.getAttribute('data-group');
+        if (!attr) return;
+        var key = String(attr).toLowerCase();
+        var labelText = getText(key);
+        var label = group.querySelector('.variant-group-label');
+        if (label) {
+          var selected = label.querySelector('.variant-selected-value');
+          var selectedText = selected ? selected.textContent : '';
+          if ((label.textContent || '').trim() !== (labelText + ': ' + selectedText).trim()) {
+            label.textContent = labelText + ': ';
+            if (selected) label.appendChild(selected);
+          }
+        }
+        group.querySelectorAll('.variant-option').forEach(function(option) {
+          var value = option.getAttribute('data-value');
+          var translatedValue = getVariantValueTranslation(attr, value);
+          if (option.getAttribute('data-display-value') !== translatedValue) option.setAttribute('data-display-value', translatedValue);
+          if (option.getAttribute('title') !== translatedValue) option.setAttribute('title', translatedValue);
+          if (!option.classList.contains('color-swatch') && option.textContent !== translatedValue) option.textContent = translatedValue;
+        });
+      });
+
+      var stock = document.getElementById('product-stock-display');
+      if (stock) {
+        var inStock = stock.classList.contains('in-stock') && !stock.classList.contains('out-of-stock');
+        var svg = stock.querySelector('svg');
+        var nextText = inStock ? getText('inStock') : getText('outOfStock');
+        if ((stock.textContent || '').trim() !== nextText) {
+          stock.textContent = '';
+          if (svg) stock.appendChild(svg);
+          stock.appendChild(document.createTextNode(nextText));
+        }
+      }
+    }
+
+    function schedulePatch() {
+      setTimeout(patchProductDetailI18n, 100);
+      setTimeout(patchProductDetailI18n, 500);
+    }
+
+    if (document.readyState === 'complete') {
+      schedulePatch();
+    } else {
+      window.addEventListener('load', schedulePatch);
+    }
+    if (window.zappyI18n && typeof window.zappyI18n.onLanguageChange === 'function') {
+      window.zappyI18n.onLanguageChange(schedulePatch);
+    }
+    var observer = new MutationObserver(function() { schedulePatch(); });
+    if (document.body) observer.observe(document.body, { childList: true, subtree: true });
+  })();
+
+  // ===== CHECKOUT RUNTIME I18N PATCH =====
+  // Existing generated checkout pages may have Hebrew UI fragments baked into dynamic
+  // totals and shipping rows. Patch them from the active runtime language in preview.
+  (function() {
+    var TEXT = {
+      en: {
+        agreeToTerms: 'I agree to the',
+        termsAndConditions: 'Terms of Use',
+        subtotal: 'Subtotal',
+        vatIncluded: 'Including VAT',
+        shipping: 'Shipping',
+        discount: 'Discount',
+        totalToPay: 'Total to Pay',
+        days: 'days',
+        free: 'Free'
+      },
+      he: {
+        agreeToTerms: 'אני מסכים/ה ל',
+        termsAndConditions: 'תנאי השימוש',
+        subtotal: 'סכום ביניים',
+        vatIncluded: 'כולל מע"מ',
+        shipping: 'משלוח',
+        discount: 'הנחה',
+        totalToPay: 'סה"כ לתשלום',
+        days: 'ימים',
+        free: 'חינם'
+      }
+    };
+
+    function getLang() {
+      if (window.zappyI18n && typeof window.zappyI18n.getCurrentLanguage === 'function') {
+        var runtimeLang = String(window.zappyI18n.getCurrentLanguage() || '').split('-')[0].toLowerCase();
+        if (runtimeLang) return runtimeLang;
+      }
+      try {
+        var storedLang = String(localStorage.getItem('zappy_lang') || '').split('-')[0].toLowerCase();
+        if (storedLang) return storedLang;
+      } catch (e) {}
+      var htmlLang = String(document.documentElement.lang || '').split('-')[0].toLowerCase();
+      if (htmlLang) return htmlLang;
+      var checkoutTitle = document.querySelector('.checkout-section h1, h1');
+      if (checkoutTitle && /checkout/i.test(checkoutTitle.textContent || '')) {
+        return 'en';
+      }
+      return 'en';
+    }
+
+    function getText(key) {
+      var lang = getLang();
+      return (TEXT[lang] && TEXT[lang][key]) || (TEXT.en && TEXT.en[key]) || '';
+    }
+
+    function setLabelForValue(valueSelector, key) {
+      var valueEl = document.querySelector(valueSelector);
+      if (!valueEl || !valueEl.parentElement) return;
+      var labelEl = valueEl.parentElement.querySelector('span:first-child');
+      if (labelEl && labelEl !== valueEl) {
+        var nextLabel = getText(key) + ':';
+        if (labelEl.textContent !== nextLabel) labelEl.textContent = nextLabel;
+      }
+    }
+
+    function ensureCheckoutTotalsStructure() {
+      var rows = document.querySelectorAll('.order-totals-row');
+      if (!rows.length) return;
+      var specs = [
+        { key: 'subtotal', id: 'subtotal', fallback: '₪0' },
+        { key: 'vatIncluded', id: 'vat-amount', fallback: '₪0' },
+        { key: 'shipping', id: 'shipping-cost', fallback: '₪0' },
+        { key: 'discount', id: 'discount', fallback: '₪0' },
+        { key: 'totalToPay', id: 'order-total', fallback: '₪0' }
+      ];
+      specs.forEach(function(spec, index) {
+        var row = rows[index];
+        if (!row || row.querySelector('#' + spec.id)) return;
+        var text = row.textContent || '';
+        var valueMatch = text.match(/-?\s*[₪$€£]\s*\d[\d,.]*/);
+        var value = valueMatch ? valueMatch[0].replace(/\s+/g, '') : spec.fallback;
+        row.innerHTML = '<span data-ecom-label="' + spec.key + '">' + getText(spec.key) + ':</span><span id="' + spec.id + '">' + value + '</span>';
+      });
+    }
+
+    function parseMoney(value) {
+      var normalized = String(value || '').replace(/[^\d.,-]/g, '').replace(/,/g, '');
+      var parsed = parseFloat(normalized);
+      return isFinite(parsed) ? parsed : 0;
+    }
+
+    function normalizeCheckoutValues() {
+      var discountEl = document.getElementById('discount');
+      var discountRow = document.getElementById('discount-row') || (discountEl && discountEl.closest('.discount-row, .order-totals-row'));
+      if (discountEl && Math.abs(parseMoney(discountEl.textContent)) < 0.005) {
+        var zeroDiscountText = (window.ZAPPY_CURRENCY_SYMBOL || '₪') + '0';
+        if (discountEl.textContent !== zeroDiscountText) discountEl.textContent = zeroDiscountText;
+        if (discountRow && discountRow.style.display !== 'none') discountRow.style.display = 'none';
+      }
+      var shippingCost = document.getElementById('shipping-cost');
+      if (shippingCost && /^(חינם|FREE)$/i.test((shippingCost.textContent || '').trim())) {
+        var freeText = getText('free');
+        if (shippingCost.textContent !== freeText) shippingCost.textContent = freeText;
+      }
+    }
+
+    function transliterateKnownAddress(value) {
+      if (!value) return '';
+      return String(value)
+        .replace(/הוד השרון/g, 'Hod Hasharon')
+        .replace(/הרדוף/g, 'Harduf');
+    }
+
+    function formatPickupAddress(method) {
+      var address = method && method.pickup_address;
+      if (!address || !address.street) return '';
+      var lang = getLang();
+      if (address.translations && address.translations[lang]) {
+        address = Object.assign({}, address, address.translations[lang]);
+      }
+      var street = address.street;
+      var city = address.city;
+      if (lang === 'en') {
+        street = transliterateKnownAddress(street);
+        city = transliterateKnownAddress(city);
+      }
+      return [street, city].filter(Boolean).join(', ');
+    }
+
+    function patchCheckoutStaticText() {
+      ensureCheckoutTotalsStructure();
+      var agree = document.querySelector('[data-i18n="ecom_agreeToTerms"]') || document.querySelector('.terms-checkbox-label > span > span:first-child');
+      if (agree && agree.textContent !== getText('agreeToTerms')) agree.textContent = getText('agreeToTerms');
+      var terms = document.querySelector('[data-i18n="ecom_termsAndConditions"]') || document.querySelector('.terms-checkbox-label .terms-link');
+      if (terms && terms.textContent !== getText('termsAndConditions')) terms.textContent = getText('termsAndConditions');
+      setLabelForValue('#subtotal', 'subtotal');
+      setLabelForValue('#vat-amount', 'vatIncluded');
+      setLabelForValue('#shipping-cost', 'shipping');
+      setLabelForValue('#discount', 'discount');
+      setLabelForValue('#order-total', 'totalToPay');
+      var shippingCost = document.getElementById('shipping-cost');
+      if (shippingCost && /^(חינם|FREE)$/i.test((shippingCost.textContent || '').trim())) {
+        shippingCost.textContent = getText('free');
+      }
+      normalizeCheckoutValues();
+    }
+
+    var shippingPatchInFlight = false;
+    async function patchShippingMethods() {
+      var container = document.getElementById('shipping-methods');
+      var websiteId = window.ZAPPY_WEBSITE_ID || (window.CONFIG && window.CONFIG.websiteId);
+      if (!container || !websiteId || shippingPatchInFlight) return;
+      shippingPatchInFlight = true;
+      try {
+        var lang = getLang();
+        var apiBase = window.ZAPPY_API_BASE || '';
+        var res = await fetch(apiBase + '/api/ecommerce/storefront/shipping?websiteId=' + encodeURIComponent(websiteId) + '&lang=' + encodeURIComponent(lang));
+        var data = await res.json();
+        var methods = data && data.data ? data.data : [];
+        methods.forEach(function(method) {
+          var block = container.querySelector('.shipping-method-block[data-method-id="' + method.id + '"]');
+          if (!block) return;
+          var nameEl = block.querySelector('.shipping-name');
+          if (nameEl && method.name) nameEl.textContent = method.name;
+          var descEl = block.querySelector('.shipping-desc');
+          var daysText = method.estimated_days ? String(method.estimated_days) + ' ' + getText('days') : '';
+          var description = method.description || '';
+          var descText = description && daysText ? description + ' (' + daysText + ')' : (description || daysText);
+          if (descEl) {
+            descEl.textContent = descText;
+          } else if (descText) {
+            var info = block.querySelector('.shipping-info');
+            if (info) {
+              var created = document.createElement('div');
+              created.className = 'shipping-desc';
+              created.textContent = descText;
+              info.appendChild(created);
+            }
+          }
+          var priceEl = block.querySelector('.shipping-price.free');
+          if (priceEl) priceEl.textContent = getText('free');
+          var addressEl = block.querySelector('.shipping-address');
+          var addressText = formatPickupAddress(method);
+          if (addressEl && addressText) addressEl.textContent = addressText;
+        });
+      } catch (e) {
+        // Non-blocking compatibility patch.
+      } finally {
+        shippingPatchInFlight = false;
+      }
+    }
+
+    function patchCheckoutI18n() {
+      patchCheckoutStaticText();
+      patchShippingMethods();
+      normalizeCheckoutValues();
+    }
+
+    var style = document.createElement('style');
+    style.id = 'zappy-checkout-runtime-i18n-css';
+    style.textContent = '.checkout-order-details .order-totals-row{display:flex!important;justify-content:space-between!important;align-items:baseline!important;gap:12px!important}.checkout-order-details .order-totals-row span:first-child{flex:1 1 auto;min-width:0}.checkout-order-details .order-totals-row span:last-child{flex:0 0 auto;text-align:end}';
+    if (!document.getElementById(style.id)) document.head.appendChild(style);
+
+    if (document.readyState === 'complete') {
+      setTimeout(patchCheckoutI18n, 300);
+    } else {
+      window.addEventListener('load', function() { setTimeout(patchCheckoutI18n, 300); });
+    }
+    setTimeout(patchCheckoutI18n, 1500);
+    setTimeout(patchCheckoutI18n, 3500);
+    var scheduled = false;
+    var observer = new MutationObserver(function() {
+      if (scheduled) return;
+      scheduled = true;
+      setTimeout(function() {
+        scheduled = false;
+        patchCheckoutStaticText();
+      }, 50);
+    });
+    if (document.body) {
+      observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+    }
+    if (window.zappyI18n && typeof window.zappyI18n.onLanguageChange === 'function') {
+      window.zappyI18n.onLanguageChange(function() { setTimeout(patchCheckoutI18n, 300); });
+    }
+  })();
+
+})();
+
+
+/* ZAPPY_ECOM_LANGUAGE_ROUTING_RUNTIME_V6 */
+(function() {
+  if (window.__zappyEcomLanguageRoutingRuntime) return;
+  window.__zappyEcomLanguageRoutingRuntime = true;
+
+  // Routing strategy: use path-based language URLs for ALL storefront pages
+  // (including dynamic /product/:slug and /category/:slug). The publish
+  // pipeline pre-renders /<lang>/product/:slug/index.html with the correct
+  // navbar / catalog / lang-switcher baked in, and render.yaml rewrites
+  // /<lang>/product/* → that file. The script.js loaded inside is
+  // language-aware (reads the active language from the URL prefix) so dynamic
+  // labels (Add to Cart, In Stock, etc.) render in the right language too.
+  // This eliminates the source-language flash entirely — no runtime
+  // translation needed.
+
+  function getPathLang() {
+    return (window.location.pathname.match(/^\/([a-z]{2})(?:\/|$)/i) || [])[1];
+  }
+
+  function getQueryLang() {
+    try {
+      return new URLSearchParams(window.location.search).get('lang');
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function getBakedDefaultLang() {
+    try {
+      if (typeof window.__zappyDefaultLang === 'string' && window.__zappyDefaultLang) return window.__zappyDefaultLang.toLowerCase();
+      if (typeof zappyAdditionalDefaultLanguage === 'string' && zappyAdditionalDefaultLanguage) return zappyAdditionalDefaultLanguage.toLowerCase();
+      if (typeof zappyEcomDefaultLanguage === 'string' && zappyEcomDefaultLanguage) return zappyEcomDefaultLanguage.toLowerCase();
+    } catch (e) {}
+    var htmlLang = document.documentElement.getAttribute('lang');
+    return htmlLang ? htmlLang.split('-')[0].toLowerCase() : 'he';
+  }
+
+  // Seed the runtime language so any code that reads localStorage / html lang
+  // ends up agreeing with the URL the user actually loaded. URLs are the
+  // source of truth here:
+  //   /<lang>/...   → that prefix language
+  //   ?lang=<x>     → that query language (legacy / preview)
+  //   /            (no prefix) → site's baked-in default language
+  // Without the no-prefix branch, visiting the default-language root with a
+  // stale localStorage from an earlier session (e.g. user toggled to English
+  // last week) keeps the dynamic catalog/featured/category fetches in the
+  // stale language, which is the "catalog menu stays in English on the
+  // Hebrew page" bug.
+  (function seedLanguageFromUrl() {
+    var urlLang = getQueryLang() || getPathLang() || getBakedDefaultLang();
+    if (!urlLang) return;
+    urlLang = String(urlLang).split('-')[0].toLowerCase();
+    try {
+      localStorage.setItem('zappy_lang', urlLang);
+      localStorage.setItem('zappy-language', urlLang);
+      localStorage.setItem('selectedLanguage', urlLang);
+      localStorage.setItem('language', urlLang);
+    } catch (e) {}
+    document.documentElement.setAttribute('lang', urlLang);
+    document.documentElement.setAttribute('dir', urlLang === 'he' || urlLang === 'ar' || urlLang === 'iw' ? 'rtl' : 'ltr');
+  })();
+
+  // Backward-compat soft redirect: any in-flight bookmarks / external links of
+  // the form /product/<slug>?lang=en (issued by older builds) get rewritten
+  // immediately to the path-based equivalent /en/product/<slug>. Done before
+  // the rest of the runtime so the user lands on the correct pre-rendered HTML
+  // instead of seeing the source-language navbar flash. Skipped when we are
+  // already on a language-prefixed path (no redirect loop).
+  (function softRedirectQueryLangToPath() {
+    var queryLang = getQueryLang();
+    if (!queryLang) return;
+    var pathLang = getPathLang();
+    if (pathLang) return;
+    var path = window.location.pathname || '';
+    if (!/^\/(product|category)(?:\/|$)/i.test(path)) return;
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.delete('lang');
+      var nextPath = '/' + queryLang.toLowerCase() + path;
+      var nextHref = url.origin + nextPath + (url.searchParams.toString() ? '?' + url.searchParams.toString() : '') + url.hash;
+      window.location.replace(nextHref);
+    } catch (e) {}
+  })();
+
+  function getLang() {
+    try {
+      if (window.zappyI18n && typeof window.zappyI18n.getCurrentLanguage === 'function') {
+        var i18nLang = window.zappyI18n.getCurrentLanguage();
+        if (i18nLang) return String(i18nLang).split('-')[0].toLowerCase();
+      }
+      if (window.zappyI18n && window.zappyI18n.language) {
+        return String(window.zappyI18n.language).split('-')[0].toLowerCase();
+      }
+    } catch (e) {}
+    try {
+      var stored = localStorage.getItem('zappy_lang') || localStorage.getItem('zappy-language') || localStorage.getItem('selectedLanguage') || localStorage.getItem('language');
+      if (stored) return String(stored).split('-')[0].toLowerCase();
+    } catch (e) {}
+    var queryLang = getQueryLang();
+    if (queryLang) return queryLang.toLowerCase();
+    var pathLang = getPathLang();
+    if (pathLang) return pathLang.toLowerCase();
+    var htmlLang = document.documentElement.getAttribute('lang');
+    return htmlLang ? htmlLang.split('-')[0].toLowerCase() : '';
+  }
+
+  function getDefaultLang() {
+    // The default language is whatever owns the path-prefix-free routes. We
+    // pin to 'he' here for the legacy Hebrew-source sites; future-proof by
+    // overriding via window.__zappyDefaultLang from the generated bundle.
+    return window.__zappyDefaultLang || 'he';
+  }
+
+  function buildPath(path) {
+    if (!path || /^https?:\/\//i.test(path) || path.charAt(0) === '#') return path;
+    var normalized = path.charAt(0) === '/' ? path : '/' + path;
+    var lang = getLang();
+    var defaultLang = getDefaultLang();
+    if (!lang || lang === defaultLang) return normalized.replace(/^\/[a-z]{2}(?=\/)/i, '');
+    // Always use path-based language prefix — including dynamic
+    // /product/:slug + /category/:slug, which the publish pipeline serves via
+    // pre-rendered /<lang>/<base>/:slug/index.html. No more ?lang= query.
+    var withoutLang = normalized.replace(/^\/[a-z]{2}(?=\/)/i, '');
+    var prefix = '/' + lang;
+    return withoutLang === prefix || withoutLang.indexOf(prefix + '/') === 0 ? withoutLang : prefix + withoutLang;
+  }
+
+  function isStorefrontPath(href) {
+    return /^\/(?:[a-z]{2}\/)?(?:product|category|products)(?:\/|\?|#|$)/i.test(href || '');
+  }
+
+  function patchLinks(root) {
+    var scope = root && root.querySelectorAll ? root : document;
+    scope.querySelectorAll('a[href]').forEach(function(anchor) {
+      var href = anchor.getAttribute('href');
+      if (!isStorefrontPath(href)) return;
+      var next = buildPath(href);
+      if (href !== next) anchor.setAttribute('href', next);
+    });
+  }
+
+  function ensureProductsChevron() {
+    var trigger = document.querySelector('.zappy-products-dropdown > a');
+    if (!trigger) return;
+    trigger.setAttribute('href', buildPath('/products'));
+    if (trigger.querySelector('svg.dropdown-arrow')) return;
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'dropdown-arrow');
+    svg.setAttribute('width', '12');
+    svg.setAttribute('height', '12');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '2');
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M6 9l6 6 6-6');
+    svg.appendChild(path);
+    trigger.appendChild(document.createTextNode(' '));
+    trigger.appendChild(svg);
+  }
+
+  // On mobile the inline chevron (rendered inside the <a>) is unusable: tapping
+  // it just navigates to /products instead of expanding the submenu, and it sits
+  // hugged to the link text instead of on the far side of the row. The
+  // generation pipelines for e-commerce per-language pages do not inject the
+  // shared initMobileSubmenuToggles helper, so we own that here. Below 768px
+  // we materialise a dedicated <button class="mobile-submenu-toggle"> as a
+  // sibling of the link; existing styles.css already styles its chevron and
+  // expands .sub-menu.mobile-expanded, and our V5 ensureRuntimeCssInjected
+  // pins the button to the far edge of the row (right in LTR, left in RTL).
+  // Above 768px we tear it back down so the desktop hover dropdown is intact.
+  function ensureMobileSubmenuToggles() {
+    var isMobile = window.matchMedia ? window.matchMedia('(max-width: 768px)').matches : window.innerWidth <= 768;
+
+    if (!isMobile) {
+      document.querySelectorAll('.mobile-submenu-toggle[data-zappy-runtime="ecom-routing"]').forEach(function(btn) {
+        btn.remove();
+      });
+      document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+        menu.classList.remove('mobile-expanded');
+      });
+      document.querySelectorAll('.zappy-products-dropdown > a > svg.dropdown-arrow[data-zappy-mobile-hidden="1"]').forEach(function(arrow) {
+        arrow.style.display = '';
+        arrow.removeAttribute('data-zappy-mobile-hidden');
+      });
+      return;
+    }
+
+    var dropdowns = document.querySelectorAll('.zappy-products-dropdown, .menu-item-has-children, .nav-menu li:has(> .sub-menu), nav li:has(> .sub-menu)');
+    dropdowns.forEach(function(li) {
+      if (!li || !li.querySelector) return;
+      var submenu = li.querySelector(':scope > .sub-menu');
+      var trigger = li.querySelector(':scope > a');
+      if (!submenu || !trigger) return;
+      if (li.querySelector(':scope > .mobile-submenu-toggle')) return;
+
+      // Hide the inline SVG chevron on mobile so we don't render two chevrons.
+      var inlineArrow = trigger.querySelector('svg.dropdown-arrow');
+      if (inlineArrow && !inlineArrow.hasAttribute('data-zappy-mobile-hidden')) {
+        inlineArrow.style.display = 'none';
+        inlineArrow.setAttribute('data-zappy-mobile-hidden', '1');
+      }
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mobile-submenu-toggle';
+      btn.setAttribute('aria-label', 'Toggle submenu');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('data-zappy-runtime', 'ecom-routing');
+
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+
+        // Close any other open submenus so only one is open at a time.
+        document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(other) {
+          if (other === submenu) return;
+          other.classList.remove('mobile-expanded');
+          var otherBtn = other.parentElement && other.parentElement.querySelector(':scope > .mobile-submenu-toggle');
+          if (otherBtn) {
+            otherBtn.classList.remove('expanded');
+            otherBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        var willOpen = !submenu.classList.contains('mobile-expanded');
+        submenu.classList.toggle('mobile-expanded', willOpen);
+        btn.classList.toggle('expanded', willOpen);
+        btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      }, true);
+
+      trigger.insertAdjacentElement('afterend', btn);
+    });
+  }
+
+  var __zappyMobileSubmenuResizeTimer = null;
+  window.addEventListener('resize', function() {
+    if (__zappyMobileSubmenuResizeTimer) clearTimeout(__zappyMobileSubmenuResizeTimer);
+    __zappyMobileSubmenuResizeTimer = setTimeout(ensureMobileSubmenuToggles, 200);
+  }, { passive: true });
+
+  function patchCatalogDirection() {
+    var catalog = document.getElementById('zappy-catalog-menu');
+    if (!catalog) return;
+    var dir = document.documentElement.getAttribute('dir') || (getLang() === 'he' ? 'rtl' : 'ltr');
+    catalog.classList.toggle('rtl', dir === 'rtl');
+    catalog.classList.toggle('ltr', dir !== 'rtl');
+    catalog.setAttribute('dir', dir);
+    catalog.querySelectorAll('.catalog-menu-item, .sub-menu').forEach(function(el) {
+      el.setAttribute('dir', dir);
+    });
+  }
+
+  // Inject the small CSS rules we need at runtime. Doing this from JS instead of
+  // a separate CSS ensure step makes us robust to clean-css comment stripping +
+  // declaration merging that was eating the standalone CSS injection.
+  function ensureRuntimeCssInjected() {
+    if (document.getElementById('zappy-ecom-routing-runtime-css')) return;
+    var style = document.createElement('style');
+    style.id = 'zappy-ecom-routing-runtime-css';
+    style.setAttribute('data-zappy-runtime', 'ecom-routing');
+    style.textContent =
+      '@media (min-width: 769px){' +
+        'html[dir="ltr"] .nav-container > .nav-brand,body[dir="ltr"] .nav-container > .nav-brand{order:-1!important}' +
+        'html[dir="ltr"] .nav-container > .nav-menu,body[dir="ltr"] .nav-container > .nav-menu{order:1!important;margin-inline-start:auto!important;margin-inline-end:24px!important;flex:0 1 auto!important}' +
+        'html[dir="ltr"] .nav-container > .lang-switcher,body[dir="ltr"] .nav-container > .lang-switcher,html[dir="ltr"] .nav-container > .nav-ecommerce-icons,body[dir="ltr"] .nav-container > .nav-ecommerce-icons{order:2!important}' +
+        'html[dir="ltr"] .nav-container > .nav-ecommerce-icons.nav-icons-left,body[dir="ltr"] .nav-container > .nav-ecommerce-icons.nav-icons-left{margin-inline-start:0!important}' +
+        'html[dir="ltr"] .zappy-products-dropdown > a .dropdown-arrow,body[dir="ltr"] .zappy-products-dropdown > a .dropdown-arrow{display:inline-block!important;flex:0 0 auto!important;margin-inline-start:6px!important}' +
+        'html[dir="ltr"] .zappy-catalog-menu,html[dir="ltr"] .zappy-catalog-menu .catalog-menu-container,html[dir="ltr"] .zappy-catalog-menu .catalog-menu-categories{direction:ltr!important}' +
+        'html[dir="ltr"] .zappy-catalog-menu .catalog-menu-container{align-items:flex-start!important}' +
+        'html[dir="ltr"] .zappy-catalog-menu .catalog-menu-categories{display:flex!important;align-items:flex-start!important;align-content:flex-start!important;row-gap:4px!important;column-gap:2px!important}' +
+        'html[dir="ltr"] .zappy-catalog-menu .catalog-menu-item{padding-inline:10px!important}' +
+        'html[dir="ltr"] .zappy-catalog-menu .catalog-menu-all{margin-top:0!important;align-self:flex-start!important}' +
+      '}' +
+      '@media (max-width:768px){' +
+        '.navbar .zappy-products-dropdown,nav.navbar .zappy-products-dropdown,.zappy-products-dropdown{position:relative!important}' +
+        // padding-inline-end is a logical property: it resolves to right padding
+        // in LTR and left padding in RTL — exactly the side where the absolute
+        // toggle button lives. A separate RTL override would invert that and
+        // push the link text inward, which is the indentation bug we hit.
+        '.navbar .zappy-products-dropdown > a,nav.navbar .zappy-products-dropdown > a,.zappy-products-dropdown > a{width:100%!important;min-width:0!important;padding-inline-end:56px!important;padding-inline-start:0!important;box-sizing:border-box!important}' +
+        '.navbar .zappy-products-dropdown > .mobile-submenu-toggle,nav.navbar .zappy-products-dropdown > .mobile-submenu-toggle,.zappy-products-dropdown > .mobile-submenu-toggle{display:flex!important;position:absolute!important;top:0!important;inset-inline-end:4px!important;inset-inline-start:auto!important;width:48px!important;height:44px!important;min-height:44px!important;align-items:center!important;justify-content:center!important;z-index:5!important;pointer-events:auto!important;margin:0!important;padding:0!important;background:transparent!important;border:none!important}' +
+      '}';
+    (document.head || document.documentElement).appendChild(style);
+  }
+
+  function patch() {
+    ensureRuntimeCssInjected();
+    patchLinks(document);
+    ensureProductsChevron();
+    ensureMobileSubmenuToggles();
+    patchCatalogDirection();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', patch);
+  } else {
+    patch();
+  }
+  window.addEventListener('popstate', function() { setTimeout(patch, 0); });
+  window.addEventListener('zappy:languageChanged', function() { setTimeout(patch, 0); });
+  window.addEventListener('languageChanged', function() { setTimeout(patch, 0); });
+  new MutationObserver(function(mutations) {
+    var shouldPatch = mutations.some(function(mutation) {
+      return Array.prototype.some.call(mutation.addedNodes || [], function(node) {
+        return node.nodeType === 1 && (
+          (node.matches && node.matches('a[href], .zappy-products-dropdown, #zappy-catalog-menu')) ||
+          (node.querySelector && node.querySelector('a[href], .zappy-products-dropdown, #zappy-catalog-menu'))
+        );
+      });
+    });
+    if (shouldPatch) setTimeout(patch, 0);
+  }).observe(document.documentElement, { childList: true, subtree: true });
+  setTimeout(patch, 250);
+  setTimeout(patch, 1500);
 })();
