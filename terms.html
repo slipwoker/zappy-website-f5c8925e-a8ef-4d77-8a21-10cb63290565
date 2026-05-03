@@ -546,6 +546,124 @@
 </footer>
     <div data-integration="accessibility:toolbar"></div>
 
+<!-- Accessibility Toolbar -->
+<div id="zappy-a11y-panel" role="dialog" aria-modal="true" aria-label="תפריט נגישות" dir="rtl">
+  <button class="a11y-close" id="zappy-a11y-close" aria-label="סגור תפריט נגישות">✕</button>
+  <h3>♿ אפשרויות נגישות</h3>
+  <div class="a11y-btn-row">
+    <button class="a11y-action-btn" data-a11y="high-contrast" aria-pressed="false">🔆 ניגודיות גבוהה</button>
+    <button class="a11y-action-btn" data-a11y="inverted" aria-pressed="false">🌑 היפוך צבעים</button>
+    <button class="a11y-action-btn" data-a11y="gray-scale" aria-pressed="false">⬜ גווני אפור</button>
+    <button class="a11y-action-btn" data-a11y="large-text" aria-pressed="false">🔠 הגדל טקסט</button>
+    <button class="a11y-action-btn" data-a11y="larger-text" aria-pressed="false">🔡 הגדל טקסט עוד</button>
+    <button class="a11y-action-btn" data-a11y="readable-font" aria-pressed="false">📖 פונט קריא</button>
+    <button class="a11y-action-btn" data-a11y="links-underline" aria-pressed="false">🔗 הדגש קישורים</button>
+    <button class="a11y-action-btn" data-a11y="no-animations" aria-pressed="false">⏸ עצור אנימציות</button>
+    <button class="a11y-action-btn" data-a11y="focus-highlight" aria-pressed="false">🎯 הדגש פוקוס</button>
+  </div>
+  <button class="a11y-reset-btn" id="zappy-a11y-reset">↺ איפוס הגדרות</button>
+</div>
+<button id="zappy-a11y-btn" aria-label="פתח תפריט נגישות" aria-controls="zappy-a11y-panel" aria-expanded="false" title="נגישות">♿</button>
+
+<script>
+(function(){
+  var MODES = ['high-contrast','inverted','gray-scale','large-text','larger-text','readable-font','links-underline','no-animations','focus-highlight'];
+  var btn = document.getElementById('zappy-a11y-btn');
+  var panel = document.getElementById('zappy-a11y-panel');
+  var closeBtn = document.getElementById('zappy-a11y-close');
+  var resetBtn = document.getElementById('zappy-a11y-reset');
+  if(!btn||!panel) return;
+
+  // Restore saved states
+  MODES.forEach(function(m){
+    if(localStorage.getItem('a11y-'+m)==='1'){
+      document.body.classList.add('a11y-'+m);
+      var b = panel.querySelector('[data-a11y="'+m+'"]');
+      if(b){b.classList.add('a11y-active');b.setAttribute('aria-pressed','true');}
+    }
+  });
+
+  // Toggle panel
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    var open = panel.classList.toggle('a11y-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(open) panel.querySelector('.a11y-action-btn') && panel.querySelector('.a11y-action-btn').focus();
+  });
+
+  // Close button
+  if(closeBtn) closeBtn.addEventListener('click',function(){
+    panel.classList.remove('a11y-open');
+    btn.setAttribute('aria-expanded','false');
+    btn.focus();
+  });
+
+  // Action buttons
+  var actionBtns = panel.querySelectorAll('.a11y-action-btn');
+  actionBtns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var mode = this.getAttribute('data-a11y');
+      // Mutual exclusion for contrast modes
+      var contrastModes = ['high-contrast','inverted','gray-scale'];
+      if(contrastModes.indexOf(mode)>-1){
+        contrastModes.forEach(function(cm){
+          if(cm!==mode){
+            document.body.classList.remove('a11y-'+cm);
+            localStorage.removeItem('a11y-'+cm);
+            var ob=panel.querySelector('[data-a11y="'+cm+'"]');
+            if(ob){ob.classList.remove('a11y-active');ob.setAttribute('aria-pressed','false');}
+          }
+        });
+      }
+      // Mutual exclusion for text sizes
+      var textModes=['large-text','larger-text'];
+      if(textModes.indexOf(mode)>-1){
+        textModes.forEach(function(tm){
+          if(tm!==mode){
+            document.body.classList.remove('a11y-'+tm);
+            localStorage.removeItem('a11y-'+tm);
+            var ob=panel.querySelector('[data-a11y="'+tm+'"]');
+            if(ob){ob.classList.remove('a11y-active');ob.setAttribute('aria-pressed','false');}
+          }
+        });
+      }
+      var active = document.body.classList.toggle('a11y-'+mode);
+      this.classList.toggle('a11y-active', active);
+      this.setAttribute('aria-pressed', active ? 'true' : 'false');
+      if(active) localStorage.setItem('a11y-'+mode,'1');
+      else localStorage.removeItem('a11y-'+mode);
+    });
+  });
+
+  // Reset
+  if(resetBtn) resetBtn.addEventListener('click',function(){
+    MODES.forEach(function(m){
+      document.body.classList.remove('a11y-'+m);
+      localStorage.removeItem('a11y-'+m);
+      var b=panel.querySelector('[data-a11y="'+m+'"]');
+      if(b){b.classList.remove('a11y-active');b.setAttribute('aria-pressed','false');}
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click',function(e){
+    if(panel.classList.contains('a11y-open')&&!panel.contains(e.target)&&e.target!==btn){
+      panel.classList.remove('a11y-open');
+      btn.setAttribute('aria-expanded','false');
+    }
+  });
+
+  // Keyboard: Escape closes
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&panel.classList.contains('a11y-open')){
+      panel.classList.remove('a11y-open');
+      btn.setAttribute('aria-expanded','false');
+      btn.focus();
+    }
+  });
+})();
+</script>
+
 
     <script src="/script.js"></script>
 

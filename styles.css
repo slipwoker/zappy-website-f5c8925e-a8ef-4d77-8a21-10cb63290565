@@ -15421,6 +15421,71 @@ main,
 }
 
 /* ==END ZAPPY V2 E-COMMERCE THEME CSS== */
+
+#zappy-a11y-panel h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary, var(--primary-color));
+  margin: 0 0 12px 0;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+#zappy-a11y-panel .a11y-close {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+  line-height: 1;
+  padding: 0;
+}
+
+body.a11y-high-contrast {
+  filter: contrast(2) !important;
+}
+
+body.a11y-inverted {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+body.a11y-large-text * {
+  font-size: 120% !important;
+  line-height: 1.7 !important;
+}
+
+body.a11y-larger-text * {
+  font-size: 145% !important;
+  line-height: 1.8 !important;
+}
+
+body.a11y-readable-font * {
+  font-family: Arial, Helvetica, sans-serif !important;
+  letter-spacing: 0.03em !important;
+}
+
+body.a11y-links-underline a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+}
+
+body.a11y-no-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+body.a11y-focus-highlight *:focus {
+  outline: 3px solid #ffcc00 !important;
+  outline-offset: 3px !important;
+}
+
+body.a11y-gray-scale {
+  filter: grayscale(1) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
