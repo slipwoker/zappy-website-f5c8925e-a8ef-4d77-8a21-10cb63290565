@@ -15671,6 +15671,38 @@ main,
 }
 
 /* ==END ZAPPY V2 E-COMMERCE THEME CSS== */
+
+.site-footer .footer-col:nth-child(3) .footer-contact {
+  align-items: flex-start !important;
+  text-align: right !important;
+}
+
+.site-footer .footer-col:nth-child(3) .footer-contact li {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: right !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+.site-footer .footer-col:nth-child(3) .footer-contact li .contact-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 20px !important;
+  width: 20px !important;
+  flex-shrink: 0 !important;
+}
+
+.site-footer .footer-col:nth-child(3) .footer-contact li:first-child::before {
+  content: '';
+  display: inline-block;
+  min-width: 20px;
+  width: 20px;
+  flex-shrink: 0;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
