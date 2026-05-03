@@ -15716,6 +15716,15 @@ main,
   justify-content: flex-start !important;
   text-align: right !important;
 }
+
+#zappy-a11y-panel .a11y-btn-row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  width: auto !important;
+  overflow-x: auto !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
