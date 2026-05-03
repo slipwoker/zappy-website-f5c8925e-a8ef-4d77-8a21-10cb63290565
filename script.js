@@ -8913,6 +8913,257 @@ async function loadRelatedProducts(currentProduct, t) {
       return { w: 100, h: (contA / imgA) * 100 };
     }
 
+    // FULL-BLEED FIRST-CHILD MEDIA: when the wrapper's parent (the image-wrap)
+    // is the first visible child of a padded card, apply negative margins on all
+    // sides equal to the card's padding so the image extends edge-to-edge of the
+    // card. Without this, every padded card leaves a visible padding "frame"
+    // around the image which users perceive as the image not filling the card.
+    // Applies on BOTH desktop and mobile — this is a layout concern, not a
+    // viewport-specific one. Skipped for hero backgrounds and full-width wrappers.
+    function applyFirstChildBleed(wrapper) {
+      try {
+        if (!wrapper || isHeroBgWrapper(wrapper)) return;
+        var widthMode = wrapper.getAttribute('data-zappy-zoom-wrapper-width-mode');
+        if (widthMode === 'full') return;
+        // Bleed only recognized image-slot wrappers that are direct children
+        // of padded card-like containers. This still handles editor-injected
+        // wrappers (card -> image-wrap -> zappy-inserted-element -> wrapper)
+        // but avoids bleeding media into full section/layout containers.
+        var slotForBleed = null;
+        var slotNode = wrapper.parentElement;
+        for (var slotWalk = 0; slotWalk < 4 && slotNode && slotNode !== document.body; slotWalk++) {
+          var slotNodeClass = (slotNode.className || '').toString().toLowerCase();
+          if (/(image-wrap|image-tile|image-slot|card-image|card-media|media-wrap|portrait-wrap)/.test(slotNodeClass)) {
+            slotForBleed = slotNode;
+            break;
+          }
+          var slotNodeCS = window.getComputedStyle(slotNode);
+          var slotNodeRawClass = (slotNode.className || '').toString();
+          var slotThinAnchor = slotNode.tagName === 'A' && slotNodeCS.display === 'contents';
+          var slotUnclassedDiv = slotNode.tagName === 'DIV' && !slotNodeRawClass.trim();
+          var slotInserted = / zappy-inserted-element |^zappy-inserted-element | zappy-inserted-element$|^zappy-inserted-element$/.test(' ' + slotNodeRawClass + ' ');
+          if (!(slotThinAnchor || slotUnclassedDiv || slotInserted)) break;
+          slotNode = slotNode.parentElement;
+        }
+        var directInsertedForBleed = null;
+        if (!slotForBleed && wrapper.parentElement) {
+          var directParentClass = (wrapper.parentElement.className || '').toString();
+          var directParentIsInserted = / zappy-inserted-element |^zappy-inserted-element | zappy-inserted-element$|^zappy-inserted-element$/.test(' ' + directParentClass + ' ');
+          var directCard = wrapper.parentElement.parentElement;
+          var directCardClass = (directCard && directCard.className || '').toString().toLowerCase();
+          if (directParentIsInserted && /(card|tile|article|post|news|mention|press|journey|philosophy|feature|service)/.test(directCardClass)) {
+            directInsertedForBleed = wrapper.parentElement;
+          }
+        }
+        var bleedTarget = slotForBleed || directInsertedForBleed;
+        var card = bleedTarget && bleedTarget.parentElement;
+        var cardClass = (card && card.className || '').toString().toLowerCase();
+        var isCardLike = /(card|tile|article|post|news|mention|press|journey|philosophy|feature|service)/.test(cardClass);
+        if (!bleedTarget || !card || card === document.body || !isCardLike) return;
+        var firstVisibleChild = null;
+        for (var ci = 0; ci < card.children.length; ci++) {
+          var ch = card.children[ci];
+          var chCS = window.getComputedStyle(ch);
+          if (chCS.display !== 'none' && chCS.visibility !== 'hidden') {
+            firstVisibleChild = ch;
+            break;
+          }
+        }
+        if (firstVisibleChild !== bleedTarget) return;
+        var cardCS = window.getComputedStyle(card);
+        var padT = parseFloat(cardCS.paddingTop) || 0;
+        var padL = parseFloat(cardCS.paddingLeft) || 0;
+        var padR = parseFloat(cardCS.paddingRight) || 0;
+        if (padL <= 0 && padR <= 0 && padT <= 0) return;
+        bleedTarget.style.setProperty('margin-left', '-' + padL + 'px', 'important');
+        bleedTarget.style.setProperty('margin-right', '-' + padR + 'px', 'important');
+        bleedTarget.style.setProperty('margin-top', '-' + padT + 'px', 'important');
+        bleedTarget.style.setProperty('width', 'calc(100% + ' + (padL + padR) + 'px)', 'important');
+        bleedTarget.style.setProperty('max-width', 'calc(100% + ' + (padL + padR) + 'px)', 'important');
+        bleedTarget.style.setProperty('height', 'auto', 'important');
+        bleedTarget.style.setProperty('min-height', '0', 'important');
+        bleedTarget.style.setProperty('max-height', 'none', 'important');
+        bleedTarget.setAttribute('data-zappy-mobile-bleed', '1');
+        wrapper.style.setProperty('width', '100%', 'important');
+        wrapper.style.setProperty('max-width', '100%', 'important');
+        var bleedSW = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-width')) || 0;
+        var bleedSH = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-height')) || 0;
+        if (bleedSW > 0 && bleedSH > 0) {
+          wrapper.style.setProperty('aspect-ratio', bleedSW + '/' + bleedSH, 'important');
+          wrapper.style.setProperty('height', 'auto', 'important');
+        }
+      } catch (_e) {}
+    }
+
+    // FILL CARD-SLOT CONTAINER: stretch the wrapper to fill its parent when
+    // the parent is a designed image-slot container (class includes
+    // image-wrap / image-tile / image-slot / card-image / card-media /
+    // portrait-wrap) AND the wrapper is materially narrower than the parent.
+    // This handles the case where the saved desktop pixel width (e.g. 383px)
+    // is smaller than the rendered card slot at certain viewports / card
+    // variants (e.g. journey-card--short which is 790px wide while the saved
+    // image is 383px), leaving large empty gaps on the sides.
+    // Logos, footer brand marks, and intentionally smaller media are not
+    // matched because their parents do not carry image-slot class names.
+    // Skipped for hero backgrounds and full-width wrappers.
+    function applyCardSlotFill(wrapper, img) {
+      try {
+        if (!wrapper || isHeroBgWrapper(wrapper)) return;
+        var widthMode = wrapper.getAttribute('data-zappy-zoom-wrapper-width-mode');
+        if (widthMode === 'full') return;
+        // Walk UP through editor-injected / "thin" wrappers to find the real
+        // visual image-slot container. We tolerate at most 3 levels of:
+        //   - <a style="display:contents">           (editor link wrap)
+        //   - <div class="zappy-inserted-element">  (editor inserted media)
+        //   - <div> with no class                    (anonymous inline wrap)
+        var node = wrapper.parentElement;
+        var slotEl = null;
+        for (var walk = 0; walk < 3 && node && node !== document.body; walk++) {
+          var nodeClass = (node.className || '').toString().toLowerCase();
+          if (/(image-wrap|image-tile|image-slot|card-image|card-media|media-wrap|portrait-wrap)/.test(nodeClass)) {
+            slotEl = node;
+            break;
+          }
+          var nodeCS = window.getComputedStyle(node);
+          var nodeRawClass = (node.className || '').toString();
+          var isThinAnchor = node.tagName === 'A' && nodeCS.display === 'contents';
+          var isUnclassedDiv = node.tagName === 'DIV' && !nodeRawClass.trim();
+          var isInsertedEl = / zappy-inserted-element |^zappy-inserted-element | zappy-inserted-element$|^zappy-inserted-element$/.test(' ' + nodeRawClass + ' ');
+          if (!(isThinAnchor || isUnclassedDiv || isInsertedEl)) break;
+          node = node.parentElement;
+        }
+        if (!slotEl) {
+          // No image-slot found. Check if the walk stopped at a card-like
+          // container and the saved width fills most of the card — this handles
+          // user-replaced images where the original image-wrap is empty and the
+          // new image is in a zappy-inserted-element sibling.
+          if (node && node !== document.body && !wrapper.getAttribute('data-zappy-card-slot-fill')) {
+            var caClass = (node.className || '').toString().toLowerCase();
+            var caIsCard = /(card|tile|article|post|news|mention|press|journey|philosophy|feature|service)/.test(caClass);
+            if (caIsCard) {
+              var caSavedW = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-width')) || 0;
+              var caSavedH = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-height')) || 0;
+              var caRect = node.getBoundingClientRect();
+              if (caSavedW > 0 && caRect.width > 0 && caSavedW >= caRect.width * 0.8) {
+                wrapper.style.setProperty('width', '100%', 'important');
+                wrapper.style.setProperty('max-width', '100%', 'important');
+                if (caSavedH > 0) {
+                  wrapper.style.setProperty('aspect-ratio', caSavedW + '/' + caSavedH, 'important');
+                  wrapper.style.setProperty('height', 'auto', 'important');
+                }
+                wrapper.setAttribute('data-zappy-card-slot-fill', '1');
+                var caInt = wrapper.parentElement;
+                for (var cai = 0; cai < 3 && caInt && caInt !== node; cai++) {
+                  var caiRaw = (caInt.className || '').toString();
+                  if (/ zappy-inserted-element |^zappy-inserted-element | zappy-inserted-element$|^zappy-inserted-element$/.test(' ' + caiRaw + ' ')) {
+                    var caHasBleed = caInt.getAttribute('data-zappy-mobile-bleed');
+                    if (!caHasBleed) {
+                      caInt.style.setProperty('width', '100%', 'important');
+                      caInt.style.setProperty('max-width', '100%', 'important');
+                    }
+                    caInt.style.setProperty('height', 'auto', 'important');
+                    caInt.style.setProperty('min-height', '0', 'important');
+                    caInt.style.setProperty('max-height', 'none', 'important');
+                    var caIsFirst = true;
+                    var caPrev = caInt.previousElementSibling;
+                    while (caPrev) {
+                      if (caPrev.getBoundingClientRect().height > 1) { caIsFirst = false; break; }
+                      caPrev = caPrev.previousElementSibling;
+                    }
+                    if (caIsFirst) {
+                      if (!caHasBleed) {
+                        caInt.style.setProperty('margin-top', '0', 'important');
+                      }
+                      caInt.style.setProperty('border-radius', 'var(--radius-card, 20px) var(--radius-card, 20px) 0 0', 'important');
+                      caInt.style.setProperty('overflow', 'hidden', 'important');
+                    }
+                  }
+                  caInt = caInt.parentElement;
+                }
+              }
+            }
+          }
+          return;
+        }
+        var slotRect = slotEl.getBoundingClientRect();
+        var wrapRect = wrapper.getBoundingClientRect();
+        var slotCS = window.getComputedStyle(slotEl);
+        var slotWidthGap = slotRect.width - wrapRect.width;
+        var slotHeightGap = wrapRect.height - slotRect.height;
+        if (slotWidthGap <= 4 && !(slotHeightGap > 4 && slotRect.height > 0 && slotCS.overflow !== 'visible')) return;
+        var swStr = wrapper.getAttribute('data-zappy-zoom-wrapper-width');
+        var shStr = wrapper.getAttribute('data-zappy-zoom-wrapper-height');
+        var swNum = parseFloat(swStr) || 0;
+        var shNum = parseFloat(shStr) || 0;
+        wrapper.style.setProperty('width', '100%', 'important');
+        wrapper.style.setProperty('max-width', '100%', 'important');
+        if (slotHeightGap > 4 && slotRect.height > 0 && slotCS.overflow !== 'visible') {
+          wrapper.style.setProperty('height', '100%', 'important');
+          wrapper.style.setProperty('aspect-ratio', 'auto', 'important');
+          wrapper.style.setProperty('padding-bottom', '0', 'important');
+          // Recompute image crop after changing the wrapper from stale saved
+          // portrait dimensions to the real clipped slot height. Otherwise the
+          // image may keep horizontal-overflow-only sizing, making vertical
+          // object-position ineffective.
+          if (img) {
+            var finalRect = wrapper.getBoundingClientRect();
+            var nW = img.naturalWidth || 0;
+            var nH = img.naturalHeight || 0;
+            if (finalRect && finalRect.width > 0 && finalRect.height > 0 && nW > 0 && nH > 0) {
+              var finalCover = coverPercents(nW / nH, finalRect.width / finalRect.height);
+              var zAttr = parseFloat(img.getAttribute('data-zappy-mobile-zoom') || img.getAttribute('data-zappy-zoom') || '1');
+              var finalZoom = (isFinite(zAttr) && zAttr > 0) ? zAttr : 1;
+              var finalW = 100;
+              var finalH = 100;
+              if (finalZoom >= 1) {
+                finalW = finalCover.w * finalZoom;
+                finalH = finalCover.h * finalZoom;
+              } else {
+                var finalT = (finalZoom - 0.5) / 0.5;
+                if (!isFinite(finalT)) finalT = 0;
+                finalT = Math.max(0, Math.min(1, finalT));
+                finalW = 100 + finalT * (finalCover.w - 100);
+                finalH = 100 + finalT * (finalCover.h - 100);
+              }
+              var finalPos = parseObjPos(img.getAttribute('data-zappy-mobile-object-position') || img.getAttribute('data-zappy-object-position') || img.style.objectPosition || '50% 50%');
+              img.style.setProperty('position', 'absolute', 'important');
+              img.style.setProperty('left', ((100 - finalW) * (finalPos.x / 100)) + '%', 'important');
+              img.style.setProperty('top', ((100 - finalH) * (finalPos.y / 100)) + '%', 'important');
+              img.style.setProperty('width', finalW + '%', 'important');
+              img.style.setProperty('height', finalH + '%', 'important');
+              img.style.setProperty('max-width', 'none', 'important');
+              img.style.setProperty('max-height', 'none', 'important');
+              img.style.setProperty('display', 'block', 'important');
+              img.style.setProperty('object-fit', finalZoom < 1 ? 'fill' : 'cover', 'important');
+              img.style.setProperty('margin', '0', 'important');
+            }
+          }
+        } else if (swNum > 0 && shNum > 0) {
+          wrapper.style.setProperty('aspect-ratio', swNum + '/' + shNum, 'important');
+          wrapper.style.setProperty('height', 'auto', 'important');
+        }
+        wrapper.setAttribute('data-zappy-card-slot-fill', '1');
+        // Also stretch any intermediate .zappy-inserted-element ancestors up
+        // to the slot, so an editor-inserted media wrapper with a saved
+        // desktop pixel width doesn't constrain the wrapper we just stretched
+        // to 100%.
+        var intermediate = wrapper.parentElement;
+        for (var iw = 0; iw < 3 && intermediate && intermediate !== slotEl; iw++) {
+          var iwRawClass = (intermediate.className || '').toString();
+          var iwIsInserted = / zappy-inserted-element |^zappy-inserted-element | zappy-inserted-element$|^zappy-inserted-element$/.test(' ' + iwRawClass + ' ');
+          if (iwIsInserted) {
+            intermediate.style.setProperty('width', '100%', 'important');
+            intermediate.style.setProperty('max-width', '100%', 'important');
+            intermediate.style.setProperty('height', 'auto', 'important');
+            intermediate.style.setProperty('min-height', '0', 'important');
+            intermediate.style.setProperty('max-height', 'none', 'important');
+            intermediate.setAttribute('data-zappy-inserted-stretched', '1');
+          }
+          intermediate = intermediate.parentElement;
+        }
+      } catch (_fillErr) {}
+    }
+
     function applyZoom(wrapper, img) {
       var zoom = parseFloat(img.getAttribute('data-zappy-zoom')) || 1;
       if (!(zoom > 0)) zoom = 1;
@@ -8936,41 +9187,41 @@ async function loadRelatedProducts(currentProduct, t) {
 
         var _sW = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-width')) || 0;
         var _sH = parseFloat(wrapper.getAttribute('data-zappy-zoom-wrapper-height')) || 0;
-        if (_sW > 0 && _sH > 0) {
+        var hasMobileOverrides = mPos || (isFinite(mZoom) && mZoom > 0);
+
+        if (hasMobileOverrides && _sW > 0 && _sH > 0) {
           wrapper.style.setProperty('padding-bottom', '0', 'important');
           wrapper.style.setProperty('aspect-ratio', _sW + '/' + _sH, 'important');
           wrapper.style.setProperty('height', 'auto', 'important');
-        }
 
-        function applyMobileZoomCrop(_img, _wrapper, _effPos, _effZoom) {
-          var rect = _wrapper.getBoundingClientRect();
-          if (!rect || !rect.width || !rect.height) return;
-          var nW = _img.naturalWidth || 0, nH = _img.naturalHeight || 0;
-          if (!(nW > 0 && nH > 0)) return;
-          var imgA = nW / nH;
-          var contA = rect.width / rect.height;
-          var cover = coverPercents(imgA, contA);
-          var wP = 100, hP = 100;
-          if (_effZoom >= 1) { wP = cover.w * _effZoom; hP = cover.h * _effZoom; }
-          else { var t2 = (_effZoom - 0.5) / 0.5; if (!isFinite(t2)) t2 = 0; t2 = Math.max(0, Math.min(1, t2)); wP = 100 + t2 * (cover.w - 100); hP = 100 + t2 * (cover.h - 100); }
-          var p2 = parseObjPos(_effPos);
-          var lP = (100 - wP) * (p2.x / 100);
-          var tP = (100 - hP) * (p2.y / 100);
-          _img.style.setProperty('position', 'absolute', 'important');
-          _img.style.setProperty('left', lP + '%', 'important');
-          _img.style.setProperty('top', tP + '%', 'important');
-          _img.style.setProperty('width', wP + '%', 'important');
-          _img.style.setProperty('height', hP + '%', 'important');
-          _img.style.setProperty('max-width', 'none', 'important');
-          _img.style.setProperty('max-height', 'none', 'important');
-          _img.style.setProperty('display', 'block', 'important');
-          _img.style.setProperty('object-fit', _effZoom < 1 ? 'fill' : 'cover', 'important');
-          _img.style.setProperty('margin', '0', 'important');
-        }
+          function applyMobileZoomCrop(_img, _wrapper, _effPos, _effZoom) {
+            var rect = _wrapper.getBoundingClientRect();
+            if (!rect || !rect.width || !rect.height) return;
+            var nW = _img.naturalWidth || 0, nH = _img.naturalHeight || 0;
+            if (!(nW > 0 && nH > 0)) return;
+            var imgA = nW / nH;
+            var contA = rect.width / rect.height;
+            var cover = coverPercents(imgA, contA);
+            var wP = 100, hP = 100;
+            if (_effZoom >= 1) { wP = cover.w * _effZoom; hP = cover.h * _effZoom; }
+            else { var t2 = (_effZoom - 0.5) / 0.5; if (!isFinite(t2)) t2 = 0; t2 = Math.max(0, Math.min(1, t2)); wP = 100 + t2 * (cover.w - 100); hP = 100 + t2 * (cover.h - 100); }
+            var p2 = parseObjPos(_effPos);
+            var lP = (100 - wP) * (p2.x / 100);
+            var tP = (100 - hP) * (p2.y / 100);
+            _img.style.setProperty('position', 'absolute', 'important');
+            _img.style.setProperty('left', lP + '%', 'important');
+            _img.style.setProperty('top', tP + '%', 'important');
+            _img.style.setProperty('width', wP + '%', 'important');
+            _img.style.setProperty('height', hP + '%', 'important');
+            _img.style.setProperty('max-width', 'none', 'important');
+            _img.style.setProperty('max-height', 'none', 'important');
+            _img.style.setProperty('display', 'block', 'important');
+            _img.style.setProperty('object-fit', _effZoom < 1 ? 'fill' : 'cover', 'important');
+            _img.style.setProperty('margin', '0', 'important');
+          }
 
-        var effZoom = (isFinite(mZoom) && mZoom > 0) ? mZoom : zoom;
-        var effPos = mPos || img.getAttribute('data-zappy-object-position') || img.style.objectPosition || '50% 50%';
-        if (_sW > 0 && _sH > 0) {
+          var effZoom = (isFinite(mZoom) && mZoom > 0) ? mZoom : zoom;
+          var effPos = mPos || img.getAttribute('data-zappy-object-position') || img.style.objectPosition || '50% 50%';
           applyMobileZoomCrop(img, wrapper, effPos, effZoom);
           if (!(img.complete && img.naturalWidth > 0)) {
             img.addEventListener('load', function _onLoad() {
@@ -8978,17 +9229,49 @@ async function loadRelatedProducts(currentProduct, t) {
               try { applyMobileZoomCrop(img, wrapper, effPos, effZoom); } catch(e) {}
             });
           }
+        } else if (_sW > 0 && _sH > 0) {
+          // No mobile overrides but the wrapper has a saved desktop aspect ratio.
+          // Preserve that crop frame at mobile width and use object-fit:cover with the
+          // saved object-position. This keeps the visual layout consistent with desktop
+          // (same crop, just narrower) without applying the percentage-offset math that
+          // produced "image overflows wrapper" rendering on the previous build.
+          var _savedObjPos = img.getAttribute('data-zappy-object-position') ||
+                             img.style.objectPosition || '50% 50%';
+          wrapper.style.setProperty('aspect-ratio', _sW + '/' + _sH, 'important');
+          wrapper.style.setProperty('padding-bottom', '0', 'important');
+          wrapper.style.setProperty('height', 'auto', 'important');
+          img.style.setProperty('position', 'absolute', 'important');
+          img.style.setProperty('top', '0', 'important');
+          img.style.setProperty('left', '0', 'important');
+          img.style.setProperty('width', '100%', 'important');
+          img.style.setProperty('height', '100%', 'important');
+          img.style.setProperty('max-width', '100%', 'important');
+          img.style.setProperty('max-height', 'none', 'important');
+          img.style.setProperty('display', 'block', 'important');
+          img.style.setProperty('object-fit', 'cover', 'important');
+          img.style.setProperty('object-position', _savedObjPos, 'important');
+          img.style.removeProperty('right');
+          img.style.removeProperty('bottom');
+          img.style.setProperty('margin', '0', 'important');
         } else {
+          // Legacy wrappers without saved dimensions — natural-aspect responsive image.
+          wrapper.style.setProperty('aspect-ratio', 'auto', 'important');
+          wrapper.style.setProperty('padding-bottom', '0', 'important');
+          wrapper.style.setProperty('height', 'auto', 'important');
           img.style.setProperty('position', 'relative', 'important');
           img.style.setProperty('width', '100%', 'important');
           img.style.setProperty('height', 'auto', 'important');
           img.style.setProperty('max-width', '100%', 'important');
+          img.style.setProperty('max-height', '300px', 'important');
           img.style.setProperty('display', 'block', 'important');
           img.style.setProperty('object-fit', 'cover', 'important');
           img.style.removeProperty('left');
           img.style.removeProperty('top');
           img.style.setProperty('margin', '0', 'important');
         }
+
+        applyFirstChildBleed(wrapper);
+        applyCardSlotFill(wrapper, img);
         return;
       }
 
@@ -9008,6 +9291,8 @@ async function loadRelatedProducts(currentProduct, t) {
         img.style.setProperty('object-fit', 'cover', 'important');
         img.style.setProperty('display', 'block', 'important');
         img.style.setProperty('margin', '0', 'important');
+        applyFirstChildBleed(wrapper);
+        applyCardSlotFill(wrapper, img);
         return;
       }
 
@@ -9021,6 +9306,8 @@ async function loadRelatedProducts(currentProduct, t) {
       if (existingPos === 'absolute' && existingW.indexOf('%') !== -1 && zoom > 1) {
         wrapper.style.setProperty('overflow', 'hidden', 'important');
         wrapper.style.setProperty('position', 'relative', 'important');
+        applyFirstChildBleed(wrapper);
+        applyCardSlotFill(wrapper, img);
         return;
       }
 
@@ -9062,6 +9349,8 @@ async function loadRelatedProducts(currentProduct, t) {
       img.style.setProperty('display', 'block', 'important');
       img.style.setProperty('object-fit', zoom < 1 ? 'fill' : 'cover', 'important');
       img.style.setProperty('margin', '0', 'important');
+      applyFirstChildBleed(wrapper);
+      applyCardSlotFill(wrapper, img);
     }
 
     function fixOrphanedZoomImages() {
@@ -9304,18 +9593,20 @@ async function loadRelatedProducts(currentProduct, t) {
     if (window.__zappyFaqToggleInit) return;
     window.__zappyFaqToggleInit = true;
 
-    var answerSel = '[class*="faq-answer"], [class*="faq-content"], [class*="faq-body"], .accordion-content, .accordion-body';
+    var answerSel = '[class*="faq-answer"], [class*="faq-content"], [class*="faq-body"], [class*="faq-item__answer"], .accordion-content, .accordion-body';
 
     function initFaqToggle() {
       var items = document.querySelectorAll('[class*="faq-item"], .accordion-item');
       if (!items.length) return;
 
       items.forEach(function(item) {
+        if (item.closest(answerSel)) return;
         var question = item.querySelector(
-          '[class*="faq-question"], [class*="faq-header"], .accordion-header, .accordion-toggle'
+          '[class*="faq-question"], [class*="faq-header"], [class*="faq-item__question"], [class*="faq-item__btn"], [class*="faq-btn"], .accordion-header, .accordion-toggle'
         );
         if (!question) return;
         if (question.__zappyFaqBound) return;
+        if (question.hasAttribute('onclick')) question.removeAttribute('onclick');
         question.__zappyFaqBound = true;
         question.style.cursor = 'pointer';
 
@@ -9329,7 +9620,7 @@ async function loadRelatedProducts(currentProduct, t) {
             siblings.forEach(function(sib) {
               if (sib !== item && sib.classList.contains('active')) {
                 sib.classList.remove('active');
-                var sibQ = sib.querySelector('[class*="faq-question"], [class*="faq-header"], .accordion-header');
+                var sibQ = sib.querySelector('[class*="faq-question"], [class*="faq-header"], [class*="faq-item__question"], [class*="faq-item__btn"], [class*="faq-btn"], .accordion-header');
                 if (sibQ) sibQ.setAttribute('aria-expanded', 'false');
                 var sibA = sib.querySelector(answerSel);
                 if (sibA) {
@@ -9348,15 +9639,30 @@ async function loadRelatedProducts(currentProduct, t) {
 
           var answer = item.querySelector(answerSel);
           if (answer) {
-            answer.style.transition = 'max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease';
             if (isActive) {
               answer.style.display = '';
-              answer.style.maxHeight = answer.scrollHeight + 'px';
-              answer.style.overflow = 'hidden';
-              answer.style.opacity = '1';
               answer.style.paddingTop = '';
               answer.style.paddingBottom = '';
+              var inners = answer.querySelectorAll(answerSel);
+              inners.forEach(function(inn) {
+                inn.style.maxHeight = '';
+                inn.style.overflow = '';
+                inn.style.opacity = '';
+                inn.style.paddingTop = '';
+                inn.style.paddingBottom = '';
+              });
+              answer.style.transition = 'none';
+              answer.style.maxHeight = 'none';
+              answer.style.opacity = '0';
+              var realH = answer.scrollHeight;
+              answer.style.maxHeight = '0';
+              answer.offsetHeight;
+              answer.style.transition = 'max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease';
+              answer.style.maxHeight = realH + 'px';
+              answer.style.overflow = 'hidden';
+              answer.style.opacity = '1';
             } else {
+              answer.style.transition = 'max-height 0.35s ease, opacity 0.25s ease, padding 0.25s ease';
               answer.style.maxHeight = '0';
               answer.style.overflow = 'hidden';
               answer.style.opacity = '0';
@@ -9375,6 +9681,7 @@ async function loadRelatedProducts(currentProduct, t) {
 
       items.forEach(function(item) {
         if (item.classList.contains('active')) return;
+        if (item.closest(answerSel)) return;
         var answer = item.querySelector(answerSel);
         if (answer) {
           answer.style.maxHeight = '0';
@@ -9395,6 +9702,152 @@ async function loadRelatedProducts(currentProduct, t) {
   } catch (e) {}
 })();
 /* END ZAPPY_FAQ_ACCORDION_TOGGLE */
+
+
+/* ZAPPY_RUNTIME_CONTRAST_FIX */
+(function(){
+  try {
+    if (window.__zappyContrastFixInit) return;
+    window.__zappyContrastFixInit = true;
+
+    function getLum(r,g,b){
+      var a=[r,g,b].map(function(v){v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);});
+      return a[0]*0.2126+a[1]*0.7152+a[2]*0.0722;
+    }
+    function contrast(c1,c2){
+      var l1=getLum(c1.r,c1.g,c1.b),l2=getLum(c2.r,c2.g,c2.b);
+      var hi=Math.max(l1,l2),lo=Math.min(l1,l2);
+      return (hi+0.05)/(lo+0.05);
+    }
+    function parseRGB(c){
+      if(!c)return null;var m=c.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+      return m?{r:+m[1],g:+m[2],b:+m[3]}:null;
+    }
+    function effectiveBg(el){
+      var e=el;
+      while(e){
+        var cs=window.getComputedStyle(e);
+        var bi=cs.backgroundImage;
+        if(bi&&bi!=='none'){
+          if(bi.indexOf('url(')>=0) return null;
+          var isRgba=bi.match(/rgba\(/);
+          if(!isRgba){
+            var gm=bi.match(/rgb\(\s*(\d+),\s*(\d+),\s*(\d+)/);
+            if(gm) return 'rgb('+gm[1]+','+gm[2]+','+gm[3]+')';
+          }
+        }
+        var bg=cs.backgroundColor;
+        if(bg&&bg!=='rgba(0, 0, 0, 0)'&&bg!=='transparent'){
+          var am=bg.match(/rgba\(\s*\d+,\s*\d+,\s*\d+,\s*([\d.]+)/);
+          if(!am||parseFloat(am[1])>=0.6) return bg;
+        }
+        e=e.parentElement;
+      }
+      return 'rgb(255,255,255)';
+    }
+
+    function resolveVar(val){
+      if(!val||val.indexOf('var(')===-1)return val;
+      var m=val.match(/var\(--([^,)]+)/);
+      if(!m)return val;
+      return getComputedStyle(document.documentElement).getPropertyValue('--'+m[1]).trim()||val;
+    }
+
+    function fixContrast(){
+      var root=getComputedStyle(document.documentElement);
+      var dark=root.getPropertyValue('--text-dark').trim()||root.getPropertyValue('--text').trim()||'#1a1a1a';
+      var light=root.getPropertyValue('--text-light').trim()||root.getPropertyValue('--background').trim()||'#ffffff';
+      var darkRGB=parseRGB(dark);
+      if(!darkRGB){
+        var d=document.createElement('div');d.style.color=dark;document.body.appendChild(d);
+        darkRGB=parseRGB(getComputedStyle(d).color);d.remove();
+      }
+      var lightRGB=parseRGB(light);
+      if(!lightRGB){
+        var d2=document.createElement('div');d2.style.color=light;document.body.appendChild(d2);
+        lightRGB=parseRGB(getComputedStyle(d2).color);d2.remove();
+      }
+      if(!darkRGB)darkRGB={r:26,g:26,b:26};
+      if(!lightRGB)lightRGB={r:255,g:255,b:255};
+
+      var mainEl=document.querySelector('main')||document.body;
+      var els=mainEl.querySelectorAll('h1,h2,h3,h4,h5,h6,p,span,a,button,li,label,td,th,dt,dd,figcaption');
+      var fixed=0;
+      for(var i=0;i<els.length;i++){
+        var el=els[i];
+        if(el.closest('nav,header,.zappy-header,footer,.zappy-footer'))continue;
+        var txt=el.textContent?el.textContent.trim():'';
+        if(!txt)continue;
+        var r=el.getBoundingClientRect();
+        if(r.width===0||r.height===0)continue;
+        var cs=getComputedStyle(el);
+        var col=resolveVar(cs.color);
+        var bg=effectiveBg(el);
+        var cRGB=parseRGB(col),bRGB=parseRGB(bg);
+        if(!cRGB||!bRGB)continue;
+        var ratio=contrast(cRGB,bRGB);
+        if(ratio<4.5){
+          var darkC=contrast(darkRGB,bRGB);
+          var lightC=contrast(lightRGB,bRGB);
+          var best=darkC>=lightC?dark:light;
+          var bestRatio=Math.max(darkC,lightC);
+          if(bestRatio<4.5){
+            var blackC=contrast({r:0,g:0,b:0},bRGB);
+            var whiteC=contrast({r:255,g:255,b:255},bRGB);
+            best=blackC>=whiteC?'#000000':'#ffffff';
+          }
+          el.style.setProperty('color',best,'important');
+          fixed++;
+        }
+      }
+      if(fixed>0)console.log('[Contrast Fix] Fixed '+fixed+' low-contrast elements');
+    }
+
+    if(document.readyState==='loading'){
+      document.addEventListener('DOMContentLoaded',fixContrast,{once:true});
+    } else {
+      fixContrast();
+    }
+  }catch(e){}
+})();
+/* END ZAPPY_RUNTIME_CONTRAST_FIX */
+
+// ZAPPY_CARD_IMAGE_BLEED
+(function(){
+  function run(){
+    var cards=document.querySelectorAll('article,[class*="card"],[class*="tile"]');
+    cards.forEach(function(card){
+      var cs=window.getComputedStyle(card);
+      var padL=parseFloat(cs.paddingLeft)||0;
+      var padR=parseFloat(cs.paddingRight)||0;
+      var padT=parseFloat(cs.paddingTop)||0;
+      if(padL<8&&padR<8)return;
+      var fv=null;
+      for(var i=0;i<card.children.length;i++){
+        var ch=card.children[i];
+        var chCs=window.getComputedStyle(ch);
+        if(chCs.display!=='none'&&chCs.visibility!=='hidden'&&ch.getBoundingClientRect().height>0){fv=ch;break;}
+      }
+      if(!fv)return;
+      if(fv.getAttribute('data-zappy-mobile-bleed'))return;
+      if(fv.querySelector('[data-zappy-zoom-wrapper]'))return;
+      var img=fv.querySelector('img');
+      if(!img)return;
+      var ir=img.getBoundingClientRect();
+      var cw=card.clientWidth-padL-padR;
+      if(cw<=0||ir.width<cw*0.8)return;
+      fv.style.setProperty('margin-left','-'+padL+'px','important');
+      fv.style.setProperty('margin-right','-'+padR+'px','important');
+      if(padT>0)fv.style.setProperty('margin-top','-'+padT+'px','important');
+      fv.style.setProperty('width','calc(100% + '+(padL+padR)+'px)','important');
+      fv.style.setProperty('max-width','calc(100% + '+(padL+padR)+'px)','important');
+      fv.setAttribute('data-zappy-mobile-bleed','1');
+      if(window.getComputedStyle(img).objectFit==='contain'){img.style.setProperty('object-fit','cover','important');}
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(run,200);});}
+  else{setTimeout(run,200);}
+})();
 
 
 /* ZAPPY_NAV_SCROLL_PADDING */

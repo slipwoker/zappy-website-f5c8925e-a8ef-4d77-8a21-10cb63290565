@@ -15870,9 +15870,23 @@ nav .sub-menu.zappy-empty-submenu,
     overflow: hidden !important;
     position: relative !important;
   }
-  
-  /* Legacy zoom wrappers without saved crop data can still fall back to responsive images. */
-  [data-zappy-zoom-wrapper="true"]:not([data-zappy-zoom-wrapper-width]) img:not([data-zappy-mobile-object-position]):not([data-zappy-mobile-zoom]) {
+
+  /* The zoom wrapper's image is position:absolute (so it contributes 0 to the
+     wrapper's intrinsic content width). Inserted-element parents that carry a
+     desktop pixel height (e.g. height:234px) collapse to 0px wide on mobile
+     because nothing in the subtree pushes back on the cross-axis. Force them
+     to fill the parent container so the wrapper's aspect-ratio chain resolves. */
+  .zappy-inserted-element:has(> [data-zappy-zoom-wrapper="true"]) {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Reset zoom wrapper images on mobile to responsive display.
+     Images with explicit mobile crop overrides are excluded - the JS runtime
+     applies their crop/zoom after page load. */
+  [data-zappy-zoom-wrapper="true"] img:not([data-zappy-mobile-object-position]):not([data-zappy-mobile-zoom]) {
     position: relative !important;
     width: 100% !important;
     height: auto !important;
