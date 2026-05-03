@@ -1,79 +1,97 @@
-# Business — Generative Engine Optimization Map
+# רוקוסן — Generative Engine Optimization Map
+
+> A sales-focused business specializing in natural-source fertilizers that combine NPK (Nitrogen, Phosphorus, Potassium), micro-elements (mE), and biological stimulants (BioS). The product bridges organic agriculture with advanced soil science, appealing to farmers and growers who seek eco-friendly, high-performance plant nutrition solutions. The brand likely emphasizes sustainability, natural origins, and scientific credibility.
 
 ---
 
 ## Pages
 
 ### בית
-https://example.com
+https://rokusen.zappy5.app
 רוקוסן מציעה פתרונות דישון טבעיים מתקדמים לחקלאות מודרנית. פורמולת NPK + mE + BioS לגידול בריא, יבול גבוה ואדמה חיה. מאושר אורגנית ע"י האיחוד האירופי.
 
 ### שירותים
-https://example.com/services
+https://rokusen.zappy5.app/services
 רוקוסן מציעה שירותי ייעוץ חקלאי מקצועי, תכנון תזונת צמחים, ריסוס ודישון באמצעות רחפנים, וליווי אגרונומי לאורך כל עונת הגידול.
 
 ### אודות
-https://example.com/about
+https://rokusen.zappy5.app/about
 רוקוסן היא חברה מובילה בתשומות חקלאיות בישראל. אנו מפתחים ומשווקים דשנים טבעיים מאושרים לחקלאות אורגנית ומסורתית, עם ניסיון רב ומחויבות לאיכות.
 
 ### צור קשר
-https://example.com/contact
+https://rokusen.zappy5.app/contact
 צרו קשר עם צוות המומחים של רוקוסן לקבלת ייעוץ חקלאי מקצועי וחינמי. נשמח לעזור בבחירת הדשן המתאים לגידול שלכם. טלפון: 054-6499087
 
 ### Products
-https://example.com/products
+https://rokusen.zappy5.app/products
 המוצרים שלנו - רוקוסן
 
 ### Cart
-https://example.com/cart
+https://rokusen.zappy5.app/cart
 עגלת הקניות שלך
 
 ### Checkout
-https://example.com/checkout
+https://rokusen.zappy5.app/checkout
 תשלום
 
 ### Login
-https://example.com/login
+https://rokusen.zappy5.app/login
 התחברות לקוחות
 
 ### Account
-https://example.com/account
+https://rokusen.zappy5.app/account
 החשבון שלי
 
 ### Order Success
-https://example.com/order-success
+https://rokusen.zappy5.app/order-success
 תודה על ההזמנה
 
 ### Product Detail
-https://example.com/product/:slug
+https://rokusen.zappy5.app/product/:slug
 פרטי המוצר - רוקוסן
 
 ### Category
-https://example.com/category/:slug
+https://rokusen.zappy5.app/category/:slug
 מוצרים - רוקוסן
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://example.com/privacy
+https://rokusen.zappy5.app/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://example.com/terms
+https://rokusen.zappy5.app/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://example.com/accessibility
+https://rokusen.zappy5.app/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
 
 # Business Context (for LLM understanding)
 
-## About Business
+## About רוקוסן
+A sales-focused business specializing in natural-source fertilizers that combine NPK (Nitrogen, Phosphorus, Potassium), micro-elements (mE), and biological stimulants (BioS). The product bridges organic agriculture with advanced soil science, appealing to farmers and growers who seek eco-friendly, high-performance plant nutrition solutions. The brand likely emphasizes sustainability, natural origins, and scientific credibility.
+
+## Services/Products
+- דשן ממקורות טבעיים
+- NPK
+- מיקרו-אלמנטים (mE)
+- חיידקים ביולוגיים (BioS)
+
+## Target Audience
+- חקלאים אורגניים
+- מנהלי משתלות
+- מגדלי פירות מסחריים
+
+## Industry
+חקלאות / תשומות חקלאיות
+
 ---
 
 # Additional Resources
 
-- **Sitemap**: https://example.com/sitemap.xml
-- **Robots.txt**: https://example.com/robots.txt
+- **Sitemap**: https://rokusen.zappy5.app/sitemap.xml
+- **Robots.txt**: https://rokusen.zappy5.app/robots.txt
