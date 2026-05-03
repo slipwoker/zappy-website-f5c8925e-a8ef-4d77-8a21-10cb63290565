@@ -15697,11 +15697,7 @@ main,
 }
 
 .site-footer .footer-col:nth-child(3) .footer-contact li:first-child::before {
-  content: '';
-  display: inline-block;
-  min-width: 20px;
-  width: 20px;
-  flex-shrink: 0;
+
 }
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
