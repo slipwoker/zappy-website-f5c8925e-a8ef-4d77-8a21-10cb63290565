@@ -15484,6 +15484,10 @@ body.a11y-focus-highlight *:focus {
 body.a11y-gray-scale {
   filter: grayscale(1) !important;
 }
+
+.featured-products-section .product-grid.featured-grid {
+  justify-content: center !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
