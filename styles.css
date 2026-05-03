@@ -15891,7 +15891,7 @@ nav .sub-menu.zappy-empty-submenu,
   /* Reset zoom wrapper images on mobile to responsive display.
      Images with explicit mobile crop overrides are excluded - the JS runtime
      applies their crop/zoom after page load. */
-  [data-zappy-zoom-wrapper="true"] img:not([data-zappy-mobile-object-position]):not([data-zappy-mobile-zoom]) {
+  [data-zappy-zoom-wrapper="true"]:not([data-zappy-zoom-wrapper-width-mode="full"]) img:not([data-zappy-mobile-object-position]):not([data-zappy-mobile-zoom]) {
     position: relative !important;
     width: 100% !important;
     height: auto !important;
