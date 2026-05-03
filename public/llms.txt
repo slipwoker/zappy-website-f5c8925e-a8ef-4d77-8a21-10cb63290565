@@ -1,6 +1,4 @@
-# רוקוסן — Generative Engine Optimization Map
-
-> A sales-focused business specializing in natural-source fertilizers that combine NPK (Nitrogen, Phosphorus, Potassium), micro-elements (mE), and biological stimulants (BioS). The product bridges organic agriculture with advanced soil science, appealing to farmers and growers who seek eco-friendly, high-performance plant nutrition solutions. The brand likely emphasizes sustainability, natural origins, and scientific credibility.
+# Business — Generative Engine Optimization Map
 
 ---
 
@@ -72,23 +70,7 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About רוקוסן
-A sales-focused business specializing in natural-source fertilizers that combine NPK (Nitrogen, Phosphorus, Potassium), micro-elements (mE), and biological stimulants (BioS). The product bridges organic agriculture with advanced soil science, appealing to farmers and growers who seek eco-friendly, high-performance plant nutrition solutions. The brand likely emphasizes sustainability, natural origins, and scientific credibility.
-
-## Services/Products
-- דשן ממקורות טבעיים
-- NPK
-- מיקרו-אלמנטים (mE)
-- חיידקים ביולוגיים (BioS)
-
-## Target Audience
-- חקלאים אורגניים
-- מנהלי משתלות
-- מגדלי פירות מסחריים
-
-## Industry
-חקלאות / תשומות חקלאיות
-
+## About Business
 ---
 
 # Additional Resources
