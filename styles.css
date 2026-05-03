@@ -2498,11 +2498,10 @@ html[dir="rtl"] .site-footer .footer-col:nth-child(3) .footer-contact li {
 html[dir="rtl"] .footer-contact .contact-icon { order: 0 !important; }
 html[dir="rtl"] .footer-contact .contact-text { order: 1 !important; }
 html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
-/* index-hero */
 .index-hero-section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2547,7 +2546,6 @@ html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
     );
 }
 
-/* Container */
 .index-hero-section .index-hero-container {
   position: relative;
   z-index: 10;
@@ -2558,7 +2556,7 @@ html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  min-height: 100vh;
+  min-height: 75vh;
   box-sizing: border-box;
 }
 
