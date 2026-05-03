@@ -15743,6 +15743,12 @@ main,
   display: block !important;
   margin: 0 auto !important;
 }
+
+.contact-contact-section .contact-details-list {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: unset !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
