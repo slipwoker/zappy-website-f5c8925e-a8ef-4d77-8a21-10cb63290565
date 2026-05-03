@@ -15726,6 +15726,23 @@ main,
   overflow-x: unset !important;
   justify-content: center !important;
 }
+
+#zappy-a11y-panel .a11y-btn-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+#zappy-a11y-panel h3 {
+  text-align: center !important;
+}
+
+#zappy-a11y-panel .a11y-reset-btn {
+  display: block !important;
+  margin: 0 auto !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
