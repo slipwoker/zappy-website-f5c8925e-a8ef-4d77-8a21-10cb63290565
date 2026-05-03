@@ -15488,6 +15488,11 @@ body.a11y-gray-scale {
 .featured-products-section .product-grid.featured-grid {
   justify-content: center !important;
 }
+
+.product-detail-section, .related-products-section {
+  padding-left: 60px !important;
+  padding-right: 60px !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
