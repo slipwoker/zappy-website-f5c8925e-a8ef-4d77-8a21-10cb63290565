@@ -5,65 +5,65 @@
 ## Pages
 
 ### בית
-https://rokusen.zappy5.app
+https://www.rokosan.co.il
 רוקוסן מציעה פתרונות דישון טבעיים מתקדמים לחקלאות מודרנית. פורמולת NPK + mE + BioS לגידול בריא, יבול גבוה ואדמה חיה. מאושר אורגנית ע"י האיחוד האירופי.
 
 ### שירותים
-https://rokusen.zappy5.app/services
+https://www.rokosan.co.il/services
 רוקוסן מציעה שירותי ייעוץ חקלאי מקצועי, תכנון תזונת צמחים, ריסוס ודישון באמצעות רחפנים, וליווי אגרונומי לאורך כל עונת הגידול.
 
 ### אודות
-https://rokusen.zappy5.app/about
+https://www.rokosan.co.il/about
 רוקוסן היא חברה מובילה בתשומות חקלאיות בישראל. אנו מפתחים ומשווקים דשנים טבעיים מאושרים לחקלאות אורגנית ומסורתית, עם ניסיון רב ומחויבות לאיכות.
 
 ### צור קשר
-https://rokusen.zappy5.app/contact
+https://www.rokosan.co.il/contact
 צרו קשר עם צוות המומחים של רוקוסן לקבלת ייעוץ חקלאי מקצועי וחינמי. נשמח לעזור בבחירת הדשן המתאים לגידול שלכם. טלפון: 054-6499087
 
 ### Products
-https://rokusen.zappy5.app/products
+https://www.rokosan.co.il/products
 המוצרים שלנו - רוקוסן
 
 ### Cart
-https://rokusen.zappy5.app/cart
+https://www.rokosan.co.il/cart
 עגלת הקניות שלך
 
 ### Checkout
-https://rokusen.zappy5.app/checkout
+https://www.rokosan.co.il/checkout
 תשלום
 
 ### Login
-https://rokusen.zappy5.app/login
+https://www.rokosan.co.il/login
 התחברות לקוחות
 
 ### Account
-https://rokusen.zappy5.app/account
+https://www.rokosan.co.il/account
 החשבון שלי
 
 ### Order Success
-https://rokusen.zappy5.app/order-success
+https://www.rokosan.co.il/order-success
 תודה על ההזמנה
 
 ### Product Detail
-https://rokusen.zappy5.app/product/:slug
+https://www.rokosan.co.il/product/:slug
 פרטי המוצר - רוקוסן
 
 ### Category
-https://rokusen.zappy5.app/category/:slug
+https://www.rokosan.co.il/category/:slug
 מוצרים - רוקוסן
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://rokusen.zappy5.app/privacy
+https://www.rokosan.co.il/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://rokusen.zappy5.app/terms
+https://www.rokosan.co.il/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://rokusen.zappy5.app/accessibility
+https://www.rokosan.co.il/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
@@ -75,5 +75,5 @@ Information about WCAG compliance and accessibility features.
 
 # Additional Resources
 
-- **Sitemap**: https://rokusen.zappy5.app/sitemap.xml
-- **Robots.txt**: https://rokusen.zappy5.app/robots.txt
+- **Sitemap**: https://www.rokosan.co.il/sitemap.xml
+- **Robots.txt**: https://www.rokosan.co.il/robots.txt
