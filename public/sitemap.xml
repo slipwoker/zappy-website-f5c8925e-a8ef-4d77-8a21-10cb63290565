@@ -73,6 +73,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.rokosan.co.il/rokolan</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.rokosan.co.il/privacy</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
