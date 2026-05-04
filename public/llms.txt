@@ -1,4 +1,6 @@
-# Business — Generative Engine Optimization Map
+# רוקוסן — Generative Engine Optimization Map
+
+> A sales-focused business specializing in natural-source fertilizers that combine NPK (Nitrogen, Phosphorus, Potassium), micro-elements (mE), and biological stimulants (BioS). The product bridges organic agriculture with advanced soil science, appealing to farmers and growers who seek eco-friendly, high-performance plant nutrition solutions. The brand likely emphasizes sustainability, natural origins, and scientific credibility.
 
 ---
 
@@ -68,12 +70,61 @@ Information about WCAG compliance and accessibility features.
 
 ---
 
-# Business Context (for LLM understanding)
+## Products
 
-## About Business
+**Total active products: 3**
+
+### רוקואקטיב
+https://www.rokosan.co.il/product/rvkvaktyb-gomj34
+- Price: 120.00 ILS
+- Availability: In stock
+- Brand: ROKOSAN
+- Description: מה מייחד את רוקואקטיב ? רוקואקטיב משלב NPK + ME + BS עם 18 חומצות אמינו וחומצות הומיות, כדי לתת לזרע ולצמח הצעיר בסיס חזק יותר להתפתחות מהיום הראשון.
+- Image: https://www.rokosan.co.il/assets/product-1776343034933-ycjlcs.webp
+
+### רוקוהומין
+https://www.rokosan.co.il/product/rvkvhvmyn-0jzkvq
+- Price: 199.00 ILS
+- Availability: In stock
+- Brand: ROKOSAN
+- Description: רוקוהומין משלב 14-9-14 + mE + BioS עם חומצות אמינו וחומצות הומיות, זה נותן מענה רחב יותר מהזנה רגילה בלבד — גם תמיכה בצמח וגם תרומה לסביבה הקרקעית.
+- Image: https://www.rokosan.co.il/assets/product-1776342441409-k9y5k.webp
+
+### רוקולן 
+https://www.rokosan.co.il/product/rvkvln-4xbq48
+- Price: 120.00 ILS
+- Availability: In stock
+- Brand: רוקוסן
+- Description: 4-13-9 + mE + BoiS יחד עם 18 חומצות אמינו, ליצירת קרקע פעילה יותר ותנאים טובים יותר להתבססות הצמח.
+- Image: https://www.rokosan.co.il/assets/product-1776341693866-3ngdg.webp
+
 ---
 
-# Additional Resources
+# Business Context (for LLM understanding)
 
-- **Sitemap**: https://www.rokosan.co.il/sitemap.xml
-- **Robots.txt**: https://www.rokosan.co.il/robots.txt
+## About רוקוסן
+A sales-focused business specializing in natural-source fertilizers that combine NPK (Nitrogen, Phosphorus, Potassium), micro-elements (mE), and biological stimulants (BioS). The product bridges organic agriculture with advanced soil science, appealing to farmers and growers who seek eco-friendly, high-performance plant nutrition solutions. The brand likely emphasizes sustainability, natural origins, and scientific credibility.
+
+## Services/Products
+- דשן ממקורות טבעיים
+- NPK
+- מיקרו-אלמנטים (mE)
+- חיידקים ביולוגיים (BioS)
+
+## Target Audience
+- חקלאים אורגניים
+- מנהלי משתלות
+- מגדלי פירות מסחריים
+
+## Industry
+חקלאות / תשומות חקלאיות
+
+---
+
+# Machine-readable feeds
+
+- Sitemap (XML): https://www.rokosan.co.il/sitemap.xml
+- Robots: https://www.rokosan.co.il/robots.txt
+- Flattened page text (for LLMs): https://www.rokosan.co.il/llms-full.txt
+- Products (JSON): https://www.rokosan.co.il/products.json
+- Products (Google Merchant RSS): https://www.rokosan.co.il/product-feed.xml

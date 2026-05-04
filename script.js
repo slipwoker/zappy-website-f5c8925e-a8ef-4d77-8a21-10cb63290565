@@ -268,795 +268,6 @@ document.addEventListener('DOMContentLoaded', function () {
 ;
 
 
-/* Cookie Consent */
-
-// Helper function to check cookie consent
-function hasConsentFor(category) {
-  if (typeof window.CookieConsent === 'undefined') {
-    return false; // Default to no consent if cookie consent not loaded
-  }
-  
-  return window.CookieConsent.validConsent(category);
-}
-
-// Helper function to execute code only with consent
-function withConsent(category, callback) {
-  if (hasConsentFor(category)) {
-    callback();
-  } else {
-    console.log(`[WARNING] Skipping ${category} code - no user consent`);
-  }
-}
-
-// Cookie Consent Initialization (multi-language)
-
-(function() {
-  'use strict';
-  
-  var initAttempts = 0;
-  var maxAttempts = 50;
-  
-  function initCookieConsent() {
-    initAttempts++;
-    
-    if (typeof window.CookieConsent === 'undefined') {
-      if (initAttempts < maxAttempts) {
-        setTimeout(initCookieConsent, 100);
-      }
-      return;
-    }
-
-    var cc = window.CookieConsent;
-    
-    try {
-      var __ccConfig = {
-  "autoShow": true,
-  "mode": "opt-in",
-  "revision": 0,
-  "categories": {
-    "necessary": {
-      "enabled": true,
-      "readOnly": true
-    },
-    "analytics": {
-      "enabled": false,
-      "readOnly": false,
-      "autoClear": {
-        "cookies": [
-          {
-            "name": "_ga"
-          },
-          {
-            "name": "_ga_*"
-          },
-          {
-            "name": "_gid"
-          },
-          {
-            "name": "_gat"
-          }
-        ]
-      }
-    },
-    "marketing": {
-      "enabled": false,
-      "readOnly": false,
-      "autoClear": {
-        "cookies": [
-          {
-            "name": "_fbp"
-          },
-          {
-            "name": "_fbc"
-          },
-          {
-            "name": "fr"
-          }
-        ]
-      }
-    }
-  },
-  "language": {
-    "default": "he",
-    "translations": {
-      "en": {
-        "consentModal": {
-          "title": "We use cookies 🍪",
-          "description": "רוקוסן uses cookies to enhance your experience, analyze site usage, and assist in our marketing efforts. You can manage your preferences anytime.",
-          "acceptAllBtn": "Accept All",
-          "acceptNecessaryBtn": "Accept Necessary",
-          "showPreferencesBtn": "Manage Preferences",
-          "footer": "<a href=\"#privacy-policy\">Privacy Policy</a> | <a href=\"#terms-conditions\">Terms & Conditions</a>"
-        },
-        "preferencesModal": {
-          "title": "Cookie Preferences",
-          "acceptAllBtn": "Accept All",
-          "acceptNecessaryBtn": "Accept Necessary",
-          "savePreferencesBtn": "Save Preferences",
-          "closeIconLabel": "Close",
-          "sections": [
-            {
-              "title": "Essential Cookies",
-              "description": "These cookies are necessary for the website to function and cannot be disabled.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Analytics Cookies",
-              "description": "These cookies help us understand how visitors interact with our website.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Marketing Cookies",
-              "description": "These cookies are used to deliver personalized advertisements.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "es": {
-        "consentModal": {
-          "title": "Usamos cookies 🍪",
-          "description": "רוקוסן utiliza cookies para mejorar tu experiencia, analizar el uso del sitio y ayudar en nuestros esfuerzos de marketing.",
-          "acceptAllBtn": "Aceptar Todo",
-          "acceptNecessaryBtn": "Solo Necesarias",
-          "showPreferencesBtn": "Gestionar Preferencias",
-          "footer": "<a href=\"#privacy-policy\">Política de Privacidad</a> | <a href=\"#terms-conditions\">Términos y Condiciones</a>"
-        },
-        "preferencesModal": {
-          "title": "Preferencias de Cookies",
-          "acceptAllBtn": "Aceptar Todo",
-          "acceptNecessaryBtn": "Solo Necesarias",
-          "savePreferencesBtn": "Guardar Preferencias",
-          "closeIconLabel": "Cerrar",
-          "sections": [
-            {
-              "title": "Cookies Esenciales",
-              "description": "Estas cookies son necesarias para que el sitio web funcione y no se pueden desactivar.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Cookies de Análisis",
-              "description": "Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Cookies de Marketing",
-              "description": "Estas cookies se utilizan para entregar anuncios personalizados.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "fr": {
-        "consentModal": {
-          "title": "Nous utilisons des cookies 🍪",
-          "description": "רוקוסן utilise des cookies pour améliorer votre expérience, analyser l'utilisation du site et nous aider dans nos efforts marketing.",
-          "acceptAllBtn": "Tout Accepter",
-          "acceptNecessaryBtn": "Accepter les Nécessaires",
-          "showPreferencesBtn": "Gérer les Préférences",
-          "footer": "<a href=\"#privacy-policy\">Politique de Confidentialité</a> | <a href=\"#terms-conditions\">Conditions Générales</a>"
-        },
-        "preferencesModal": {
-          "title": "Préférences des Cookies",
-          "acceptAllBtn": "Tout Accepter",
-          "acceptNecessaryBtn": "Accepter les Nécessaires",
-          "savePreferencesBtn": "Enregistrer les Préférences",
-          "closeIconLabel": "Fermer",
-          "sections": [
-            {
-              "title": "Cookies Essentiels",
-              "description": "Ces cookies sont nécessaires au fonctionnement du site web et ne peuvent pas être désactivés.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Cookies Analytiques",
-              "description": "Ces cookies nous aident à comprendre comment les visiteurs interagissent avec notre site web.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Cookies Marketing",
-              "description": "Ces cookies sont utilisés pour diffuser des publicités personnalisées.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "de": {
-        "consentModal": {
-          "title": "Wir verwenden Cookies 🍪",
-          "description": "רוקוסן verwendet Cookies, um Ihr Erlebnis zu verbessern, die Nutzung der Website zu analysieren und unsere Marketingbemühungen zu unterstützen.",
-          "acceptAllBtn": "Alle akzeptieren",
-          "acceptNecessaryBtn": "Nur Notwendige",
-          "showPreferencesBtn": "Einstellungen verwalten",
-          "footer": "<a href=\"#privacy-policy\">Datenschutzrichtlinie</a> | <a href=\"#terms-conditions\">Nutzungsbedingungen</a>"
-        },
-        "preferencesModal": {
-          "title": "Cookie-Einstellungen",
-          "acceptAllBtn": "Alle akzeptieren",
-          "acceptNecessaryBtn": "Nur Notwendige",
-          "savePreferencesBtn": "Einstellungen speichern",
-          "closeIconLabel": "Schließen",
-          "sections": [
-            {
-              "title": "Notwendige Cookies",
-              "description": "Diese Cookies sind für die Funktion der Website erforderlich und können nicht deaktiviert werden.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Analyse-Cookies",
-              "description": "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Marketing-Cookies",
-              "description": "Diese Cookies werden verwendet, um personalisierte Werbung zu liefern.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "it": {
-        "consentModal": {
-          "title": "Utilizziamo i cookie 🍪",
-          "description": "רוקוסן utilizza i cookie per migliorare la tua esperienza, analizzare l'utilizzo del sito e supportare le nostre attività di marketing.",
-          "acceptAllBtn": "Accetta Tutti",
-          "acceptNecessaryBtn": "Solo Necessari",
-          "showPreferencesBtn": "Gestisci Preferenze",
-          "footer": "<a href=\"#privacy-policy\">Informativa sulla Privacy</a> | <a href=\"#terms-conditions\">Termini e Condizioni</a>"
-        },
-        "preferencesModal": {
-          "title": "Preferenze Cookie",
-          "acceptAllBtn": "Accetta Tutti",
-          "acceptNecessaryBtn": "Solo Necessari",
-          "savePreferencesBtn": "Salva Preferenze",
-          "closeIconLabel": "Chiudi",
-          "sections": [
-            {
-              "title": "Cookie Essenziali",
-              "description": "Questi cookie sono necessari per il funzionamento del sito web e non possono essere disattivati.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Cookie Analitici",
-              "description": "Questi cookie ci aiutano a capire come i visitatori interagiscono con il nostro sito web.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Cookie di Marketing",
-              "description": "Questi cookie vengono utilizzati per fornire pubblicità personalizzate.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "pt": {
-        "consentModal": {
-          "title": "Usamos cookies 🍪",
-          "description": "רוקוסן usa cookies para melhorar sua experiência, analisar o uso do site e auxiliar em nossos esforços de marketing.",
-          "acceptAllBtn": "Aceitar Todos",
-          "acceptNecessaryBtn": "Apenas Necessários",
-          "showPreferencesBtn": "Gerenciar Preferências",
-          "footer": "<a href=\"#privacy-policy\">Política de Privacidade</a> | <a href=\"#terms-conditions\">Termos e Condições</a>"
-        },
-        "preferencesModal": {
-          "title": "Preferências de Cookies",
-          "acceptAllBtn": "Aceitar Todos",
-          "acceptNecessaryBtn": "Apenas Necessários",
-          "savePreferencesBtn": "Salvar Preferências",
-          "closeIconLabel": "Fechar",
-          "sections": [
-            {
-              "title": "Cookies Essenciais",
-              "description": "Estes cookies são necessários para o funcionamento do site e não podem ser desativados.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Cookies Analíticos",
-              "description": "Estes cookies nos ajudam a entender como os visitantes interagem com nosso site.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Cookies de Marketing",
-              "description": "Estes cookies são usados para exibir anúncios personalizados.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "nl": {
-        "consentModal": {
-          "title": "Wij gebruiken cookies 🍪",
-          "description": "רוקוסן gebruikt cookies om uw ervaring te verbeteren, het sitegebruik te analyseren en onze marketinginspanningen te ondersteunen.",
-          "acceptAllBtn": "Alles accepteren",
-          "acceptNecessaryBtn": "Alleen noodzakelijke",
-          "showPreferencesBtn": "Voorkeuren beheren",
-          "footer": "<a href=\"#privacy-policy\">Privacybeleid</a> | <a href=\"#terms-conditions\">Algemene Voorwaarden</a>"
-        },
-        "preferencesModal": {
-          "title": "Cookie-voorkeuren",
-          "acceptAllBtn": "Alles accepteren",
-          "acceptNecessaryBtn": "Alleen noodzakelijke",
-          "savePreferencesBtn": "Voorkeuren opslaan",
-          "closeIconLabel": "Sluiten",
-          "sections": [
-            {
-              "title": "Noodzakelijke Cookies",
-              "description": "Deze cookies zijn nodig voor het functioneren van de website en kunnen niet worden uitgeschakeld.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Analytische Cookies",
-              "description": "Deze cookies helpen ons te begrijpen hoe bezoekers onze website gebruiken.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Marketing Cookies",
-              "description": "Deze cookies worden gebruikt om gepersonaliseerde advertenties te tonen.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "he": {
-        "consentModal": {
-          "title": "אנחנו משתמשים בעוגיות 🍪",
-          "description": "רוקוסן משתמש בעוגיות כדי לשפר את החוויה שלך, לנתח שימוש באתר ולסייע במאמצי השיווק שלנו.",
-          "acceptAllBtn": "אשר הכל",
-          "acceptNecessaryBtn": "רק הכרחי",
-          "showPreferencesBtn": "נהל העדפות",
-          "footer": "<a href=\"#privacy-policy\">מדיניות פרטיות</a> | <a href=\"#terms-conditions\">תנאי שימוש</a>"
-        },
-        "preferencesModal": {
-          "title": "העדפות עוגיות",
-          "acceptAllBtn": "אשר הכל",
-          "acceptNecessaryBtn": "רק הכרחי",
-          "savePreferencesBtn": "שמור העדפות",
-          "closeIconLabel": "סגור",
-          "sections": [
-            {
-              "title": "עוגיות חיוניות",
-              "description": "עוגיות אלה הכרחיות לתפקוד האתר ולא ניתן להשבית אותן.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "עוגיות ניתוח",
-              "description": "עוגיות אלה עוזרות לנו להבין איך המבקרים מתקשרים עם האתר שלנו.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "עוגיות שיווקיות",
-              "description": "עוגיות אלה משמשות להצגת פרסומות מותאמות אישית.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "ar": {
-        "consentModal": {
-          "title": "نحن نستخدم ملفات تعريف الارتباط 🍪",
-          "description": "يستخدم רוקוסן ملفات تعريف الارتباط لتحسين تجربتك وتحليل استخدام الموقع والمساعدة في جهودنا التسويقية.",
-          "acceptAllBtn": "قبول الكل",
-          "acceptNecessaryBtn": "الضرورية فقط",
-          "showPreferencesBtn": "إدارة التفضيلات",
-          "footer": "<a href=\"#privacy-policy\">سياسة الخصوصية</a> | <a href=\"#terms-conditions\">الشروط والأحكام</a>"
-        },
-        "preferencesModal": {
-          "title": "تفضيلات ملفات تعريف الارتباط",
-          "acceptAllBtn": "قبول الكل",
-          "acceptNecessaryBtn": "الضرورية فقط",
-          "savePreferencesBtn": "حفظ التفضيلات",
-          "closeIconLabel": "إغلاق",
-          "sections": [
-            {
-              "title": "ملفات تعريف الارتباط الأساسية",
-              "description": "هذه الملفات ضرورية لعمل الموقع ولا يمكن تعطيلها.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "ملفات تعريف الارتباط التحليلية",
-              "description": "تساعدنا هذه الملفات في فهم كيفية تفاعل الزوار مع موقعنا.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "ملفات تعريف الارتباط التسويقية",
-              "description": "تُستخدم هذه الملفات لعرض إعلانات مخصصة.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "tr": {
-        "consentModal": {
-          "title": "Çerez kullanıyoruz 🍪",
-          "description": "רוקוסן, deneyiminizi geliştirmek, site kullanımını analiz etmek ve pazarlama çalışmalarımıza yardımcı olmak için çerezler kullanır.",
-          "acceptAllBtn": "Tümünü Kabul Et",
-          "acceptNecessaryBtn": "Sadece Gerekli",
-          "showPreferencesBtn": "Tercihleri Yönet",
-          "footer": "<a href=\"#privacy-policy\">Gizlilik Politikası</a> | <a href=\"#terms-conditions\">Kullanım Koşulları</a>"
-        },
-        "preferencesModal": {
-          "title": "Çerez Tercihleri",
-          "acceptAllBtn": "Tümünü Kabul Et",
-          "acceptNecessaryBtn": "Sadece Gerekli",
-          "savePreferencesBtn": "Tercihleri Kaydet",
-          "closeIconLabel": "Kapat",
-          "sections": [
-            {
-              "title": "Zorunlu Çerezler",
-              "description": "Bu çerezler web sitesinin çalışması için gereklidir ve devre dışı bırakılamaz.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Analiz Çerezleri",
-              "description": "Bu çerezler, ziyaretçilerin web sitemizle nasıl etkileşime girdiğini anlamamıza yardımcı olur.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Pazarlama Çerezleri",
-              "description": "Bu çerezler kişiselleştirilmiş reklamlar sunmak için kullanılır.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "ru": {
-        "consentModal": {
-          "title": "Мы используем файлы cookie 🍪",
-          "description": "רוקוסן использует файлы cookie для улучшения вашего опыта, анализа использования сайта и поддержки наших маркетинговых усилий.",
-          "acceptAllBtn": "Принять все",
-          "acceptNecessaryBtn": "Только необходимые",
-          "showPreferencesBtn": "Управление настройками",
-          "footer": "<a href=\"#privacy-policy\">Политика конфиденциальности</a> | <a href=\"#terms-conditions\">Условия использования</a>"
-        },
-        "preferencesModal": {
-          "title": "Настройки cookie",
-          "acceptAllBtn": "Принять все",
-          "acceptNecessaryBtn": "Только необходимые",
-          "savePreferencesBtn": "Сохранить настройки",
-          "closeIconLabel": "Закрыть",
-          "sections": [
-            {
-              "title": "Необходимые cookie",
-              "description": "Эти файлы cookie необходимы для работы сайта и не могут быть отключены.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Аналитические cookie",
-              "description": "Эти файлы cookie помогают нам понять, как посетители взаимодействуют с нашим сайтом.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Маркетинговые cookie",
-              "description": "Эти файлы cookie используются для показа персонализированной рекламы.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "zh": {
-        "consentModal": {
-          "title": "我们使用 Cookie 🍪",
-          "description": "רוקוסן 使用 Cookie 来改善您的体验、分析网站使用情况并协助我们的营销工作。",
-          "acceptAllBtn": "全部接受",
-          "acceptNecessaryBtn": "仅接受必要",
-          "showPreferencesBtn": "管理偏好",
-          "footer": "<a href=\"#privacy-policy\">隐私政策</a> | <a href=\"#terms-conditions\">条款与条件</a>"
-        },
-        "preferencesModal": {
-          "title": "Cookie 偏好设置",
-          "acceptAllBtn": "全部接受",
-          "acceptNecessaryBtn": "仅接受必要",
-          "savePreferencesBtn": "保存偏好",
-          "closeIconLabel": "关闭",
-          "sections": [
-            {
-              "title": "必要 Cookie",
-              "description": "这些 Cookie 是网站正常运行所必需的，无法禁用。",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "分析 Cookie",
-              "description": "这些 Cookie 帮助我们了解访问者如何与我们的网站互动。",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "营销 Cookie",
-              "description": "这些 Cookie 用于投放个性化广告。",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "ja": {
-        "consentModal": {
-          "title": "Cookieを使用しています 🍪",
-          "description": "רוקוסןは、お客様の体験向上、サイト利用状況の分析、マーケティング活動の支援のためにCookieを使用しています。",
-          "acceptAllBtn": "すべて許可",
-          "acceptNecessaryBtn": "必要なもののみ",
-          "showPreferencesBtn": "設定を管理",
-          "footer": "<a href=\"#privacy-policy\">プライバシーポリシー</a> | <a href=\"#terms-conditions\">利用規約</a>"
-        },
-        "preferencesModal": {
-          "title": "Cookie設定",
-          "acceptAllBtn": "すべて許可",
-          "acceptNecessaryBtn": "必要なもののみ",
-          "savePreferencesBtn": "設定を保存",
-          "closeIconLabel": "閉じる",
-          "sections": [
-            {
-              "title": "必要なCookie",
-              "description": "これらのCookieはウェブサイトの機能に必要であり、無効にすることはできません。",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "分析Cookie",
-              "description": "これらのCookieは、訪問者がウェブサイトとどのように対話するかを理解するのに役立ちます。",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "マーケティングCookie",
-              "description": "これらのCookieはパーソナライズされた広告を配信するために使用されます。",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "ko": {
-        "consentModal": {
-          "title": "쿠키를 사용합니다 🍪",
-          "description": "רוקוסן은(는) 경험 향상, 사이트 사용 분석 및 마케팅 활동 지원을 위해 쿠키를 사용합니다.",
-          "acceptAllBtn": "모두 수락",
-          "acceptNecessaryBtn": "필수만 수락",
-          "showPreferencesBtn": "환경 설정 관리",
-          "footer": "<a href=\"#privacy-policy\">개인정보 처리방침</a> | <a href=\"#terms-conditions\">이용약관</a>"
-        },
-        "preferencesModal": {
-          "title": "쿠키 설정",
-          "acceptAllBtn": "모두 수락",
-          "acceptNecessaryBtn": "필수만 수락",
-          "savePreferencesBtn": "설정 저장",
-          "closeIconLabel": "닫기",
-          "sections": [
-            {
-              "title": "필수 쿠키",
-              "description": "이 쿠키는 웹사이트 작동에 필요하며 비활성화할 수 없습니다.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "분석 쿠키",
-              "description": "이 쿠키는 방문자가 웹사이트와 어떻게 상호작용하는지 이해하는 데 도움이 됩니다.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "마케팅 쿠키",
-              "description": "이 쿠키는 맞춤형 광고를 제공하는 데 사용됩니다.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "pl": {
-        "consentModal": {
-          "title": "Używamy plików cookie 🍪",
-          "description": "רוקוסן używa plików cookie, aby poprawić Twoje wrażenia, analizować korzystanie z witryny i wspierać nasze działania marketingowe.",
-          "acceptAllBtn": "Zaakceptuj wszystkie",
-          "acceptNecessaryBtn": "Tylko niezbędne",
-          "showPreferencesBtn": "Zarządzaj preferencjami",
-          "footer": "<a href=\"#privacy-policy\">Polityka prywatności</a> | <a href=\"#terms-conditions\">Regulamin</a>"
-        },
-        "preferencesModal": {
-          "title": "Preferencje cookie",
-          "acceptAllBtn": "Zaakceptuj wszystkie",
-          "acceptNecessaryBtn": "Tylko niezbędne",
-          "savePreferencesBtn": "Zapisz preferencje",
-          "closeIconLabel": "Zamknij",
-          "sections": [
-            {
-              "title": "Niezbędne pliki cookie",
-              "description": "Te pliki cookie są niezbędne do działania strony i nie można ich wyłączyć.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Analityczne pliki cookie",
-              "description": "Te pliki cookie pomagają nam zrozumieć, w jaki sposób odwiedzający korzystają z naszej strony.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Marketingowe pliki cookie",
-              "description": "Te pliki cookie służą do wyświetlania spersonalizowanych reklam.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "uk": {
-        "consentModal": {
-          "title": "Ми використовуємо файли cookie 🍪",
-          "description": "רוקוסן використовує файли cookie для покращення вашого досвіду, аналізу використання сайту та підтримки наших маркетингових зусиль.",
-          "acceptAllBtn": "Прийняти всі",
-          "acceptNecessaryBtn": "Лише необхідні",
-          "showPreferencesBtn": "Керувати налаштуваннями",
-          "footer": "<a href=\"#privacy-policy\">Політика конфіденційності</a> | <a href=\"#terms-conditions\">Умови використання</a>"
-        },
-        "preferencesModal": {
-          "title": "Налаштування cookie",
-          "acceptAllBtn": "Прийняти всі",
-          "acceptNecessaryBtn": "Лише необхідні",
-          "savePreferencesBtn": "Зберегти налаштування",
-          "closeIconLabel": "Закрити",
-          "sections": [
-            {
-              "title": "Необхідні cookie",
-              "description": "Ці файли cookie необхідні для роботи сайту і не можуть бути вимкнені.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Аналітичні cookie",
-              "description": "Ці файли cookie допомагають нам зрозуміти, як відвідувачі взаємодіють з нашим сайтом.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Маркетингові cookie",
-              "description": "Ці файли cookie використовуються для показу персоналізованої реклами.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "ro": {
-        "consentModal": {
-          "title": "Folosim cookie-uri 🍪",
-          "description": "רוקוסן folosește cookie-uri pentru a vă îmbunătăți experiența, a analiza utilizarea site-ului și a sprijini eforturile noastre de marketing.",
-          "acceptAllBtn": "Acceptă toate",
-          "acceptNecessaryBtn": "Doar necesare",
-          "showPreferencesBtn": "Gestionare preferințe",
-          "footer": "<a href=\"#privacy-policy\">Politica de confidențialitate</a> | <a href=\"#terms-conditions\">Termeni și condiții</a>"
-        },
-        "preferencesModal": {
-          "title": "Preferințe cookie",
-          "acceptAllBtn": "Acceptă toate",
-          "acceptNecessaryBtn": "Doar necesare",
-          "savePreferencesBtn": "Salvează preferințele",
-          "closeIconLabel": "Închide",
-          "sections": [
-            {
-              "title": "Cookie-uri esențiale",
-              "description": "Aceste cookie-uri sunt necesare pentru funcționarea site-ului și nu pot fi dezactivate.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Cookie-uri analitice",
-              "description": "Aceste cookie-uri ne ajută să înțelegem cum interacționează vizitatorii cu site-ul nostru.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Cookie-uri de marketing",
-              "description": "Aceste cookie-uri sunt folosite pentru a afișa reclame personalizate.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      },
-      "bg": {
-        "consentModal": {
-          "title": "Ние използваме бисквитки 🍪",
-          "description": "רוקוסן използва бисквитки, за да подобри вашето изживяване, да анализира използването на сайта и да подпомогне маркетинговите ни усилия.",
-          "acceptAllBtn": "Приемам всички",
-          "acceptNecessaryBtn": "Само необходимите",
-          "showPreferencesBtn": "Управление на предпочитанията",
-          "footer": "<a href=\"#privacy-policy\">Политика за поверителност</a> | <a href=\"#terms-conditions\">Общи условия</a>"
-        },
-        "preferencesModal": {
-          "title": "Настройки за бисквитки",
-          "acceptAllBtn": "Приемам всички",
-          "acceptNecessaryBtn": "Само необходимите",
-          "savePreferencesBtn": "Запазване на предпочитанията",
-          "closeIconLabel": "Затвори",
-          "sections": [
-            {
-              "title": "Необходими бисквитки",
-              "description": "Тези бисквитки са необходими за функционирането на уебсайта и не могат да бъдат деактивирани.",
-              "linkedCategory": "necessary"
-            },
-            {
-              "title": "Аналитични бисквитки",
-              "description": "Тези бисквитки ни помагат да разберем как посетителите взаимодействат с нашия уебсайт.",
-              "linkedCategory": "analytics"
-            },
-            {
-              "title": "Маркетингови бисквитки",
-              "description": "Тези бисквитки се използват за показване на персонализирани реклами.",
-              "linkedCategory": "marketing"
-            }
-          ]
-        }
-      }
-    }
-  },
-  "guiOptions": {
-    "consentModal": {
-      "layout": "box",
-      "position": "bottom right",
-      "equalWeightButtons": true,
-      "flipButtons": false
-    },
-    "preferencesModal": {
-      "layout": "box",
-      "equalWeightButtons": true,
-      "flipButtons": false
-    }
-  }
-};
-
-      // Detect the current page language and override the build-time default.
-      // Published multi-language sites set <html lang="…"> per URL prefix;
-      // preview pages may store the active language on zappyI18n.
-      var pageLang = (document.documentElement.getAttribute('lang') || '').split('-')[0].toLowerCase();
-      if (!pageLang && typeof zappyI18n !== 'undefined' && zappyI18n.language) {
-        pageLang = String(zappyI18n.language).split('-')[0].toLowerCase();
-      }
-      if (pageLang && __ccConfig.language.translations[pageLang]) {
-        __ccConfig.language.default = pageLang;
-      }
-
-      cc.run(__ccConfig);
-
-      // Keep cookie consent in sync when the user switches language without
-      // a full navigation (preview / embedded-resources path).
-      if (typeof zappyI18n !== 'undefined' && typeof zappyI18n.onLanguageChange === 'function') {
-        zappyI18n.onLanguageChange(function(newLang) {
-          try {
-            if (__ccConfig.language.translations[newLang]) {
-              cc.setLanguage(newLang);
-            }
-          } catch (_) {}
-        });
-      }
-      
-      // Google Consent Mode v2 integration
-      function updateGoogleConsentMode() {
-        if (typeof gtag !== 'function') {
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = function(){dataLayer.push(arguments);};
-        }
-        
-        var analyticsAccepted = cc.acceptedCategory('analytics');
-        var marketingAccepted = cc.acceptedCategory('marketing');
-        
-        gtag('consent', 'update', {
-          'analytics_storage': analyticsAccepted ? 'granted' : 'denied',
-          'ad_storage': marketingAccepted ? 'granted' : 'denied',
-          'ad_user_data': marketingAccepted ? 'granted' : 'denied',
-          'ad_personalization': marketingAccepted ? 'granted' : 'denied'
-        });
-      }
-      
-      updateGoogleConsentMode();
-      
-      if (typeof cc.onChange === 'function') {
-        cc.onChange(function(cookie, changed_preferences) {
-          updateGoogleConsentMode();
-        });
-      }
-    } catch (error) {
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCookieConsent);
-    setTimeout(initCookieConsent, 1000);
-  } else if (document.readyState === 'interactive' || document.readyState === 'complete') {
-    initCookieConsent();
-  } else {
-    setTimeout(initCookieConsent, 500);
-  }
-  
-  if (typeof window !== 'undefined') {
-    if (window.addEventListener) {
-      window.addEventListener('load', initCookieConsent, { once: true });
-    }
-  }
-})();
 /* Accessibility Features */
 
 /* Mickidum Accessibility Toolbar Initialization - Zappy Style */
@@ -1479,10 +690,12 @@ window.onload = function() {
     if (typeof zappyI18n !== 'undefined' && zappyI18n.language) {
       return zappyI18n.language;
     }
+    /* ZAPPY_LANG_DETECTION_FIX */
+    var htmlLang = document.documentElement.getAttribute('lang');
+    if (htmlLang) return htmlLang.split('-')[0];
     var stored = localStorage.getItem('zappy_lang') || localStorage.getItem('zappy-language') || localStorage.getItem('selectedLanguage') || localStorage.getItem('language');
     if (stored) return stored;
-    var htmlLang = document.documentElement.getAttribute('lang');
-    return htmlLang ? htmlLang.split('-')[0] : null;
+    return null;
   }
 
   function isCurrentEcomRTL() {
@@ -6365,10 +5578,14 @@ function getEcomText(key, fallback) {
   if (typeof zappyI18n !== 'undefined' && typeof zappyI18n.getCurrentLanguage === 'function') {
     lang = zappyI18n.getCurrentLanguage() || '';
   }
+  /* ZAPPY_LANG_DETECTION_FIX */
+  if (!lang) {
+    lang = document.documentElement.lang || '';
+  }
   if (!lang) {
     try { lang = localStorage.getItem('zappy_lang') || ''; } catch (e) {}
   }
-  lang = String(lang || document.documentElement.lang || '').split('-')[0].toLowerCase();
+  lang = String(lang).split('-')[0].toLowerCase();
   if (ECOM_RUNTIME_TEXT[lang] && ECOM_RUNTIME_TEXT[lang][key]) {
     return ECOM_RUNTIME_TEXT[lang][key];
   }
@@ -11864,11 +11081,13 @@ async function loadRelatedProducts(currentProduct, t) {
         var runtimeLang = String(window.zappyI18n.getCurrentLanguage() || '').split('-')[0].toLowerCase();
         if (runtimeLang) return runtimeLang;
       }
+      var htmlLang = String(document.documentElement.lang || '').split('-')[0].toLowerCase();
+      if (htmlLang) return htmlLang;
       try {
         var storedLang = String(localStorage.getItem('zappy_lang') || localStorage.getItem('zappy-language') || localStorage.getItem('selectedLanguage') || '').split('-')[0].toLowerCase();
         if (storedLang) return storedLang;
       } catch (e) {}
-      return String(document.documentElement.lang || 'en').split('-')[0].toLowerCase();
+      return 'en';
     }
 
     function getText(key) {
@@ -11997,16 +11216,12 @@ async function loadRelatedProducts(currentProduct, t) {
         var runtimeLang = String(window.zappyI18n.getCurrentLanguage() || '').split('-')[0].toLowerCase();
         if (runtimeLang) return runtimeLang;
       }
+      var htmlLang = String(document.documentElement.lang || '').split('-')[0].toLowerCase();
+      if (htmlLang) return htmlLang;
       try {
         var storedLang = String(localStorage.getItem('zappy_lang') || '').split('-')[0].toLowerCase();
         if (storedLang) return storedLang;
       } catch (e) {}
-      var htmlLang = String(document.documentElement.lang || '').split('-')[0].toLowerCase();
-      if (htmlLang) return htmlLang;
-      var checkoutTitle = document.querySelector('.checkout-section h1, h1');
-      if (checkoutTitle && /checkout/i.test(checkoutTitle.textContent || '')) {
-        return 'en';
-      }
       return 'en';
     }
 
@@ -12284,16 +11499,17 @@ async function loadRelatedProducts(currentProduct, t) {
         return String(window.zappyI18n.language).split('-')[0].toLowerCase();
       }
     } catch (e) {}
-    try {
-      var stored = localStorage.getItem('zappy_lang') || localStorage.getItem('zappy-language') || localStorage.getItem('selectedLanguage') || localStorage.getItem('language');
-      if (stored) return String(stored).split('-')[0].toLowerCase();
-    } catch (e) {}
     var queryLang = getQueryLang();
     if (queryLang) return queryLang.toLowerCase();
     var pathLang = getPathLang();
     if (pathLang) return pathLang.toLowerCase();
     var htmlLang = document.documentElement.getAttribute('lang');
-    return htmlLang ? htmlLang.split('-')[0].toLowerCase() : '';
+    if (htmlLang) return htmlLang.split('-')[0].toLowerCase();
+    try {
+      var stored = localStorage.getItem('zappy_lang') || localStorage.getItem('zappy-language') || localStorage.getItem('selectedLanguage') || localStorage.getItem('language');
+      if (stored) return String(stored).split('-')[0].toLowerCase();
+    } catch (e) {}
+    return '';
   }
 
   function getDefaultLang() {
@@ -12506,4 +11722,896 @@ async function loadRelatedProducts(currentProduct, t) {
   }).observe(document.documentElement, { childList: true, subtree: true });
   setTimeout(patch, 250);
   setTimeout(patch, 1500);
+})();
+
+/* Cookie Consent */
+
+// Helper function to check cookie consent
+function hasConsentFor(category) {
+  if (typeof window.CookieConsent === 'undefined') {
+    return false; // Default to no consent if cookie consent not loaded
+  }
+  
+  return window.CookieConsent.validConsent(category);
+}
+
+// Helper function to execute code only with consent
+function withConsent(category, callback) {
+  if (hasConsentFor(category)) {
+    callback();
+  } else {
+    console.log(`[WARNING] Skipping ${category} code - no user consent`);
+  }
+}
+
+// Cookie Consent Initialization (multi-language) /* __ccConfigCustomBannerV1 */
+
+(function() {
+  'use strict';
+  
+  var initAttempts = 0;
+  var maxAttempts = 50;
+  
+  function initCookieConsent() {
+    initAttempts++;
+    
+    if (typeof window.CookieConsent === 'undefined') {
+      if (initAttempts < maxAttempts) {
+        setTimeout(initCookieConsent, 100);
+      }
+      return;
+    }
+
+    if (window.__zappyCookieConsentInitialized) {
+      return;
+    }
+    window.__zappyCookieConsentInitialized = true;
+
+    var cc = window.CookieConsent;
+    
+    try {
+      var __ccConfig = {
+  "autoShow": false,
+  "mode": "opt-in",
+  "revision": 0,
+  "categories": {
+    "necessary": {
+      "enabled": true,
+      "readOnly": true
+    },
+    "analytics": {
+      "enabled": false,
+      "readOnly": false,
+      "autoClear": {
+        "cookies": [
+          {
+            "name": "_ga"
+          },
+          {
+            "name": "_ga_*"
+          },
+          {
+            "name": "_gid"
+          },
+          {
+            "name": "_gat"
+          }
+        ]
+      }
+    },
+    "marketing": {
+      "enabled": false,
+      "readOnly": false,
+      "autoClear": {
+        "cookies": [
+          {
+            "name": "_fbp"
+          },
+          {
+            "name": "_fbc"
+          },
+          {
+            "name": "fr"
+          }
+        ]
+      }
+    }
+  },
+  "language": {
+    "default": "he",
+    "translations": {
+      "en": {
+        "consentModal": {
+          "description": "We use cookies to improve your experience and analyze site usage.",
+          "acceptAllBtn": "Accept",
+          "showPreferencesBtn": "Customize"
+        },
+        "preferencesModal": {
+          "title": "Cookie Preferences",
+          "acceptAllBtn": "Accept",
+          "acceptNecessaryBtn": "Accept Necessary",
+          "savePreferencesBtn": "Save Preferences",
+          "closeIconLabel": "Close",
+          "sections": [
+            {
+              "title": "Essential Cookies",
+              "description": "These cookies are necessary for the website to function and cannot be disabled.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Analytics Cookies",
+              "description": "These cookies help us understand how visitors interact with our website.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Marketing Cookies",
+              "description": "These cookies are used to deliver personalized advertisements.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "es": {
+        "consentModal": {
+          "description": "Usamos cookies para mejorar tu experiencia y analizar el uso del sitio.",
+          "acceptAllBtn": "Aceptar",
+          "showPreferencesBtn": "Personalizar"
+        },
+        "preferencesModal": {
+          "title": "Preferencias de Cookies",
+          "acceptAllBtn": "Aceptar",
+          "acceptNecessaryBtn": "Solo Necesarias",
+          "savePreferencesBtn": "Guardar Preferencias",
+          "closeIconLabel": "Cerrar",
+          "sections": [
+            {
+              "title": "Cookies Esenciales",
+              "description": "Estas cookies son necesarias para que el sitio web funcione y no se pueden desactivar.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Cookies de Análisis",
+              "description": "Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Cookies de Marketing",
+              "description": "Estas cookies se utilizan para entregar anuncios personalizados.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "fr": {
+        "consentModal": {
+          "description": "Nous utilisons des cookies pour améliorer votre expérience et analyser l'utilisation du site.",
+          "acceptAllBtn": "Accepter",
+          "showPreferencesBtn": "Personnaliser"
+        },
+        "preferencesModal": {
+          "title": "Préférences des Cookies",
+          "acceptAllBtn": "Accepter",
+          "acceptNecessaryBtn": "Accepter les Nécessaires",
+          "savePreferencesBtn": "Enregistrer les Préférences",
+          "closeIconLabel": "Fermer",
+          "sections": [
+            {
+              "title": "Cookies Essentiels",
+              "description": "Ces cookies sont nécessaires au fonctionnement du site web et ne peuvent pas être désactivés.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Cookies Analytiques",
+              "description": "Ces cookies nous aident à comprendre comment les visiteurs interagissent avec notre site web.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Cookies Marketing",
+              "description": "Ces cookies sont utilisés pour diffuser des publicités personnalisées.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "de": {
+        "consentModal": {
+          "description": "Wir verwenden Cookies, um Ihr Erlebnis zu verbessern und die Nutzung der Website zu analysieren.",
+          "acceptAllBtn": "Akzeptieren",
+          "showPreferencesBtn": "Anpassen"
+        },
+        "preferencesModal": {
+          "title": "Cookie-Einstellungen",
+          "acceptAllBtn": "Akzeptieren",
+          "acceptNecessaryBtn": "Nur Notwendige",
+          "savePreferencesBtn": "Einstellungen speichern",
+          "closeIconLabel": "Schließen",
+          "sections": [
+            {
+              "title": "Notwendige Cookies",
+              "description": "Diese Cookies sind für die Funktion der Website erforderlich und können nicht deaktiviert werden.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Analyse-Cookies",
+              "description": "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Marketing-Cookies",
+              "description": "Diese Cookies werden verwendet, um personalisierte Werbung zu liefern.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "it": {
+        "consentModal": {
+          "description": "Utilizziamo i cookie per migliorare la tua esperienza e analizzare l'utilizzo del sito.",
+          "acceptAllBtn": "Accetta",
+          "showPreferencesBtn": "Personalizza"
+        },
+        "preferencesModal": {
+          "title": "Preferenze Cookie",
+          "acceptAllBtn": "Accetta",
+          "acceptNecessaryBtn": "Solo Necessari",
+          "savePreferencesBtn": "Salva Preferenze",
+          "closeIconLabel": "Chiudi",
+          "sections": [
+            {
+              "title": "Cookie Essenziali",
+              "description": "Questi cookie sono necessari per il funzionamento del sito web e non possono essere disattivati.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Cookie Analitici",
+              "description": "Questi cookie ci aiutano a capire come i visitatori interagiscono con il nostro sito web.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Cookie di Marketing",
+              "description": "Questi cookie vengono utilizzati per fornire pubblicità personalizzate.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "pt": {
+        "consentModal": {
+          "description": "Usamos cookies para melhorar sua experiência e analisar o uso do site.",
+          "acceptAllBtn": "Aceitar",
+          "showPreferencesBtn": "Personalizar"
+        },
+        "preferencesModal": {
+          "title": "Preferências de Cookies",
+          "acceptAllBtn": "Aceitar",
+          "acceptNecessaryBtn": "Apenas Necessários",
+          "savePreferencesBtn": "Salvar Preferências",
+          "closeIconLabel": "Fechar",
+          "sections": [
+            {
+              "title": "Cookies Essenciais",
+              "description": "Estes cookies são necessários para o funcionamento do site e não podem ser desativados.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Cookies Analíticos",
+              "description": "Estes cookies nos ajudam a entender como os visitantes interagem com nosso site.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Cookies de Marketing",
+              "description": "Estes cookies são usados para exibir anúncios personalizados.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "nl": {
+        "consentModal": {
+          "description": "Wij gebruiken cookies om uw ervaring te verbeteren en het sitegebruik te analyseren.",
+          "acceptAllBtn": "Accepteren",
+          "showPreferencesBtn": "Aanpassen"
+        },
+        "preferencesModal": {
+          "title": "Cookie-voorkeuren",
+          "acceptAllBtn": "Accepteren",
+          "acceptNecessaryBtn": "Alleen noodzakelijke",
+          "savePreferencesBtn": "Voorkeuren opslaan",
+          "closeIconLabel": "Sluiten",
+          "sections": [
+            {
+              "title": "Noodzakelijke Cookies",
+              "description": "Deze cookies zijn nodig voor het functioneren van de website en kunnen niet worden uitgeschakeld.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Analytische Cookies",
+              "description": "Deze cookies helpen ons te begrijpen hoe bezoekers onze website gebruiken.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Marketing Cookies",
+              "description": "Deze cookies worden gebruikt om gepersonaliseerde advertenties te tonen.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "he": {
+        "consentModal": {
+          "description": "אנחנו משתמשים בעוגיות כדי לשפר את החוויה שלך ולנתח שימוש באתר.",
+          "acceptAllBtn": "אישור",
+          "showPreferencesBtn": "התאמה אישית"
+        },
+        "preferencesModal": {
+          "title": "העדפות עוגיות",
+          "acceptAllBtn": "אישור",
+          "acceptNecessaryBtn": "רק הכרחי",
+          "savePreferencesBtn": "שמור העדפות",
+          "closeIconLabel": "סגור",
+          "sections": [
+            {
+              "title": "עוגיות חיוניות",
+              "description": "עוגיות אלה הכרחיות לתפקוד האתר ולא ניתן להשבית אותן.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "עוגיות ניתוח",
+              "description": "עוגיות אלה עוזרות לנו להבין איך המבקרים מתקשרים עם האתר שלנו.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "עוגיות שיווקיות",
+              "description": "עוגיות אלה משמשות להצגת פרסומות מותאמות אישית.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "ar": {
+        "consentModal": {
+          "description": "نستخدم ملفات تعريف الارتباط لتحسين تجربتك وتحليل استخدام الموقع.",
+          "acceptAllBtn": "قبول",
+          "showPreferencesBtn": "تخصيص"
+        },
+        "preferencesModal": {
+          "title": "تفضيلات ملفات تعريف الارتباط",
+          "acceptAllBtn": "قبول",
+          "acceptNecessaryBtn": "الضرورية فقط",
+          "savePreferencesBtn": "حفظ التفضيلات",
+          "closeIconLabel": "إغلاق",
+          "sections": [
+            {
+              "title": "ملفات تعريف الارتباط الأساسية",
+              "description": "هذه الملفات ضرورية لعمل الموقع ولا يمكن تعطيلها.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "ملفات تعريف الارتباط التحليلية",
+              "description": "تساعدنا هذه الملفات في فهم كيفية تفاعل الزوار مع موقعنا.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "ملفات تعريف الارتباط التسويقية",
+              "description": "تُستخدم هذه الملفات لعرض إعلانات مخصصة.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "tr": {
+        "consentModal": {
+          "description": "Deneyiminizi geliştirmek ve site kullanımını analiz etmek için çerezler kullanırız.",
+          "acceptAllBtn": "Kabul Et",
+          "showPreferencesBtn": "Özelleştir"
+        },
+        "preferencesModal": {
+          "title": "Çerez Tercihleri",
+          "acceptAllBtn": "Kabul Et",
+          "acceptNecessaryBtn": "Sadece Gerekli",
+          "savePreferencesBtn": "Tercihleri Kaydet",
+          "closeIconLabel": "Kapat",
+          "sections": [
+            {
+              "title": "Zorunlu Çerezler",
+              "description": "Bu çerezler web sitesinin çalışması için gereklidir ve devre dışı bırakılamaz.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Analiz Çerezleri",
+              "description": "Bu çerezler, ziyaretçilerin web sitemizle nasıl etkileşime girdiğini anlamamıza yardımcı olur.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Pazarlama Çerezleri",
+              "description": "Bu çerezler kişiselleştirilmiş reklamlar sunmak için kullanılır.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "ru": {
+        "consentModal": {
+          "description": "Мы используем файлы cookie для улучшения вашего опыта и анализа использования сайта.",
+          "acceptAllBtn": "Принять",
+          "showPreferencesBtn": "Настроить"
+        },
+        "preferencesModal": {
+          "title": "Настройки cookie",
+          "acceptAllBtn": "Принять",
+          "acceptNecessaryBtn": "Только необходимые",
+          "savePreferencesBtn": "Сохранить настройки",
+          "closeIconLabel": "Закрыть",
+          "sections": [
+            {
+              "title": "Необходимые cookie",
+              "description": "Эти файлы cookie необходимы для работы сайта и не могут быть отключены.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Аналитические cookie",
+              "description": "Эти файлы cookie помогают нам понять, как посетители взаимодействуют с нашим сайтом.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Маркетинговые cookie",
+              "description": "Эти файлы cookie используются для показа персонализированной рекламы.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "zh": {
+        "consentModal": {
+          "description": "我们使用 Cookie 来改善您的体验并分析网站使用情况。",
+          "acceptAllBtn": "接受",
+          "showPreferencesBtn": "自定义"
+        },
+        "preferencesModal": {
+          "title": "Cookie 偏好设置",
+          "acceptAllBtn": "接受",
+          "acceptNecessaryBtn": "仅接受必要",
+          "savePreferencesBtn": "保存偏好",
+          "closeIconLabel": "关闭",
+          "sections": [
+            {
+              "title": "必要 Cookie",
+              "description": "这些 Cookie 是网站正常运行所必需的，无法禁用。",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "分析 Cookie",
+              "description": "这些 Cookie 帮助我们了解访问者如何与我们的网站互动。",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "营销 Cookie",
+              "description": "这些 Cookie 用于投放个性化广告。",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "ja": {
+        "consentModal": {
+          "description": "お客様の体験向上とサイト利用状況の分析のためにCookieを使用しています。",
+          "acceptAllBtn": "許可する",
+          "showPreferencesBtn": "カスタマイズ"
+        },
+        "preferencesModal": {
+          "title": "Cookie設定",
+          "acceptAllBtn": "許可する",
+          "acceptNecessaryBtn": "必要なもののみ",
+          "savePreferencesBtn": "設定を保存",
+          "closeIconLabel": "閉じる",
+          "sections": [
+            {
+              "title": "必要なCookie",
+              "description": "これらのCookieはウェブサイトの機能に必要であり、無効にすることはできません。",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "分析Cookie",
+              "description": "これらのCookieは、訪問者がウェブサイトとどのように対話するかを理解するのに役立ちます。",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "マーケティングCookie",
+              "description": "これらのCookieはパーソナライズされた広告を配信するために使用されます。",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "ko": {
+        "consentModal": {
+          "description": "경험 향상과 사이트 사용 분석을 위해 쿠키를 사용합니다.",
+          "acceptAllBtn": "수락",
+          "showPreferencesBtn": "사용자 지정"
+        },
+        "preferencesModal": {
+          "title": "쿠키 설정",
+          "acceptAllBtn": "수락",
+          "acceptNecessaryBtn": "필수만 수락",
+          "savePreferencesBtn": "설정 저장",
+          "closeIconLabel": "닫기",
+          "sections": [
+            {
+              "title": "필수 쿠키",
+              "description": "이 쿠키는 웹사이트 작동에 필요하며 비활성화할 수 없습니다.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "분석 쿠키",
+              "description": "이 쿠키는 방문자가 웹사이트와 어떻게 상호작용하는지 이해하는 데 도움이 됩니다.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "마케팅 쿠키",
+              "description": "이 쿠키는 맞춤형 광고를 제공하는 데 사용됩니다.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "pl": {
+        "consentModal": {
+          "description": "Używamy plików cookie, aby poprawić Twoje wrażenia i analizować korzystanie z witryny.",
+          "acceptAllBtn": "Akceptuję",
+          "showPreferencesBtn": "Dostosuj"
+        },
+        "preferencesModal": {
+          "title": "Preferencje cookie",
+          "acceptAllBtn": "Akceptuję",
+          "acceptNecessaryBtn": "Tylko niezbędne",
+          "savePreferencesBtn": "Zapisz preferencje",
+          "closeIconLabel": "Zamknij",
+          "sections": [
+            {
+              "title": "Niezbędne pliki cookie",
+              "description": "Te pliki cookie są niezbędne do działania strony i nie można ich wyłączyć.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Analityczne pliki cookie",
+              "description": "Te pliki cookie pomagają nam zrozumieć, w jaki sposób odwiedzający korzystają z naszej strony.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Marketingowe pliki cookie",
+              "description": "Te pliki cookie służą do wyświetlania spersonalizowanych reklam.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "uk": {
+        "consentModal": {
+          "description": "Ми використовуємо файли cookie для покращення вашого досвіду та аналізу використання сайту.",
+          "acceptAllBtn": "Прийняти",
+          "showPreferencesBtn": "Налаштувати"
+        },
+        "preferencesModal": {
+          "title": "Налаштування cookie",
+          "acceptAllBtn": "Прийняти",
+          "acceptNecessaryBtn": "Лише необхідні",
+          "savePreferencesBtn": "Зберегти налаштування",
+          "closeIconLabel": "Закрити",
+          "sections": [
+            {
+              "title": "Необхідні cookie",
+              "description": "Ці файли cookie необхідні для роботи сайту і не можуть бути вимкнені.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Аналітичні cookie",
+              "description": "Ці файли cookie допомагають нам зрозуміти, як відвідувачі взаємодіють з нашим сайтом.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Маркетингові cookie",
+              "description": "Ці файли cookie використовуються для показу персоналізованої реклами.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "ro": {
+        "consentModal": {
+          "description": "Folosim cookie-uri pentru a vă îmbunătăți experiența și a analiza utilizarea site-ului.",
+          "acceptAllBtn": "Acceptă",
+          "showPreferencesBtn": "Personalizează"
+        },
+        "preferencesModal": {
+          "title": "Preferințe cookie",
+          "acceptAllBtn": "Acceptă",
+          "acceptNecessaryBtn": "Doar necesare",
+          "savePreferencesBtn": "Salvează preferințele",
+          "closeIconLabel": "Închide",
+          "sections": [
+            {
+              "title": "Cookie-uri esențiale",
+              "description": "Aceste cookie-uri sunt necesare pentru funcționarea site-ului și nu pot fi dezactivate.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Cookie-uri analitice",
+              "description": "Aceste cookie-uri ne ajută să înțelegem cum interacționează vizitatorii cu site-ul nostru.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Cookie-uri de marketing",
+              "description": "Aceste cookie-uri sunt folosite pentru a afișa reclame personalizate.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      },
+      "bg": {
+        "consentModal": {
+          "description": "Използваме бисквитки, за да подобрим изживяването ви и да анализираме използването на сайта.",
+          "acceptAllBtn": "Приемам",
+          "showPreferencesBtn": "Персонализиране"
+        },
+        "preferencesModal": {
+          "title": "Настройки за бисквитки",
+          "acceptAllBtn": "Приемам",
+          "acceptNecessaryBtn": "Само необходимите",
+          "savePreferencesBtn": "Запазване на предпочитанията",
+          "closeIconLabel": "Затвори",
+          "sections": [
+            {
+              "title": "Необходими бисквитки",
+              "description": "Тези бисквитки са необходими за функционирането на уебсайта и не могат да бъдат деактивирани.",
+              "linkedCategory": "necessary"
+            },
+            {
+              "title": "Аналитични бисквитки",
+              "description": "Тези бисквитки ни помагат да разберем как посетителите взаимодействат с нашия уебсайт.",
+              "linkedCategory": "analytics"
+            },
+            {
+              "title": "Маркетингови бисквитки",
+              "description": "Тези бисквитки се използват за показване на персонализирани реклами.",
+              "linkedCategory": "marketing"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "guiOptions": {
+    "consentModal": {
+      "layout": "bar inline",
+      "position": "bottom",
+      "equalWeightButtons": false,
+      "flipButtons": false
+    },
+    "preferencesModal": {
+      "layout": "box",
+      "equalWeightButtons": false,
+      "flipButtons": false
+    }
+  }
+};
+      var __ccCloseLabels = {"en":"Close","es":"Cerrar","fr":"Fermer","de":"Schließen","it":"Chiudi","pt":"Fechar","nl":"Sluiten","he":"סגור","ar":"إغلاق","tr":"Kapat","ru":"Закрыть","zh":"关闭","ja":"閉じる","ko":"닫기","pl":"Zamknij","uk":"Закрити","ro":"Închide","bg":"Затвори"};
+
+      // Detect the current page language and override the build-time default.
+      // Published multi-language sites set <html lang="…"> per URL prefix;
+      // preview pages may store the active language on zappyI18n.
+      var pageLang = (document.documentElement.getAttribute('lang') || '').split('-')[0].toLowerCase();
+      if (!pageLang && typeof zappyI18n !== 'undefined' && zappyI18n.language) {
+        pageLang = String(zappyI18n.language).split('-')[0].toLowerCase();
+      }
+      if (pageLang && __ccConfig.language.translations[pageLang]) {
+        __ccConfig.language.default = pageLang;
+      }
+
+      function getActiveLanguage() {
+        var lang = (document.documentElement.getAttribute('lang') || '').split('-')[0].toLowerCase();
+        if (!lang && typeof zappyI18n !== 'undefined' && zappyI18n.language) {
+          lang = String(zappyI18n.language).split('-')[0].toLowerCase();
+        }
+        if (!lang || !__ccConfig.language.translations[lang]) {
+          lang = __ccConfig.language.default || 'en';
+        }
+        return __ccConfig.language.translations[lang] ? lang : 'en';
+      }
+
+      function getConsentText() {
+        var lang = getActiveLanguage();
+        var translations = __ccConfig.language.translations || {};
+        var current = translations[lang] || translations.en || {};
+        var consent = current.consentModal || {};
+        var labels = __ccCloseLabels || {};
+        return {
+          description: consent.description || '',
+          accept: consent.acceptAllBtn || 'Accept',
+          customize: consent.showPreferencesBtn || 'Customize',
+          close: labels[lang] || labels.en || 'Close'
+        };
+      }
+
+      function removeCustomBanner() {
+        var banner = document.getElementById('zappy-cookie-banner');
+        if (banner && banner.parentNode) {
+          banner.parentNode.removeChild(banner);
+        }
+        document.documentElement.classList.remove('zappy-cookie-banner-visible');
+      }
+
+      function updateCustomBannerText() {
+        var banner = document.getElementById('zappy-cookie-banner');
+        if (!banner) return;
+        var text = getConsentText();
+        var desc = banner.querySelector('[data-zappy-cookie-description]');
+        var accept = banner.querySelector('[data-zappy-cookie-accept]');
+        var customize = banner.querySelector('[data-zappy-cookie-customize]');
+        var close = banner.querySelector('[data-zappy-cookie-close]');
+        banner.setAttribute('aria-label', text.description || text.close);
+        if (desc) desc.textContent = text.description;
+        if (accept) accept.textContent = text.accept;
+        if (customize) customize.textContent = text.customize;
+        if (close) close.setAttribute('aria-label', text.close);
+      }
+
+      // Google Consent Mode v2 integration
+      function updateGoogleConsentMode() {
+        if (typeof gtag !== 'function') {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function(){dataLayer.push(arguments);};
+        }
+        
+        var analyticsAccepted = cc.acceptedCategory('analytics');
+        var marketingAccepted = cc.acceptedCategory('marketing');
+        
+        gtag('consent', 'update', {
+          'analytics_storage': analyticsAccepted ? 'granted' : 'denied',
+          'ad_storage': marketingAccepted ? 'granted' : 'denied',
+          'ad_user_data': marketingAccepted ? 'granted' : 'denied',
+          'ad_personalization': marketingAccepted ? 'granted' : 'denied'
+        });
+      }
+
+      function acceptAndClose(categories) {
+        try { cc.acceptCategory(categories); } catch (_) {}
+        removeCustomBanner();
+        updateGoogleConsentMode();
+      }
+
+      function renderCustomBanner() {
+        try {
+          if (typeof cc.validConsent === 'function' && cc.validConsent()) {
+            removeCustomBanner();
+            return;
+          }
+          if (!document.body) {
+            setTimeout(renderCustomBanner, 50);
+            return;
+          }
+          var existing = document.getElementById('zappy-cookie-banner');
+          if (existing) {
+            updateCustomBannerText();
+            return;
+          }
+
+          var text = getConsentText();
+          var banner = document.createElement('div');
+          banner.id = 'zappy-cookie-banner';
+          banner.className = 'zappy-cookie-banner';
+          banner.setAttribute('role', 'region');
+          banner.setAttribute('aria-label', text.description || text.close);
+
+          var inner = document.createElement('div');
+          inner.className = 'zappy-cookie-banner__inner';
+
+          var description = document.createElement('p');
+          description.className = 'zappy-cookie-banner__text';
+          description.setAttribute('data-zappy-cookie-description', 'true');
+          description.textContent = text.description;
+
+          var actions = document.createElement('div');
+          actions.className = 'zappy-cookie-banner__actions';
+
+          var customizeBtn = document.createElement('button');
+          customizeBtn.type = 'button';
+          customizeBtn.className = 'zappy-cookie-banner__button zappy-cookie-banner__button--customize';
+          customizeBtn.setAttribute('data-zappy-cookie-customize', 'true');
+          customizeBtn.textContent = text.customize;
+          customizeBtn.addEventListener('click', function(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            try { cc.showPreferences(); } catch (_) {}
+          });
+
+          var acceptBtn = document.createElement('button');
+          acceptBtn.type = 'button';
+          acceptBtn.className = 'zappy-cookie-banner__button zappy-cookie-banner__button--accept';
+          acceptBtn.setAttribute('data-zappy-cookie-accept', 'true');
+          acceptBtn.textContent = text.accept;
+          acceptBtn.addEventListener('click', function(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            acceptAndClose('all');
+          });
+
+          var closeBtn = document.createElement('button');
+          closeBtn.type = 'button';
+          closeBtn.className = 'zappy-cookie-banner__close';
+          closeBtn.setAttribute('data-zappy-cookie-close', 'true');
+          closeBtn.setAttribute('aria-label', text.close);
+          closeBtn.textContent = '\u00D7';
+          closeBtn.addEventListener('click', function(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            acceptAndClose([]);
+          });
+
+          actions.appendChild(customizeBtn);
+          actions.appendChild(acceptBtn);
+          inner.appendChild(description);
+          inner.appendChild(actions);
+          inner.appendChild(closeBtn);
+          banner.appendChild(inner);
+          document.body.appendChild(banner);
+          document.documentElement.classList.add('zappy-cookie-banner-visible');
+        } catch (_) {
+          // Defensive — never let the custom banner break the page.
+        }
+      }
+
+      function handleConsentResolved() {
+        removeCustomBanner();
+        updateGoogleConsentMode();
+      }
+
+      __ccConfig.onFirstConsent = handleConsentResolved;
+      __ccConfig.onConsent = handleConsentResolved;
+      __ccConfig.onChange = handleConsentResolved;
+
+      var runResult = cc.run(__ccConfig);
+      var afterRun = function() {
+        updateGoogleConsentMode();
+        if (!cc.validConsent || !cc.validConsent()) {
+          renderCustomBanner();
+        }
+      };
+      if (runResult && typeof runResult.then === 'function') {
+        runResult.then(afterRun).catch(afterRun);
+      } else {
+        setTimeout(afterRun, 0);
+      }
+
+      // Keep cookie consent in sync when the user switches language without
+      // a full navigation (preview / embedded-resources path).
+      if (typeof zappyI18n !== 'undefined' && typeof zappyI18n.onLanguageChange === 'function') {
+        zappyI18n.onLanguageChange(function(newLang) {
+          try {
+            if (__ccConfig.language.translations[newLang]) {
+              __ccConfig.language.default = newLang;
+              cc.setLanguage(newLang, true);
+              updateCustomBannerText();
+            }
+          } catch (_) {}
+        });
+      }
+    } catch (error) {
+      window.__zappyCookieConsentInitialized = false;
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCookieConsent);
+    setTimeout(initCookieConsent, 1000);
+  } else if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    initCookieConsent();
+  } else {
+    setTimeout(initCookieConsent, 500);
+  }
+  
+  if (typeof window !== 'undefined') {
+    if (window.addEventListener) {
+      window.addEventListener('load', initCookieConsent, { once: true });
+    }
+  }
 })();
