@@ -244,8 +244,8 @@
             }
             
             /* Menu Group styling (non-clickable parent) - TOP LEVEL ONLY with ultra-specific selector */
-            .nav-menu &gt; li &gt; .menu-group-title,
-            #navMenu &gt; li &gt; .menu-group-title {
+            .nav-menu > li > .menu-group-title,
+            #navMenu > li > .menu-group-title {
               display: inline-block !important;
               padding: 0.5rem 1rem !important;
               color: var(--nav-color) !important;
@@ -259,13 +259,13 @@
               transition: color 0.3s ease !important;
             }
             
-            .nav-menu &gt; li &gt; .menu-group-title:hover,
-            #navMenu &gt; li &gt; .menu-group-title:hover {
+            .nav-menu > li > .menu-group-title:hover,
+            #navMenu > li > .menu-group-title:hover {
               color: var(--nav-hover-color) !important;
             }
             
             /* Desktop: show submenu on Menu Group hover */
-            li:has(.menu-group-title):hover &gt; .sub-menu {
+            li:has(.menu-group-title):hover > .sub-menu {
               opacity: 1 !important;
               visibility: visible !important;
               transform: translateY(0) !important;
@@ -274,7 +274,7 @@
             
             /* Hide menu items marked as hidden (overrides hover states) */
             .zappy-hidden-menu-item,
-            li:has(.menu-group-title):hover &gt; .sub-menu .zappy-hidden-menu-item {
+            li:has(.menu-group-title):hover > .sub-menu .zappy-hidden-menu-item {
               display: none !important;
               opacity: 0 !important;
               visibility: hidden !important;
@@ -327,9 +327,9 @@
             }
             
             /* Show submenu on parent hover - more specific selectors */
-            .nav-menu li:hover &gt; .sub-menu,
-            nav li:hover &gt; .sub-menu,
-            .navbar li:hover &gt; .sub-menu {
+            .nav-menu li:hover > .sub-menu,
+            nav li:hover > .sub-menu,
+            .navbar li:hover > .sub-menu {
               opacity: 1 !important;
               visibility: visible !important;
               transform: translateY(0) !important;
@@ -367,8 +367,8 @@
             }
             
             /* CRITICAL: Override submenu styles for TOP-LEVEL Menu Groups only - must come AFTER submenu styles */
-            .nav-menu &gt; li &gt; .menu-group-title,
-            #navMenu &gt; li &gt; .menu-group-title {
+            .nav-menu > li > .menu-group-title,
+            #navMenu > li > .menu-group-title {
               display: inline-block !important;
               padding: 0.5rem 1rem !important;
               color: var(--nav-color) !important;
@@ -382,8 +382,8 @@
               transition: color 0.3s ease !important;
             }
             
-            .nav-menu &gt; li &gt; .menu-group-title:hover,
-            #navMenu &gt; li &gt; .menu-group-title:hover {
+            .nav-menu > li > .menu-group-title:hover,
+            #navMenu > li > .menu-group-title:hover {
               color: var(--nav-hover-color) !important;
               background-color: transparent !important;
             }
@@ -425,18 +425,18 @@
               }
               
               /* Disable hover behavior on mobile */
-              .nav-menu li:hover &gt; .sub-menu,
-              nav li:hover &gt; .sub-menu,
-              .navbar li:hover &gt; .sub-menu {
+              .nav-menu li:hover > .sub-menu,
+              nav li:hover > .sub-menu,
+              .navbar li:hover > .sub-menu {
                 opacity: 0;
                 visibility: hidden;
                 pointer-events: none;
               }
               
               /* Enable visibility for expanded submenus */
-              .nav-menu li &gt; .sub-menu.mobile-expanded,
-              nav li &gt; .sub-menu.mobile-expanded,
-              .navbar li &gt; .sub-menu.mobile-expanded {
+              .nav-menu li > .sub-menu.mobile-expanded,
+              nav li > .sub-menu.mobile-expanded,
+              .navbar li > .sub-menu.mobile-expanded {
                 opacity: 1 !important;
                 visibility: visible !important;
                 pointer-events: auto !important;
@@ -465,39 +465,39 @@
               }
               
               /* Parent link - takes full width since toggle is absolute (not a flex child) */
-              .nav-menu li:has(.sub-menu) &gt; a,
-              nav li:has(.sub-menu) &gt; a,
-              .navbar li:has(.sub-menu) &gt; a,
-              .nav-menu &gt; li &gt; .menu-group-title,
-              #navMenu &gt; li &gt; .menu-group-title {
+              .nav-menu li:has(.sub-menu) > a,
+              nav li:has(.sub-menu) > a,
+              .navbar li:has(.sub-menu) > a,
+              .nav-menu > li > .menu-group-title,
+              #navMenu > li > .menu-group-title {
                 flex: 1 !important;
                 min-width: 0 !important;
               }
               
               /* Normalize menu-group-title in mobile nav to match link alignment */
-              .nav-menu &gt; li &gt; .menu-group-title,
-              #navMenu &gt; li &gt; .menu-group-title {
+              .nav-menu > li > .menu-group-title,
+              #navMenu > li > .menu-group-title {
                 padding: 0 !important;
                 line-height: inherit !important;
               }
               
               /* Submenu takes full width below parent */
-              .nav-menu li:has(.sub-menu) &gt; .sub-menu,
-              nav li:has(.sub-menu) &gt; .sub-menu,
-              .navbar li:has(.sub-menu) &gt; .sub-menu {
+              .nav-menu li:has(.sub-menu) > .sub-menu,
+              nav li:has(.sub-menu) > .sub-menu,
+              .navbar li:has(.sub-menu) > .sub-menu {
                 flex-basis: 100% !important;
                 width: 100% !important;
               }
               
               /* HIDE EXISTING CHEVRONS/ARROWS from cloned sites to prevent duplicates */
-              .nav-menu li:has(.sub-menu) &gt; a .fa-chevron-down,
-              .nav-menu li:has(.sub-menu) &gt; a .fa-angle-down,
-              .nav-menu li:has(.sub-menu) &gt; a [class*="chevron"],
-              .nav-menu li:has(.sub-menu) &gt; a [class*="arrow"],
-              nav li:has(.sub-menu) &gt; a [class*="chevron"],
-              nav li:has(.sub-menu) &gt; a [class*="arrow"],
-              #navMenu li:has(.sub-menu) &gt; a [class*="chevron"],
-              #navMenu li:has(.sub-menu) &gt; a [class*="arrow"] {
+              .nav-menu li:has(.sub-menu) > a .fa-chevron-down,
+              .nav-menu li:has(.sub-menu) > a .fa-angle-down,
+              .nav-menu li:has(.sub-menu) > a [class*="chevron"],
+              .nav-menu li:has(.sub-menu) > a [class*="arrow"],
+              nav li:has(.sub-menu) > a [class*="chevron"],
+              nav li:has(.sub-menu) > a [class*="arrow"],
+              #navMenu li:has(.sub-menu) > a [class*="chevron"],
+              #navMenu li:has(.sub-menu) > a [class*="arrow"] {
                 display: none !important;
                 visibility: hidden !important;
               }
@@ -552,10 +552,10 @@
             (function() {
               function initMobileMenuToggles() {
                 // Only run on mobile
-                if (window.innerWidth &gt; 768) {
+                if (window.innerWidth > 768) {
                   // Remove any toggle buttons on desktop
-                  document.querySelectorAll('.mobile-submenu-toggle').forEach(btn =&gt; btn.remove());
-                  document.querySelectorAll('.sub-menu.mobile-expanded').forEach(menu =&gt; {
+                  document.querySelectorAll('.mobile-submenu-toggle').forEach(btn => btn.remove());
+                  document.querySelectorAll('.sub-menu.mobile-expanded').forEach(menu => {
                     menu.classList.remove('mobile-expanded');
                   });
                   console.log('[MOBILE MENU] Desktop mode - cleanup done');
@@ -578,7 +578,7 @@
                   }
                   
                   const submenu = li.querySelector('.sub-menu');
-                  const parentLink = li.querySelector(':scope &gt; a') || li.querySelector(':scope &gt; .menu-group-title');
+                  const parentLink = li.querySelector(':scope > a') || li.querySelector(':scope > .menu-group-title');
                   
                   if (!submenu || !parentLink) return;
                   
@@ -638,7 +638,7 @@
               // This handles cases where the mobile menu is hidden initially
               const observer = new MutationObserver(function(mutations) {
                 mutations.forEach(function(mutation) {
-                  if (mutation.type === 'attributes' &amp;&amp; mutation.attributeName === 'class') {
+                  if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                     const target = mutation.target;
                     if (target.classList.contains('active') || target.style.display !== 'none') {
                       console.log('[MOBILE MENU] Mobile menu became visible, re-initializing...');
@@ -698,29 +698,29 @@
       <div class="search-wrapper">
         <input type="text" id="mobile-search-input" placeholder="חיפוש חנות..." autocomplete="off">
         <button class="search-submit" id="mobile-search-submit" title="חיפוש">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
         </button>
         <button class="close-search" id="close-mobile-search">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
         </button>
       </div>
       <div class="search-results" id="mobile-search-results"></div>
     </div>
   
-<script>window.ZAPPY_WEBSITE_ID = "f5c8925e-a8ef-4d77-8a21-10cb63290565";window.ZAPPY_API_BASE = "https://api.zappy5.com";</script>
+<script>window.ZAPPY_WEBSITE_ID = "f5c8925e-a8ef-4d77-8a21-10cb63290565";window.ZAPPY_API_BASE = (window.location.pathname.includes('/preview') ? "https://api.zappy5.com" : "https://api.zappy5.com");</script>
   <nav class="navbar" dir="rtl">
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
     <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
     </svg>
     <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
-      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
     </svg>
   </button>
 
   <button class="phone-header-btn" data-phone="0546499087" aria-label="Call">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
     </svg>
   </button>
 
@@ -729,24 +729,24 @@
       <a href="/" class="logo-link">
         <img src="/assets/logo-sharpen-1776341577487-uek4h7.webp?v=1776341577487" alt="רוקוסן" class="logo">
       </a>
-    </div><ul class="nav-menu" id="navMenu"><li class="menu-group-item"><span class="menu-group-title">הדשנים שלנו</span><ul class="sub-menu"><li><a href="/rokohumin">רוקומיום</a></li><li><a href="/rokolan">רוקולן</a></li><li><a href="/radioactive">רוקואקטיב</a></li></ul></li><li><a href="/services">שירותים</a></li><li><a href="/about">אודות</a></li><li class="menu-item-has-children zappy-products-dropdown">
+    </div><ul class="nav-menu" id="navMenu"><li class="menu-group-item"><span class="menu-group-title">הדשנים שלנו</span><ul class="sub-menu"><li><a href="/rokohumin">רוקומיום</a></li><li><a href="/rokolan">רוקולן</a></li><li><a href="/rokoaktiv">רוקואקטיב</a></li></ul></li><li><a href="/services">שירותים</a></li><li><a href="/about">אודות</a></li><li class="menu-item-has-children zappy-products-dropdown">
       <a href="/products" data-clean-href="/products" onclick="window.location.href='/products'; return false;">
         חנות
         <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M6 9l6 6 6-6"/>
+          <path d="M6 9l6 6 6-6"></path>
         </svg>
       </a>
       <ul class="sub-menu" id="zappy-nav-category-links">
         <li><a href="/products">כל החנות</a></li>
         <!-- Categories will be loaded dynamically -->
       </ul>
-    </li><li><a href="/contact">צור קשר</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><a href="/login" class="login-link nav-login" title="התחברות"><svg class="login-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a><a href="#cart" class="cart-link nav-cart" id="cart-drawer-toggle" title="עגלת קניות"><svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count">0</span></a><div class="nav-search-box">
+    </li><li><a href="/contact">צור קשר</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><a href="/login" class="login-link nav-login" title="התחברות"><svg class="login-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a><a href="#cart" class="cart-link nav-cart" id="cart-drawer-toggle" title="עגלת קניות"><svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg><span class="cart-count">0</span></a><div class="nav-search-box">
     <input type="text" class="nav-search-input" id="nav-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
     <button class="nav-search-btn" id="nav-search-btn" title="חיפוש">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
     </button>
     <div class="nav-search-results" id="nav-search-results"></div>
-  </div></div><div class="nav-ecommerce-icons nav-icons-right"><button class="nav-search-toggle" id="mobile-search-toggle" title="חיפוש"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button></div></div>
+  </div></div><div class="nav-ecommerce-icons nav-icons-right"><button class="nav-search-toggle" id="mobile-search-toggle" title="חיפוש"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg></button></div></div>
 
     
 
@@ -799,12 +799,12 @@
     // Check if background is transparent or rgba with 0 alpha
     const isTransparent = bgColor === 'transparent' || 
                          bgColor === 'rgba(0, 0, 0, 0)' ||
-                         (bgColor.startsWith('rgba') &amp;&amp; bgColor.includes(', 0)'));
+                         (bgColor.startsWith('rgba') && bgColor.includes(', 0)'));
     
     if (isTransparent) {
       // Check for background-image or gradient
       const bgImage = computedStyle.backgroundImage;
-      if (bgImage &amp;&amp; bgImage !== 'none') {
+      if (bgImage && bgImage !== 'none') {
         console.log('[Navbar] Navbar has background image/gradient, using dark text');
         bgColor = 'rgb(240, 240, 240)'; // Assume light background
       } else {
@@ -817,7 +817,7 @@
     
     // Calculate luminance to determine if background is light or dark
     const rgb = bgColor.match(/\d+/g);
-    if (rgb &amp;&amp; rgb.length &gt;= 3) {
+    if (rgb && rgb.length >= 3) {
       const r = parseInt(rgb[0]);
       const g = parseInt(rgb[1]);
       const b = parseInt(rgb[2]);
@@ -953,7 +953,7 @@
       // ONLY apply inline positioning styles on mobile viewport
       // On desktop, the CSS handles hiding these buttons with display: none
       // Inline styles were breaking desktop layout by overriding CSS
-      const isMobileViewport = window.innerWidth &lt;= 768;
+      const isMobileViewport = window.innerWidth <= 768;
       
       if (mobileToggle) {
         // Icon sizing applies to all viewports for consistency
@@ -1144,7 +1144,7 @@
       phoneBtn.addEventListener('click', function() {
         // Get phone number from placeholder in page or use default
         const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-        const phoneNumber = phoneLinks.length &gt; 0 
+        const phoneNumber = phoneLinks.length > 0 
           ? phoneLinks[0].getAttribute('href').replace('tel:', '')
           : '0546499087';
         
@@ -1161,7 +1161,7 @@
     const handleWhatsAppVisibility = function() {
       const whatsappBtn = document.querySelector('.whatsapp-float');
       if (whatsappBtn) {
-        const isDesktop = window.innerWidth &gt;= 769;
+        const isDesktop = window.innerWidth >= 769;
         if (isDesktop) {
           whatsappBtn.style.setProperty('display', 'none', 'important');
           whatsappBtn.style.setProperty('visibility', 'hidden', 'important');
@@ -1195,10 +1195,10 @@
   <main>
       
 
-<section id="layout-1777983242528" class="layout-section hero-section" data-zappy-component="true" style="width: 100vw; margin-left: calc(50% - 50vw); position: relative; display: flex; align-items: center; justify-content: center; direction: rtl; overflow: hidden; box-sizing: border-box; min-height: 288.391px !important; --zappy-bg-overlay: rgba(0, 0, 0, 0); --zappy-bg-image: url(&quot;assets/image-section-background-1777993355196-uthk2k.webp&quot;); background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(&quot;assets/image-section-background-1777993355196-uthk2k.webp&quot;); background-size: cover !important; background-position: 50% 50% !important; background-repeat: no-repeat;" data-component-id="hero-fullwidth-bg" data-zappy-bg-type="image" data-zappy-bg-color data-zappy-bg-image="assets/image-section-background-1777993355196-uthk2k.webp" data-zappy-bg-overlay-color="#000000" data-zappy-bg-overlay-opacity="0" data-zappy-bg-video-type data-zappy-bg-video-url data-hero-type="fullscreen-scrim" data-element-id="zappy-hero-bg-layout-1777983242528" data-element-type="background-image" data-zappy-bg-position="50% 50%" data-zappy-bg-zoom="1">
+<section id="layout-1777983242528" class="layout-section hero-section" data-zappy-component="true" style="width: 100vw; margin-left: calc(50% - 50vw); position: relative; display: flex; align-items: center; justify-content: center; direction: rtl; overflow: hidden; box-sizing: border-box; min-height: 288.391px !important; cursor: url(&quot;data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M29.2344 9.93125L4.87351 34.2922C4.67351 34.4922 4.52976 34.7437 4.46101 35.0203L1.60789 46.4984C1.47664 47.0312 1.63289 47.5922 2.02039 47.9797C2.40945 48.3688 2.97351 48.5219 3.50164 48.3922L14.9798 45.5406C15.2548 45.4719 15.5063 45.3297 15.7079 45.1281L40.0688 20.7672L29.2344 9.93125Z' fill='%23FF0083'/%3E%3Cpath d='M46.1937 3.80781C43.2062 0.820311 38.3468 0.820311 35.3578 3.80781L31.4421 7.72344L42.2781 18.5594L46.1937 14.6437C49.1812 11.6547 49.1812 6.79531 46.1937 3.80781Z' fill='%23FF0083'/%3E%3C/svg%3E&quot;) 2 13, pointer !important; --zappy-bg-overlay: rgba(0, 0, 0, 0); --zappy-bg-image: url(&quot;assets/image-section-background-1777993355196-uthk2k.webp&quot;); background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(&quot;assets/image-section-background-1777993355196-uthk2k.webp&quot;); background-size: cover !important; background-position: 50% 50% !important; background-repeat: no-repeat;" data-component-id="hero-fullwidth-bg" data-zappy-bg-type="image" data-zappy-bg-color="" data-zappy-bg-image="assets/image-section-background-1777993355196-uthk2k.webp" data-zappy-bg-overlay-color="#000000" data-zappy-bg-overlay-opacity="0" data-zappy-bg-video-type="" data-zappy-bg-video-url="" data-hero-type="fullscreen-scrim" data-element-id="zappy-hero-bg-layout-1777983242528" data-element-type="background-image" data-zappy-bg-position="50% 50%" data-zappy-bg-zoom="1">
   <div class="container" style="position: relative; max-width: 1200px; width: 100%; margin: 0 auto; padding: 80px 1.5rem; text-align: center; box-sizing: border-box;">
-    <h1 style="font-size: 48px; font-weight: 700; color: rgb(74, 74, 74) !important; margin-bottom: 20px; font-family: Poppins, sans-serif;"><font color="#e5e5e5">רוקולן</font></h1>
-    <h3 style="font-size: 24px; font-weight: 400; color: rgb(74, 74, 74) !important; max-width: 700px; margin: 0px auto; font-family: Poppins, sans-serif;"><font color="#e5e5e5">דשן אורגני המיועד להזנת שורשים של גידולים חקלאיים</font></h3>
+    <h1 style="font-size: 48px; font-weight: 700; margin-bottom: 20px; font-family: Poppins, sans-serif; color: rgb(74, 74, 74) !important;">רוקומיום</h1>
+    <h3 style="font-size: 24px; font-weight: 400; max-width: 700px; margin: 0px auto; font-family: Poppins, sans-serif; color: rgb(74, 74, 74) !important;">דשן נוזלי המכיל חומצות אמינו, פפטידים, חומצות הומיות, יסודות מזון מקרו ומיקרו ליישום עלוות</h3>
   </div>
 </section>
 
@@ -1218,9 +1218,9 @@
       <article class="rks-features__card" role="listitem">
         <div class="rks-features__card-icon-wrap" aria-hidden="true">
           <svg class="rks-features__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"/>
-            <path d="M32 14 C32 14 20 24 20 34 C20 40.627 25.373 46 32 46 C38.627 46 44 40.627 44 34 C44 24 32 14 32 14Z" fill="var(--primary-color)" opacity="0.85"/>
-            <path d="M32 22 C32 22 26 29 26 34 C26 37.314 28.686 40 32 40" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"></circle>
+            <path d="M32 14 C32 14 20 24 20 34 C20 40.627 25.373 46 32 46 C38.627 46 44 40.627 44 34 C44 24 32 14 32 14Z" fill="var(--primary-color)" opacity="0.85"></path>
+            <path d="M32 22 C32 22 26 29 26 34 C26 37.314 28.686 40 32 40" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"></path>
           </svg>
         </div>
         <div class="rks-features__card-content">
@@ -1234,11 +1234,11 @@
       <article class="rks-features__card" role="listitem">
         <div class="rks-features__card-icon-wrap" aria-hidden="true">
           <svg class="rks-features__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"/>
-            <path d="M18 44 L18 28 L26 28 L26 44 Z" fill="var(--primary-color)" opacity="0.6"/>
-            <path d="M28 44 L28 22 L36 22 L36 44 Z" fill="var(--primary-color)" opacity="0.8"/>
-            <path d="M38 44 L38 16 L46 16 L46 44 Z" fill="var(--primary-color)"/>
-            <line x1="14" y1="44" x2="50" y2="44" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"></circle>
+            <path d="M18 44 L18 28 L26 28 L26 44 Z" fill="var(--primary-color)" opacity="0.6"></path>
+            <path d="M28 44 L28 22 L36 22 L36 44 Z" fill="var(--primary-color)" opacity="0.8"></path>
+            <path d="M38 44 L38 16 L46 16 L46 44 Z" fill="var(--primary-color)"></path>
+            <line x1="14" y1="44" x2="50" y2="44" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"></line>
           </svg>
         </div>
         <div class="rks-features__card-content">
@@ -1252,11 +1252,11 @@
       <article class="rks-features__card" role="listitem">
         <div class="rks-features__card-icon-wrap" aria-hidden="true">
           <svg class="rks-features__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"/>
-            <circle cx="32" cy="32" r="12" stroke="var(--primary-color)" stroke-width="3" fill="none"/>
-            <path d="M32 20 L32 14 M32 50 L32 44 M20 32 L14 32 M50 32 L44 32" stroke="var(--primary-color)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M23.5 23.5 L19 19 M44.5 44.5 L40 40 M40.5 23.5 L45 19 M23.5 40.5 L19 45" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="32" cy="32" r="4" fill="var(--accent-color)"/>
+            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"></circle>
+            <circle cx="32" cy="32" r="12" stroke="var(--primary-color)" stroke-width="3" fill="none"></circle>
+            <path d="M32 20 L32 14 M32 50 L32 44 M20 32 L14 32 M50 32 L44 32" stroke="var(--primary-color)" stroke-width="2.5" stroke-linecap="round"></path>
+            <path d="M23.5 23.5 L19 19 M44.5 44.5 L40 40 M40.5 23.5 L45 19 M23.5 40.5 L19 45" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round"></path>
+            <circle cx="32" cy="32" r="4" fill="var(--accent-color)"></circle>
           </svg>
         </div>
         <div class="rks-features__card-content">
@@ -1270,10 +1270,10 @@
       <article class="rks-features__card" role="listitem">
         <div class="rks-features__card-icon-wrap" aria-hidden="true">
           <svg class="rks-features__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"/>
-            <path d="M16 48 C16 48 22 36 32 36 C42 36 48 48 48 48" stroke="var(--primary-color)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <path d="M24 30 C24 30 20 22 26 18 C26 18 24 26 32 26 C40 26 38 18 38 18 C44 22 40 30 40 30" fill="var(--primary-color)" opacity="0.7"/>
-            <path d="M28 36 L28 30 M36 36 L36 30" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"></circle>
+            <path d="M16 48 C16 48 22 36 32 36 C42 36 48 48 48 48" stroke="var(--primary-color)" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+            <path d="M24 30 C24 30 20 22 26 18 C26 18 24 26 32 26 C40 26 38 18 38 18 C44 22 40 30 40 30" fill="var(--primary-color)" opacity="0.7"></path>
+            <path d="M28 36 L28 30 M36 36 L36 30" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round"></path>
           </svg>
         </div>
         <div class="rks-features__card-content">
@@ -1287,10 +1287,10 @@
       <article class="rks-features__card" role="listitem">
         <div class="rks-features__card-icon-wrap" aria-hidden="true">
           <svg class="rks-features__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"/>
-            <rect x="18" y="20" width="28" height="22" rx="3" stroke="var(--primary-color)" stroke-width="2.5" fill="none"/>
-            <path d="M24 32 L29 37 L40 26" stroke="var(--primary-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M22 20 L22 16 M42 20 L42 16" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"></circle>
+            <rect x="18" y="20" width="28" height="22" rx="3" stroke="var(--primary-color)" stroke-width="2.5" fill="none"></rect>
+            <path d="M24 32 L29 37 L40 26" stroke="var(--primary-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M22 20 L22 16 M42 20 L42 16" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"></path>
           </svg>
         </div>
         <div class="rks-features__card-content">
@@ -1304,10 +1304,10 @@
       <article class="rks-features__card" role="listitem">
         <div class="rks-features__card-icon-wrap" aria-hidden="true">
           <svg class="rks-features__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"/>
-            <path d="M20 44 C20 44 20 32 32 28 C44 32 44 44 44 44" stroke="var(--primary-color)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <circle cx="32" cy="22" r="6" fill="var(--primary-color)" opacity="0.85"/>
-            <path d="M26 44 L26 38 C26 35 29 33 32 33 C35 33 38 35 38 38 L38 44" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <circle cx="32" cy="32" r="30" fill="rgba(79,138,60,0.12)"></circle>
+            <path d="M20 44 C20 44 20 32 32 28 C44 32 44 44 44 44" stroke="var(--primary-color)" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
+            <circle cx="32" cy="22" r="6" fill="var(--primary-color)" opacity="0.85"></circle>
+            <path d="M26 44 L26 38 C26 35 29 33 32 33 C35 33 38 35 38 38 L38 44" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round" fill="none"></path>
           </svg>
         </div>
         <div class="rks-features__card-content">
@@ -1324,7 +1324,7 @@
       <a href="#contact" class="rks-features__cta-btn" aria-label="צור קשר לייעוץ על דשן רוקולן">
         <span>קבל ייעוץ חינם</span>
         <svg class="rks-features__cta-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
       </a>
     </div>
@@ -1365,14 +1365,14 @@
           <ul class="footer-links">
             <li><a href="/services"><i class="fas fa-chevron-left nav-arrow"></i>שירותים</a></li>
             <li><a href="/about"><i class="fas fa-chevron-left nav-arrow"></i>אודות</a></li>
-            <li><a href="/contact" style><i class="fas fa-chevron-left nav-arrow" style="cursor: pointer;"></i>צור קשר</a></li>
+            <li><a href="/contact" style=""><i class="fas fa-chevron-left nav-arrow" style="cursor: pointer;"></i>צור קשר</a></li>
           </ul>
         </div>
 
         <!-- Contact Info -->
         <div class="footer-col">
           <h4 class="footer-heading"><span class="heading-accent"></span>פרטי התקשרות</h4>
-          <ul class="footer-contact" style>
+          <ul class="footer-contact" style="">
 <li>
   <span class="contact-icon"><i class="fas fa-envelope" data-element-type="icon" data-icon-type="fontawesome"></i></span>
   <span class="contact-text"><a href="mailto:info@rokosan.co.il">info@rokosan.co.il</a></span>
@@ -1464,7 +1464,7 @@
     e.stopPropagation();
     var open = panel.classList.toggle('a11y-open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if(open) panel.querySelector('.a11y-action-btn') &amp;&amp; panel.querySelector('.a11y-action-btn').focus();
+    if(open) panel.querySelector('.a11y-action-btn') && panel.querySelector('.a11y-action-btn').focus();
   });
 
   // Close button
@@ -1481,7 +1481,7 @@
       var mode = this.getAttribute('data-a11y');
       // Mutual exclusion for contrast modes
       var contrastModes = ['high-contrast','inverted','gray-scale'];
-      if(contrastModes.indexOf(mode)&gt;-1){
+      if(contrastModes.indexOf(mode)>-1){
         contrastModes.forEach(function(cm){
           if(cm!==mode){
             document.body.classList.remove('a11y-'+cm);
@@ -1493,7 +1493,7 @@
       }
       // Mutual exclusion for text sizes
       var textModes=['large-text','larger-text'];
-      if(textModes.indexOf(mode)&gt;-1){
+      if(textModes.indexOf(mode)>-1){
         textModes.forEach(function(tm){
           if(tm!==mode){
             document.body.classList.remove('a11y-'+tm);
@@ -1523,7 +1523,7 @@
 
   // Close on outside click
   document.addEventListener('click',function(e){
-    if(panel.classList.contains('a11y-open')&amp;&amp;!panel.contains(e.target)&amp;&amp;e.target!==btn){
+    if(panel.classList.contains('a11y-open')&&!panel.contains(e.target)&&e.target!==btn){
       panel.classList.remove('a11y-open');
       btn.setAttribute('aria-expanded','false');
     }
@@ -1531,7 +1531,7 @@
 
   // Keyboard: Escape closes
   document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'&amp;&amp;panel.classList.contains('a11y-open')){
+    if(e.key==='Escape'&&panel.classList.contains('a11y-open')){
       panel.classList.remove('a11y-open');
       btn.setAttribute('aria-expanded','false');
       btn.focus();

@@ -553,10 +553,10 @@ URL: https://www.rokosan.co.il/rokohumin
 
 
 
-# רוקולן
+# רוקומיום
 
 
-### דשן אורגני המיועד להזנת שורשים של גידולים חקלאיים
+### דשן נוזלי המכיל חומצות אמינו, פפטידים, חומצות הומיות, יסודות מזון מקרו ומיקרו ליישום עלוות
 
 
 
@@ -1173,9 +1173,9 @@ URL: https://www.rokosan.co.il/rokolan
 
 ---
 
-## https://www.rokosan.co.il/radioactive
+## רוקואקטיב
 
-URL: https://www.rokosan.co.il/radioactive
+URL: https://www.rokosan.co.il/rokoaktiv
 
 רוקואקטיב
 
