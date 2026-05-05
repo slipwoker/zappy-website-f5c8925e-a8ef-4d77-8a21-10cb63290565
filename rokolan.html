@@ -698,29 +698,29 @@
       <div class="search-wrapper">
         <input type="text" id="mobile-search-input" placeholder="חיפוש חנות..." autocomplete="off">
         <button class="search-submit" id="mobile-search-submit" title="חיפוש">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
         </button>
         <button class="close-search" id="close-mobile-search">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
         </button>
       </div>
       <div class="search-results" id="mobile-search-results"></div>
     </div>
   
-<script>window.ZAPPY_WEBSITE_ID = "f5c8925e-a8ef-4d77-8a21-10cb63290565";window.ZAPPY_API_BASE = "https://api.zappy5.com";</script>
+<script>window.ZAPPY_WEBSITE_ID = "f5c8925e-a8ef-4d77-8a21-10cb63290565";window.ZAPPY_API_BASE = (window.location.pathname.includes('/preview') ? "https://api.zappy5.com" : "https://api.zappy5.com");</script>
   <nav class="navbar" dir="rtl">
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
     <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
     </svg>
     <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
-      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
     </svg>
   </button>
 
   <button class="phone-header-btn" data-phone="0546499087" aria-label="Call">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
     </svg>
   </button>
 
@@ -733,20 +733,20 @@
       <a href="/products" data-clean-href="/products" onclick="window.location.href='/products'; return false;">
         חנות
         <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M6 9l6 6 6-6"/>
+          <path d="M6 9l6 6 6-6"></path>
         </svg>
       </a>
       <ul class="sub-menu" id="zappy-nav-category-links">
         <li><a href="/products">כל החנות</a></li>
         <!-- Categories will be loaded dynamically -->
       </ul>
-    </li><li><a href="/contact">צור קשר</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><a href="/login" class="login-link nav-login" title="התחברות"><svg class="login-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a><a href="#cart" class="cart-link nav-cart" id="cart-drawer-toggle" title="עגלת קניות"><svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count">0</span></a><div class="nav-search-box">
+    </li><li><a href="/contact">צור קשר</a></li></ul><div class="nav-ecommerce-icons nav-icons-left"><a href="/login" class="login-link nav-login" title="התחברות"><svg class="login-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></a><a href="#cart" class="cart-link nav-cart" id="cart-drawer-toggle" title="עגלת קניות"><svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg><span class="cart-count">0</span></a><div class="nav-search-box">
     <input type="text" class="nav-search-input" id="nav-search-input" placeholder="חיפוש מוצרים..." autocomplete="off">
     <button class="nav-search-btn" id="nav-search-btn" title="חיפוש">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
     </button>
     <div class="nav-search-results" id="nav-search-results"></div>
-  </div></div><div class="nav-ecommerce-icons nav-icons-right"><button class="nav-search-toggle" id="mobile-search-toggle" title="חיפוש"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button></div></div>
+  </div></div><div class="nav-ecommerce-icons nav-icons-right"><button class="nav-search-toggle" id="mobile-search-toggle" title="חיפוש"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg></button></div></div>
 
     
 
@@ -1195,10 +1195,10 @@
   <main>
       
 
-<section id="layout-1777983242528" class="layout-section hero-section" data-zappy-component="true" style="width: 100vw; margin-left: calc(50% - 50vw); position: relative; display: flex; align-items: center; justify-content: center; direction: rtl; overflow: hidden; box-sizing: border-box; min-height: 288.391px !important; --zappy-bg-overlay: rgba(0, 0, 0, 0); --zappy-bg-image: url(&quot;assets/image-section-background-1778007296010-dhe7qz.webp&quot;); background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(&quot;assets/image-section-background-1778007296010-dhe7qz.webp&quot;); background-size: cover !important; background-position: 50% 50% !important; background-repeat: no-repeat;" data-component-id="hero-fullwidth-bg" data-zappy-bg-type="image" data-zappy-bg-color data-zappy-bg-image="assets/image-section-background-1778007296010-dhe7qz.webp" data-zappy-bg-overlay-color="#000000" data-zappy-bg-overlay-opacity="0" data-zappy-bg-video-type data-zappy-bg-video-url data-hero-type="fullscreen-scrim" data-element-id="zappy-hero-bg-layout-1777983242528" data-element-type="background-image" data-zappy-bg-position="50% 50%" data-zappy-bg-zoom="1">
+<section id="layout-1777983242528" class="layout-section hero-section" data-zappy-component="true" style="width: 100vw; margin-left: calc(50% - 50vw); position: relative; display: flex; align-items: center; justify-content: center; direction: rtl; overflow: hidden; box-sizing: border-box; min-height: 288.391px !important; cursor: url(&quot;data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M29.2344 9.93125L4.87351 34.2922C4.67351 34.4922 4.52976 34.7437 4.46101 35.0203L1.60789 46.4984C1.47664 47.0312 1.63289 47.5922 2.02039 47.9797C2.40945 48.3688 2.97351 48.5219 3.50164 48.3922L14.9798 45.5406C15.2548 45.4719 15.5063 45.3297 15.7079 45.1281L40.0688 20.7672L29.2344 9.93125Z' fill='%23FF0083'/%3E%3Cpath d='M46.1937 3.80781C43.2062 0.820311 38.3468 0.820311 35.3578 3.80781L31.4421 7.72344L42.2781 18.5594L46.1937 14.6437C49.1812 11.6547 49.1812 6.79531 46.1937 3.80781Z' fill='%23FF0083'/%3E%3C/svg%3E&quot;) 2 13, pointer !important; --zappy-bg-overlay: rgba(0, 0, 0, 0); --zappy-bg-image: url(&quot;assets/image-section-background-1778007296010-dhe7qz.webp&quot;); background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(&quot;assets/image-section-background-1778007296010-dhe7qz.webp&quot;); background-size: cover !important; background-position: 50% 50% !important; background-repeat: no-repeat;" data-component-id="hero-fullwidth-bg" data-zappy-bg-type="image" data-zappy-bg-color="" data-zappy-bg-image="assets/image-section-background-1778007296010-dhe7qz.webp" data-zappy-bg-overlay-color="#000000" data-zappy-bg-overlay-opacity="0" data-zappy-bg-video-type="" data-zappy-bg-video-url="" data-hero-type="fullscreen-scrim" data-element-id="zappy-hero-bg-layout-1777983242528" data-element-type="background-image" data-zappy-bg-position="50% 50%" data-zappy-bg-zoom="1">
   <div class="container" style="position: relative; max-width: 1200px; width: 100%; margin: 0 auto; padding: 80px 1.5rem; text-align: center; box-sizing: border-box;">
-    <h1 style="font-size: 48px; font-weight: 700; margin-bottom: 20px; font-family: Poppins, sans-serif; color: rgb(74, 74, 74) !important;"><font color="#cccc5c">רוקואקטיב</font></h1>
-    <h3 style="font-size: 24px; font-weight: 400; max-width: 700px; margin: 0px auto; font-family: Poppins, sans-serif; color: rgb(74, 74, 74) !important;"><font color="#cccc5c">רוקואקטיב הוא דשן אורגני-מינרלי המשמש כמאיץ נביטה</font></h3>
+    <h1 style="font-size: 48px; font-weight: 700; margin-bottom: 20px; font-family: Poppins, sans-serif; color: rgb(74, 74, 74) !important;"><font color="#e5e5e5">רוקומיום</font></h1>
+    <h3 style="font-size: 24px; font-weight: 400; max-width: 700px; margin: 0px auto; font-family: Poppins, sans-serif; color: rgb(74, 74, 74) !important;">רוקומיום<font color="#e5e5e5">&nbsp;הוא דשן אורגני-מינרלי המשמש כמאיץ נביטה</font></h3>
   </div>
 </section>
 
@@ -1218,15 +1218,15 @@
       <article class="rks-feature-card" aria-label="נוסחה מאוזנת">
         <div class="rks-feature-icon-wrap rks-icon-green">
           <svg class="rks-feature-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
-            <path d="M24 12c0 0-8 6-8 13a8 8 0 0 0 16 0c0-7-8-13-8-13z" fill="currentColor" opacity="0.18"/>
-            <path d="M24 12c0 0-8 6-8 13a8 8 0 0 0 16 0c0-7-8-13-8-13z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            <line x1="24" y1="22" x2="24" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <line x1="20" y1="26" x2="24" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"></circle>
+            <path d="M24 12c0 0-8 6-8 13a8 8 0 0 0 16 0c0-7-8-13-8-13z" fill="currentColor" opacity="0.18"></path>
+            <path d="M24 12c0 0-8 6-8 13a8 8 0 0 0 16 0c0-7-8-13-8-13z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+            <line x1="24" y1="22" x2="24" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="20" y1="26" x2="24" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="נוסחה מאוזנת לצמחים" class="rks-feature-img" data-placeholder="feature-balanced-formula" data-context="Close-up of lush green healthy crop plants in agricultural field with rich soil, vibrant growth">
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="נוסחה מאוזנת לצמחים" class="rks-feature-img" data-placeholder="feature-balanced-formula" data-context="Close-up of lush green healthy crop plants in agricultural field with rich soil, vibrant growth" data-zappy-editable-image="true">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">נוסחה מאוזנת ומלאה</h3>
@@ -1240,15 +1240,15 @@
       <article class="rks-feature-card" aria-label="שחרור מבוקר">
         <div class="rks-feature-icon-wrap rks-icon-blue">
           <svg class="rks-feature-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
-            <path d="M14 24a10 10 0 0 1 20 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="24" cy="24" r="4" fill="currentColor" opacity="0.18"/>
-            <circle cx="24" cy="24" r="4" stroke="currentColor" stroke-width="2"/>
-            <path d="M24 14v3M34 24h-3M24 34v-3M14 24h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"></circle>
+            <path d="M14 24a10 10 0 0 1 20 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
+            <circle cx="24" cy="24" r="4" fill="currentColor" opacity="0.18"></circle>
+            <circle cx="24" cy="24" r="4" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M24 14v3M34 24h-3M24 34v-3M14 24h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="שחרור מבוקר של חומרי הזנה" class="rks-feature-img" data-placeholder="feature-slow-release" data-context="Macro photography of fertilizer granules slowly dissolving in soil, controlled release technology, scientific agriculture">
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="שחרור מבוקר של חומרי הזנה" class="rks-feature-img" data-placeholder="feature-slow-release" data-context="Macro photography of fertilizer granules slowly dissolving in soil, controlled release technology, scientific agriculture" data-zappy-editable-image="true">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">שחרור מבוקר וממושך</h3>
@@ -1262,13 +1262,13 @@
       <article class="rks-feature-card" aria-label="שיפור איכות הפרי">
         <div class="rks-feature-icon-wrap rks-icon-accent">
           <svg class="rks-feature-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
-            <path d="M24 10l3.09 6.26L34 17.27l-5 4.87 1.18 6.86L24 25.77l-6.18 3.23L19 22.14l-5-4.87 6.91-1.01L24 10z" fill="currentColor" opacity="0.18" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M20 34c0 0 2 4 4 4s4-4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"></circle>
+            <path d="M24 10l3.09 6.26L34 17.27l-5 4.87 1.18 6.86L24 25.77l-6.18 3.23L19 22.14l-5-4.87 6.91-1.01L24 10z" fill="currentColor" opacity="0.18" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M20 34c0 0 2 4 4 4s4-4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="שיפור איכות הפרי והתנובה" class="rks-feature-img" data-placeholder="feature-fruit-quality" data-context="Beautiful ripe colorful fruits and vegetables harvested in abundance, premium quality produce, Israeli agriculture">
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="שיפור איכות הפרי והתנובה" class="rks-feature-img" data-placeholder="feature-fruit-quality" data-context="Beautiful ripe colorful fruits and vegetables harvested in abundance, premium quality produce, Israeli agriculture" data-zappy-editable-image="true">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">שיפור איכות הפרי והתנובה</h3>
@@ -1282,15 +1282,15 @@
       <article class="rks-feature-card" aria-label="ידידותי לסביבה">
         <div class="rks-feature-icon-wrap rks-icon-green">
           <svg class="rks-feature-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
-            <path d="M24 36s-12-8-12-16a12 12 0 0 1 24 0c0 8-12 16-12 16z" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M24 36V20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M24 26c-3-3-6-3-6-3s1 5 6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M24 22c3-3 6-3 6-3s-1 5-6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"></circle>
+            <path d="M24 36s-12-8-12-16a12 12 0 0 1 24 0c0 8-12 16-12 16z" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M24 36V20" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M24 26c-3-3-6-3-6-3s1 5 6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M24 22c3-3 6-3 6-3s-1 5-6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="ידידותי לסביבה ולאדמה" class="rks-feature-img" data-placeholder="feature-eco-friendly" data-context="Green sustainable agriculture with healthy soil, eco-friendly farming, natural environment, clean water and earth">
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="ידידותי לסביבה ולאדמה" class="rks-feature-img" data-placeholder="feature-eco-friendly" data-context="Green sustainable agriculture with healthy soil, eco-friendly farming, natural environment, clean water and earth" data-zappy-editable-image="true">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">ידידותי לסביבה ולאדמה</h3>
@@ -1304,14 +1304,14 @@
       <article class="rks-feature-card" aria-label="מגוון יישומים">
         <div class="rks-feature-icon-wrap rks-icon-blue">
           <svg class="rks-feature-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
-            <rect x="13" y="20" width="8" height="10" rx="2" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
-            <rect x="27" y="16" width="8" height="14" rx="2" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
-            <line x1="13" y1="34" x2="35" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"></circle>
+            <rect x="13" y="20" width="8" height="10" rx="2" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"></rect>
+            <rect x="27" y="16" width="8" height="14" rx="2" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"></rect>
+            <line x1="13" y1="34" x2="35" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="מגוון יישומים לסוגי גידולים שונים" class="rks-feature-img" data-placeholder="feature-versatile-crops" data-context="Diverse variety of crops growing side by side, vegetables, fruits, flowers in a professional farm, diverse agricultural production">
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="מגוון יישומים לסוגי גידולים שונים" class="rks-feature-img" data-placeholder="feature-versatile-crops" data-context="Diverse variety of crops growing side by side, vegetables, fruits, flowers in a professional farm, diverse agricultural production" data-zappy-editable-image="true">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">מגוון יישומים לכל סוגי הגידולים</h3>
@@ -1325,13 +1325,13 @@
       <article class="rks-feature-card" aria-label="חיזוק עמידות הצמח">
         <div class="rks-feature-icon-wrap rks-icon-accent">
           <svg class="rks-feature-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
-            <path d="M24 14l2.5 5 5.5.8-4 3.9.94 5.5L24 26.5l-4.94 2.7.94-5.5L16 19.8l5.5-.8L24 14z" fill="currentColor" opacity="0.18" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M17 34h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"></circle>
+            <path d="M24 14l2.5 5 5.5.8-4 3.9.94 5.5L24 26.5l-4.94 2.7.94-5.5L16 19.8l5.5-.8L24 14z" fill="currentColor" opacity="0.18" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+            <path d="M17 34h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="חיזוק עמידות הצמח למחלות ולמזיקים" class="rks-feature-img" data-placeholder="feature-plant-resilience" data-context="Strong healthy plant with vibrant green leaves showing resistance to stress, close-up of robust crop in field">
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="חיזוק עמידות הצמח למחלות ולמזיקים" class="rks-feature-img" data-placeholder="feature-plant-resilience" data-context="Strong healthy plant with vibrant green leaves showing resistance to stress, close-up of robust crop in field" data-zappy-editable-image="true">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">חיזוק עמידות הצמח</h3>
@@ -1347,7 +1347,7 @@
       <a href="#contact" class="rks-features-btn" aria-label="צרו קשר לקבלת מידע על רוקומיום">
         <span>גלו עוד על רוקומיום</span>
         <svg class="rks-btn-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M19 12H5M12 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
       </a>
     </div>
@@ -1395,14 +1395,14 @@
           <ul class="footer-links">
             <li><a href="/services"><i class="fas fa-chevron-left nav-arrow"></i>שירותים</a></li>
             <li><a href="/about"><i class="fas fa-chevron-left nav-arrow"></i>אודות</a></li>
-            <li><a href="/contact" style><i class="fas fa-chevron-left nav-arrow" style="cursor: pointer;"></i>צור קשר</a></li>
+            <li><a href="/contact" style=""><i class="fas fa-chevron-left nav-arrow" style="cursor: pointer;"></i>צור קשר</a></li>
           </ul>
         </div>
 
         <!-- Contact Info -->
         <div class="footer-col">
           <h4 class="footer-heading"><span class="heading-accent"></span>פרטי התקשרות</h4>
-          <ul class="footer-contact" style>
+          <ul class="footer-contact" style="">
 <li>
   <span class="contact-icon"><i class="fas fa-envelope" data-element-type="icon" data-icon-type="fontawesome"></i></span>
   <span class="contact-text"><a href="mailto:info@rokosan.co.il">info@rokosan.co.il</a></span>
