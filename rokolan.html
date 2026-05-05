@@ -707,7 +707,7 @@
       <div class="search-results" id="mobile-search-results"></div>
     </div>
   
-<script>window.ZAPPY_WEBSITE_ID = "f5c8925e-a8ef-4d77-8a21-10cb63290565";window.ZAPPY_API_BASE = "https://api.zappy5.com";</script>
+<script>window.ZAPPY_WEBSITE_ID = "f5c8925e-a8ef-4d77-8a21-10cb63290565";window.ZAPPY_API_BASE = (window.location.pathname.includes('/preview') ? "https://api.zappy5.com" : "https://api.zappy5.com");</script>
   <nav class="navbar" dir="rtl">
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
     <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -1195,7 +1195,7 @@
   <main>
       
 
-<section id="layout-1777983242528" class="layout-section hero-section" data-zappy-component="true" style="width: 100vw; margin-left: calc(50% - 50vw); position: relative; display: flex; align-items: center; justify-content: center; direction: rtl; overflow: hidden; box-sizing: border-box; min-height: 288.391px !important; --zappy-bg-overlay: rgba(0, 0, 0, 0); --zappy-bg-image: url(&quot;assets/image-section-background-1778007296010-dhe7qz.webp&quot;); background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(&quot;assets/image-section-background-1778007296010-dhe7qz.webp&quot;); background-size: cover !important; background-position: 50% 50% !important; background-repeat: no-repeat;" data-component-id="hero-fullwidth-bg" data-zappy-bg-type="image" data-zappy-bg-color="" data-zappy-bg-image="assets/image-section-background-1778007296010-dhe7qz.webp" data-zappy-bg-overlay-color="#000000" data-zappy-bg-overlay-opacity="0" data-zappy-bg-video-type="" data-zappy-bg-video-url="" data-hero-type="fullscreen-scrim" data-element-id="zappy-hero-bg-layout-1777983242528" data-element-type="background-image" data-zappy-bg-position="50% 50%" data-zappy-bg-zoom="1">
+<section id="layout-1777983242528" class="layout-section hero-section" data-zappy-component="true" style="width: 100vw; margin-left: calc(50% - 50vw); position: relative; display: flex; align-items: center; justify-content: center; direction: rtl; overflow: hidden; box-sizing: border-box; min-height: 288.391px !important; cursor: url(&quot;data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M29.2344 9.93125L4.87351 34.2922C4.67351 34.4922 4.52976 34.7437 4.46101 35.0203L1.60789 46.4984C1.47664 47.0312 1.63289 47.5922 2.02039 47.9797C2.40945 48.3688 2.97351 48.5219 3.50164 48.3922L14.9798 45.5406C15.2548 45.4719 15.5063 45.3297 15.7079 45.1281L40.0688 20.7672L29.2344 9.93125Z' fill='%23FF0083'/%3E%3Cpath d='M46.1937 3.80781C43.2062 0.820311 38.3468 0.820311 35.3578 3.80781L31.4421 7.72344L42.2781 18.5594L46.1937 14.6437C49.1812 11.6547 49.1812 6.79531 46.1937 3.80781Z' fill='%23FF0083'/%3E%3C/svg%3E&quot;) 2 13, pointer !important; --zappy-bg-overlay: rgba(0, 0, 0, 0); --zappy-bg-image: url(&quot;assets/image-section-background-1778007296010-dhe7qz.webp&quot;); background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(&quot;assets/image-section-background-1778007296010-dhe7qz.webp&quot;); background-size: cover !important; background-position: 50% 50% !important; background-repeat: no-repeat;" data-component-id="hero-fullwidth-bg" data-zappy-bg-type="image" data-zappy-bg-color="" data-zappy-bg-image="assets/image-section-background-1778007296010-dhe7qz.webp" data-zappy-bg-overlay-color="#000000" data-zappy-bg-overlay-opacity="0" data-zappy-bg-video-type="" data-zappy-bg-video-url="" data-hero-type="fullscreen-scrim" data-element-id="zappy-hero-bg-layout-1777983242528" data-element-type="background-image" data-zappy-bg-position="50% 50%" data-zappy-bg-zoom="1">
   <div class="container" style="position: relative; max-width: 1200px; width: 100%; margin: 0 auto; padding: 80px 1.5rem; text-align: center; box-sizing: border-box;">
     <h1 style="font-size: 48px; font-weight: 700; margin-bottom: 20px; font-family: Poppins, sans-serif; color: rgb(74, 74, 74) !important;"><font color="#e5e5e5">רוקומיום</font></h1>
     <h3 style="font-size: 24px; font-weight: 400; max-width: 700px; margin: 0px auto; font-family: Poppins, sans-serif; color: rgb(74, 74, 74) !important;"><font color="#e5e5e5">דשן נוזלי המכיל חומצות אמינו, פפטידים, חומצות הומיות, יסודות מזון מקרו ומיקרו ליישום עלוות</font></h3>
@@ -1206,11 +1206,11 @@
   <div class="rks-features-container">
     <div class="rks-features-header">
       <p><span class="rks-features-badge" style="color: rgb(74, 74, 74) !important;">היתרונות שלנו</span>
-      </p><h2 class="rks-features-title" id="rks-features-title" >רוקומיום – הדשן המקצועי לגידולים מצליחים</h2>
+      </p><h2 class="rks-features-title" id="rks-features-title" style="">רוקומיום – הדשן המקצועי לגידולים מצליחים</h2>
       <p class="rks-features-subtitle" style="font-size: 1.2rem; line-height: 1.9">&nbsp;האוויר.<br>היתרון בהזנה עלוותית הוא באספקה של מגוון רחב ומספיק של יסודות מזון לצמחים חיים, שהם חיוניים מאוד. היא מתקנת חוסר ביסודות מזון בדרך המהירה ביותר האפשרית, או כאשר ספיגת המזון דרך השורשים מוגבלת מסיבה כלשהי (לדוגמה, בשל רמת ה־pH של הקרקע או של הסביבה). היישום העלוותי נספג במהירות דרך פני העלים של הצמח, ולכן השפעתו ניכרת תוך זמן קצר מאוד. שיטה זו נחשבת ליעילה במיוחד במצבי עקה, כאשר הצמח מתקשה לקלוט חומרים מן האדמה, והיא מאפשרת תיקון מיידי של חוסרים תזונתיים ושמירה על צמיחה מאוזנת ובריאה</p>
     </div>
 
-    <div class="rks-features-grid zappy-preserve-css-grid" id="zappy-auto-grid-1778009380502-t6h8tk" data-zappy-auto-grid="true" data-original-item-width="381" data-original-gap="28px" style="--zappy-grid-cols: 381.328px 381.336px 381.336px; grid-template-columns: 381.328px 381.336px 381.336px; align-items: stretch !important;" data-zappy-explicit-columns="true">
+    <div class="rks-features-grid zappy-preserve-css-grid" id="zappy-auto-grid-1778009380502-t6h8tk" data-zappy-auto-grid="true" data-original-item-width="381" data-original-gap="28px" style="display: grid; --zappy-grid-cols: 381.328px 381.336px 381.336px; grid-template-columns: 381.328px 381.336px 381.336px; align-items: stretch !important;" data-zappy-explicit-columns="true">
 
       <!-- Feature 1 -->
       <article class="rks-feature-card" aria-label="נוסחה מאוזנת" data-grid-item-index="0">
@@ -1224,7 +1224,7 @@
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="נוסחה מאוזנת לצמחים" class="rks-feature-img" data-placeholder="feature-balanced-formula" data-context="Close-up of lush green healthy crop plants in agricultural field with rich soil, vibrant growth" data-element-type="image" data-element-id="img-1778009380483-1vzrmhw9p" >
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="נוסחה מאוזנת לצמחים" class="rks-feature-img" data-placeholder="feature-balanced-formula" data-context="Close-up of lush green healthy crop plants in agricultural field with rich soil, vibrant growth" data-zappy-editable-image="true" data-element-type="image" data-element-id="img-1778009380483-1vzrmhw9p" style="">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">נוסחה מאוזנת ומלאה</h3>
@@ -1246,7 +1246,7 @@
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="שחרור מבוקר של חומרי הזנה" class="rks-feature-img" data-placeholder="feature-slow-release" data-context="Macro photography of fertilizer granules slowly dissolving in soil, controlled release technology, scientific agriculture" data-element-type="image" data-element-id="img-1778009380483-2jc7znx2g" >
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="שחרור מבוקר של חומרי הזנה" class="rks-feature-img" data-placeholder="feature-slow-release" data-context="Macro photography of fertilizer granules slowly dissolving in soil, controlled release technology, scientific agriculture" data-zappy-editable-image="true" data-element-type="image" data-element-id="img-1778009380483-2jc7znx2g" style="">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">שחרור מבוקר וממושך</h3>
@@ -1266,7 +1266,7 @@
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="שיפור איכות הפרי והתנובה" class="rks-feature-img" data-placeholder="feature-fruit-quality" data-context="Beautiful ripe colorful fruits and vegetables harvested in abundance, premium quality produce, Israeli agriculture" data-element-type="image" data-element-id="img-1778009380483-xvdjm1k68" >
+          <div data-zappy-zoom-wrapper="true" data-element-id="img-1778009380483-xvdjm1k68" data-element-type="image" data-zappy-zoom-wrapper-width="379px" data-zappy-zoom-wrapper-height="167px" data-zappy-zoom-wrapper-width-mode="px" data-zappy-zoom-wrapper-align="center" style="position: relative !important; overflow: hidden !important; width: 379px !important; max-width: 100% !important; margin-left: auto !important; margin-right: auto !important; height: 167px !important; display: block !important;" data-zappy-zoom-clip="true" data-zappy-wrapper-margins-applied="true" data-zappy-card-slot-fill="1"><img src="/assets/image-feature-fruit-quality-1778009723902-lgd5k1.webp?v=1778009726519" alt="שיפור איכות הפרי והתנובה" class="rks-feature-img" data-placeholder="feature-fruit-quality" data-context="Beautiful ripe colorful fruits and vegetables harvested in abundance, premium quality produce, Israeli agriculture" data-zappy-editable-image="true" data-element-type="image" data-element-id="img-1778009380483-xvdjm1k68" style="display: block; object-fit: cover; object-position: 50% 33% !important; margin: 0px !important; left: -2.5% !important; top: -39.4392% !important; width: 105% !important; height: 178.878% !important; max-width: none !important; max-height: none !important;" data-zappy-zoom="1.05" data-zappy-original-width="379.3359375" data-zappy-original-height="167" data-zappy-object-position="50% 33%"></div>
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">שיפור איכות הפרי והתנובה</h3>
@@ -1288,7 +1288,7 @@
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="ידידותי לסביבה ולאדמה" class="rks-feature-img" data-placeholder="feature-eco-friendly" data-context="Green sustainable agriculture with healthy soil, eco-friendly farming, natural environment, clean water and earth" data-element-type="image" data-element-id="img-1778009380483-8xq4um362" >
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="ידידותי לסביבה ולאדמה" class="rks-feature-img" data-placeholder="feature-eco-friendly" data-context="Green sustainable agriculture with healthy soil, eco-friendly farming, natural environment, clean water and earth" data-zappy-editable-image="true" data-element-type="image" data-element-id="img-1778009380483-8xq4um362" style="">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">ידידותי לסביבה ולאדמה</h3>
@@ -1309,7 +1309,7 @@
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="מגוון יישומים לסוגי גידולים שונים" class="rks-feature-img" data-placeholder="feature-versatile-crops" data-context="Diverse variety of crops growing side by side, vegetables, fruits, flowers in a professional farm, diverse agricultural production" data-element-type="image" data-element-id="img-1778009380483-74bgotx4u" >
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="מגוון יישומים לסוגי גידולים שונים" class="rks-feature-img" data-placeholder="feature-versatile-crops" data-context="Diverse variety of crops growing side by side, vegetables, fruits, flowers in a professional farm, diverse agricultural production" data-zappy-editable-image="true" data-element-type="image" data-element-id="img-1778009380483-74bgotx4u" style="">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">מגוון יישומים לכל סוגי הגידולים</h3>
@@ -1329,7 +1329,7 @@
           </svg>
         </div>
         <div class="rks-feature-img-wrap">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="חיזוק עמידות הצמח למחלות ולמזיקים" class="rks-feature-img" data-placeholder="feature-plant-resilience" data-context="Strong healthy plant with vibrant green leaves showing resistance to stress, close-up of robust crop in field" data-element-type="image" data-element-id="img-1778009380483-jfbawcmyt" >
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27300%27%3E%3Cdefs%3E%3ClinearGradient id=%27grad%27 x1=%270%25%27 y1=%270%25%27 x2=%27100%25%27 y2=%27100%25%27%3E%3Cstop offset=%270%25%27 style=%27stop-color:%23FF0083;stop-opacity:1%27 /%3E%3Cstop offset=%27100%25%27 style=%27stop-color:%23FF008320;stop-opacity:1%27 /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%27100%25%27 height=%27100%25%27 fill=%27url(%23grad)%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 font-family=%27Arial, sans-serif%27 font-size=%2716%27 fill=%27white%27 text-anchor=%27middle%27 dy=%27.3em%27 font-weight=%27500%27%3EClick%20to%20add%20image%3C/text%3E%3C/svg%3E" alt="חיזוק עמידות הצמח למחלות ולמזיקים" class="rks-feature-img" data-placeholder="feature-plant-resilience" data-context="Strong healthy plant with vibrant green leaves showing resistance to stress, close-up of robust crop in field" data-zappy-editable-image="true" data-element-type="image" data-element-id="img-1778009380483-jfbawcmyt" style="">
         </div>
         <div class="rks-feature-content">
           <h3 class="rks-feature-title">חיזוק עמידות הצמח</h3>
@@ -1393,14 +1393,14 @@
           <ul class="footer-links">
             <li><a href="/services"><i class="fas fa-chevron-left nav-arrow"></i>שירותים</a></li>
             <li><a href="/about"><i class="fas fa-chevron-left nav-arrow"></i>אודות</a></li>
-            <li><a href="/contact" ><i class="fas fa-chevron-left nav-arrow" style="cursor: pointer;"></i>צור קשר</a></li>
+            <li><a href="/contact" style=""><i class="fas fa-chevron-left nav-arrow" style="cursor: pointer;"></i>צור קשר</a></li>
           </ul>
         </div>
 
         <!-- Contact Info -->
         <div class="footer-col">
           <h4 class="footer-heading"><span class="heading-accent"></span>פרטי התקשרות</h4>
-          <ul class="footer-contact" >
+          <ul class="footer-contact" style="">
 <li>
   <span class="contact-icon"><i class="fas fa-envelope" data-element-type="icon" data-icon-type="fontawesome"></i></span>
   <span class="contact-text"><a href="mailto:info@rokosan.co.il">info@rokosan.co.il</a></span>
@@ -1618,6 +1618,148 @@
           observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
         });
       }, 500);
+    })();
+    </script>
+
+    <script>
+    (function(){
+      var _applied=false;
+      function _isHeroBg(w){var img=w.querySelector('img');if(img&&(img.getAttribute('data-hero-bg')==='true'||img.getAttribute('data-hero-background')==='true'))return true;var p=(w.style.position||'').replace(/\s*!important\s*/g,'').trim();var ww=(w.style.width||'').replace(/\s*!important\s*/g,'').trim();var hh=(w.style.height||'').replace(/\s*!important\s*/g,'').trim();return p==='absolute'&&ww==='100%'&&hh==='100%';}
+      function fixDesktopWrappers(){
+        // No-op: desktop wrapper restoration is handled by ZAPPY_PUBLISHED_ZOOM_WRAPPER_RUNTIME
+        // in script.js (restoreWrapperDimensions). The old inflation logic here was expanding
+        // small wrappers (e.g. 139px logo wrappers) to their parent width, conflicting with
+        // the correct stored dimensions.
+      }
+      function _parsePos(s){var x=50,y=50;try{var m=(s||'').match(/(-?d+(?:.d+)?)%s+(-?d+(?:.d+)?)%/);if(m){x=parseFloat(m[1]);y=parseFloat(m[2]);}}catch(e){}if(!isFinite(x))x=50;if(!isFinite(y))y=50;return{x:Math.max(0,Math.min(100,x)),y:Math.max(0,Math.min(100,y))};}
+      function _coverPct(iA,cA){if(!isFinite(iA)||iA<=0||!isFinite(cA)||cA<=0)return{w:100,h:100};if(iA>=cA)return{w:(iA/cA)*100,h:100};return{w:100,h:(cA/iA)*100};}
+      function applyMobile(){
+        if(_applied)return;_applied=true;
+        document.querySelectorAll('[data-zappy-zoom-wrapper="true"]').forEach(function(w){
+          if(_isHeroBg(w))return;
+          var cw=w.style.getPropertyValue('width');
+          var _sW=parseFloat(w.getAttribute('data-zappy-zoom-wrapper-width'))||0;
+          var _sH=parseFloat(w.getAttribute('data-zappy-zoom-wrapper-height'))||0;
+          if(!cw&&!(_sW>0&&_sH>0))return;
+          if(!w._zappyDesktop)w._zappyDesktop={wStyle:w.getAttribute('style')};
+          var img=w.querySelector('img');
+          if(!img)return;
+          if(!img._zappyDesktop)img._zappyDesktop={src:img.getAttribute('src'),style:img.getAttribute('style')};
+          var mobileZoomStr=img.getAttribute('data-zappy-mobile-zoom');
+          var mobileZoom=parseFloat(mobileZoomStr);
+          var mobileSrc=img.getAttribute('data-zappy-mobile-src');
+          var mobilePos=img.getAttribute('data-zappy-mobile-object-position');
+          var parentOvf=w.parentElement?((w.parentElement.style.overflow||'')+(window.getComputedStyle(w.parentElement).overflow||'')).trim():'';
+          var inConstrainedParent=parentOvf.indexOf('hidden')!==-1||parentOvf.indexOf('clip')!==-1;
+          if(inConstrainedParent){
+            w.style.setProperty('max-width','100%','important');
+          }else{
+            w.style.setProperty('width','100%','important');
+            w.style.setProperty('max-width','100%','important');
+          }
+          if(mobileSrc)img.src=mobileSrc;
+          function _applyZoomCrop(_img,_w,_ePos,_eZoom){
+            var rect=_w.getBoundingClientRect();
+            if(!rect||!rect.width||!rect.height)return;
+            var nW=_img.naturalWidth||0,nH=_img.naturalHeight||0;
+            if(!(nW>0&&nH>0))return;
+            var iA=nW/nH,cA=rect.width/rect.height;
+            var cv=_coverPct(iA,cA);
+            var wP=100,hP=100;
+            if(_eZoom>=1){wP=cv.w*_eZoom;hP=cv.h*_eZoom;}
+            else{var t2=(_eZoom-0.5)/0.5;if(!isFinite(t2))t2=0;t2=Math.max(0,Math.min(1,t2));wP=100+t2*(cv.w-100);hP=100+t2*(cv.h-100);}
+            var p2=_parsePos(_ePos);
+            var lP=(100-wP)*(p2.x/100);
+            var tP=(100-hP)*(p2.y/100);
+            _img.style.setProperty('position','absolute','important');
+            _img.style.setProperty('left',lP+'%','important');
+            _img.style.setProperty('top',tP+'%','important');
+            _img.style.setProperty('width',wP+'%','important');
+            _img.style.setProperty('height',hP+'%','important');
+            _img.style.setProperty('max-width','none','important');
+            _img.style.setProperty('max-height','none','important');
+            _img.style.setProperty('display','block','important');
+            _img.style.setProperty('object-fit',_eZoom<1?'fill':'cover','important');
+            _img.style.setProperty('transform','none','important');
+            _img.style.setProperty('margin','0','important');
+          }
+          if(_sW>0&&_sH>0){
+            var effZoom=(isFinite(mobileZoom)&&mobileZoom>0)?mobileZoom:(parseFloat(img.getAttribute('data-zappy-zoom'))||1);
+            var effPos=mobilePos||img.getAttribute('data-zappy-object-position')||img.style.objectPosition||'50% 50%';
+            w.style.setProperty('overflow','hidden','important');
+            w.style.setProperty('position','relative','important');
+            w.style.setProperty('width','100%','important');
+            w.style.setProperty('max-width','100%','important');
+            if(_sW>0&&_sH>0){w.style.setProperty('padding-bottom','0','important');w.style.setProperty('aspect-ratio',_sW+'/'+_sH,'important');w.style.setProperty('height','auto','important');}
+            _applyZoomCrop(img,w,effPos,effZoom);
+            if(!(img.complete&&img.naturalWidth>0)){
+              (function(_i,_w2,_p,_z){_i.addEventListener('load',function _ol(){_i.removeEventListener('load',_ol);try{_applyZoomCrop(_i,_w2,_p,_z);}catch(e){}});
+              })(img,w,effPos,effZoom);
+            }
+          }else{
+            if(!inConstrainedParent)w.style.setProperty('height','auto','important');
+            img.style.setProperty('position','relative','important');
+            img.style.setProperty('width','100%','important');
+            img.style.setProperty('height','auto','important');
+            img.style.setProperty('max-width','100%','important');
+            img.style.setProperty('max-height',inConstrainedParent?'none':'400px','important');
+            img.style.setProperty('object-fit','cover','important');
+            img.style.setProperty('left','0','important');
+            img.style.setProperty('top','0','important');
+            img.style.setProperty('transform','none','important');
+          }
+        });
+        document.querySelectorAll('img[data-zappy-mobile-src],img[data-zappy-mobile-object-position],img[data-zappy-mobile-zoom]').forEach(function(img){
+          var zw=img.closest('[data-zappy-zoom-wrapper="true"]');
+          if(zw&&!_isHeroBg(zw))return;
+          if(!img._zappyDesktop)img._zappyDesktop={src:img.getAttribute('src'),style:img.getAttribute('style')};
+          var mobileSrc=img.getAttribute('data-zappy-mobile-src');
+          var mobilePos=img.getAttribute('data-zappy-mobile-object-position');
+          var mobileZoom=parseFloat(img.getAttribute('data-zappy-mobile-zoom'));
+          if(mobileSrc)img.src=mobileSrc;
+          if(mobilePos)img.style.setProperty('object-position',mobilePos,'important');
+          if(mobileZoom>1){
+            img.style.setProperty('transform','scale('+mobileZoom+')','important');
+            img.style.setProperty('transform-origin',mobilePos||'50% 50%','important');
+            var p=img.parentElement;
+            if(p)p.style.setProperty('overflow','hidden','important');
+          }
+        });
+      }
+      function revertDesktop(){
+        if(!_applied)return;_applied=false;
+        document.querySelectorAll('[data-zappy-zoom-wrapper="true"]').forEach(function(w){
+          if(w._zappyDesktop&&w._zappyDesktop.wStyle!=null){w.setAttribute('style',w._zappyDesktop.wStyle);}
+          var img=w.querySelector('img');
+          if(img&&img._zappyDesktop){
+            if(img._zappyDesktop.src!=null)img.setAttribute('src',img._zappyDesktop.src);
+            if(img._zappyDesktop.style!=null)img.setAttribute('style',img._zappyDesktop.style);
+            else img.removeAttribute('style');
+          }
+        });
+        document.querySelectorAll('img[data-zappy-mobile-src],img[data-zappy-mobile-object-position],img[data-zappy-mobile-zoom]').forEach(function(img){
+          var zw=img.closest('[data-zappy-zoom-wrapper="true"]');
+          if(zw&&!_isHeroBg(zw))return;
+          if(img._zappyDesktop){
+            if(img._zappyDesktop.src!=null)img.setAttribute('src',img._zappyDesktop.src);
+            if(img._zappyDesktop.style!=null)img.setAttribute('style',img._zappyDesktop.style);
+            else img.removeAttribute('style');
+          }
+        });
+        _fixHeroBgWrappers();
+        fixDesktopWrappers();
+      }
+      function _fixHeroBgWrappers(){var isMob=window.innerWidth<=768;document.querySelectorAll('[data-zappy-zoom-wrapper="true"]').forEach(function(w){if(!_isHeroBg(w))return;w.style.setProperty('position','absolute','important');w.style.setProperty('top','0','important');w.style.setProperty('left','0','important');w.style.setProperty('width','100%','important');w.style.setProperty('height','100%','important');w.style.setProperty('max-width','none','important');w.style.setProperty('overflow','hidden','important');w.setAttribute('data-zappy-zoom-wrapper-width-mode','full');var img=w.querySelector('img');if(img){img.style.setProperty('width','100%','important');img.style.setProperty('height','100%','important');img.style.setProperty('object-fit','cover','important');img.style.setProperty('position','relative','important');img.style.setProperty('top','0','important');img.style.setProperty('left','0','important');img.style.setProperty('max-width','none','important');img.style.setProperty('max-height','none','important');img.style.setProperty('display','block','important');if(isMob){var mSrc=img.getAttribute('data-zappy-mobile-src');var mPos=img.getAttribute('data-zappy-mobile-object-position');var mZoom=parseFloat(img.getAttribute('data-zappy-mobile-zoom'));if(mSrc){if(!img._zappyDesktop)img._zappyDesktop={src:img.getAttribute('src'),style:img.getAttribute('style')};img.src=mSrc;}if(mPos)img.style.setProperty('object-position',mPos,'important');if(mZoom>1){img.style.setProperty('transform','scale('+mZoom+')','important');img.style.setProperty('transform-origin',mPos||'50% 50%','important');}}}});}
+      function init(){
+        _fixHeroBgWrappers();
+        var mq=window.matchMedia('(max-width:768px)');
+        function onChange(e){if(e.matches)applyMobile();else revertDesktop();}
+        if(mq.matches)applyMobile();
+        else fixDesktopWrappers();
+        try{mq.addEventListener('change',onChange);}catch(e){mq.addListener(onChange);}
+      }
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+      else setTimeout(init,50);
     })();
     </script>
 </body>
