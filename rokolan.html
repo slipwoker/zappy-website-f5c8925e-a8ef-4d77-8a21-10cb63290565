@@ -799,12 +799,12 @@
     // Check if background is transparent or rgba with 0 alpha
     const isTransparent = bgColor === 'transparent' || 
                          bgColor === 'rgba(0, 0, 0, 0)' ||
-                         (bgColor.startsWith('rgba') &amp;&amp; bgColor.includes(', 0)'));
+                         (bgColor.startsWith('rgba') && bgColor.includes(', 0)'));
     
     if (isTransparent) {
       // Check for background-image or gradient
       const bgImage = computedStyle.backgroundImage;
-      if (bgImage &amp;&amp; bgImage !== 'none') {
+      if (bgImage && bgImage !== 'none') {
         console.log('[Navbar] Navbar has background image/gradient, using dark text');
         bgColor = 'rgb(240, 240, 240)'; // Assume light background
       } else {
@@ -817,7 +817,7 @@
     
     // Calculate luminance to determine if background is light or dark
     const rgb = bgColor.match(/\d+/g);
-    if (rgb &amp;&amp; rgb.length &gt;= 3) {
+    if (rgb && rgb.length >= 3) {
       const r = parseInt(rgb[0]);
       const g = parseInt(rgb[1]);
       const b = parseInt(rgb[2]);
@@ -953,7 +953,7 @@
       // ONLY apply inline positioning styles on mobile viewport
       // On desktop, the CSS handles hiding these buttons with display: none
       // Inline styles were breaking desktop layout by overriding CSS
-      const isMobileViewport = window.innerWidth &lt;= 768;
+      const isMobileViewport = window.innerWidth <= 768;
       
       if (mobileToggle) {
         // Icon sizing applies to all viewports for consistency
@@ -1144,7 +1144,7 @@
       phoneBtn.addEventListener('click', function() {
         // Get phone number from placeholder in page or use default
         const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-        const phoneNumber = phoneLinks.length &gt; 0 
+        const phoneNumber = phoneLinks.length > 0 
           ? phoneLinks[0].getAttribute('href').replace('tel:', '')
           : '0546499087';
         
@@ -1161,7 +1161,7 @@
     const handleWhatsAppVisibility = function() {
       const whatsappBtn = document.querySelector('.whatsapp-float');
       if (whatsappBtn) {
-        const isDesktop = window.innerWidth &gt;= 769;
+        const isDesktop = window.innerWidth >= 769;
         if (isDesktop) {
           whatsappBtn.style.setProperty('display', 'none', 'important');
           whatsappBtn.style.setProperty('visibility', 'hidden', 'important');
@@ -1199,6 +1199,15 @@
           <p class="text-gray-600 text-lg">This page is ready for your content.</p>
         </div>
       </section>
+
+<section id="layout-1777983242528" class="layout-section hero-section" data-zappy-component="true" style="width: 100vw; margin-left: calc(-50vw + 50%); min-height: 500px; position: relative; display: flex; align-items: center; justify-content: center; direction: rtl; overflow: hidden; box-sizing: border-box; background-color: #4F8A3C;" data-component-id="hero-fullwidth-bg">
+  <div class="container" style="position: relative; max-width: 1200px; width: 100%; margin: 0 auto; padding: 80px 1.5rem; text-align: center; box-sizing: border-box;">
+    <h1 style="font-size: 48px; font-weight: 700; color: #FFFFFF; margin-bottom: 20px; font-family: Poppins, sans-serif;">כותרת שלך כאן</h1>
+    <h3 style="font-size: 24px; font-weight: 400; color: #FFFFFF; max-width: 700px; margin: 0 auto; font-family: Poppins, sans-serif;">כותרת משנה שלך כאן</h3>
+  </div>
+</section>
+
+
     </main>
   
   <footer class="site-footer" dir="rtl">
@@ -1324,7 +1333,7 @@
     e.stopPropagation();
     var open = panel.classList.toggle('a11y-open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if(open) panel.querySelector('.a11y-action-btn') &amp;&amp; panel.querySelector('.a11y-action-btn').focus();
+    if(open) panel.querySelector('.a11y-action-btn') && panel.querySelector('.a11y-action-btn').focus();
   });
 
   // Close button
@@ -1341,7 +1350,7 @@
       var mode = this.getAttribute('data-a11y');
       // Mutual exclusion for contrast modes
       var contrastModes = ['high-contrast','inverted','gray-scale'];
-      if(contrastModes.indexOf(mode)&gt;-1){
+      if(contrastModes.indexOf(mode)>-1){
         contrastModes.forEach(function(cm){
           if(cm!==mode){
             document.body.classList.remove('a11y-'+cm);
@@ -1353,7 +1362,7 @@
       }
       // Mutual exclusion for text sizes
       var textModes=['large-text','larger-text'];
-      if(textModes.indexOf(mode)&gt;-1){
+      if(textModes.indexOf(mode)>-1){
         textModes.forEach(function(tm){
           if(tm!==mode){
             document.body.classList.remove('a11y-'+tm);
@@ -1383,7 +1392,7 @@
 
   // Close on outside click
   document.addEventListener('click',function(e){
-    if(panel.classList.contains('a11y-open')&amp;&amp;!panel.contains(e.target)&amp;&amp;e.target!==btn){
+    if(panel.classList.contains('a11y-open')&&!panel.contains(e.target)&&e.target!==btn){
       panel.classList.remove('a11y-open');
       btn.setAttribute('aria-expanded','false');
     }
@@ -1391,7 +1400,7 @@
 
   // Keyboard: Escape closes
   document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'&amp;&amp;panel.classList.contains('a11y-open')){
+    if(e.key==='Escape'&&panel.classList.contains('a11y-open')){
       panel.classList.remove('a11y-open');
       btn.setAttribute('aria-expanded','false');
       btn.focus();
