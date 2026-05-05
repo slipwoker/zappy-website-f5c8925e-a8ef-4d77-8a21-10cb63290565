@@ -16244,6 +16244,641 @@ main,
     justify-content: center;
   }
 }
+
+/* Added Component Styles */
+/* ===================================
+   ROKOSAN ROKOACTIVE SECTION
+   =================================== */
+
+.rokosan-rokoactive-section {
+  background: var(--background-color, #ffffff);
+  padding: 80px 20px;
+  font-family: 'Poppins', sans-serif;
+  direction: rtl;
+  color: var(--text-color, #4a4a4a);
+  overflow: hidden;
+}
+
+.rokosan-rokoactive-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Header --- */
+.rokosan-rokoactive-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.rokosan-rokoactive-badge {
+  display: inline-block;
+  background: rgba(79, 138, 60, 0.12);
+  color: var(--primary-color, #4F8A3C);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 6px 18px;
+  border-radius: 50px;
+  border: 1px solid rgba(79, 138, 60, 0.3);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.rokosan-rokoactive-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--primary-color, #4F8A3C);
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+.rokosan-rokoactive-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-secondary-color, #707070);
+  max-width: 680px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+
+.rokosan-rokoactive-divider {
+  width: 70px;
+  height: 4px;
+  background: var(--gradient-primary, linear-gradient(180deg, #498038 0%, #38622B 100%));
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* --- Hero Block --- */
+.rokosan-rokoactive-hero {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 80px;
+  background: var(--surface-color, #f8f9fa);
+  border-radius: 20px;
+  padding: 50px 50px;
+  box-shadow: 0 4px 30px rgba(79, 138, 60, 0.08);
+  border: 1px solid rgba(79, 138, 60, 0.1);
+}
+
+.rokosan-rokoactive-hero-image-wrap {
+  flex: 0 0 380px;
+  position: relative;
+}
+
+.rokosan-rokoactive-hero-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.rokosan-rokoactive-hero-badge-organic {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--primary-color, #4F8A3C);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  box-shadow: 0 2px 10px rgba(79, 138, 60, 0.4);
+}
+
+.rokosan-rokoactive-hero-content {
+  flex: 1;
+}
+
+.rokosan-rokoactive-hero-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--primary-color, #4F8A3C);
+  margin: 0 0 18px 0;
+}
+
+.rokosan-rokoactive-hero-desc {
+  font-size: 1rem;
+  color: var(--text-color, #4a4a4a);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+.rokosan-rokoactive-hero-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rokosan-rokoactive-hero-list li {
+  font-size: 0.97rem;
+  color: var(--text-color, #4a4a4a);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rokosan-rokoactive-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: var(--primary-color, #4F8A3C);
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.rokosan-rokoactive-cta-btn {
+  display: inline-block;
+  background: var(--gradient-primary, linear-gradient(180deg, #498038 0%, #38622B 100%));
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(79, 138, 60, 0.35);
+}
+
+.rokosan-rokoactive-cta-btn:hover,
+.rokosan-rokoactive-cta-btn:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(79, 138, 60, 0.5);
+  outline: none;
+}
+
+/* --- Benefits Grid --- */
+.rokosan-rokoactive-benefits-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.rokosan-rokoactive-benefits-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color, #4a4a4a);
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.rokosan-rokoactive-benefits-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--primary-color, #4F8A3C);
+  border-radius: 2px;
+  margin: 10px auto 0;
+}
+
+.rokosan-rokoactive-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.rokosan-rokoactive-benefit-card {
+  background: #ffffff;
+  border: 1px solid rgba(79, 138, 60, 0.18);
+  border-radius: 16px;
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: 0 2px 16px rgba(79, 138, 60, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.rokosan-rokoactive-benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(79, 138, 60, 0.15);
+  border-color: rgba(79, 138, 60, 0.4);
+}
+
+.rokosan-rokoactive-benefit-icon {
+  font-size: 2.6rem;
+  margin-bottom: 16px;
+  display: block;
+  line-height: 1;
+}
+
+.rokosan-rokoactive-benefit-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color, #4F8A3C);
+  margin: 0 0 12px 0;
+}
+
+.rokosan-rokoactive-benefit-desc {
+  font-size: 0.93rem;
+  color: var(--text-secondary-color, #707070);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* --- Usage Section --- */
+.rokosan-rokoactive-usage-section {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 80px;
+  background: linear-gradient(135deg, rgba(79, 138, 60, 0.04) 0%, rgba(76, 125, 166, 0.04) 100%);
+  border-radius: 20px;
+  padding: 50px;
+  border: 1px solid rgba(79, 138, 60, 0.1);
+}
+
+.rokosan-rokoactive-usage-image-wrap {
+  flex: 0 0 360px;
+}
+
+.rokosan-rokoactive-usage-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.rokosan-rokoactive-usage-content {
+  flex: 1;
+}
+
+.rokosan-rokoactive-usage-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--primary-color, #4F8A3C);
+  margin: 0 0 30px 0;
+}
+
+.rokosan-rokoactive-usage-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.rokosan-rokoactive-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.rokosan-rokoactive-step-num {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: var(--gradient-primary, linear-gradient(180deg, #498038 0%, #38622B 100%));
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 12px rgba(79, 138, 60, 0.3);
+}
+
+.rokosan-rokoactive-step-text {
+  flex: 1;
+  padding-top: 4px;
+}
+
+.rokosan-rokoactive-step-text strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-color, #4a4a4a);
+  margin-bottom: 4px;
+}
+
+.rokosan-rokoactive-step-text p {
+  font-size: 0.93rem;
+  color: var(--text-secondary-color, #707070);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* --- Crops Section --- */
+.rokosan-rokoactive-crops-section {
+  margin-bottom: 70px;
+  text-align: center;
+}
+
+.rokosan-rokoactive-crops-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-color, #4a4a4a);
+  margin: 0 0 36px 0;
+}
+
+.rokosan-rokoactive-crops-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.rokosan-rokoactive-crop-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1.5px solid rgba(79, 138, 60, 0.2);
+  border-radius: 14px;
+  padding: 22px 28px;
+  min-width: 110px;
+  box-shadow: 0 2px 10px rgba(79, 138, 60, 0.06);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+  cursor: default;
+}
+
+.rokosan-rokoactive-crop-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(79, 138, 60, 0.15);
+  border-color: var(--primary-color, #4F8A3C);
+  background: rgba(79, 138, 60, 0.04);
+}
+
+.rokosan-rokoactive-crop-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.rokosan-rokoactive-crop-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color, #4a4a4a);
+}
+
+/* --- CTA Banner --- */
+.rokosan-rokoactive-cta-banner {
+  background: var(--gradient-primary, linear-gradient(180deg, #498038 0%, #38622B 100%));
+  border-radius: 20px;
+  padding: 60px 50px;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(79, 138, 60, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.rokosan-rokoactive-cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 220px;
+  height: 220px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.rokosan-rokoactive-cta-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.rokosan-rokoactive-cta-content {
+  position: relative;
+  z-index: 1;
+}
+
+.rokosan-rokoactive-cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 14px 0;
+}
+
+.rokosan-rokoactive-cta-desc {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.88);
+  max-width: 600px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+
+.rokosan-rokoactive-cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.rokosan-rokoactive-cta-phone,
+.rokosan-rokoactive-cta-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.rokosan-rokoactive-cta-phone {
+  background: #ffffff;
+  color: var(--primary-color, #4F8A3C);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.rokosan-rokoactive-cta-phone:hover,
+.rokosan-rokoactive-cta-phone:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+.rokosan-rokoactive-cta-email {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255,255,255,0.7);
+}
+
+.rokosan-rokoactive-cta-email:hover,
+.rokosan-rokoactive-cta-email:focus {
+  background: rgba(255,255,255,0.12);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* ===================================
+   RESPONSIVE – TABLET (max-width: 1024px)
+   =================================== */
+@media (max-width: 1024px) {
+  .rokosan-rokoactive-hero {
+    gap: 40px;
+    padding: 40px;
+  }
+
+  .rokosan-rokoactive-hero-image-wrap {
+    flex: 0 0 300px;
+  }
+
+  .rokosan-rokoactive-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rokosan-rokoactive-usage-section {
+    gap: 40px;
+    padding: 40px;
+  }
+
+  .rokosan-rokoactive-usage-image-wrap {
+    flex: 0 0 280px;
+  }
+}
+
+/* ===================================
+   RESPONSIVE – MOBILE (max-width: 768px)
+   =================================== */
+@media (max-width: 768px) {
+  .rokosan-rokoactive-section {
+    padding: 60px 16px;
+  }
+
+  .rokosan-rokoactive-title {
+    font-size: 2rem;
+  }
+
+  .rokosan-rokoactive-subtitle {
+    font-size: 1rem;
+  }
+
+  .rokosan-rokoactive-hero {
+    flex-direction: column;
+    gap: 30px;
+    padding: 28px 22px;
+  }
+
+  .rokosan-rokoactive-hero-image-wrap {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .rokosan-rokoactive-hero-img {
+    height: 220px;
+  }
+
+  .rokosan-rokoactive-hero-title {
+    font-size: 1.5rem;
+  }
+
+  .rokosan-rokoactive-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .rokosan-rokoactive-benefit-card {
+    padding: 24px 20px;
+  }
+
+  .rokosan-rokoactive-usage-section {
+    flex-direction: column;
+    gap: 28px;
+    padding: 28px 22px;
+  }
+
+  .rokosan-rokoactive-usage-image-wrap {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .rokosan-rokoactive-usage-img {
+    height: 220px;
+  }
+
+  .rokosan-rokoactive-usage-title {
+    font-size: 1.5rem;
+  }
+
+  .rokosan-rokoactive-crops-grid {
+    gap: 12px;
+  }
+
+  .rokosan-rokoactive-crop-item {
+    min-width: 90px;
+    padding: 16px 18px;
+  }
+
+  .rokosan-rokoactive-cta-banner {
+    padding: 40px 24px;
+  }
+
+  .rokosan-rokoactive-cta-title {
+    font-size: 1.5rem;
+  }
+
+  .rokosan-rokoactive-cta-desc {
+    font-size: 0.97rem;
+  }
+
+  .rokosan-rokoactive-cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rokosan-rokoactive-cta-phone,
+  .rokosan-rokoactive-cta-email {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  .rokosan-rokoactive-benefits-title {
+    font-size: 1.6rem;
+  }
+
+  .rokosan-rokoactive-crops-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===================================
+   RESPONSIVE – SMALL MOBILE (max-width: 480px)
+   =================================== */
+@media (max-width: 480px) {
+  .rokosan-rokoactive-title {
+    font-size: 1.7rem;
+  }
+
+  .rokosan-rokoactive-hero {
+    padding: 20px 16px;
+  }
+
+  .rokosan-rokoactive-usage-section {
+    padding: 20px 16px;
+  }
+
+  .rokosan-rokoactive-step-num {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
