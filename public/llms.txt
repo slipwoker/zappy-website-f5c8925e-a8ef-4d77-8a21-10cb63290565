@@ -63,6 +63,9 @@ https://www.rokosan.co.il/category/:slug
 https://www.rokosan.co.il/contact
 צרו קשר עם צוות המומחים של רוקוסן לקבלת ייעוץ חקלאי מקצועי וחינמי. נשמח לעזור בבחירת הדשן המתאים לגידול שלכם. טלפון: 054-6499087
 
+### Page
+https://www.rokosan.co.il/copy
+
 ## Legal & Policy
 
 ### Privacy Policy
