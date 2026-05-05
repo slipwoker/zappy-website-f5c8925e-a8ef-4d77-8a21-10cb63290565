@@ -75,8 +75,8 @@ Information about WCAG compliance and accessibility features.
 **Total active products: 3**
 
 ### רוקואקטיב
-https://www.rokosan.co.il/product/rvkvaktyb-gomj34
-- Price: 120.00 ILS
+https://www.rokosan.co.il/product/rvkvaktyb-b8784f
+- Price: 230.00 ILS
 - Availability: In stock
 - Brand: ROKOSAN
 - Description: מה מייחד את רוקואקטיב ? רוקואקטיב משלב NPK + ME + BS עם 18 חומצות אמינו וחומצות הומיות, כדי לתת לזרע ולצמח הצעיר בסיס חזק יותר להתפתחות מהיום הראשון.
@@ -91,8 +91,8 @@ https://www.rokosan.co.il/product/rvkvhvmyn-0jzkvq
 - Image: https://www.rokosan.co.il/assets/product-1776342441409-k9y5k.webp
 
 ### רוקולן 
-https://www.rokosan.co.il/product/rvkvln-4xbq48
-- Price: 120.00 ILS
+https://www.rokosan.co.il/product/rvkvln-v6rjr4
+- Price: 230.00 ILS
 - Availability: In stock
 - Brand: רוקוסן
 - Description: 4-13-9 + mE + BoiS יחד עם 18 חומצות אמינו, ליצירת קרקע פעילה יותר ותנאים טובים יותר להתבססות הצמח.

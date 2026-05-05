@@ -4561,8 +4561,8 @@ Description: תנאי השימוש באתר - הזכויות והחובות של
 ## Product Catalog
 
 ### רוקואקטיב
-URL: https://www.rokosan.co.il/product/rvkvaktyb-gomj34
-Price: 120.00 ILS
+URL: https://www.rokosan.co.il/product/rvkvaktyb-b8784f
+Price: 230.00 ILS
 Availability: In stock
 Brand: ROKOSAN
 
@@ -4581,8 +4581,8 @@ Brand: ROKOSAN
 ---
 
 ### רוקולן 
-URL: https://www.rokosan.co.il/product/rvkvln-4xbq48
-Price: 120.00 ILS
+URL: https://www.rokosan.co.il/product/rvkvln-v6rjr4
+Price: 230.00 ILS
 Availability: In stock
 Brand: רוקוסן
 

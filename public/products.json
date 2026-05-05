@@ -1,21 +1,21 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-04T13:02:33.637Z",
+  "generated_at": "2026-05-05T09:08:25.368Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 3,
   "products": [
     {
       "id": "cbb0d650-606d-48ec-980b-7ae8a9e5fd3e",
-      "slug": "rvkvaktyb-gomj34",
+      "slug": "rvkvaktyb-b8784f",
       "name": "רוקואקטיב",
       "name_translations": {},
       "description": "<p>5-9-23 + mE + BioS רוקואקטיב הוא דשן נוזלי ממקורות טבעיים המיועד לשלב ההתחלתי של הגידול. הוא פועל כתומך נביטה, השרשה והתבססות ראשונית, ומעניק לצמח פתיחה איכותית יותר כבר בתחילת הדרך.</p>",
       "short_description": "\nמה מייחד את רוקואקטיב ?\nרוקואקטיב משלב NPK + ME + BS עם 18 חומצות אמינו וחומצות הומיות, כדי לתת לזרע ולצמח הצעיר בסיס חזק יותר להתפתחות מהיום הראשון.",
       "sku": null,
       "brand": "ROKOSAN",
-      "price": 120,
-      "base_price": 120,
+      "price": 230,
+      "base_price": 230,
       "sale_price": null,
       "currency": "ILS",
       "images": [
@@ -24,9 +24,9 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvaktyb-gomj34",
+      "url": "https://www.rokosan.co.il/product/rvkvaktyb-b8784f",
       "categories": [],
-      "updated_at": "2026-05-03T20:06:51.786Z"
+      "updated_at": "2026-05-05T09:08:20.163Z"
     },
     {
       "id": "946873c8-5646-48ff-bce8-924e0349b1ef",
@@ -53,15 +53,15 @@
     },
     {
       "id": "4c9dee2e-3220-4674-8bb4-f88c5ab18a6f",
-      "slug": "rvkvln-4xbq48",
+      "slug": "rvkvln-v6rjr4",
       "name": "רוקולן ",
       "name_translations": {},
       "description": "<p>4-13-9 + mE + BioS</p><p>רוקולן הוא דשן נוזלי ממקורות טבעיים, שפותח להכנת הקרקע לפני זריעה או שתילה. הוא תומך בפעילות הקרקע, מסייע לפיתוח שורשים חזק ובריא, ויוצר תנאי פתיחה מדויקים יותר לצמח כבר מהשלב הראשון.</p><p>יתרונות בולטים:</p><p>• מסייע בהפעלת המיקרופלורה בקרקע</p><p>• תומך בהתפתחות שורשים ובהתחלה חזקה יותר</p><p>• מסייע לשחרור והנגשה טובה יותר של יסודות הזנה בקרקע</p>",
       "short_description": "4-13-9 + mE + BoiS יחד עם 18 חומצות אמינו, ליצירת קרקע פעילה יותר ותנאים טובים יותר להתבססות הצמח.",
       "sku": null,
       "brand": "רוקוסן",
-      "price": 120,
-      "base_price": 120,
+      "price": 230,
+      "base_price": 230,
       "sale_price": null,
       "currency": "ILS",
       "images": [
@@ -70,9 +70,9 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvln-4xbq48",
+      "url": "https://www.rokosan.co.il/product/rvkvln-v6rjr4",
       "categories": [],
-      "updated_at": "2026-05-03T20:07:16.156Z"
+      "updated_at": "2026-05-05T09:07:30.373Z"
     }
   ]
 }
