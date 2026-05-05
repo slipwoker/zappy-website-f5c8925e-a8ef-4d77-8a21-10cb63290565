@@ -54,6 +54,9 @@ https://www.rokosan.co.il/product/:slug
 https://www.rokosan.co.il/category/:slug
 מוצרים - רוקוסן
 
+### Page
+https://www.rokosan.co.il/new-page-1777980127947
+
 ## Legal & Policy
 
 ### Privacy Policy
