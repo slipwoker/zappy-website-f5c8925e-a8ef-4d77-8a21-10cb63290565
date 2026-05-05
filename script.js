@@ -10148,6 +10148,102 @@ async function loadRelatedProducts(currentProduct, t) {
 })();
 
 
+/* ZAPPY_PRODUCTS_MENU_LABEL_LANG_GUARD */
+(function(){
+  var RTL_RE = /[\u0590-\u05FF\u0600-\u06FF]/;
+  function isRTLPage() {
+    if (document.documentElement.getAttribute('dir') === 'rtl') return true;
+    var lang = (typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : null) || document.documentElement.lang || '';
+    return ['he','iw','ar','fa','ur'].indexOf(lang.split('-')[0].toLowerCase()) !== -1;
+  }
+  function fix() {
+    try {
+      if (isRTLPage()) {
+        var rtlLi = document.querySelector('.zappy-products-dropdown');
+        if (rtlLi) rtlLi.style.removeProperty('display');
+        return;
+      }
+      var li = document.querySelector('.zappy-products-dropdown');
+      if (!li) return;
+      var link = li.querySelector(':scope > a');
+      if (!link) return;
+      var textNode = link.firstChild;
+      if (!textNode || textNode.nodeType !== 3) return;
+      var label = textNode.textContent.trim();
+      if (!label || !RTL_RE.test(label)) { li.style.removeProperty('display'); return; }
+      var fallback = '';
+      var i18nKey = link.getAttribute('data-i18n') || '';
+      if (i18nKey && window.zappyI18n && typeof window.zappyI18n.t === 'function') {
+        var t = window.zappyI18n.t(i18nKey);
+        if (t && t !== i18nKey && !RTL_RE.test(t)) fallback = t;
+      }
+      if (!fallback) {
+        var subLink = li.querySelector('.sub-menu a[data-i18n]');
+        if (subLink) { var st = subLink.textContent.trim(); if (st && !RTL_RE.test(st)) fallback = st; }
+      }
+      if (fallback) {
+        var svg = link.querySelector('svg');
+        link.textContent = '';
+        link.appendChild(document.createTextNode(fallback + ' '));
+        if (svg) link.appendChild(svg);
+        li.style.removeProperty('display');
+      } else {
+        li.style.setProperty('display', 'none', 'important');
+      }
+    } catch(e) {}
+  }
+  try {
+    var li = document.querySelector('.zappy-products-dropdown');
+    if (li) {
+      var link = li.querySelector(':scope > a');
+      var tn = link && link.firstChild;
+      if (tn && tn.nodeType === 3 && RTL_RE.test(tn.textContent) && !isRTLPage()) {
+        li.style.setProperty('display', 'none', 'important');
+      }
+    }
+  } catch(e) {}
+  fix();
+  setTimeout(fix, 2000);
+  setTimeout(fix, 5000);
+})();
+
+/* ZAPPY_SEARCH_PLACEHOLDER_I18N */
+(function(){
+  var RTL_RE = /[\u0590-\u05FF\u0600-\u06FF]/;
+  function isRTLPage() {
+    if (document.documentElement.getAttribute('dir') === 'rtl') return true;
+    var lang = document.documentElement.lang || '';
+    return ['he','iw','ar','fa','ur'].indexOf(lang.split('-')[0].toLowerCase()) !== -1;
+  }
+  function fix() {
+    try {
+      if (isRTLPage()) return;
+      var ids = ['nav-search-input', 'mobile-search-input'];
+      for (var i = 0; i < ids.length; i++) {
+        var el = document.getElementById(ids[i]);
+        if (!el) continue;
+        var ph = el.getAttribute('placeholder') || '';
+        if (!RTL_RE.test(ph)) continue;
+        var translated = '';
+        if (window.zappyI18n && typeof window.zappyI18n.t === 'function') {
+          var t = window.zappyI18n.t('ecom_searchProducts');
+          if (t && t !== 'ecom_searchProducts' && !RTL_RE.test(t)) translated = t + '...';
+        }
+        if (!translated && typeof getEcomText === 'function') {
+          var t2 = getEcomText('searchProducts', '');
+          if (t2 && !RTL_RE.test(t2)) translated = t2 + '...';
+        }
+        if (!translated) translated = 'Search products...';
+        el.setAttribute('placeholder', translated);
+      }
+    } catch(e) {}
+  }
+  fix();
+  setTimeout(fix, 1000);
+  setTimeout(fix, 3000);
+})();
+
+
 /* ZAPPY_SECTION_ID_FROM_CLASS */
 (function(){
   function assignIds(){
@@ -11399,7 +11495,7 @@ async function loadRelatedProducts(currentProduct, t) {
 })();
 
 
-/* ZAPPY_ECOM_LANGUAGE_ROUTING_RUNTIME_V6 */
+/* ZAPPY_ECOM_LANGUAGE_ROUTING_RUNTIME_V7 */
 (function() {
   if (window.__zappyEcomLanguageRoutingRuntime) return;
   window.__zappyEcomLanguageRoutingRuntime = true;
@@ -11665,15 +11761,17 @@ async function loadRelatedProducts(currentProduct, t) {
     style.textContent =
       '@media (min-width: 769px){' +
         'html[dir="ltr"] .nav-container > .nav-brand,body[dir="ltr"] .nav-container > .nav-brand{order:-1!important}' +
-        'html[dir="ltr"] .nav-container > .nav-menu,body[dir="ltr"] .nav-container > .nav-menu{order:1!important;margin-inline-start:auto!important;margin-inline-end:24px!important;flex:0 1 auto!important}' +
+        'html[dir="ltr"] .nav-container > .nav-menu,body[dir="ltr"] .nav-container > .nav-menu{order:1!important;margin-inline-start:0!important;margin-inline-end:24px!important;flex:0 1 auto!important}' +
         'html[dir="ltr"] .nav-container > .lang-switcher,body[dir="ltr"] .nav-container > .lang-switcher,html[dir="ltr"] .nav-container > .nav-ecommerce-icons,body[dir="ltr"] .nav-container > .nav-ecommerce-icons{order:2!important}' +
-        'html[dir="ltr"] .nav-container > .nav-ecommerce-icons.nav-icons-left,body[dir="ltr"] .nav-container > .nav-ecommerce-icons.nav-icons-left{margin-inline-start:0!important}' +
+        'html[dir="ltr"] .nav-container > .nav-ecommerce-icons.nav-icons-left,body[dir="ltr"] .nav-container > .nav-ecommerce-icons.nav-icons-left{margin-inline-start:auto!important}' +
         'html[dir="ltr"] .zappy-products-dropdown > a .dropdown-arrow,body[dir="ltr"] .zappy-products-dropdown > a .dropdown-arrow{display:inline-block!important;flex:0 0 auto!important;margin-inline-start:6px!important}' +
         'html[dir="ltr"] .zappy-catalog-menu,html[dir="ltr"] .zappy-catalog-menu .catalog-menu-container,html[dir="ltr"] .zappy-catalog-menu .catalog-menu-categories{direction:ltr!important}' +
         'html[dir="ltr"] .zappy-catalog-menu .catalog-menu-container{align-items:flex-start!important}' +
         'html[dir="ltr"] .zappy-catalog-menu .catalog-menu-categories{display:flex!important;align-items:flex-start!important;align-content:flex-start!important;row-gap:4px!important;column-gap:2px!important}' +
         'html[dir="ltr"] .zappy-catalog-menu .catalog-menu-item{padding-inline:10px!important}' +
         'html[dir="ltr"] .zappy-catalog-menu .catalog-menu-all{margin-top:0!important;align-self:flex-start!important}' +
+        '.nav-menu .zappy-products-dropdown>.sub-menu,#navMenu .zappy-products-dropdown>.sub-menu{left:50%!important;right:auto!important;transform:translateX(-50%) translateY(8px)!important}' +
+        '.nav-menu .zappy-products-dropdown:hover>.sub-menu,#navMenu .zappy-products-dropdown:hover>.sub-menu,.nav-menu .zappy-products-dropdown:focus-within>.sub-menu,#navMenu .zappy-products-dropdown:focus-within>.sub-menu{transform:translateX(-50%) translateY(0)!important}' +
       '}' +
       '@media (max-width:768px){' +
         '.navbar .zappy-products-dropdown,nav.navbar .zappy-products-dropdown,.zappy-products-dropdown{position:relative!important}' +

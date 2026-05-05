@@ -18697,5 +18697,11 @@ html:not([dir]) #mic-init-access-tool .mic-access-tool-general-button,
 html:not([dir]) #mic-init-access-tool #mic-access-tool-general-button,
 html:not([dir]) ._access-icon { right: 20px !important; left: auto !important; }
 
+/* LTR: keep image on left for solution-reverse sections */
+html[dir="ltr"] .solution-item.solution-reverse .solution-image { order: -1 !important; }
+html[dir="ltr"] .solution-item.solution-reverse .solution-content { order: 1 !important; }
+html[dir="ltr"] .service-detail.service-reverse .service-detail-image { order: -1 !important; }
+html[dir="ltr"] .service-detail.service-reverse .service-detail-content { order: 1 !important; }
+
 /* Spec table BiDi fix: isolate cells so mixed LTR/RTL content renders correctly */
 .specs-table th, .specs-table td { unicode-bidi: plaintext !important; }
