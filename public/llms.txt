@@ -18,7 +18,7 @@ https://www.rokosan.co.il/services
 https://www.rokosan.co.il/about
 רוקוסן היא חברה מובילה בתשומות חקלאיות בישראל. אנו מפתחים ומשווקים דשנים טבעיים מאושרים לחקלאות אורגנית ומסורתית, עם ניסיון רב ומחויבות לאיכות.
 
-### רוקולן
+### Page
 https://www.rokosan.co.il/rokolan
 
 ### מוצרים
@@ -52,6 +52,9 @@ https://www.rokosan.co.il/product/:slug
 ### מוצרים
 https://www.rokosan.co.il/category/:slug
 מוצרים - רוקוסן
+
+### Page
+https://www.rokosan.co.il/menu-group-1777982832170
 
 ### צור קשר | רוקוסן - ייעוץ חקלאי חינם
 https://www.rokosan.co.il/contact
