@@ -1,11 +1,11 @@
 # Clean URL redirects for Render static hosting
-# Generated: 2026-05-05T11:23:41.686Z
+# Generated: 2026-05-05T12:07:28.696Z
 # NOTE: Render uses render.yaml for routing, not _redirects (that is Netlify)
 # This file is kept for reference only
 
 /services  /services.html  200!
 /about  /about.html  200!
-/new-page-1777980127947  /new-page-1777980127947.html  200!
+/rokolan  /rokolan.html  200!
 /products  /products.html  200!
 /cart  /cart.html  200!
 /checkout  /checkout.html  200!
