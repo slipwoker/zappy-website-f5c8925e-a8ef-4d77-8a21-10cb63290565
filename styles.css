@@ -17168,16 +17168,11 @@ main,
   }
 }
 
-/* Added Component Styles */
-/* =========================================
-   ROKOSAN – Features Section (rks-features)
-   ========================================= */
-
 .rks-features-section {
   font-family: 'Poppins', sans-serif;
   direction: rtl;
   background: var(--surface-color, #f8f9fa);
-  padding: 90px 20px 80px;
+  padding: 117px 20px 104px;
   position: relative;
   overflow: hidden;
 }
