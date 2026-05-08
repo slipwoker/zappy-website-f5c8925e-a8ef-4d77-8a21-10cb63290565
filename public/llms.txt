@@ -84,7 +84,16 @@ Information about WCAG compliance and accessibility features.
 
 ## Products
 
-**Total active products: 3**
+**Total active products: 4**
+
+### רוקומג'יק
+https://www.rokosan.co.il/product/rvkvmgyk-23qj5d
+- Price: 85.00 ILS
+- Availability: In stock
+- Category: לבית ולגינה
+- Brand: ROKOSAN
+- Description: רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי
+- Image: https://www.rokosan.co.il/assets/product-1776418397626-vwj51.webp
 
 ### רוקואקטיב
 https://www.rokosan.co.il/product/rvkvaktyb-b8784f
