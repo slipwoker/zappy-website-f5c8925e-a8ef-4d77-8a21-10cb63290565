@@ -17836,6 +17836,19 @@ main,
   margin-right: auto !important;
   width: 100% !important;
 }
+
+#layout-1778241938257 .awards-photo-item [data-zappy-zoom-wrapper="true"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+#layout-1778241938257 .awards-photo-item {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
