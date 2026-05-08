@@ -5484,14 +5484,14 @@ html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
   text-align: right;
 }
 
-/* Contact Details List */
 .contact-contact-section .contact-details-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  display: flex !important;
+  flex-direction: column !important;
   gap: 20px;
+  grid-template-columns: unset;
 }
 
 .contact-contact-section .contact-detail-item {
@@ -17762,6 +17762,20 @@ main,
     padding: 13px 32px;
     font-size: 0.95rem;
   }
+}
+
+.contact-contact-section .contact-details-list.zappy-inline-grid-active {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: unset !important;
+}
+
+.contact-contact-section .contact-details-list .contact-detail-item {
+  display: grid !important;
+  grid-template-columns: 44px 1fr !important;
+  align-items: flex-start !important;
+  gap: 0px !important;
+  width: 100% !important;
 }
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
