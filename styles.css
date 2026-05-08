@@ -17834,6 +17834,7 @@ main,
 #layout-1778241938257 .awards-photo-item [data-zappy-zoom-wrapper] {
   margin-left: auto !important;
   margin-right: auto !important;
+  width: 100% !important;
 }
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
