@@ -1,13 +1,13 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-08T11:51:51.419Z",
+  "generated_at": "2026-05-08T11:52:50.338Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 6,
   "products": [
     {
       "id": "ed72a8dd-891b-42ca-ab77-528a000e33e9",
-      "slug": "bvnsay-431xcw",
+      "slug": "bvnsay-gmy7mk",
       "name": "בונסאי",
       "name_translations": {},
       "description": "",
@@ -23,11 +23,11 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/bvnsay-431xcw",
+      "url": "https://www.rokosan.co.il/product/bvnsay-gmy7mk",
       "categories": [
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-08T11:51:20.429Z"
+      "updated_at": "2026-05-08T11:52:19.548Z"
     },
     {
       "id": "ceaccc70-3ff3-4416-87c1-f04f02a829e7",
