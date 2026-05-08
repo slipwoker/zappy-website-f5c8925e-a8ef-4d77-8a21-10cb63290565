@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-08T11:52:50.338Z",
+  "generated_at": "2026-05-08T11:54:37.432Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 6,
@@ -55,7 +55,7 @@
     },
     {
       "id": "4a3d2c5f-2f72-45b8-9dd3-47878fb0ae12",
-      "slug": "rvkvmgyk-23qj5d",
+      "slug": "rvkvmgyk-kfma3e",
       "name": "רוקומג'יק",
       "name_translations": {},
       "description": "<p>רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי</p>",
@@ -71,11 +71,11 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvmgyk-23qj5d",
+      "url": "https://www.rokosan.co.il/product/rvkvmgyk-kfma3e",
       "categories": [
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-08T11:24:02.705Z"
+      "updated_at": "2026-05-08T11:54:06.613Z"
     },
     {
       "id": "cbb0d650-606d-48ec-980b-7ae8a9e5fd3e",
