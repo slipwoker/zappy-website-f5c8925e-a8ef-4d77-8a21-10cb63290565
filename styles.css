@@ -17780,7 +17780,7 @@ main,
 
 #layout-1778241938257 .awards-photo-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 0;
 }
