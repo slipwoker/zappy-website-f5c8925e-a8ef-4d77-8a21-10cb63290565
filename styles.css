@@ -17780,7 +17780,7 @@ main,
 
 #layout-1778241938257 .awards-photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr) !important;
   gap: 16px;
   margin-top: 0;
 }
@@ -17817,6 +17817,10 @@ main,
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
+}
+
+#layout-1778241938257 .awards-photo-grid {
+  grid-template-columns: repeat(3, 1fr) !important;
 }
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
