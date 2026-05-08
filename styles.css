@@ -17783,6 +17783,7 @@ main,
   grid-template-columns: repeat(3, 1fr) !important;
   gap: 16px;
   margin-top: 0;
+  justify-content: center;
 }
 
 #layout-1778241938257 .awards-photo-item {
