@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-08T11:12:55.492Z",
+  "generated_at": "2026-05-08T11:14:34.796Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 3,
@@ -30,16 +30,16 @@
     },
     {
       "id": "946873c8-5646-48ff-bce8-924e0349b1ef",
-      "slug": "rvkvhvmyn-c8ypzz",
+      "slug": "rvkvhvmyn-lx9okn",
       "name": "רוקוהומין",
       "name_translations": {},
       "description": "<p>14-9-14 + mE + BioS</p><p>רוקוהומין הוא דשן נוזלי ממקורות טבעיים ליישום עלוותי, בטפטוף או בהשקיה. הוא מספק לצמח שילוב מתקדם של חומצות אמינו, חומצות הומיות, מאקרו ומיקרו-צורות, ומיועד לתמוך בצמיחה, בחיוניות וביכולת ההתמודדות של הצמח לאורך העונה.</p>",
       "short_description": "רוקוהומין משלב 14-9-14 + mE + BioS עם חומצות אמינו וחומצות הומיות, זה נותן מענה רחב יותר מהזנה רגילה בלבד — גם תמיכה בצמח וגם תרומה לסביבה הקרקעית.",
       "sku": null,
       "brand": "ROKOSAN",
-      "price": 210,
+      "price": 230,
       "base_price": 230,
-      "sale_price": 210,
+      "sale_price": null,
       "currency": "ILS",
       "images": [
         "https://www.rokosan.co.il/assets/product-1776342441409-k9y5k.webp",
@@ -47,9 +47,9 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-c8ypzz",
+      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-lx9okn",
       "categories": [],
-      "updated_at": "2026-05-08T11:12:24.639Z"
+      "updated_at": "2026-05-08T11:14:03.814Z"
     },
     {
       "id": "4c9dee2e-3220-4674-8bb4-f88c5ab18a6f",
