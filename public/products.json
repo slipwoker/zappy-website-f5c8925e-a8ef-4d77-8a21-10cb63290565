@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-08T11:24:33.921Z",
+  "generated_at": "2026-05-08T11:25:08.134Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 4,
@@ -31,7 +31,7 @@
     },
     {
       "id": "cbb0d650-606d-48ec-980b-7ae8a9e5fd3e",
-      "slug": "rvkvaktyb-b8784f",
+      "slug": "rvkvaktyb-52lgm9",
       "name": "רוקואקטיב",
       "name_translations": {},
       "description": "<p>5-9-23 + mE + BioS רוקואקטיב הוא דשן נוזלי ממקורות טבעיים המיועד לשלב ההתחלתי של הגידול. הוא פועל כתומך נביטה, השרשה והתבססות ראשונית, ומעניק לצמח פתיחה איכותית יותר כבר בתחילת הדרך.</p>",
@@ -48,9 +48,12 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvaktyb-b8784f",
-      "categories": [],
-      "updated_at": "2026-05-05T09:08:20.163Z"
+      "url": "https://www.rokosan.co.il/product/rvkvaktyb-52lgm9",
+      "categories": [
+        "לחקלאות",
+        "לבית ולגינה"
+      ],
+      "updated_at": "2026-05-08T11:24:37.154Z"
     },
     {
       "id": "946873c8-5646-48ff-bce8-924e0349b1ef",
