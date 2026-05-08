@@ -17823,6 +17823,17 @@ main,
 #layout-1778241938257 .awards-photo-grid {
   grid-template-columns: repeat(3, 1fr) !important;
 }
+
+#layout-1778241938257 .awards-photo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#layout-1778241938257 .awards-photo-item [data-zappy-zoom-wrapper] {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
