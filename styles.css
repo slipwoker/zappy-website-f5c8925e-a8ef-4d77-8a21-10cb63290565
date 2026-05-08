@@ -17777,6 +17777,47 @@ main,
   gap: 0px !important;
   width: 100% !important;
 }
+
+#layout-1778241938257 .awards-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 0;
+}
+
+#layout-1778241938257 .awards-photo-item {
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  aspect-ratio: 4/3;
+}
+
+#layout-1778241938257 .awards-photo-item:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: var(--shadow-elevated);
+}
+
+#layout-1778241938257 .awards-photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+#layout-1778241938257 .awards-photo-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+}
+
+@media (max-width: 600px) {
+#layout-1778241938257 .awards-photo-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
