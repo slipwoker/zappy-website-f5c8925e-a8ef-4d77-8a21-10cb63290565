@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-08T11:03:20.781Z",
+  "generated_at": "2026-05-08T11:11:33.332Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 3,
@@ -53,16 +53,16 @@
     },
     {
       "id": "4c9dee2e-3220-4674-8bb4-f88c5ab18a6f",
-      "slug": "rvkvln-jljk51",
+      "slug": "rvkvln-ia8hf6",
       "name": "רוקולן ",
       "name_translations": {},
       "description": "<p>4-13-9 + mE + BioS</p><p>רוקולן הוא דשן נוזלי ממקורות טבעיים, שפותח להכנת הקרקע לפני זריעה או שתילה. הוא תומך בפעילות הקרקע, מסייע לפיתוח שורשים חזק ובריא, ויוצר תנאי פתיחה מדויקים יותר לצמח כבר מהשלב הראשון.</p><p>יתרונות בולטים:</p><p>• מסייע בהפעלת המיקרופלורה בקרקע</p><p>• תומך בהתפתחות שורשים ובהתחלה חזקה יותר</p><p>• מסייע לשחרור והנגשה טובה יותר של יסודות הזנה בקרקע</p>",
       "short_description": "4-13-9 + mE + BoiS יחד עם 18 חומצות אמינו, ליצירת קרקע פעילה יותר ותנאים טובים יותר להתבססות הצמח.",
       "sku": null,
       "brand": "רוקוסן",
-      "price": 230,
+      "price": 0,
       "base_price": 230,
-      "sale_price": null,
+      "sale_price": 0,
       "currency": "ILS",
       "images": [
         "https://www.rokosan.co.il/assets/product-1776341693866-3ngdg.webp",
@@ -70,9 +70,9 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvln-jljk51",
+      "url": "https://www.rokosan.co.il/product/rvkvln-ia8hf6",
       "categories": [],
-      "updated_at": "2026-05-05T11:12:21.092Z"
+      "updated_at": "2026-05-08T11:10:59.336Z"
     }
   ]
 }
