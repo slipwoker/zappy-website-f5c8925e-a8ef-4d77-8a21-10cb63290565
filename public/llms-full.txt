@@ -1917,12 +1917,13 @@ ROKOSAN ISRAEL מיובאת על ידי OMRI CORP 2023 בע"מ, ופועלת מ�
 
 
 
+
 הצוות שלנו
 
-## המומחים מאחורי רוקוסן
+## צוות הנהלה בכיר
 
 
-הנהלת ROKOSAN ISRAEL
+ROKOSAN ISRAEL
 
 
 
@@ -5637,13 +5638,6 @@ Description: צרו קשר עם צוות המומחים של רוקוסן לקב
 
 ## Product Catalog
 
-### בונסאי
-URL: https://www.rokosan.co.il/product/bvnsay-gmy7mk
-Price: 85.00 ILS
-Availability: In stock
-
----
-
 ### רוקוהומין
 URL: https://www.rokosan.co.il/product/rvkvhvmyn-2uqnzk
 Price: 230.00 ILS
@@ -5654,13 +5648,6 @@ Brand: ROKOSAN
 
 ---
 
-### בונסאי פרימיום
-URL: https://www.rokosan.co.il/product/bvnsay-prymyvm-xzddd7
-Price: 230.00 ILS
-Availability: In stock
-
----
-
 ### רוקומג'יק
 URL: https://www.rokosan.co.il/product/rvkvmgyk-kfma3e
 Price: 85.00 ILS
@@ -5668,6 +5655,20 @@ Availability: In stock
 Brand: ROKOSAN
 
 רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי
+
+---
+
+### בונסאי
+URL: https://www.rokosan.co.il/product/bvnsay-gmy7mk
+Price: 85.00 ILS
+Availability: In stock
+
+---
+
+### בונסאי פרימיום
+URL: https://www.rokosan.co.il/product/bvnsay-prymyvm-xzddd7
+Price: 230.00 ILS
+Availability: In stock
 
 ---
 

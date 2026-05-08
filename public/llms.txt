@@ -86,13 +86,6 @@ Information about WCAG compliance and accessibility features.
 
 **Total active products: 6**
 
-### בונסאי
-https://www.rokosan.co.il/product/bvnsay-gmy7mk
-- Price: 85.00 ILS
-- Availability: In stock
-- Category: לבית ולגינה
-- Image: https://www.rokosan.co.il/assets/product-1778241053471-tj6hx.webp
-
 ### רוקוהומין
 https://www.rokosan.co.il/product/rvkvhvmyn-2uqnzk
 - Price: 230.00 ILS
@@ -102,14 +95,6 @@ https://www.rokosan.co.il/product/rvkvhvmyn-2uqnzk
 - Description: רוקוהומין משלב 4-9-14 + mE + BioS עם חומצות אמינו וחומצות הומיות, זה נותן מענה רחב יותר מהזנה רגילה בלבד — גם תמיכה בצמח וגם תרומה לסביבה הקרקעית.
 - Image: https://www.rokosan.co.il/assets/product-1776342441409-k9y5k.webp
 
-### בונסאי פרימיום
-https://www.rokosan.co.il/product/bvnsay-prymyvm-xzddd7
-- Price: 230.00 ILS
-- Availability: In stock
-- Category: לבית ולגינה
-- Description: דשן מותאם לעצי בונסאי
-- Image: https://www.rokosan.co.il/assets/product-1778240895309-gjuozn.webp
-
 ### רוקומג'יק
 https://www.rokosan.co.il/product/rvkvmgyk-kfma3e
 - Price: 85.00 ILS
@@ -118,6 +103,21 @@ https://www.rokosan.co.il/product/rvkvmgyk-kfma3e
 - Brand: ROKOSAN
 - Description: רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי
 - Image: https://www.rokosan.co.il/assets/product-1776418397626-vwj51.webp
+
+### בונסאי
+https://www.rokosan.co.il/product/bvnsay-gmy7mk
+- Price: 85.00 ILS
+- Availability: In stock
+- Category: לבית ולגינה
+- Image: https://www.rokosan.co.il/assets/product-1778241053471-tj6hx.webp
+
+### בונסאי פרימיום
+https://www.rokosan.co.il/product/bvnsay-prymyvm-xzddd7
+- Price: 230.00 ILS
+- Availability: In stock
+- Category: לבית ולגינה
+- Description: דשן מותאם לעצי בונסאי
+- Image: https://www.rokosan.co.il/assets/product-1778240895309-gjuozn.webp
 
 ### רוקואקטיב
 https://www.rokosan.co.il/product/rvkvaktyb-52lgm9

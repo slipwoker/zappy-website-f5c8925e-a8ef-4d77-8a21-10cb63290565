@@ -1,34 +1,10 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-08T11:55:12.559Z",
+  "generated_at": "2026-05-08T11:57:18.117Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 6,
   "products": [
-    {
-      "id": "ed72a8dd-891b-42ca-ab77-528a000e33e9",
-      "slug": "bvnsay-gmy7mk",
-      "name": "בונסאי",
-      "name_translations": {},
-      "description": "",
-      "short_description": null,
-      "sku": null,
-      "brand": null,
-      "price": 85,
-      "base_price": 85,
-      "sale_price": null,
-      "currency": "ILS",
-      "images": [
-        "https://www.rokosan.co.il/assets/product-1778241053471-tj6hx.webp"
-      ],
-      "in_stock": true,
-      "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/bvnsay-gmy7mk",
-      "categories": [
-        "לבית ולגינה"
-      ],
-      "updated_at": "2026-05-08T11:55:11.891Z"
-    },
     {
       "id": "946873c8-5646-48ff-bce8-924e0349b1ef",
       "slug": "rvkvhvmyn-2uqnzk",
@@ -53,31 +29,7 @@
         "לבית ולגינה",
         "לחקלאות"
       ],
-      "updated_at": "2026-05-08T11:55:11.891Z"
-    },
-    {
-      "id": "ceaccc70-3ff3-4416-87c1-f04f02a829e7",
-      "slug": "bvnsay-prymyvm-xzddd7",
-      "name": "בונסאי פרימיום",
-      "name_translations": {},
-      "description": "",
-      "short_description": "דשן מותאם לעצי בונסאי",
-      "sku": null,
-      "brand": null,
-      "price": 230,
-      "base_price": 230,
-      "sale_price": null,
-      "currency": "ILS",
-      "images": [
-        "https://www.rokosan.co.il/assets/product-1778240895309-gjuozn.webp"
-      ],
-      "in_stock": true,
-      "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/bvnsay-prymyvm-xzddd7",
-      "categories": [
-        "לבית ולגינה"
-      ],
-      "updated_at": "2026-05-08T11:55:11.891Z"
+      "updated_at": "2026-05-08T11:55:30.082Z"
     },
     {
       "id": "4a3d2c5f-2f72-45b8-9dd3-47878fb0ae12",
@@ -101,7 +53,55 @@
       "categories": [
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-08T11:55:11.891Z"
+      "updated_at": "2026-05-08T11:55:30.082Z"
+    },
+    {
+      "id": "ed72a8dd-891b-42ca-ab77-528a000e33e9",
+      "slug": "bvnsay-gmy7mk",
+      "name": "בונסאי",
+      "name_translations": {},
+      "description": "",
+      "short_description": null,
+      "sku": null,
+      "brand": null,
+      "price": 85,
+      "base_price": 85,
+      "sale_price": null,
+      "currency": "ILS",
+      "images": [
+        "https://www.rokosan.co.il/assets/product-1778241053471-tj6hx.webp"
+      ],
+      "in_stock": true,
+      "stock_status": "in_stock",
+      "url": "https://www.rokosan.co.il/product/bvnsay-gmy7mk",
+      "categories": [
+        "לבית ולגינה"
+      ],
+      "updated_at": "2026-05-08T11:55:30.082Z"
+    },
+    {
+      "id": "ceaccc70-3ff3-4416-87c1-f04f02a829e7",
+      "slug": "bvnsay-prymyvm-xzddd7",
+      "name": "בונסאי פרימיום",
+      "name_translations": {},
+      "description": "",
+      "short_description": "דשן מותאם לעצי בונסאי",
+      "sku": null,
+      "brand": null,
+      "price": 230,
+      "base_price": 230,
+      "sale_price": null,
+      "currency": "ILS",
+      "images": [
+        "https://www.rokosan.co.il/assets/product-1778240895309-gjuozn.webp"
+      ],
+      "in_stock": true,
+      "stock_status": "in_stock",
+      "url": "https://www.rokosan.co.il/product/bvnsay-prymyvm-xzddd7",
+      "categories": [
+        "לבית ולגינה"
+      ],
+      "updated_at": "2026-05-08T11:55:30.082Z"
     },
     {
       "id": "cbb0d650-606d-48ec-980b-7ae8a9e5fd3e",
@@ -127,7 +127,7 @@
         "לחקלאות",
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-08T11:55:11.891Z"
+      "updated_at": "2026-05-08T11:55:30.082Z"
     },
     {
       "id": "4c9dee2e-3220-4674-8bb4-f88c5ab18a6f",
@@ -153,7 +153,7 @@
         "לבית ולגינה",
         "לחקלאות"
       ],
-      "updated_at": "2026-05-08T11:55:11.891Z"
+      "updated_at": "2026-05-08T11:55:30.082Z"
     }
   ]
 }
