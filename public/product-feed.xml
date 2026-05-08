@@ -4,7 +4,7 @@
     <title>רוקוסן</title>
     <link>https://www.rokosan.co.il</link>
     <description>Product feed for רוקוסן</description>
-    <lastBuildDate>Fri, 08 May 2026 11:54:37 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 08 May 2026 11:55:12 GMT</lastBuildDate>
     <item>
       <g:id>ed72a8dd-891b-42ca-ab77-528a000e33e9</g:id>
       <g:title>בונסאי</g:title>
@@ -16,6 +16,19 @@
       <g:condition>new</g:condition>
       <g:brand>רוקוסן</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
+      <g:product_type>לבית ולגינה</g:product_type>
+    </item>
+    <item>
+      <g:id>946873c8-5646-48ff-bce8-924e0349b1ef</g:id>
+      <g:title>רוקוהומין</g:title>
+      <g:description>רוקוהומין משלב 4-9-14 + mE + BioS עם חומצות אמינו וחומצות הומיות, זה נותן מענה רחב יותר מהזנה רגילה בלבד — גם תמיכה בצמח וגם תרומה לסביבה הקרקעית.</g:description>
+      <g:link>https://www.rokosan.co.il/product/rvkvhvmyn-2uqnzk</g:link>
+      <g:image_link>https://www.rokosan.co.il/assets/product-1776342441409-k9y5k.webp</g:image_link>
+      <g:additional_image_link>https://www.rokosan.co.il/assets/product-1776342451661-371n7a.webp</g:additional_image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>230.00 ILS</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>ROKOSAN</g:brand>
       <g:product_type>לבית ולגינה</g:product_type>
     </item>
     <item>
@@ -55,19 +68,6 @@
       <g:condition>new</g:condition>
       <g:brand>ROKOSAN</g:brand>
       <g:product_type>לחקלאות</g:product_type>
-    </item>
-    <item>
-      <g:id>946873c8-5646-48ff-bce8-924e0349b1ef</g:id>
-      <g:title>רוקוהומין</g:title>
-      <g:description>רוקוהומין משלב 4-9-14 + mE + BioS עם חומצות אמינו וחומצות הומיות, זה נותן מענה רחב יותר מהזנה רגילה בלבד — גם תמיכה בצמח וגם תרומה לסביבה הקרקעית.</g:description>
-      <g:link>https://www.rokosan.co.il/product/rvkvhvmyn-xix5vh</g:link>
-      <g:image_link>https://www.rokosan.co.il/assets/product-1776342441409-k9y5k.webp</g:image_link>
-      <g:additional_image_link>https://www.rokosan.co.il/assets/product-1776342451661-371n7a.webp</g:additional_image_link>
-      <g:availability>in_stock</g:availability>
-      <g:price>230.00 ILS</g:price>
-      <g:condition>new</g:condition>
-      <g:brand>ROKOSAN</g:brand>
-      <g:product_type>לבית ולגינה</g:product_type>
     </item>
     <item>
       <g:id>4c9dee2e-3220-4674-8bb4-f88c5ab18a6f</g:id>
