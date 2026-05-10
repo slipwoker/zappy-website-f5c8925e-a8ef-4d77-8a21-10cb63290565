@@ -1,13 +1,13 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-10T14:28:37.470Z",
+  "generated_at": "2026-05-10T14:30:24.808Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 6,
   "products": [
     {
       "id": "946873c8-5646-48ff-bce8-924e0349b1ef",
-      "slug": "rvkvhvmyn-2uqnzk",
+      "slug": "rvkvhvmyn-eku2be",
       "name": "רוקוהומין",
       "name_translations": {},
       "description": "<p>14-9-14 + mE + BioS</p><p>רוקוהומין הוא דשן נוזלי ממקורות טבעיים ליישום עלוותי, בטפטוף או בהשקיה. הוא מספק לצמח שילוב מתקדם של חומצות אמינו, חומצות הומיות, מאקרו ומיקרו-צורות, ומיועד לתמוך בצמיחה, בחיוניות וביכולת ההתמודדות של הצמח לאורך העונה.</p>",
@@ -24,12 +24,12 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-2uqnzk",
+      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-eku2be",
       "categories": [
         "לבית ולגינה",
         "לחקלאות"
       ],
-      "updated_at": "2026-05-08T11:55:30.082Z"
+      "updated_at": "2026-05-10T14:29:53.796Z"
     },
     {
       "id": "4a3d2c5f-2f72-45b8-9dd3-47878fb0ae12",
