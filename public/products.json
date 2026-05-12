@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-12T10:27:23.640Z",
+  "generated_at": "2026-05-12T10:56:01.367Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 6,
@@ -33,15 +33,15 @@
     },
     {
       "id": "4a3d2c5f-2f72-45b8-9dd3-47878fb0ae12",
-      "slug": "rvkvmgyk-kfma3e",
+      "slug": "rvkvmgyk-dbbph0",
       "name": "רוקומג'יק",
       "name_translations": {},
       "description": "<p>רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי</p>",
       "short_description": null,
       "sku": null,
       "brand": "ROKOSAN",
-      "price": 85,
-      "base_price": 85,
+      "price": 95,
+      "base_price": 95,
       "sale_price": null,
       "currency": "ILS",
       "images": [
@@ -49,23 +49,23 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvmgyk-kfma3e",
+      "url": "https://www.rokosan.co.il/product/rvkvmgyk-dbbph0",
       "categories": [
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-08T11:55:30.082Z"
+      "updated_at": "2026-05-12T10:55:10.203Z"
     },
     {
       "id": "ed72a8dd-891b-42ca-ab77-528a000e33e9",
-      "slug": "bvnsay-gmy7mk",
+      "slug": "bvnsay-0bgl8r",
       "name": "בונסאי",
       "name_translations": {},
       "description": "",
       "short_description": null,
       "sku": null,
       "brand": null,
-      "price": 85,
-      "base_price": 85,
+      "price": 95,
+      "base_price": 95,
       "sale_price": null,
       "currency": "ILS",
       "images": [
@@ -73,11 +73,11 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/bvnsay-gmy7mk",
+      "url": "https://www.rokosan.co.il/product/bvnsay-0bgl8r",
       "categories": [
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-08T11:55:30.082Z"
+      "updated_at": "2026-05-12T10:55:40.771Z"
     },
     {
       "id": "ceaccc70-3ff3-4416-87c1-f04f02a829e7",

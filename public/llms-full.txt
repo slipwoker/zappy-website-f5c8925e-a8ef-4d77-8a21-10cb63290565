@@ -5618,8 +5618,8 @@ Brand: ROKOSAN
 ---
 
 ### רוקומג'יק
-URL: https://www.rokosan.co.il/product/rvkvmgyk-kfma3e
-Price: 85.00 ILS
+URL: https://www.rokosan.co.il/product/rvkvmgyk-dbbph0
+Price: 95.00 ILS
 Availability: In stock
 Brand: ROKOSAN
 
@@ -5628,8 +5628,8 @@ Brand: ROKOSAN
 ---
 
 ### בונסאי
-URL: https://www.rokosan.co.il/product/bvnsay-gmy7mk
-Price: 85.00 ILS
+URL: https://www.rokosan.co.il/product/bvnsay-0bgl8r
+Price: 95.00 ILS
 Availability: In stock
 
 ---
