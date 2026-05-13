@@ -84,10 +84,19 @@ Information about WCAG compliance and accessibility features.
 
 ## Products
 
-**Total active products: 7**
+**Total active products: 8**
+
+### רוקוהומין 5 ליטר (Copy)
+https://www.rokosan.co.il/product/rvkvhvmyn-5-lytr-copy-cirdto
+- Price: 1100.00 ILS
+- Availability: In stock
+- Category: לבית ולגינה
+- Brand: ROKOSAN
+- Description: 14-9-14 + mE + BioS רוקוהומין הוא דשן נוזלי ממקורות טבעיים ליישום עלוותי, בטפטוף או בהשקיה. הוא מספק לצמח שילוב מתקדם של חומצות אמינו, חומצות הומיות, מאקרו ומיקרו-צורות, ומיועד לתמוך בצמיחה, בחיוניות וביכולת ההתמודדות של הצמח לאורך העונה.
+- Image: https://www.rokosan.co.il/assets/product-1778692699703-9ta4hm.webp
 
 ### רוקוהומין 5 ליטר
-https://www.rokosan.co.il/product/rvkvhvmyn-5-lytr-0k8sro
+https://www.rokosan.co.il/product/rvkvhvmyn-5-lytr-sruzla
 - Price: 1100.00 ILS
 - Availability: In stock
 - Category: לבית ולגינה
