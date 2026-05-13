@@ -736,7 +736,7 @@
       <div class="search-results" id="mobile-search-results"></div>
     </div>
   
-<script>window.ZAPPY_WEBSITE_ID = "f5c8925e-a8ef-4d77-8a21-10cb63290565";window.ZAPPY_API_BASE = "https://api.zappy5.com";</script>
+<script>window.ZAPPY_WEBSITE_ID = "f5c8925e-a8ef-4d77-8a21-10cb63290565";window.ZAPPY_API_BASE = (window.location.pathname.includes('/preview') ? "https://api.zappy5.com" : "https://api.zappy5.com");</script>
   <nav class="navbar" dir="rtl">
   <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
     <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -1235,7 +1235,7 @@
         <span>שירותים ומוצרים</span>
       </div>
       <h1 class="services-hero-title">הפתרונות שלנו לחקלאות מתקדמת</h1>
-      <h3 class="services-hero-subtitle">דשן טבעי מלא — NPK + יסודות קורט + ממריצים ביולוגיים לתוצאות מרביות</h3>
+      <h3 class="services-hero-subtitle" style=""><font color="#991717">דשן טבעי מלא — NPK + יסודות קורט + ממריצים ביולוגיים לתוצאות מרביות</font></h3>
       <div class="services-hero-divider-line" aria-hidden="true"></div>
     </div>
   </div>
@@ -1348,14 +1348,14 @@
           <ul class="footer-links">
             <li><a href="/services"><i class="fas fa-chevron-left nav-arrow"></i>שירותים</a></li>
             <li><a href="/about"><i class="fas fa-chevron-left nav-arrow"></i>אודות</a></li>
-            <li><a href="/contact" ><i class="fas fa-chevron-left nav-arrow" style="cursor: pointer;"></i>צור קשר</a></li>
+            <li><a href="/contact" style=""><i class="fas fa-chevron-left nav-arrow" style="cursor: pointer;"></i>צור קשר</a></li>
           </ul>
         </div>
 
         <!-- Contact Info -->
         <div class="footer-col">
           <h4 class="footer-heading"><span class="heading-accent"></span>פרטי התקשרות</h4>
-          <ul class="footer-contact" >
+          <ul class="footer-contact" style="">
 <li>
   <span class="contact-icon"><i class="fas fa-envelope" data-element-type="icon" data-icon-type="fontawesome"></i></span>
   <span class="contact-text"><a href="mailto:info@rokosan.co.il">info@rokosan.co.il</a></span>
