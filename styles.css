@@ -18067,6 +18067,14 @@ main,
 .services-cta-section .services-cta-heading {
   color: var(--background-color) !important;
 }
+
+#services-cta-section .services-cta-contact-strip a.services-cta-contact-item,
+#services-cta-section .services-cta-contact-strip a.services-cta-contact-item span,
+#services-cta-section .services-cta-contact-strip span.services-cta-contact-item,
+#services-cta-section .services-cta-contact-strip span.services-cta-contact-item span,
+#services-cta-section .services-cta-contact-strip .services-cta-contact-sep {
+  color: var(--background-color) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
