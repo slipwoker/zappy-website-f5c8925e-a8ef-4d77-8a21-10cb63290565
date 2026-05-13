@@ -18166,6 +18166,45 @@ main,
 .services-cta-section strong {
   color: var(--background-color) !important;
 }
+
+#services-hero-section *,
+#services-hero-section h1,
+#services-hero-section h2,
+#services-hero-section h3,
+#services-hero-section h4,
+#services-hero-section p,
+#services-hero-section span,
+#services-hero-section a,
+#services-hero-section div {
+  color: var(--background-color) !important;
+}
+
+#zappy-section-1 *,
+#zappy-section-1 h1,
+#zappy-section-1 h2,
+#zappy-section-1 h3,
+#zappy-section-1 h4,
+#zappy-section-1 p,
+#zappy-section-1 span,
+#zappy-section-1 a,
+#zappy-section-1 div,
+#zappy-section-1 strong {
+  color: var(--background-color) !important;
+}
+
+#services-cta-section *,
+#services-cta-section h1,
+#services-cta-section h2,
+#services-cta-section h3,
+#services-cta-section h4,
+#services-cta-section p,
+#services-cta-section span,
+#services-cta-section a,
+#services-cta-section div,
+#services-cta-section strong,
+#services-cta-section button {
+  color: var(--background-color) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
