@@ -17939,6 +17939,10 @@ main,
 .services-cta-section .services-cta-contact-item span {
   color: rgba(255, 255, 255, 0.75) !important;
 }
+
+#zappy-section-1 p, #zappy-section-1 h2, #zappy-section-1 span, #zappy-section-1 div {
+  color: var(--text-dark) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
