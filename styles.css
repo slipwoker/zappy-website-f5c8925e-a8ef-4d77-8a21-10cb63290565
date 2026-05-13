@@ -18122,6 +18122,50 @@ main,
 .services-cta-section .services-cta-contact-static {
   color: var(--background-color) !important;
 }
+
+.services-hero-section,
+.services-hero-section .services-hero-title,
+.services-hero-section .services-hero-subtitle,
+.services-hero-section .services-hero-breadcrumb,
+.services-hero-section .services-hero-breadcrumb-sep,
+.services-hero-section .services-hero-breadcrumb span {
+  color: var(--background-color) !important;
+}
+
+#zappy-section-1 p,
+#zappy-section-1 h2,
+#zappy-section-1 span,
+#zappy-section-1 div,
+#zappy-section-1 h1,
+#zappy-section-1 h3,
+#zappy-section-1 h4,
+#zappy-section-1 a,
+#zappy-section-1 strong,
+#zappy-section-1 li {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-badge,
+.services-cta-section .services-cta-badge svg,
+.services-cta-section .services-cta-heading,
+.services-cta-section .services-cta-subtext,
+.services-cta-section .services-cta-feature-content strong,
+.services-cta-section .services-cta-feature-content span,
+.services-cta-section .services-cta-btn-primary,
+.services-cta-section .services-cta-btn-primary:hover,
+.services-cta-section .services-cta-btn-ghost,
+.services-cta-section .services-cta-btn-ghost:hover,
+.services-cta-section .services-cta-btn-ghost svg,
+.services-cta-section .services-cta-contact-item,
+.services-cta-section .services-cta-contact-item span,
+.services-cta-section .services-cta-contact-item svg,
+.services-cta-section .services-cta-contact-sep,
+.services-cta-section a,
+.services-cta-section p,
+.services-cta-section span,
+.services-cta-section strong {
+  color: var(--background-color) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
