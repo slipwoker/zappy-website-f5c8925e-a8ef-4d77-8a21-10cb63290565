@@ -18010,6 +18010,63 @@ main,
 .services-cta-section .services-cta-heading {
   color: var(--background-color) !important;
 }
+
+.services-cta-section .services-cta-badge span,
+.services-cta-section .services-cta-heading,
+.services-cta-section .services-cta-subtext,
+.services-cta-section .services-cta-feature-content strong,
+.services-cta-section .services-cta-feature-content span,
+.services-cta-section .services-cta-btn-ghost,
+.services-cta-section .services-cta-btn-ghost span,
+.services-cta-section .services-cta-contact-item,
+.services-cta-section .services-cta-contact-item span,
+.services-cta-section .services-cta-contact-sep {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-feature-content strong {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-feature-content span {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-contact-item span {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-btn-ghost span {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-badge span {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-subtext {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-contact-item {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-contact-sep {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-btn-ghost {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-contact-static {
+  color: var(--background-color) !important;
+}
+
+.services-cta-section .services-cta-heading {
+  color: var(--background-color) !important;
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
