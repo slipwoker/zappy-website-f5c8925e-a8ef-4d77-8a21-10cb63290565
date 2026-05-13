@@ -4367,7 +4367,7 @@ html[dir="rtl"] .footer-contact li > a { flex-direction: row !important; }
 }
 
 .services-cta-section .services-cta-contact-sep {
-  color: #ffffff;
+  color: #ffffff !important;
   font-size: 0.875rem;
   user-select: none;
 }
