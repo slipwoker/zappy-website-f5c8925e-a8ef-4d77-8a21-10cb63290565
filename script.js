@@ -9351,121 +9351,172 @@ async function loadRelatedProducts(currentProduct, t) {
 /* ZAPPY_RUNTIME_CONTRAST_FIX */
 (function(){
   try {
-    if (window.__zappyContrastFixInit) return;
-    window.__zappyContrastFixInit = true;
+/**
+ * Shared runtime contrast-fix IIFE body.
+ *
+ * This file is the SINGLE SOURCE OF TRUTH for the client-side WCAG contrast
+ * fixer that runs on both preview (02-navigation.js) and published sites
+ * (githubService.js → ensureRuntimeContrastFix). Any fix applied here
+ * automatically propagates to both surfaces.
+ *
+ * IMPORTANT: This file is read as a string template by Node, NOT executed
+ * directly. It contains raw browser-side JavaScript (ES5-compat, no require,
+ * no import). The consumers wrap it in an IIFE and append their own trigger
+ * (preview: setTimeout; publish: DOMContentLoaded).
+ *
+ * To add/change the contrast logic, edit THIS file and run:
+ *   node server/tests/sectionBackgroundTextColorSync.test.js
+ * The test pins that both consumers include the shared code.
+ */
 
-    function getLum(r,g,b){
-      var a=[r,g,b].map(function(v){v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);});
-      return a[0]*0.2126+a[1]*0.7152+a[2]*0.0722;
-    }
-    function contrast(c1,c2){
-      var l1=getLum(c1.r,c1.g,c1.b),l2=getLum(c2.r,c2.g,c2.b);
-      var hi=Math.max(l1,l2),lo=Math.min(l1,l2);
-      return (hi+0.05)/(lo+0.05);
-    }
-    function parseRGB(c){
-      if(!c)return null;var m=c.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
-      return m?{r:+m[1],g:+m[2],b:+m[3]}:null;
-    }
-    function effectiveBg(el){
-      var e=el;
-      while(e){
-        var cs=window.getComputedStyle(e);
-        var bi=cs.backgroundImage;
-        if(bi&&bi!=='none'){
-          if(bi.indexOf('url(')>=0) return null;
-          var isRgba=bi.match(/rgba\(/);
-          if(!isRgba){
-            var gm=bi.match(/rgb\(\s*(\d+),\s*(\d+),\s*(\d+)/);
-            if(gm) return 'rgb('+gm[1]+','+gm[2]+','+gm[3]+')';
-          }
-        }
-        var bg=cs.backgroundColor;
-        if(bg&&bg!=='rgba(0, 0, 0, 0)'&&bg!=='transparent'){
-          var am=bg.match(/rgba\(\s*\d+,\s*\d+,\s*\d+,\s*([\d.]+)/);
-          if(!am||parseFloat(am[1])>=0.6) return bg;
-        }
-        e=e.parentElement;
-      }
-      return 'rgb(255,255,255)';
-    }
+if (window.__zappyContrastFixInit) return;
+window.__zappyContrastFixInit = true;
 
-    function resolveVar(val){
-      if(!val||val.indexOf('var(')===-1)return val;
-      var m=val.match(/var\(--([^,)]+)/);
-      if(!m)return val;
-      return getComputedStyle(document.documentElement).getPropertyValue('--'+m[1]).trim()||val;
+function getLum(r,g,b){
+  var a=[r,g,b].map(function(v){v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);});
+  return a[0]*0.2126+a[1]*0.7152+a[2]*0.0722;
+}
+function contrastRatio(c1,c2){
+  var l1=getLum(c1.r,c1.g,c1.b),l2=getLum(c2.r,c2.g,c2.b);
+  return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05);
+}
+function parseRGB(c){
+  if(!c)return null;var m=c.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  return m?{r:+m[1],g:+m[2],b:+m[3]}:null;
+}
+function effectiveBg(el){
+  var e=el;
+  while(e){
+    var cs=window.getComputedStyle(e);
+    var bi=cs.backgroundImage;
+    if(bi&&bi!=='none'){
+      if(bi.indexOf('url(')>=0) return null;
+      var isRgba=bi.match(/rgba\(/);
+      if(!isRgba){
+        var gm=bi.match(/rgb\(\s*(\d+),\s*(\d+),\s*(\d+)/);
+        if(gm) return 'rgb('+gm[1]+','+gm[2]+','+gm[3]+')';
+      }
     }
-    function isDecorativeAccentText(el){
-      if(!el||!el.matches)return false;
-      // First: accent / handwritten / script labels — historical contract.
-      if(el.matches('.font-accent,.hero-logotype,.hero-logotype-line,[class*="script"],[class*="accent-line"],[class*="subheadline"]'))return true;
-      if(el.closest('.font-accent,.hero-logotype,.hero-logotype-line,[class*="script"],[class*="accent-line"],[class*="subheadline"]'))return true;
-      // Poster-style hero/display words. The post-gen V2 faithful guards
-      // intentionally paint these in brand colors; the runtime contrast
-      // pass MUST NOT repaint them or PIZZA briefly flashes red then turns
-      // black. Mirrors the preview-side selector list in 02-navigation.js.
-      // Selectors cover legacy hero-word-* / hero-pizza-*, BEM *pizza-word
-      // / *anywhere-word, the regenerated BEM *headline-pizza /
-      // *headline-move / *headline-on-the shapes, AND a final catch-all
-      // for any descendant of h1/h2.display-{xl,1,2} so future class-name
-      // drift does not re-introduce the red-to-black flash.
-      if(el.matches('.display-xl,.display-1,.display-2,[class*="hero-word"],[class*="hero-pizza"],[class*="hero-anywhere"],[class*="pizza-word"],[class*="anywhere-word"],[class*="headline-pizza"],[class*="headline-anywhere"],[class*="headline-on-the"],[class*="headline-move"],[class*="logotype"],[class*="wordmark"]'))return true;
-      if(el.closest('[class*="hero-word"],[class*="hero-pizza"],[class*="hero-anywhere"],[class*="pizza-word"],[class*="anywhere-word"],[class*="headline-pizza"],[class*="headline-anywhere"],[class*="headline-on-the"],[class*="headline-move"],[class*="logotype"],[class*="wordmark"]'))return true;
-      if(el.closest('h1.display-xl,h2.display-xl,h1.display-1,h2.display-1,h1.display-2,h2.display-2'))return true;
-      return false;
+    var bg=cs.backgroundColor;
+    if(bg&&bg!=='rgba(0, 0, 0, 0)'&&bg!=='transparent'){
+      var am=bg.match(/rgba\(\s*\d+,\s*\d+,\s*\d+,\s*([\d.]+)/);
+      if(!am||parseFloat(am[1])>=0.6) return bg;
     }
+    e=e.parentElement;
+  }
+  return 'rgb(255,255,255)';
+}
 
-    function fixContrast(){
-      var root=getComputedStyle(document.documentElement);
-      var dark=root.getPropertyValue('--text-dark').trim()||root.getPropertyValue('--text').trim()||'#1a1a1a';
-      var light=root.getPropertyValue('--text-light').trim()||root.getPropertyValue('--background').trim()||'#ffffff';
-      var darkRGB=parseRGB(dark);
-      if(!darkRGB){
-        var d=document.createElement('div');d.style.color=dark;document.body.appendChild(d);
-        darkRGB=parseRGB(getComputedStyle(d).color);d.remove();
-      }
-      var lightRGB=parseRGB(light);
-      if(!lightRGB){
-        var d2=document.createElement('div');d2.style.color=light;document.body.appendChild(d2);
-        lightRGB=parseRGB(getComputedStyle(d2).color);d2.remove();
-      }
-      if(!darkRGB)darkRGB={r:26,g:26,b:26};
-      if(!lightRGB)lightRGB={r:255,g:255,b:255};
+function isElementVisible(el,stopAt){
+  var n=el;
+  while(n&&n!==stopAt&&n!==document.body){
+    var s=window.getComputedStyle(n);
+    if(s.display==='none'||s.visibility==='hidden') return false;
+    if(parseFloat(s.opacity||'1')<=0.1) return false;
+    n=n.parentElement;
+  }
+  return true;
+}
 
-      var mainEl=document.querySelector('main')||document.body;
-      var els=mainEl.querySelectorAll('h1,h2,h3,h4,h5,h6,p,span,a,button,li,label,td,th,dt,dd,figcaption');
-      var fixed=0;
-      for(var i=0;i<els.length;i++){
-        var el=els[i];
-        if(el.closest('nav,header,.zappy-header,footer,.zappy-footer'))continue;
-        if(isDecorativeAccentText(el))continue;
-        var txt=el.textContent?el.textContent.trim():'';
-        if(!txt)continue;
-        var r=el.getBoundingClientRect();
-        if(r.width===0||r.height===0)continue;
-        var cs=getComputedStyle(el);
-        var col=resolveVar(cs.color);
-        var bg=effectiveBg(el);
-        var cRGB=parseRGB(col),bRGB=parseRGB(bg);
-        if(!cRGB||!bRGB)continue;
-        var ratio=contrast(cRGB,bRGB);
-        if(ratio<4.5){
-          var darkC=contrast(darkRGB,bRGB);
-          var lightC=contrast(lightRGB,bRGB);
-          var best=darkC>=lightC?dark:light;
-          var bestRatio=Math.max(darkC,lightC);
-          if(bestRatio<4.5){
-            var blackC=contrast({r:0,g:0,b:0},bRGB);
-            var whiteC=contrast({r:255,g:255,b:255},bRGB);
-            best=blackC>=whiteC?'#000000':'#ffffff';
-          }
-          el.style.setProperty('color',best,'important');
-          fixed++;
-        }
-      }
-      if(fixed>0)console.log('[Contrast Fix] Fixed '+fixed+' low-contrast elements');
+function hasImageOrVideoBackground(el){
+  var e=el;
+  while(e&&e!==document.body){
+    if(e.getAttribute){
+      var bgType=e.getAttribute('data-zappy-bg-type');
+      if(bgType==='image'||bgType==='video') return true;
     }
+    var cs=window.getComputedStyle(e);
+    var bi=cs.backgroundImage;
+    if(bi&&bi.indexOf('url(')>=0) return true;
+    e=e.parentElement;
+  }
+  var section=el.closest&&el.closest(
+    'section,article,[data-zappy-section],[data-zappy-component],[class*="hero"],[class*="section"]'
+  );
+  if(section){
+    var bgChild=section.querySelector(
+      'img[data-hero-bg],.zappy-section-video-bg,.zappy-section-video,'+
+      'img[class*="hero-bg"],img[class*="bg-image"],img[class*="background-image"],'+
+      'video[class*="bg"],video[autoplay][loop]'
+    );
+    if(bgChild&&isElementVisible(bgChild,section)){
+      return true;
+    }
+  }
+  return false;
+}
+
+function resolveVar(val){
+  if(!val||val.indexOf('var(')===-1)return val;
+  var m=val.match(/var\(--([^,)]+)/);
+  if(!m)return val;
+  return getComputedStyle(document.documentElement).getPropertyValue('--'+m[1]).trim()||val;
+}
+
+function isDecorativeAccentText(el){
+  if(!el||!el.matches)return false;
+  if(el.matches('.font-accent,.hero-logotype,.hero-logotype-line,[class*="script"],[class*="accent-line"],[class*="subheadline"]'))return true;
+  if(el.closest('.font-accent,.hero-logotype,.hero-logotype-line,[class*="script"],[class*="accent-line"],[class*="subheadline"]'))return true;
+  if(el.matches('.display-xl,.display-1,.display-2,[class*="hero-word"],[class*="hero-pizza"],[class*="hero-anywhere"],[class*="pizza-word"],[class*="anywhere-word"],[class*="headline-pizza"],[class*="headline-anywhere"],[class*="headline-on-the"],[class*="headline-move"],[class*="logotype"],[class*="wordmark"]'))return true;
+  if(el.closest('[class*="hero-word"],[class*="hero-pizza"],[class*="hero-anywhere"],[class*="pizza-word"],[class*="anywhere-word"],[class*="headline-pizza"],[class*="headline-anywhere"],[class*="headline-on-the"],[class*="headline-move"],[class*="logotype"],[class*="wordmark"]'))return true;
+  if(el.closest('h1.display-xl,h2.display-xl,h1.display-1,h2.display-1,h1.display-2,h2.display-2'))return true;
+  return false;
+}
+
+function fixContrast(){
+  var root=getComputedStyle(document.documentElement);
+  var dark=root.getPropertyValue('--text-dark').trim()||root.getPropertyValue('--text').trim()||'#1a1a1a';
+  var light=root.getPropertyValue('--text-light').trim()||root.getPropertyValue('--background').trim()||'#ffffff';
+  var darkRGB=parseRGB(dark);
+  if(!darkRGB){
+    var d=document.createElement('div');d.style.color=dark;document.body.appendChild(d);
+    darkRGB=parseRGB(getComputedStyle(d).color);d.remove();
+  }
+  var lightRGB=parseRGB(light);
+  if(!lightRGB){
+    var d2=document.createElement('div');d2.style.color=light;document.body.appendChild(d2);
+    lightRGB=parseRGB(getComputedStyle(d2).color);d2.remove();
+  }
+  if(!darkRGB)darkRGB={r:26,g:26,b:26};
+  if(!lightRGB)lightRGB={r:255,g:255,b:255};
+
+  var mainEl=document.querySelector('main')||document.body;
+  var els=mainEl.querySelectorAll('h1,h2,h3,h4,h5,h6,p,span,a,button,li,label,td,th,dt,dd,figcaption');
+  var fixed=0;
+  for(var i=0;i<els.length;i++){
+    var el=els[i];
+    if(el.closest('nav,header,.zappy-header,footer,.zappy-footer'))continue;
+    if(isDecorativeAccentText(el))continue;
+    if(hasImageOrVideoBackground(el))continue;
+    var inlineStyle=el.getAttribute('style')||'';
+    if(/(?:^|;\s*)color\s*:/i.test(inlineStyle))continue;
+    if(el.tagName==='FONT'&&el.hasAttribute('color'))continue;
+    var txt=el.textContent?el.textContent.trim():'';
+    if(!txt)continue;
+    var r=el.getBoundingClientRect();
+    if(r.width===0||r.height===0)continue;
+    var cs=getComputedStyle(el);
+    var col=resolveVar(cs.color);
+    var bg=effectiveBg(el);
+    var cRGB=parseRGB(col),bRGB=parseRGB(bg);
+    if(!cRGB||!bRGB)continue;
+    var ratio=contrastRatio(cRGB,bRGB);
+    if(ratio<4.5){
+      var darkC=contrastRatio(darkRGB,bRGB);
+      var lightC=contrastRatio(lightRGB,bRGB);
+      var best=darkC>=lightC?dark:light;
+      var bestRatio=Math.max(darkC,lightC);
+      if(bestRatio<4.5){
+        var blackC=contrastRatio({r:0,g:0,b:0},bRGB);
+        var whiteC=contrastRatio({r:255,g:255,b:255},bRGB);
+        best=blackC>=whiteC?'#000000':'#ffffff';
+      }
+      el.style.setProperty('color',best,'important');
+      fixed++;
+    }
+  }
+  if(fixed>0)console.log('[Contrast Fix] Fixed '+fixed+' low-contrast elements');
+}
 
     if(document.readyState==='loading'){
       document.addEventListener('DOMContentLoaded',fixContrast,{once:true});
