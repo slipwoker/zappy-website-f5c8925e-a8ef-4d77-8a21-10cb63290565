@@ -84,7 +84,16 @@ Information about WCAG compliance and accessibility features.
 
 ## Products
 
-**Total active products: 6**
+**Total active products: 7**
+
+### רוקוהומין (Copy)
+https://www.rokosan.co.il/product/rvkvhvmyn-copy-j6idgz
+- Price: 230.00 ILS
+- Availability: In stock
+- Category: לבית ולגינה
+- Brand: ROKOSAN
+- Description: 14-9-14 + mE + BioS רוקוהומין הוא דשן נוזלי ממקורות טבעיים ליישום עלוותי, בטפטוף או בהשקיה. הוא מספק לצמח שילוב מתקדם של חומצות אמינו, חומצות הומיות, מאקרו ומיקרו-צורות, ומיועד לתמוך בצמיחה, בחיוניות וביכולת ההתמודדות של הצמח לאורך העונה.
+- Image: https://www.rokosan.co.il/assets/product-1776342441409-k9y5k.webp
 
 ### רוקוהומין
 https://www.rokosan.co.il/product/rvkvhvmyn-eku2be
