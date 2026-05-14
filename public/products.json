@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-14T12:43:25.298Z",
+  "generated_at": "2026-05-14T12:45:04.742Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 10,
@@ -157,15 +157,15 @@
     },
     {
       "id": "389b9e03-2da4-4816-ba0d-d87dc321bb4e",
-      "slug": "rvkvaktyb-5-lytr-copy-qcm1gl",
-      "name": "רוקואקטיב 5 ליטר (Copy)",
+      "slug": "rvkvaktyb-20-lytr-fbelor",
+      "name": "רוקואקטיב 20 ליטר",
       "name_translations": {},
       "description": "<p>5-9-23 + mE + BioS רוקואקטיב הוא דשן נוזלי ממקורות טבעיים המיועד לשלב ההתחלתי של הגידול. הוא פועל כתומך נביטה, השרשה והתבססות ראשונית, ומעניק לצמח פתיחה איכותית יותר כבר בתחילת הדרך.</p>",
       "short_description": null,
       "sku": null,
       "brand": "ROKOSAN",
-      "price": 1100,
-      "base_price": 1100,
+      "price": 1520,
+      "base_price": 1520,
       "sale_price": null,
       "currency": "ILS",
       "images": [
@@ -173,12 +173,12 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvaktyb-5-lytr-copy-qcm1gl",
+      "url": "https://www.rokosan.co.il/product/rvkvaktyb-20-lytr-fbelor",
       "categories": [
         "לחקלאות",
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-14T12:42:54.369Z"
+      "updated_at": "2026-05-14T12:44:33.528Z"
     },
     {
       "id": "3ee32aea-4db6-42ed-8eda-9e8715ee8e69",
