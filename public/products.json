@@ -1,14 +1,14 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-14T12:58:50.068Z",
+  "generated_at": "2026-05-14T12:59:29.117Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 10,
   "products": [
     {
       "id": "e942a5b6-e551-4c74-919e-89cca3752e6f",
-      "slug": "rvkvhvmyn-20-lytr-dbjj44",
-      "name": "רוקוהומין 20 ליטר",
+      "slug": "rvkvhvmyn-prmyvm-20-lytr-i4sf9l",
+      "name": "רוקוהומין פרמיום 20 ליטר",
       "name_translations": {},
       "description": "<p>14-9-14 + mE + BioS</p><p>רוקוהומין הוא דשן נוזלי ממקורות טבעיים ליישום עלוותי, בטפטוף או בהשקיה. הוא מספק לצמח שילוב מתקדם של חומצות אמינו, חומצות הומיות, מאקרו ומיקרו-צורות, ומיועד לתמוך בצמיחה, בחיוניות וביכולת ההתמודדות של הצמח לאורך העונה.</p>",
       "short_description": null,
@@ -24,17 +24,17 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-20-lytr-dbjj44",
+      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-prmyvm-20-lytr-i4sf9l",
       "categories": [
         "לבית ולגינה",
         "לחקלאות"
       ],
-      "updated_at": "2026-05-14T12:35:51.906Z"
+      "updated_at": "2026-05-14T12:59:28.232Z"
     },
     {
       "id": "7a1d39ce-bfb9-48e3-9267-7d1711918fa3",
-      "slug": "rvkvhvmyn-5-lytr-sruzla",
-      "name": "רוקוהומין 5 ליטר",
+      "slug": "rvkvhvmyn-prmyvm-5-lytr-u591jz",
+      "name": "רוקוהומין פרמיום 5 ליטר",
       "name_translations": {},
       "description": "<p>14-9-14 + mE + BioS</p><p>רוקוהומין הוא דשן נוזלי ממקורות טבעיים ליישום עלוותי, בטפטוף או בהשקיה. הוא מספק לצמח שילוב מתקדם של חומצות אמינו, חומצות הומיות, מאקרו ומיקרו-צורות, ומיועד לתמוך בצמיחה, בחיוניות וביכולת ההתמודדות של הצמח לאורך העונה.</p>",
       "short_description": null,
@@ -50,12 +50,12 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-5-lytr-sruzla",
+      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-prmyvm-5-lytr-u591jz",
       "categories": [
         "לבית ולגינה",
         "לחקלאות"
       ],
-      "updated_at": "2026-05-13T18:37:51.087Z"
+      "updated_at": "2026-05-14T12:58:58.158Z"
     },
     {
       "id": "946873c8-5646-48ff-bce8-924e0349b1ef",

@@ -5528,8 +5528,8 @@ Description: צרו קשר עם צוות המומחים של רוקוסן לקב
 
 ## Product Catalog
 
-### רוקוהומין 20 ליטר
-URL: https://www.rokosan.co.il/product/rvkvhvmyn-20-lytr-dbjj44
+### רוקוהומין פרמיום 20 ליטר
+URL: https://www.rokosan.co.il/product/rvkvhvmyn-prmyvm-20-lytr-i4sf9l
 Price: 2200.00 ILS
 Availability: In stock
 Brand: ROKOSAN
@@ -5538,8 +5538,8 @@ Brand: ROKOSAN
 
 ---
 
-### רוקוהומין 5 ליטר
-URL: https://www.rokosan.co.il/product/rvkvhvmyn-5-lytr-sruzla
+### רוקוהומין פרמיום 5 ליטר
+URL: https://www.rokosan.co.il/product/rvkvhvmyn-prmyvm-5-lytr-u591jz
 Price: 1100.00 ILS
 Availability: In stock
 Brand: ROKOSAN
