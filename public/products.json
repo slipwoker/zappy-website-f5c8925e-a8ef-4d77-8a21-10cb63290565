@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-14T13:46:08.514Z",
+  "generated_at": "2026-05-14T13:48:24.126Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 11,
@@ -233,29 +233,28 @@
     },
     {
       "id": "9838b7f5-fce5-4e59-8bde-1f0dd22ecd85",
-      "slug": "rvkvln-copy-4jbber",
-      "name": "רוקולן  (Copy)",
+      "slug": "rvkvln-prmyvm-5-lytr-by75u2",
+      "name": "רוקולן פרמיום 5 ליטר",
       "name_translations": {},
       "description": "<p>4-13-9 + mE + BioS</p><p>רוקולן הוא דשן נוזלי ממקורות טבעיים, שפותח להכנת הקרקע לפני זריעה או שתילה. הוא תומך בפעילות הקרקע, מסייע לפיתוח שורשים חזק ובריא, ויוצר תנאי פתיחה מדויקים יותר לצמח כבר מהשלב הראשון.</p><p>יתרונות בולטים:</p><p>• מסייע בהפעלת המיקרופלורה בקרקע</p><p>• תומך בהתפתחות שורשים ובהתחלה חזקה יותר</p><p>• מסייע לשחרור והנגשה טובה יותר של יסודות הזנה בקרקע</p>",
       "short_description": null,
       "sku": null,
       "brand": "רוקוסן",
-      "price": 230,
-      "base_price": 230,
+      "price": 1100,
+      "base_price": 1100,
       "sale_price": null,
       "currency": "ILS",
       "images": [
-        "https://www.rokosan.co.il/assets/product-1776341693866-3ngdg.webp",
         "https://www.rokosan.co.il/assets/product-1776342172181-qi5xij.webp"
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvln-copy-4jbber",
+      "url": "https://www.rokosan.co.il/product/rvkvln-prmyvm-5-lytr-by75u2",
       "categories": [
         "לבית ולגינה",
         "לחקלאות"
       ],
-      "updated_at": "2026-05-14T13:45:37.246Z"
+      "updated_at": "2026-05-14T13:47:53.107Z"
     },
     {
       "id": "4c9dee2e-3220-4674-8bb4-f88c5ab18a6f",
