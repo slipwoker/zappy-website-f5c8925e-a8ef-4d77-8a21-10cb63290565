@@ -4,7 +4,7 @@
     <title>רוקוסן</title>
     <link>https://www.rokosan.co.il</link>
     <description>Product feed for רוקוסן</description>
-    <lastBuildDate>Thu, 14 May 2026 12:42:43 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2026 12:43:25 GMT</lastBuildDate>
     <item>
       <g:id>e942a5b6-e551-4c74-919e-89cca3752e6f</g:id>
       <g:title>רוקוהומין 20 ליטר</g:title>
@@ -81,6 +81,18 @@
       <g:brand>רוקוסן</g:brand>
       <g:identifier_exists>no</g:identifier_exists>
       <g:product_type>לבית ולגינה</g:product_type>
+    </item>
+    <item>
+      <g:id>389b9e03-2da4-4816-ba0d-d87dc321bb4e</g:id>
+      <g:title>רוקואקטיב 5 ליטר (Copy)</g:title>
+      <g:description>5-9-23 + mE + BioS רוקואקטיב הוא דשן נוזלי ממקורות טבעיים המיועד לשלב ההתחלתי של הגידול. הוא פועל כתומך נביטה, השרשה והתבססות ראשונית, ומעניק לצמח פתיחה איכותית יותר כבר בתחילת הדרך.</g:description>
+      <g:link>https://www.rokosan.co.il/product/rvkvaktyb-5-lytr-copy-qcm1gl</g:link>
+      <g:image_link>https://www.rokosan.co.il/assets/product-1776343042870-4rn6ol.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>1100.00 ILS</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>ROKOSAN</g:brand>
+      <g:product_type>לחקלאות</g:product_type>
     </item>
     <item>
       <g:id>3ee32aea-4db6-42ed-8eda-9e8715ee8e69</g:id>
