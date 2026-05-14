@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-14T12:57:35.712Z",
+  "generated_at": "2026-05-14T12:58:50.068Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 10,
@@ -59,8 +59,8 @@
     },
     {
       "id": "946873c8-5646-48ff-bce8-924e0349b1ef",
-      "slug": "rvkvhvmyn-eku2be",
-      "name": "רוקוהומין",
+      "slug": "rvkvhvmyn-prmyvm-1-lytr-0hw574",
+      "name": "רוקוהומין פרמיום 1 ליטר",
       "name_translations": {},
       "description": "<p>14-9-14 + mE + BioS</p><p>רוקוהומין הוא דשן נוזלי ממקורות טבעיים ליישום עלוותי, בטפטוף או בהשקיה. הוא מספק לצמח שילוב מתקדם של חומצות אמינו, חומצות הומיות, מאקרו ומיקרו-צורות, ומיועד לתמוך בצמיחה, בחיוניות וביכולת ההתמודדות של הצמח לאורך העונה.</p>",
       "short_description": "רוקוהומין משלב 4-9-14 + mE + BioS עם חומצות אמינו וחומצות הומיות, זה נותן מענה רחב יותר מהזנה רגילה בלבד — גם תמיכה בצמח וגם תרומה לסביבה הקרקעית.",
@@ -76,12 +76,12 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-eku2be",
+      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-prmyvm-1-lytr-0hw574",
       "categories": [
         "לבית ולגינה",
         "לחקלאות"
       ],
-      "updated_at": "2026-05-10T14:29:53.796Z"
+      "updated_at": "2026-05-14T12:58:18.790Z"
     },
     {
       "id": "4a3d2c5f-2f72-45b8-9dd3-47878fb0ae12",
