@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-14T12:47:47.984Z",
+  "generated_at": "2026-05-14T12:51:12.812Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 10,
@@ -182,8 +182,8 @@
     },
     {
       "id": "3ee32aea-4db6-42ed-8eda-9e8715ee8e69",
-      "slug": "rvkvaktyb-5-lytr-7lw5hz",
-      "name": "רוקואקטיב 5 ליטר",
+      "slug": "rvkvaktyb-prmyvm-5-lytr-6xyeve",
+      "name": "רוקואקטיב פרמיום 5 ליטר",
       "name_translations": {},
       "description": "<p>5-9-23 + mE + BioS רוקואקטיב הוא דשן נוזלי ממקורות טבעיים המיועד לשלב ההתחלתי של הגידול. הוא פועל כתומך נביטה, השרשה והתבססות ראשונית, ומעניק לצמח פתיחה איכותית יותר כבר בתחילת הדרך.</p>",
       "short_description": null,
@@ -198,12 +198,12 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvaktyb-5-lytr-7lw5hz",
+      "url": "https://www.rokosan.co.il/product/rvkvaktyb-prmyvm-5-lytr-6xyeve",
       "categories": [
         "לחקלאות",
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-14T12:42:12.218Z"
+      "updated_at": "2026-05-14T12:50:41.919Z"
     },
     {
       "id": "cbb0d650-606d-48ec-980b-7ae8a9e5fd3e",
