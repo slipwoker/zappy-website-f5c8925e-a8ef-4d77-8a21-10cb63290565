@@ -1,9 +1,9 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-15T12:23:19.665Z",
+  "generated_at": "2026-05-15T12:23:37.469Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
-  "count": 13,
+  "count": 15,
   "products": [
     {
       "id": "e942a5b6-e551-4c74-919e-89cca3752e6f",
@@ -82,6 +82,54 @@
         "לחקלאות"
       ],
       "updated_at": "2026-05-14T12:58:18.790Z"
+    },
+    {
+      "id": "0f8d8c3d-b8ee-4ef3-95e0-b58ca1632ac7",
+      "slug": "rvkvmgyk-5-lytr-copy-copy-dap8fo",
+      "name": "רוקומג'יק 5 ליטר (Copy) (Copy)",
+      "name_translations": {},
+      "description": "<p>רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי</p>",
+      "short_description": null,
+      "sku": null,
+      "brand": "ROKOSAN",
+      "price": 430,
+      "base_price": 430,
+      "sale_price": null,
+      "currency": "ILS",
+      "images": [
+        "https://www.rokosan.co.il/assets/image-product-image-1778847676598-b4tny0.webp"
+      ],
+      "in_stock": true,
+      "stock_status": "in_stock",
+      "url": "https://www.rokosan.co.il/product/rvkvmgyk-5-lytr-copy-copy-dap8fo",
+      "categories": [
+        "לבית ולגינה"
+      ],
+      "updated_at": "2026-05-15T12:23:34.396Z"
+    },
+    {
+      "id": "edcc1f7f-90bf-4b2d-b289-844b033de96f",
+      "slug": "rvkvmgyk-5-lytr-copy-gf5dtm",
+      "name": "רוקומג'יק 5 ליטר (Copy)",
+      "name_translations": {},
+      "description": "<p>רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי</p>",
+      "short_description": null,
+      "sku": null,
+      "brand": "ROKOSAN",
+      "price": 430,
+      "base_price": 430,
+      "sale_price": null,
+      "currency": "ILS",
+      "images": [
+        "https://www.rokosan.co.il/assets/image-product-image-1778847676598-b4tny0.webp"
+      ],
+      "in_stock": true,
+      "stock_status": "in_stock",
+      "url": "https://www.rokosan.co.il/product/rvkvmgyk-5-lytr-copy-gf5dtm",
+      "categories": [
+        "לבית ולגינה"
+      ],
+      "updated_at": "2026-05-15T12:23:27.384Z"
     },
     {
       "id": "56ce3c00-dc67-4d81-8c91-a403b24c67f5",
