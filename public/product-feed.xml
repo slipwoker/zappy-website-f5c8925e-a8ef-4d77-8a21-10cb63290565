@@ -4,7 +4,7 @@
     <title>רוקוסן</title>
     <link>https://www.rokosan.co.il</link>
     <description>Product feed for רוקוסן</description>
-    <lastBuildDate>Thu, 14 May 2026 13:51:04 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 15 May 2026 12:18:49 GMT</lastBuildDate>
     <item>
       <g:id>e942a5b6-e551-4c74-919e-89cca3752e6f</g:id>
       <g:title>רוקוהומין פרמיום 20 ליטר</g:title>
@@ -40,6 +40,18 @@
       <g:additional_image_link>https://www.rokosan.co.il/assets/product-1776342451661-371n7a.webp</g:additional_image_link>
       <g:availability>in_stock</g:availability>
       <g:price>230.00 ILS</g:price>
+      <g:condition>new</g:condition>
+      <g:brand>ROKOSAN</g:brand>
+      <g:product_type>לבית ולגינה</g:product_type>
+    </item>
+    <item>
+      <g:id>56ce3c00-dc67-4d81-8c91-a403b24c67f5</g:id>
+      <g:title>רוקומג&apos;יק (Copy)</g:title>
+      <g:description>רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי</g:description>
+      <g:link>https://www.rokosan.co.il/product/rvkvmgyk-copy-w0hxbi</g:link>
+      <g:image_link>https://www.rokosan.co.il/assets/product-1776418397626-vwj51.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>95.00 ILS</g:price>
       <g:condition>new</g:condition>
       <g:brand>ROKOSAN</g:brand>
       <g:product_type>לבית ולגינה</g:product_type>
