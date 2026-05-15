@@ -84,7 +84,7 @@ Information about WCAG compliance and accessibility features.
 
 ## Products
 
-**Total active products: 15**
+**Total active products: 14**
 
 ### רוקוהומין פרמיום 20 ליטר
 https://www.rokosan.co.il/product/rvkvhvmyn-prmyvm-20-lytr-i4sf9l
@@ -128,15 +128,6 @@ https://www.rokosan.co.il/product/rvkvmgyk-5-lytr-wqzku9
 - Category: לבית ולגינה
 - Brand: ROKOSAN
 - Description: רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי
-
-### רוקומג'יק 5 ליטר
-https://www.rokosan.co.il/product/rvkvmgyk-5-lytr-gr878a
-- Price: 430.00 ILS
-- Availability: In stock
-- Category: לבית ולגינה
-- Brand: ROKOSAN
-- Description: רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי
-- Image: https://www.rokosan.co.il/assets/image-product-image-1778847676598-b4tny0.webp
 
 ### רוקומג'יק
 https://www.rokosan.co.il/product/rvkvmgyk-dbbph0
