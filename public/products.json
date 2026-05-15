@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-15T12:26:45.493Z",
+  "generated_at": "2026-05-15T12:27:58.810Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 15,
@@ -85,7 +85,7 @@
     },
     {
       "id": "0f8d8c3d-b8ee-4ef3-95e0-b58ca1632ac7",
-      "slug": "rvkvmgyk-20-lytr-kjweg1",
+      "slug": "rvkvmgyk-20-lytr-aac5gr",
       "name": "רוקומג'יק 20 ליטר",
       "name_translations": {},
       "description": "<p>רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי</p>",
@@ -96,16 +96,14 @@
       "base_price": 1520,
       "sale_price": null,
       "currency": "ILS",
-      "images": [
-        "https://www.rokosan.co.il/assets/image-product-image-1778847892139-9jm3sr.webp"
-      ],
+      "images": [],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvmgyk-20-lytr-kjweg1",
+      "url": "https://www.rokosan.co.il/product/rvkvmgyk-20-lytr-aac5gr",
       "categories": [
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-15T12:25:01.869Z"
+      "updated_at": "2026-05-15T12:27:27.976Z"
     },
     {
       "id": "edcc1f7f-90bf-4b2d-b289-844b033de96f",
