@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-18T15:07:46.176Z",
+  "generated_at": "2026-05-18T15:34:44.118Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 14,
@@ -129,7 +129,7 @@
     },
     {
       "id": "4a3d2c5f-2f72-45b8-9dd3-47878fb0ae12",
-      "slug": "rvkvhvmyn-stndrt-1-lytr-mputqd",
+      "slug": "rvkvhvmyn-stndrt-1-lytr-106ihp",
       "name": "רוקוהומין סטנדרט 1 ליטר",
       "name_translations": {},
       "description": "<p>רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי</p>",
@@ -145,11 +145,11 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-stndrt-1-lytr-mputqd",
+      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-stndrt-1-lytr-106ihp",
       "categories": [
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-18T15:07:15.083Z"
+      "updated_at": "2026-05-18T15:34:13.168Z"
     },
     {
       "id": "ed72a8dd-891b-42ca-ab77-528a000e33e9",
