@@ -18212,6 +18212,198 @@ main,
 .featured-categories-section {
   display: none !important;
 }
+
+/* AI-generated section */
+/* ============================================
+   Gallery Showcase Section — רוקוסן
+   ============================================ */
+
+.gallery-showcase-section {
+  background-color: #f7f4ec;
+  padding: 80px 24px;
+  font-family: 'Poppins', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Container */
+.gallery-showcase-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---- Header ---- */
+.gallery-showcase-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.gallery-showcase-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--text-color, #4a4a4a);
+  margin: 0 0 14px 0;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+.gallery-showcase-title::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: var(--gradient-primary, linear-gradient(180deg, #498038 0%, #38622B 100%));
+  border-radius: 2px;
+  margin: 14px auto 0 auto;
+}
+
+.gallery-showcase-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary-color, #707070);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* ---- Grid ---- */
+.gallery-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  direction: rtl;
+}
+
+/* ---- Card ---- */
+.gallery-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(79, 138, 60, 0.10), 0 1px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(79, 138, 60, 0.15);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(79, 138, 60, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-card:focus-within {
+  outline: 2px solid var(--primary-color, #4F8A3C);
+  outline-offset: 3px;
+}
+
+/* ---- Card Image Wrapper ---- */
+.gallery-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #e8f3e3;
+  border-bottom: 1px solid rgba(79, 138, 60, 0.12);
+}
+
+.gallery-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.38s ease;
+}
+
+.gallery-card:hover .gallery-card-img {
+  transform: scale(1.04);
+}
+
+/* ---- Card Body ---- */
+.gallery-card-body {
+  padding: 22px 20px 26px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gallery-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-color, #4a4a4a);
+  margin: 0;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 14px;
+}
+
+.gallery-card-title::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 70%;
+  background: var(--gradient-primary, linear-gradient(180deg, #498038 0%, #38622B 100%));
+  border-radius: 2px;
+}
+
+.gallery-card-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary-color, #707070);
+  line-height: 1.75;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ============================================
+   Responsive — Tablet
+   ============================================ */
+@media (max-width: 900px) {
+  .gallery-showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .gallery-showcase-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* ============================================
+   Responsive — Mobile
+   ============================================ */
+@media (max-width: 580px) {
+  .gallery-showcase-section {
+    padding: 56px 16px;
+  }
+
+  .gallery-showcase-header {
+    margin-bottom: 36px;
+  }
+
+  .gallery-showcase-title {
+    font-size: 1.5rem;
+  }
+
+  .gallery-showcase-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .gallery-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .gallery-card-body {
+    padding: 18px 16px 22px 16px;
+  }
+
+  .gallery-card-title {
+    font-size: 1rem;
+  }
+}
 /* mobile-submenu-overflow-fix */
 @media (max-width: 768px) {
   .navbar .sub-menu.mobile-expanded,
