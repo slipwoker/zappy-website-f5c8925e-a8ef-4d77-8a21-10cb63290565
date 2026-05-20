@@ -5589,7 +5589,7 @@ Brand: ROKOSAN
 ---
 
 ### בונסאי
-URL: https://www.rokosan.co.il/product/bvnsay-0bgl8r
+URL: https://www.rokosan.co.il/product/bvnsay-0ociqx
 Price: 95.00 ILS
 Availability: In stock
 
@@ -5653,7 +5653,7 @@ Brand: רוקוסן
 ---
 
 ### רוקולן פרמיום
-URL: https://www.rokosan.co.il/product/rvkvln-prmyvm-xlec8f
+URL: https://www.rokosan.co.il/product/rvkvln-prmyvm-gzsg2u
 Price: 230.00 ILS
 Availability: In stock
 Brand: רוקוסן

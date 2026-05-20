@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-20T12:05:09.860Z",
+  "generated_at": "2026-05-20T12:05:51.462Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 14,
@@ -153,7 +153,7 @@
     },
     {
       "id": "ed72a8dd-891b-42ca-ab77-528a000e33e9",
-      "slug": "bvnsay-0bgl8r",
+      "slug": "bvnsay-0ociqx",
       "name": "בונסאי",
       "name_translations": {},
       "description": "",
@@ -169,11 +169,11 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/bvnsay-0bgl8r",
+      "url": "https://www.rokosan.co.il/product/bvnsay-0ociqx",
       "categories": [
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-12T10:55:40.771Z"
+      "updated_at": "2026-05-20T12:05:32.617Z"
     },
     {
       "id": "ceaccc70-3ff3-4416-87c1-f04f02a829e7",
@@ -327,7 +327,7 @@
     },
     {
       "id": "4c9dee2e-3220-4674-8bb4-f88c5ab18a6f",
-      "slug": "rvkvln-prmyvm-xlec8f",
+      "slug": "rvkvln-prmyvm-gzsg2u",
       "name": "רוקולן פרמיום",
       "name_translations": {},
       "description": "<p>4-13-9 + mE + BioS</p><p>רוקולן הוא דשן נוזלי ממקורות טבעיים, שפותח להכנת הקרקע לפני זריעה או שתילה. הוא תומך בפעילות הקרקע, מסייע לפיתוח שורשים חזק ובריא, ויוצר תנאי פתיחה מדויקים יותר לצמח כבר מהשלב הראשון.</p><p>יתרונות בולטים:</p><p>• מסייע בהפעלת המיקרופלורה בקרקע</p><p>• תומך בהתפתחות שורשים ובהתחלה חזקה יותר</p><p>• מסייע לשחרור והנגשה טובה יותר של יסודות הזנה בקרקע</p>",
@@ -344,12 +344,12 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvln-prmyvm-xlec8f",
+      "url": "https://www.rokosan.co.il/product/rvkvln-prmyvm-gzsg2u",
       "categories": [
         "לבית ולגינה",
         "לחקלאות"
       ],
-      "updated_at": "2026-05-15T12:29:37.385Z"
+      "updated_at": "2026-05-20T12:05:20.336Z"
     }
   ]
 }
