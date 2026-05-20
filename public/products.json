@@ -1,6 +1,6 @@
 {
   "@context": "https://schema.org",
-  "generated_at": "2026-05-18T15:34:44.118Z",
+  "generated_at": "2026-05-20T12:05:09.860Z",
   "base_url": "https://www.rokosan.co.il",
   "currency": "ILS",
   "count": 14,
@@ -59,7 +59,7 @@
     },
     {
       "id": "946873c8-5646-48ff-bce8-924e0349b1ef",
-      "slug": "rvkvhvmyn-prmyvm-1-lytr-0hw574",
+      "slug": "rvkvhvmyn-prmyvm-1-lytr-jccth0",
       "name": "רוקוהומין פרמיום 1 ליטר",
       "name_translations": {},
       "description": "<p>14-9-14 + mE + BioS</p><p>רוקוהומין הוא דשן נוזלי ממקורות טבעיים ליישום עלוותי, בטפטוף או בהשקיה. הוא מספק לצמח שילוב מתקדם של חומצות אמינו, חומצות הומיות, מאקרו ומיקרו-צורות, ומיועד לתמוך בצמיחה, בחיוניות וביכולת ההתמודדות של הצמח לאורך העונה.</p>",
@@ -76,12 +76,12 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-prmyvm-1-lytr-0hw574",
+      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-prmyvm-1-lytr-jccth0",
       "categories": [
         "לבית ולגינה",
         "לחקלאות"
       ],
-      "updated_at": "2026-05-14T12:58:18.790Z"
+      "updated_at": "2026-05-20T12:04:16.889Z"
     },
     {
       "id": "0f8d8c3d-b8ee-4ef3-95e0-b58ca1632ac7",
@@ -129,7 +129,7 @@
     },
     {
       "id": "4a3d2c5f-2f72-45b8-9dd3-47878fb0ae12",
-      "slug": "rvkvhvmyn-stndrt-1-lytr-106ihp",
+      "slug": "rvkvhvmyn-stndrt-1-lytr-zsil6e",
       "name": "רוקוהומין סטנדרט 1 ליטר",
       "name_translations": {},
       "description": "<p>רוקומגיק הוא דשן נוזלי ממקורות טבעיים המיועד לשימוש בגינות נוי</p>",
@@ -145,11 +145,11 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-stndrt-1-lytr-106ihp",
+      "url": "https://www.rokosan.co.il/product/rvkvhvmyn-stndrt-1-lytr-zsil6e",
       "categories": [
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-18T15:34:13.168Z"
+      "updated_at": "2026-05-20T12:04:38.755Z"
     },
     {
       "id": "ed72a8dd-891b-42ca-ab77-528a000e33e9",
@@ -177,7 +177,7 @@
     },
     {
       "id": "ceaccc70-3ff3-4416-87c1-f04f02a829e7",
-      "slug": "bvnsay-prymyvm-xzddd7",
+      "slug": "bvnsay-prymyvm-9k1s77",
       "name": "בונסאי פרימיום",
       "name_translations": {},
       "description": "",
@@ -193,11 +193,11 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/bvnsay-prymyvm-xzddd7",
+      "url": "https://www.rokosan.co.il/product/bvnsay-prymyvm-9k1s77",
       "categories": [
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-08T11:55:30.082Z"
+      "updated_at": "2026-05-20T12:04:56.844Z"
     },
     {
       "id": "389b9e03-2da4-4816-ba0d-d87dc321bb4e",
@@ -251,7 +251,7 @@
     },
     {
       "id": "cbb0d650-606d-48ec-980b-7ae8a9e5fd3e",
-      "slug": "rvkvaktyb-prmyvm-1-lytr-q61oh7",
+      "slug": "rvkvaktyb-prmyvm-1-lytr-aqj3w5",
       "name": "רוקואקטיב פרמיום 1 ליטר",
       "name_translations": {},
       "description": "<p>5-9-23 + mE + BioS רוקואקטיב הוא דשן נוזלי ממקורות טבעיים המיועד לשלב ההתחלתי של הגידול. הוא פועל כתומך נביטה, השרשה והתבססות ראשונית, ומעניק לצמח פתיחה איכותית יותר כבר בתחילת הדרך.</p>",
@@ -268,12 +268,12 @@
       ],
       "in_stock": true,
       "stock_status": "in_stock",
-      "url": "https://www.rokosan.co.il/product/rvkvaktyb-prmyvm-1-lytr-q61oh7",
+      "url": "https://www.rokosan.co.il/product/rvkvaktyb-prmyvm-1-lytr-aqj3w5",
       "categories": [
         "לחקלאות",
         "לבית ולגינה"
       ],
-      "updated_at": "2026-05-14T12:57:04.568Z"
+      "updated_at": "2026-05-20T12:05:09.284Z"
     },
     {
       "id": "70ea3c07-2770-40da-8ab0-f5d59326130c",
